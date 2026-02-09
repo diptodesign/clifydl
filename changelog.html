@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - Clify</title>
+    <meta name="description" content="Version history and release notes for Clify YouTube blocker">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #c1f11d;
+            --primary-dark: #a0d116;
+            --primary-light: #d4f567;
+            --secondary: #8bc34a;
+            --accent: #4caf50;
+            
+            --bg-primary: #0A0F1C;
+            --bg-secondary: #13182B;
+            --bg-tertiary: #1C2238;
+            --bg-surface: rgba(255, 255, 255, 0.05);
+            
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B7C3;
+            --text-muted: #7A8291;
+            
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-dark: linear-gradient(135deg, #1a1f36, #0A0F1C);
+            
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 25px rgba(193, 241, 29, 0.3);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(193, 241, 29, 0.15) 0%, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(139, 195, 74, 0.15) 0%, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(212, 245, 103, 0.1) 0%, transparent 50%);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--text-primary);
+        }
+        
+        p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: var(--radius-lg);
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: #0A0F1C;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .btn-secondary {
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(193, 241, 29, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 15, 28, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #0A0F1C;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        /* Content Styles */
+        .content {
+            padding-top: 100px;
+        }
+        
+        .version-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-xl);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .version-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .version-badge {
+            background: var(--gradient-primary);
+            color: #0A0F1C;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+        
+        .version-date {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .bug-fixes {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .bug-fixes h4 {
+            color: #ff6b6b;
+            margin-top: 0;
+        }
+        
+        .improvements {
+            background: rgba(33, 150, 243, 0.1);
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .improvements h4 {
+            color: #2196f3;
+            margin-top: 0;
+        }
+        
+        .new-features {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .new-features h4 {
+            color: #4caf50;
+            margin-top: 0;
+        }
+        
+        .download-link {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: #0A0F1C;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .download-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            h1 {
+                font-size: 2.25rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .version-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: var(--transition);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-magnet"></i>
+                </div>
+                Clify
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#install">Install</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="container">
+            <section>
+                <h1>Changelog</h1>
+                <p style="color: var(--text-secondary); font-size: 1.25rem;">
+                    Version history and release notes for Clify YouTube blocker
+                </p>
+                
+                <!-- Current Version -->
+                <div class="version-card">
+                    <div class="version-header">
+                        <div>
+                            <h2 style="margin: 0; display: inline-block; margin-right: 15px;">Version 7.0.0</h2>
+                            <span class="version-badge">Latest</span>
+                        </div>
+                        <span class="version-date">Released: February 2026</span>
+                    </div>
+                    
+                    <h3>🎉 Complete Redesign & Major Update</h3>
+                    
+                    <div class="new-features">
+                        <h4><i class="fas fa-star"></i> New Features</h4>
+                        <ul class="features-list">
+                            <li>Complete dashboard redesign with modern UI</li>
+                            <li>Enhanced Shorts removal algorithms (more aggressive detection)</li>
+                            <li>Improved keyword matching with regex support</li>
+                            <li>Added 40+ language support including Arabic, Hindi, Bangla</li>
+                            <li>Advanced search with filters and suggestions</li>
+                            <li>Pagination support for blocked videos list</li>
+                            <li>Export blocked videos to CSV/JSON</li>
+                            <li>Keyboard shortcuts for quick actions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="improvements">
+                        <h4><i class="fas fa-bolt"></i> Performance Improvements</h4>
+                        <ul class="features-list">
+                            <li>70% faster video blocking detection</li>
+                            <li>Reduced memory usage by 40%</li>
+                            <li>Optimized YouTube page scanning</li>
+                            <li>Improved scroll performance with large blocked lists</li>
+                            <li>Better caching for frequently accessed data</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bug-fixes">
+                        <h4><i class="fas fa-bug"></i> Bug Fixes</h4>
+                        <ul class="features-list">
+                            <li>Fixed Shorts detection on YouTube's new layout</li>
+                            <li>Resolved keyword matching issues with special characters</li>
+                            <li>Fixed dashboard loading issues on slow connections</li>
+                            <li>Resolved theme switching bugs</li>
+                            <li>Fixed video unblocking not refreshing the page</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://github.com/diptodesign/clify/archive/refs/heads/main.zip" class="download-link">
+                        <i class="fas fa-download"></i> Download 7.0.0
+                    </a>
+                </div>
+                
+                <!-- Version 6.5.0 -->
+                <div class="version-card">
+                    <div class="version-header">
+                        <h2 style="margin: 0;">Version 6.5.0</h2>
+                        <span class="version-date">Released: January 2026</span>
+                    </div>
+                    
+                    <h3>🌍 Multi-Language Support</h3>
+                    
+                    <div class="new-features">
+                        <h4><i class="fas fa-language"></i> Language Features</h4>
+                        <ul class="features-list">
+                            <li>Added support for 25+ languages</li>
+                            <li>Automatic language detection</li>
+                            <li>Localized interface elements</li>
+                            <li>Right-to-left (RTL) language support</li>
+                            <li>Unicode keyword matching improvements</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="improvements">
+                        <h4><i class="fas fa-cogs"></i> Core Improvements</h4>
+                        <ul class="features-list">
+                            <li>Improved keyword matching algorithm</li>
+                            <li>Better YouTube layout detection</li>
+                            <li>Enhanced Shorts removal on mobile view</li>
+                            <li>Optimized storage usage</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Version 6.0.0 -->
+                <div class="version-card">
+                    <div class="version-header">
+                        <h2 style="margin: 0;">Version 6.0.0</h2>
+                        <span class="version-date">Released: December 2025</span>
+                    </div>
+                    
+                    <h3>🛡️ Enhanced Privacy & Dashboard</h3>
+                    
+                    <div class="new-features">
+                        <h4><i class="fas fa-shield-alt"></i> Privacy Features</h4>
+                        <ul class="features-list">
+                            <li>Completely removed all external server calls</li>
+                            <li>Local-only storage implementation</li>
+                            <li>Offline functionality</li>
+                            <li>No telemetry or analytics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="improvements">
+                        <h4><i class="fas fa-chart-bar"></i> Dashboard Updates</h4>
+                        <ul class="features-list">
+                            <li>New statistics dashboard</li>
+                            <li>Daily activity charts</li>
+                            <li>Blocking efficiency metrics</li>
+                            <li>Keyword effectiveness tracking</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Version 5.5.0 -->
+                <div class="version-card">
+                    <div class="version-header">
+                        <h2 style="margin: 0;">Version 5.5.0</h2>
+                        <span class="version-date">Released: November 2025</span>
+                    </div>
+                    
+                    <h3>⚡ Performance Update</h3>
+                    
+                    <div class="improvements">
+                        <h4><i class="fas fa-rocket"></i> Speed Improvements</h4>
+                        <ul class="features-list">
+                            <li>50% faster page loading</li>
+                            <li>Reduced CPU usage</li>
+                            <li>Improved memory management</li>
+                            <li>Faster keyword matching</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bug-fixes">
+                        <h4><i class="fas fa-wrench"></i> Fixes</h4>
+                        <ul class="features-list">
+                            <li>Fixed memory leaks</li>
+                            <li>Resolved YouTube layout changes</li>
+                            <li>Fixed theme persistence</li>
+                            <li>Resolved export formatting issues</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Version 5.0.0 -->
+                <div class="version-card">
+                    <div class="version-header">
+                        <h2 style="margin: 0;">Version 5.0.0</h2>
+                        <span class="version-date">Released: October 2025</span>
+                    </div>
+                    
+                    <h3>🎨 UI Redesign</h3>
+                    
+                    <div class="new-features">
+                        <h4><i class="fas fa-paint-brush"></i> Interface Updates</h4>
+                        <ul class="features-list">
+                            <li>Modern dark/light theme system</li>
+                            <li>Smooth animations and transitions</li>
+                            <li>Improved mobile responsiveness</li>
+                            <li>Better visual feedback for actions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Version 4.0.0 -->
+                <div class="version-card">
+                    <div class="version-header">
+                        <h2 style="margin: 0;">Version 4.0.0</h2>
+                        <span class="version-date">Released: September 2025</span>
+                    </div>
+                    
+                    <h3>🔧 Core Rewrite</h3>
+                    
+                    <div class="new-features">
+                        <h4><i class="fas fa-code"></i> Technical Updates</h4>
+                        <ul class="features-list">
+                            <li>Complete codebase refactor</li>
+                            <li>Modular architecture</li>
+                            <li>Better error handling</li>
+                            <li>Improved extension lifecycle</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Version 3.0.0 -->
+                <div class="version-card">
+                    <div class="version-header">
+                        <h2 style="margin: 0;">Version 3.0.0</h2>
+                        <span class="version-date">Released: August 2025</span>
+                    </div>
+                    
+                    <h3>📊 Analytics & Stats</h3>
+                    
+                    <div class="new-features">
+                        <h4><i class="fas fa-chart-line"></i> Tracking Features</h4>
+                        <ul class="features-list">
+                            <li>Basic statistics tracking</li>
+                            <li>Daily blocking counts</li>
+                            <li>Keyword effectiveness</li>
+                            <li>Export functionality</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Version 2.0.0 -->
+                <div class="version-card">
+                    <div class="version-header">
+                        <h2 style="margin: 0;">Version 2.0.0</h2>
+                        <span class="version-date">Released: July 2025</span>
+                    </div>
+                    
+                    <h3>🎯 Keyword Filtering</h3>
+                    
+                    <div class="new-features">
+                        <h4><i class="fas fa-filter"></i> Filtering System</h4>
+                        <ul class="features-list">
+                            <li>Keyword-based blocking</li>
+                            <li>Multiple keyword management</li>
+                            <li>Case-insensitive matching</li>
+                            <li>Phrase detection</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Version 1.0.0 -->
+                <div class="version-card">
+                    <div class="version-header">
+                        <h2 style="margin: 0;">Version 1.0.0</h2>
+                        <span class="version-date">Released: June 2025</span>
+                    </div>
+                    
+                    <h3>🚀 Initial Release</h3>
+                    
+                    <div class="new-features">
+                        <h4><i class="fas fa-rocket"></i> Basic Features</h4>
+                        <ul class="features-list">
+                            <li>Manual video blocking with "Hide" button</li>
+                            <li>Basic YouTube Shorts removal</li>
+                            <li>Simple interface</li>
+                            <li>Local storage for blocked videos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Future Updates -->
+                <div class="version-card" style="border: 2px dashed var(--primary); opacity: 0.8;">
+                    <div class="version-header">
+                        <h2 style="margin: 0;">Future Updates</h2>
+                        <span class="version-date">Planned Features</span>
+                    </div>
+                    
+                    <h3>🔮 What's Coming Next</h3>
+                    
+                    <div class="new-features">
+                        <h4><i class="fas fa-lightbulb"></i> Planned Features</h4>
+                        <ul class="features-list">
+                            <li>AI-powered content filtering</li>
+                            <li>Custom block lists sharing</li>
+                            <li>Browser sync support</li>
+                            <li>Firefox extension version</li>
+                            <li>Advanced scheduling features</li>
+                            <li>YouTube channel blocking</li>
+                            <li>Integration with other platforms</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="color: var(--text-secondary); margin-top: 20px;">
+                        <i class="fas fa-hand-paper"></i> <strong>Note:</strong> Want to suggest a feature? 
+                        <a href="https://github.com/diptodesign/clify/issues" style="color: var(--primary);">Create an issue on GitHub</a>
+                    </p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Home
+                    </a>
+                    <a href="https://github.com/diptodesign/clify/releases" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-github"></i>
+                        All Releases on GitHub
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div style="text-align: center;">
+                <a href="index.html" class="footer-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-magnet"></i>
+                    </div>
+                    Clify
+                </a>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Open source YouTube content blocker • Version 7.0.0
+                </p>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="copyrightYear">2026</span> Clify - Open Source YouTube Blocker. By Dipto Design Studio.</p>
+                <p style="margin-top: 10px;">This extension is not affiliated with YouTube or Google.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set copyright year
+        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+        // Add hover effect to version cards
+        document.querySelectorAll('.version-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

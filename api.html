@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head -->
+</head>
+<body>
+    <!-- Navigation -->
+    
+    <div class="content">
+        <div class="container">
+            <h1>Developer API</h1>
+            
+            <!-- API Documentation -->
+            <div class="api-section">
+                <h2>Local Storage API</h2>
+                <div class="code-block">
+                    <pre><code>// Get blocked videos
+const blockedVideos = JSON.parse(localStorage.getItem('Clify_blocked_videos'));
+
+// Add a video
+blockedVideos[videoId] = {
+    id: videoId,
+    title: "Video Title",
+    reason: "manual",
+    timestamp: new Date().toISOString()
+};</code></pre>
+                </div>
+            </div>
+            
+            <!-- Integration Examples -->
+            <div class="integration-examples">
+                <h2>Integration Examples</h2>
+                <div class="example-tabs">
+                    <!-- Tabbed code examples -->
+                </div>
+            </div>
+            
+            <!-- Contributing Guide -->
+            <div class="contributing-guide">
+                <h2>Contributing to Clify</h2>
+                <ol>
+                    <li>Fork the repository</li>
+                    <li>Create a feature branch</li>
+                    <li>Submit a pull request</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

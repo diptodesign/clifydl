@@ -808,29 +808,61 @@
         </div>
     </section>
 
-    <footer class="footer">
+     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- Column 1: Brand + social -->
                 <div>
-                    <a href="#" class="logo" style="font-size: 1.6rem; margin-bottom: 16px;">
+                    <a href="#" class="logo">
                         <div class="logo-icon"><i class="fas fa-bolt"></i></div>
                         Clify
                     </a>
-                    <p style="margin-top: 12px;">Minimal, open, focused.</p>
-                    <div class="social-links" style="display: flex; gap: 16px; margin-top: 20px;">
+                    <p style="color: var(--text-body); margin-top: 12px; font-size: 0.95rem;">Minimal, open, focused.</p>
+                    <div class="social-links">
                         <a href="https://github.com/diptodesign/clify" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/Clifybydd" target="_blank" class="social-link"><i class="fab fa-telegram"></i></a>
                         <a href="mailto:diptodesignstd@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                <div><h4 style="color: white;">Product</h4><ul style="list-style: none; margin-top: 12px;"><li><a href="#features" style="color: var(--text-body); text-decoration: none;">Features</a></li><li><a href="#install" style="color: var(--text-body); text-decoration: none;">Install</a></li><li><a href="#download" style="color: var(--text-body); text-decoration: none;">Download</a></li></ul></div>
-                <div><h4 style="color: white;">Community</h4><ul style="list-style: none; margin-top: 12px;"><li><a href="https://github.com/diptodesign/clify" target="_blank" style="color: var(--text-body); text-decoration: none;">GitHub</a></li><li><a href="https://t.me/Clifybydd" style="color: var(--text-body); text-decoration: none;">Telegram</a></li><li><a href="mailto:diptodesignstd@gmail.com" style="color: var(--text-body); text-decoration: none;">Email</a></li></ul></div>
-           <li><a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank" style="color: var(--text-body);">Changelog</a></li> <li><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank" style="color: var(--text-body);">Privcy Policy</a></li>
-                <div><h4 style="color: white;">Legal</h4><ul style="list-style: none; margin-top: 12px;"><li style="color: var(--text-body);">MIT License</li><li style="color: var(--text-body);">Privacy by design</li></ul></div>
+
+                <!-- Column 2: Product -->
+                <div>
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#install">Install</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Community + CHANGELOG / PRIVACY (properly nested) -->
+                <div>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a></li>
+                        <li><a href="https://t.me/Clifybydd" target="_blank">Telegram</a></li>
+                        <li><a href="mailto:diptodesignstd@gmail.com">Email</a></li>
+                        <!-- CHANGELOG & PRIVACY – CORRECTLY INSIDE COMMUNITY COLUMN -->
+                        <li style="margin-top: 12px;"><a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank">📋 Changelog</a></li>
+                        <li><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank">🔒 Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Legal -->
+                <div>
+                    <h4>Legal</h4>
+                    <ul>
+                        <!-- using class for non-link items (plain text) -->
+                        <li class="legal-item">MIT License</li>
+                        <li class="legal-item">Privacy by design</li>
+                    </ul>
+                </div>
             </div>
+
+            <!-- Copyright row -->
             <div class="copyright">
                 <p>© <span id="currentYear"></span> Clify · Dipto Design Studio — freedom to focus</p>
-                <p style="margin-top: 8px; opacity: 0.6;">version 7.2.0 · made with ❤️ and ⌨️</p>
+                <p style="margin-top: 8px; opacity: 0.7;">version 7.2.0 · made with ❤️ and ⌨️</p>
             </div>
         </div>
     </footer>
@@ -870,5 +902,6 @@
     </script>
 </body>
 </html>
+
 
 

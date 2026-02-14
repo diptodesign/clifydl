@@ -410,10 +410,18 @@
             border-radius: 48px;
             font-size: 0.85rem;
             color: #dae2ed;
+            transition: var(--transition);
         }
 
         .browser-chip i {
             color: var(--lime);
+        }
+        
+        .browser-chip:hover {
+            background: rgba(203, 255, 60, 0.12);
+            border-color: var(--lime);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .download-box {
@@ -752,6 +760,22 @@
         .footer .social-links a {
             border-radius: 16px;
         }
+        
+        /* Browser footnote styling */
+        .browser-footnote-modern {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            color: var(--text-mute);
+            font-size: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .browser-footnote-modern i {
+            color: var(--lime);
+            margin-right: 4px;
+        }
     </style>
 </head>
 <body>
@@ -835,20 +859,37 @@
                     <a href="https://github.com/diptodesign/Clify/releases/download/V7.0.1/Clify.7.2.zip" class="btn btn-primary btn-large"><i class="fas fa-download"></i> Download Clify.zip</a>
                     <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-outline btn-large"><i class="fab fa-github"></i> Star on GitHub</a>
                 </div>
+                
+                <!-- Browser section - badges FIRST, title BELOW (as requested) -->
                 <div class="browser-collection">
-                    <h3 style="color: white; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.8rem; display: flex; gap: 12px; justify-content: center;"><i class="fas fa-crown" style="color: var(--lime);"></i> <span>works on 40+ chromium browsers</span></h3>
+                    <!-- Browser badges grid (top) -->
                     <div class="browser-grid-mini">
+                        <!-- Top tier browsers (most popular) -->
                         <span class="browser-chip"><i class="fab fa-chrome"></i><span class="chip-label">Chrome</span></span>
                         <span class="browser-chip"><i class="fab fa-edge"></i><span class="chip-label">Edge</span></span>
                         <span class="browser-chip"><i class="fab fa-brave"></i><span class="chip-label">Brave</span></span>
                         <span class="browser-chip"><i class="fab fa-opera"></i><span class="chip-label">Opera</span></span>
                         <span class="browser-chip"><i class="fab fa-opera"></i><span class="chip-label">Opera GX</span></span>
                         <span class="browser-chip"><i class="fab fa-chrome"></i><span class="chip-label">Chromium</span></span>
+                        
+                        <!-- Second tier browsers -->
                         <span class="browser-chip"><i class="fab fa-firefox"></i><span class="chip-label">Vivaldi</span></span>
                         <span class="browser-chip"><i class="fab fa-yandex"></i><span class="chip-label">Yandex</span></span>
                         <span class="browser-chip"><i class="fas fa-compass"></i><span class="chip-label">Arc</span></span>
                         <span class="browser-chip"><i class="fas fa-globe"></i><span class="chip-label">Samsung</span></span>
                         <span class="browser-chip"><i class="fas fa-feather"></i><span class="chip-label">Kiwi</span></span>
+                    </div>
+                    
+                    <!-- Title now BELOW the badges (as requested) -->
+                    <h3 style="color: white; font-size: 1.4rem; font-weight: 600; margin: 1.5rem 0 0.8rem; display: flex; gap: 12px; justify-content: center;">
+                        <i class="fas fa-crown" style="color: var(--lime);"></i> 
+                        <span>works on 40+ chromium browsers</span>
+                    </h3>
+                    
+                    <!-- Footnote remains below title -->
+                    <div class="browser-footnote-modern">
+                        <span><i class="fa-regular fa-circle-check"></i> Edge Dev, Canary, Chromium‑based browsers all work</span>
+                        <span><i class="fa-regular fa-clock"></i> Firefox support — 2026 Q3</span>
                     </div>
                 </div>
             </div>
@@ -977,7 +1018,3 @@
     </script>
 </body>
 </html>
-
-
-
-

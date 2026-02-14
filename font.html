@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Foundry · custom type design</title>
-    <meta name="description" content="Independent type foundry creating original fonts. Handcrafted, retail and custom typefaces.">
-    <!-- Open Graph / social -->
-    <meta property="og:title" content="Your Foundry – original type design">
-    <meta property="og:description" content="Handcrafted fonts for brands, editorial, and digital use">
+    <title>Dipto Design · type foundry</title>
+    <meta name="description" content="Dipto Design — independent type foundry creating original, expressive fonts for brands and creators.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dipto Design – type foundry">
+    <meta property="og:description" content="Original typefaces, handcrafted with precision and personality">
     <meta property="og:type" content="website">
     <!-- Fonts + Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        /* ---------- FONT FOUNDRY STYLE — CLEAN, TYPOGRAPHY-FOCUSED ---------- */
+        /* ========== PREMIUM FONT FOUNDRY — DIPTO DESIGN ========== */
         * {
             margin: 0;
             padding: 0;
@@ -23,154 +23,168 @@
         }
 
         :root {
-            --cream: #faf7f2;
-            --paper: #f5f1ea;
-            --ink: #1a1e24;
-            --ink-soft: #2d333c;
-            --accent: #b87333; /* copper */
-            --accent-light: #d48c4a;
-            --gray-light: #e5e0d8;
-            --gray-mid: #9a9490;
-            --text-body: #3a404b;
-            --text-mute: #6b6f78;
-            --shadow-soft: 0 10px 30px -15px rgba(0,0,0,0.1);
-            --shadow-raised: 0 20px 40px -20px rgba(0,0,0,0.2);
-            --radius-md: 8px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --transition: all 0.3s ease;
+            --deep-forest: #1a2e1f;
+            --sage: #7f8c6b;
+            --clay: #c5a47e;
+            --cream: #faf3e8;
+            --paper: #f5efe6;
+            --charcoal: #2c2f33;
+            --ink: #2a2825;
+            --gold: #b59d72;
+            --gold-light: #e5d5b5;
+            --text-dark: #3a3f44;
+            --text-soft: #5e636b;
+            --shadow-elegant: 0 20px 40px -20px rgba(0,0,0,0.2);
+            --shadow-raised: 0 30px 50px -30px rgba(0,0,0,0.3);
+            --border-subtle: 1px solid rgba(0,0,0,0.05);
+            --transition-lux: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         body {
             background: var(--cream);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--text-body);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 40px;
         }
 
         section {
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
         }
 
-        /* ---------- TYPOGRAPHY — LET THE FONTS SHINE ---------- */
-        h1, h2, h3, h4 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
+        /* ---------- TYPOGRAPHY — ELEGANT & EXPRESSIVE ---------- */
+        h1, h2, h3, h4, .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
             letter-spacing: -0.02em;
-            color: var(--ink);
+            color: var(--deep-forest);
         }
 
         h1 {
-            font-size: 5rem;
-            line-height: 1;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 5.5rem;
+            font-weight: 600;
+            line-height: 0.95;
+            margin-bottom: 1.2rem;
         }
 
         h2 {
-            font-size: 3.2rem;
+            font-size: 3.8rem;
+            font-weight: 500;
             margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        h3 {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: var(--text-body);
-            margin-bottom: 1.5rem;
-            max-width: 700px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
             position: relative;
             display: inline-block;
         }
 
-        .section-header h2::after {
+        h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+            opacity: 0.6;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2::after {
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
+            width: 100px;
         }
 
         .section-subtitle {
             font-size: 1.2rem;
-            color: var(--text-mute);
+            color: var(--text-soft);
             max-width: 600px;
-            margin: 0 auto;
-            font-weight: 400;
+            margin: 1.5rem auto 0;
+            font-weight: 300;
+            font-style: italic;
         }
 
-        /* ---------- BUTTONS ---------- */
+        p {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* ---------- BUTTONS — REFINED ---------- */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 14px 32px;
-            border-radius: 40px;
-            font-weight: 500;
+            gap: 12px;
+            padding: 14px 38px;
             font-size: 1rem;
+            font-weight: 500;
             text-decoration: none;
-            transition: var(--transition);
-            border: none;
+            transition: var(--transition-lux);
             cursor: pointer;
-            letter-spacing: 0.3px;
+            border: none;
+            letter-spacing: 0.5px;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
-            background: var(--ink);
-            color: white;
+            background: var(--deep-forest);
+            color: var(--cream);
+            border-radius: 40px;
+            box-shadow: 0 5px 15px rgba(26, 46, 31, 0.2);
         }
 
         .btn-primary:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-raised);
+            background: var(--sage);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(127, 140, 107, 0.3);
         }
 
         .btn-outline {
+            border: 1px solid var(--deep-forest);
+            color: var(--deep-forest);
+            border-radius: 40px;
             background: transparent;
-            border: 2px solid var(--ink);
-            color: var(--ink);
         }
 
         .btn-outline:hover {
-            background: var(--ink);
-            color: white;
-            transform: translateY(-2px);
+            background: var(--deep-forest);
+            color: var(--cream);
+            transform: translateY(-3px);
         }
 
-        /* ---------- NAVIGATION ---------- */
+        .btn-ghost {
+            color: var(--deep-forest);
+            padding: 14px 20px;
+        }
+
+        .btn-ghost:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        /* ---------- NAVIGATION — TRANSPARENT ELEGANCE ---------- */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 0;
-            background: rgba(250, 247, 242, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 25px 0;
+            background: rgba(250, 243, 232, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(181, 157, 114, 0.2);
             z-index: 1000;
         }
 
@@ -181,57 +195,100 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--ink);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--deep-forest);
             text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.02em;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
         }
 
         .nav-links a {
-            color: var(--ink-soft);
+            color: var(--text-dark);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
             font-size: 1rem;
-            transition: color 0.2s;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--deep-forest);
         }
 
-        /* ---------- HERO ---------- */
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ---------- HERO — ARTISTIC, EXPRESSIVE ---------- */
         .hero {
-            padding-top: 160px;
-            padding-bottom: 60px;
-            background: var(--paper);
+            padding-top: 180px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, var(--cream) 0%, #fff6ec 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '“';
+            position: absolute;
+            top: -50px;
+            right: 10%;
+            font-size: 30rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: rgba(181, 157, 114, 0.03);
+            line-height: 1;
+            pointer-events: none;
         }
 
         .hero-content {
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--text-mute);
+            font-size: 1.4rem;
+            color: var(--sage);
             margin-bottom: 2rem;
             font-style: italic;
+            font-weight: 300;
+        }
+
+        .hero-ornament {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 30px 0;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 4px;
         }
 
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            margin-top: 50px;
+            gap: 70px;
+            margin-top: 60px;
         }
 
         .stat-item {
@@ -239,213 +296,310 @@
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--deep-forest);
+            font-family: 'Cormorant Garamond', serif;
             line-height: 1;
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-mute);
+            letter-spacing: 2px;
+            color: var(--sage);
+            margin-top: 8px;
         }
 
-        /* ---------- FONT SHOWCASE — YOUR DESIGNS ---------- */
-        .font-showcase {
+        /* ---------- FONT SHOWCASE — GALLERY STYLE ---------- */
+        .font-gallery {
             background: white;
+            position: relative;
         }
 
         .font-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .font-card {
-            background: var(--cream);
-            border-radius: var(--radius-lg);
-            padding: 40px 30px;
-            transition: var(--transition);
-            border: 1px solid var(--gray-light);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .font-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-raised);
-            border-color: var(--accent);
-        }
-
-        .font-preview {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            color: var(--ink);
-            font-weight: 600;
-            word-break: break-word;
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            padding: 20px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--gray-light);
-        }
-
-        .font-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-
-        .font-styles {
-            display: flex;
-            gap: 8px;
-            margin: 15px 0;
-            flex-wrap: wrap;
-        }
-
-        .style-badge {
-            background: var(--gray-light);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            color: var(--ink-soft);
-        }
-
-        .font-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .font-actions .btn {
-            padding: 8px 20px;
-            font-size: 0.9rem;
-        }
-
-        /* ---------- CUSTOM SERVICES ---------- */
-        .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 40px;
         }
 
-        .service-card {
+        .font-card {
+            background: var(--cream);
+            border: var(--border-subtle);
+            transition: var(--transition-lux);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-elegant);
+        }
+
+        .font-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-raised);
+            border-color: var(--gold-light);
+        }
+
+        .font-preview-area {
             background: white;
-            padding: 40px 30px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--gray-light);
-            transition: var(--transition);
+            padding: 50px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(181, 157, 114, 0.2);
+            position: relative;
+        }
+
+        .font-preview {
+            font-size: 4rem;
+            line-height: 1;
+            color: var(--deep-forest);
+            transition: var(--transition-lux);
             text-align: center;
         }
 
+        .font-card:hover .font-preview {
+            transform: scale(1.02);
+            color: var(--gold);
+        }
+
+        .font-info {
+            padding: 30px;
+            position: relative;
+        }
+
+        .font-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--deep-forest);
+            margin-bottom: 8px;
+        }
+
+        .font-specs {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+            color: var(--sage);
+        }
+
+        .font-styles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .style-chip {
+            background: rgba(181, 157, 114, 0.1);
+            color: var(--deep-forest);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(181, 157, 114, 0.3);
+        }
+
+        .font-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .font-actions .btn {
+            padding: 10px 22px;
+            font-size: 0.9rem;
+        }
+
+        /* ---------- FEATURED FONT — HERO FONT ---------- */
+        .featured-font {
+            background: linear-gradient(135deg, var(--deep-forest) 0%, #2a422a 100%);
+            color: white;
+            border-radius: 30px;
+            margin: 80px 0;
+            padding: 60px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-font::before {
+            content: '“';
+            position: absolute;
+            bottom: -100px;
+            left: -50px;
+            font-size: 25rem;
+            color: rgba(255,255,255,0.03);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .featured-preview {
+            font-size: 6rem;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ---------- SERVICES — CRAFT CARDS ---------- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 50px 30px;
+            text-align: center;
+            border: var(--border-subtle);
+            transition: var(--transition-lux);
+            box-shadow: var(--shadow-elegant);
+        }
+
         .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-raised);
         }
 
         .service-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
         }
 
-        /* ---------- FONT SPECIMEN AREA ---------- */
-        .specimen-area {
-            background: var(--ink);
+        .service-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--deep-forest);
+            margin-bottom: 15px;
+        }
+
+        /* ---------- SPECIMEN STUDIO ---------- */
+        .specimen-studio {
+            background: var(--charcoal);
+            border-radius: 30px;
+            padding: 70px 50px;
             color: white;
-            border-radius: var(--radius-xl);
-            padding: 60px 40px;
-            margin-top: 60px;
+            margin-top: 80px;
         }
 
-        .specimen-text {
-            font-size: 3rem;
-            line-height: 1.2;
+        .specimen-studio h3 {
+            color: var(--gold-light);
+            font-size: 2.5rem;
             margin-bottom: 30px;
-            font-weight: 600;
+        }
+
+        .specimen-display {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin: 40px 0;
+            word-break: break-word;
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .specimen-controls {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .specimen-btn {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             color: white;
-            padding: 10px 24px;
+            padding: 12px 28px;
             border-radius: 40px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: var(--transition-lux);
+            font-size: 0.95rem;
         }
 
         .specimen-btn:hover {
-            background: var(--accent);
-            border-color: var(--accent);
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-3px);
         }
 
-        /* ---------- FOOTER ---------- */
+        /* ---------- FOOTER — ELEGANT ---------- */
         .footer {
-            background: var(--ink);
-            color: #a0a7b5;
-            padding: 60px 0 30px;
-            margin-top: 60px;
+            background: var(--deep-forest);
+            color: #b8c4b0;
+            padding: 70px 0 40px;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
         }
 
         .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.2rem;
+            font-weight: 600;
             color: white;
             text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             display: block;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: #a5b2a3;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            max-width: 300px;
         }
 
         .social-links {
             display: flex;
             gap: 16px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(181, 157, 114, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #a0a7b5;
+            color: #b8c4b0;
             text-decoration: none;
-            transition: var(--transition);
+            transition: var(--transition-lux);
         }
 
         .social-link:hover {
-            background: var(--accent);
-            color: white;
+            background: var(--gold);
+            color: var(--deep-forest);
+            border-color: var(--gold);
+            transform: translateY(-5px);
         }
 
         .footer h4 {
             color: white;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 25px;
+            font-weight: 500;
         }
 
         .footer ul {
@@ -453,233 +607,277 @@
         }
 
         .footer li {
-            margin-bottom: 10px;
+            margin-bottom: 14px;
         }
 
         .footer a {
-            color: #a0a7b5;
+            color: #a5b2a3;
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         .footer a:hover {
-            color: var(--accent);
+            color: var(--gold);
         }
 
         .copyright {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #6b727f;
-            font-size: 0.9rem;
+            border-top: 1px solid rgba(181, 157, 114, 0.2);
+            color: #8a9a87;
+            font-size: 0.85rem;
         }
 
         /* ---------- ANIMATIONS ---------- */
         .fade-up {
-            animation: slideUp 0.7s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        @keyframes slideUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
 
         /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 900px) {
-            h1 { font-size: 3.5rem; }
-            h2 { font-size: 2.5rem; }
+        @media (max-width: 1100px) {
+            .font-grid { grid-template-columns: repeat(2, 1fr); }
             .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2.8rem; }
+        @media (max-width: 700px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.8rem; }
+            .font-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; gap: 30px; }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">Your Foundry</a>
+            <a href="#" class="logo">Dipto Design</a>
             <div class="nav-links">
                 <a href="#fonts">Fonts</a>
                 <a href="#custom">Custom</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-                <a href="#licensing" class="btn btn-outline" style="padding: 8px 20px;">Licensing</a>
+                <a href="#studio">Studio</a>
+                <a href="#journal">Journal</a>
+                <a href="#licensing" class="btn btn-outline" style="padding: 8px 22px;">Licensing</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO — ARTISTIC & EXPRESSIVE -->
     <section class="hero">
         <div class="container hero-content">
-            <h1 class="fade-up">Type design,<br>handcrafted</h1>
-            <p class="hero-subtitle fade-up delay-1">Original fonts for brands, editorial, and digital experiences. Each character, carefully considered.</p>
+            <div class="hero-ornament fade-up">✧ ✦ ✧</div>
+            <h1 class="fade-up">Dipto Design</h1>
+            <h1 class="fade-up" style="font-size: 3.5rem; color: var(--sage);">type foundry</h1>
+            <p class="hero-subtitle fade-up delay-1">Original typefaces, handcrafted with precision and personality. For brands, books, and beyond.</p>
             <div class="hero-buttons fade-up delay-2">
-                <a href="#fonts" class="btn btn-primary">Browse fonts</a>
-                <a href="#custom" class="btn btn-outline">Custom work</a>
+                <a href="#fonts" class="btn btn-primary">Explore fonts</a>
+                <a href="#custom" class="btn btn-outline">Commission work</a>
             </div>
             <div class="hero-stats fade-up delay-3">
-                <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Families</div></div>
-                <div class="stat-item"><div class="stat-number">80+</div><div class="stat-label">Styles</div></div>
-                <div class="stat-item"><div class="stat-number">∞</div><div class="stat-label">Possibilities</div></div>
+                <div class="stat-item"><div class="stat-number">15</div><div class="stat-label">Families</div></div>
+                <div class="stat-item"><div class="stat-number">120+</div><div class="stat-label">Styles</div></div>
+                <div class="stat-item"><div class="stat-number">∞</div><div class="stat-label">Expressions</div></div>
             </div>
         </div>
     </section>
 
-    <!-- FONTS SHOWCASE — YOUR DESIGNS -->
-    <section id="fonts" class="font-showcase">
+    <!-- FONT GALLERY — YOUR DESIGNS -->
+    <section id="fonts" class="font-gallery">
         <div class="container">
             <div class="section-header fade-up">
-                <h2>Selected fonts</h2>
-                <p class="section-subtitle">A growing collection of original typefaces</p>
+                <h2>Selected typefaces</h2>
+                <p class="section-subtitle">A growing collection of original fonts, each with its own voice</p>
             </div>
 
             <div class="font-grid">
-                <!-- Font 1 -->
+                <!-- Font 1: Dipto Serif -->
                 <div class="font-card fade-up">
-                    <div class="font-preview" style="font-family: 'Space Grotesk', sans-serif;">
-                        Aa Bb Cc
+                    <div class="font-preview-area">
+                        <div class="font-preview" style="font-family: 'Cormorant Garamond', serif;">Dipto</div>
                     </div>
                     <div class="font-info">
-                        <h3>Grotesk Mono</h3>
-                        <p>A geometric sans with monospace details. Perfect for code and editorial.</p>
+                        <div class="font-name">Dipto Serif</div>
+                        <div class="font-specs">
+                            <span><i class="far fa-file"></i> 8 styles</span>
+                            <span><i class="far fa-clock"></i> 2024</span>
+                        </div>
+                        <p style="font-size: 0.95rem;">Elegant serif with renaissance roots. Perfect for editorial and luxury branding.</p>
                         <div class="font-styles">
-                            <span class="style-badge">Light</span>
-                            <span class="style-badge">Regular</span>
-                            <span class="style-badge">Medium</span>
-                            <span class="style-badge">Bold</span>
-                            <span class="style-badge">Italic</span>
+                            <span class="style-chip">Light</span>
+                            <span class="style-chip">Regular</span>
+                            <span class="style-chip">Medium</span>
+                            <span class="style-chip">Bold</span>
+                            <span class="style-chip">Italic</span>
                         </div>
                         <div class="font-actions">
-                            <a href="#" class="btn btn-outline" style="padding: 8px 16px;">Preview</a>
-                            <a href="#" class="btn btn-primary" style="padding: 8px 16px;">License</a>
+                            <a href="#" class="btn btn-outline">Specimen</a>
+                            <a href="#" class="btn btn-primary">License</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Font 2 -->
+                <!-- Font 2: Dipto Sans -->
                 <div class="font-card fade-up delay-1">
-                    <div class="font-preview" style="font-family: 'Inter', sans-serif;">
-                        The quick brown fox
+                    <div class="font-preview-area">
+                        <div class="font-preview" style="font-family: 'Inter', sans-serif;">Dipto</div>
                     </div>
                     <div class="font-info">
-                        <h3>Serif Display</h3>
-                        <p>Elegant serif with high contrast. Ideal for headings and luxury brands.</p>
+                        <div class="font-name">Dipto Sans</div>
+                        <div class="font-specs">
+                            <span><i class="far fa-file"></i> 10 styles</span>
+                            <span><i class="far fa-clock"></i> 2024</span>
+                        </div>
+                        <p style="font-size: 0.95rem;">Geometric sans with humanist warmth. Versatile for digital and print.</p>
                         <div class="font-styles">
-                            <span class="style-badge">Regular</span>
-                            <span class="style-badge">Bold</span>
-                            <span class="style-badge">Black</span>
-                            <span class="style-badge">Italic</span>
+                            <span class="style-chip">Thin</span>
+                            <span class="style-chip">Light</span>
+                            <span class="style-chip">Regular</span>
+                            <span class="style-chip">Medium</span>
+                            <span class="style-chip">Bold</span>
+                            <span class="style-chip">Black</span>
                         </div>
                         <div class="font-actions">
-                            <a href="#" class="btn btn-outline" style="padding: 8px 16px;">Preview</a>
-                            <a href="#" class="btn btn-primary" style="padding: 8px 16px;">License</a>
+                            <a href="#" class="btn btn-outline">Specimen</a>
+                            <a href="#" class="btn btn-primary">License</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Font 3 -->
+                <!-- Font 3: Dipto Mono -->
                 <div class="font-card fade-up delay-2">
-                    <div class="font-preview" style="font-family: monospace;">
-                        // code style //
+                    <div class="font-preview-area">
+                        <div class="font-preview" style="font-family: monospace;">Dipto</div>
                     </div>
                     <div class="font-info">
-                        <h3>Mono Code</h3>
-                        <p>Programming font with excellent legibility and distinctive punctuation.</p>
+                        <div class="font-name">Dipto Mono</div>
+                        <div class="font-specs">
+                            <span><i class="far fa-file"></i> 6 styles</span>
+                            <span><i class="far fa-clock"></i> 2023</span>
+                        </div>
+                        <p style="font-size: 0.95rem;">Refined monospace for code and creative applications. Distinctive details.</p>
                         <div class="font-styles">
-                            <span class="style-badge">Regular</span>
-                            <span class="style-badge">Bold</span>
-                            <span class="style-badge">Oblique</span>
+                            <span class="style-chip">Regular</span>
+                            <span class="style-chip">Medium</span>
+                            <span class="style-chip">Bold</span>
+                            <span class="style-chip">Italic</span>
                         </div>
                         <div class="font-actions">
-                            <a href="#" class="btn btn-outline" style="padding: 8px 16px;">Preview</a>
-                            <a href="#" class="btn btn-primary" style="padding: 8px 16px;">License</a>
+                            <a href="#" class="btn btn-outline">Specimen</a>
+                            <a href="#" class="btn btn-primary">License</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Font 4 -->
+                <!-- Font 4: Dipto Display -->
                 <div class="font-card fade-up">
-                    <div class="font-preview" style="font-family: cursive;">
-                        Handwriting
+                    <div class="font-preview-area">
+                        <div class="font-preview" style="font-family: 'Cormorant Garamond', serif; font-weight: 700;">DISPLAY</div>
                     </div>
                     <div class="font-info">
-                        <h3>Script Casual</h3>
-                        <p>Friendly handwritten script with natural flow and alternates.</p>
+                        <div class="font-name">Dipto Display</div>
+                        <div class="font-specs">
+                            <span><i class="far fa-file"></i> 5 styles</span>
+                            <span><i class="far fa-clock"></i> 2024</span>
+                        </div>
+                        <p style="font-size: 0.95rem;">High-contrast display serif for headlines and impactful moments.</p>
                         <div class="font-styles">
-                            <span class="style-badge">Regular</span>
-                            <span class="style-badge">Bold</span>
-                            <span class="style-badge">Swash</span>
+                            <span class="style-chip">Regular</span>
+                            <span class="style-chip">Bold</span>
+                            <span class="style-chip">Black</span>
+                            <span class="style-chip">Italic</span>
                         </div>
                         <div class="font-actions">
-                            <a href="#" class="btn btn-outline" style="padding: 8px 16px;">Preview</a>
-                            <a href="#" class="btn btn-primary" style="padding: 8px 16px;">License</a>
+                            <a href="#" class="btn btn-outline">Specimen</a>
+                            <a href="#" class="btn btn-primary">License</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Font 5 -->
+                <!-- Font 5: Dipto Script -->
                 <div class="font-card fade-up delay-1">
-                    <div class="font-preview" style="font-family: 'Times New Roman', serif;">
-                        Editorial Serif
+                    <div class="font-preview-area">
+                        <div class="font-preview" style="font-family: cursive;">Dipto</div>
                     </div>
                     <div class="font-info">
-                        <h3>Text Serif</h3>
-                        <p>Optimized for long-form reading. Perfect for books and magazines.</p>
+                        <div class="font-name">Dipto Script</div>
+                        <div class="font-specs">
+                            <span><i class="far fa-file"></i> 4 styles</span>
+                            <span><i class="far fa-clock"></i> 2023</span>
+                        </div>
+                        <p style="font-size: 0.95rem;">Elegant script with natural flow. Perfect for invitations and branding.</p>
                         <div class="font-styles">
-                            <span class="style-badge">Regular</span>
-                            <span class="style-badge">Italic</span>
-                            <span class="style-badge">Semibold</span>
-                            <span class="style-badge">Bold</span>
+                            <span class="style-chip">Regular</span>
+                            <span class="style-chip">Bold</span>
+                            <span class="style-chip">Swash</span>
                         </div>
                         <div class="font-actions">
-                            <a href="#" class="btn btn-outline" style="padding: 8px 16px;">Preview</a>
-                            <a href="#" class="btn btn-primary" style="padding: 8px 16px;">License</a>
+                            <a href="#" class="btn btn-outline">Specimen</a>
+                            <a href="#" class="btn btn-primary">License</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Font 6 -->
+                <!-- Font 6: Dipto Condensed -->
                 <div class="font-card fade-up delay-2">
-                    <div class="font-preview" style="font-family: Impact, sans-serif;">
-                        DISPLAY
+                    <div class="font-preview-area">
+                        <div class="font-preview" style="font-family: 'Inter', sans-serif; font-stretch: condensed;">CONDENSED</div>
                     </div>
                     <div class="font-info">
-                        <h3>Condensed Bold</h3>
-                        <p>Ultra-bold condensed for headlines and posters. Maximum impact.</p>
+                        <div class="font-name">Dipto Condensed</div>
+                        <div class="font-specs">
+                            <span><i class="far fa-file"></i> 7 styles</span>
+                            <span><i class="far fa-clock"></i> 2024</span>
+                        </div>
+                        <p style="font-size: 0.95rem;">Space-saving condensed sans for headlines and posters.</p>
                         <div class="font-styles">
-                            <span class="style-badge">Bold</span>
-                            <span class="style-badge">Extra Bold</span>
-                            <span class="style-badge">Black</span>
+                            <span class="style-chip">Light</span>
+                            <span class="style-chip">Regular</span>
+                            <span class="style-chip">Bold</span>
+                            <span class="style-chip">Extra Bold</span>
                         </div>
                         <div class="font-actions">
-                            <a href="#" class="btn btn-outline" style="padding: 8px 16px;">Preview</a>
-                            <a href="#" class="btn btn-primary" style="padding: 8px 16px;">License</a>
+                            <a href="#" class="btn btn-outline">Specimen</a>
+                            <a href="#" class="btn btn-primary">License</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Font specimen area (interactive) -->
-            <div class="specimen-area fade-up">
-                <h3 style="color: white; text-align: center; margin-bottom: 20px;">Try any font</h3>
-                <div class="specimen-text" id="specimenText" style="font-family: 'Space Grotesk', sans-serif;">
-                    The quick brown fox jumps over the lazy dog
-                </div>
+            <!-- Featured Font -->
+            <div class="featured-font fade-up">
+                <div class="featured-preview">Dipto Garamond</div>
+                <h3 style="color: var(--gold-light); font-size: 2rem; margin-bottom: 15px;">New release</h3>
+                <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin-bottom: 30px;">A contemporary reinterpretation of classic Garamond. 12 styles, 600+ glyphs, extensive language support.</p>
+                <a href="#" class="btn btn-primary" style="background: var(--gold); color: var(--deep-forest);">Explore new release</a>
+            </div>
+
+            <!-- Specimen Studio (interactive) -->
+            <div class="specimen-studio fade-up">
+                <h3>Type specimen studio</h3>
+                <p style="color: rgba(255,255,255,0.7);">Try any Dipto font — see it come to life</p>
+                <div class="specimen-display" id="specimenDisplay">Dipto Design</div>
                 <div class="specimen-controls">
-                    <span class="specimen-btn" onclick="document.getElementById('specimenText').style.fontFamily='Space Grotesk, sans-serif'">Grotesk Mono</span>
-                    <span class="specimen-btn" onclick="document.getElementById('specimenText').style.fontFamily='Inter, sans-serif'">Serif Display</span>
-                    <span class="specimen-btn" onclick="document.getElementById('specimenText').style.fontFamily='monospace'">Mono Code</span>
-                    <span class="specimen-btn" onclick="document.getElementById('specimenText').style.fontFamily='cursive'">Script Casual</span>
-                    <span class="specimen-btn" onclick="document.getElementById('specimenText').style.fontFamily='Times New Roman, serif'">Text Serif</span>
+                    <span class="specimen-btn" onclick="document.getElementById('specimenDisplay').style.fontFamily='Cormorant Garamond, serif'">Dipto Serif</span>
+                    <span class="specimen-btn" onclick="document.getElementById('specimenDisplay').style.fontFamily='Inter, sans-serif'">Dipto Sans</span>
+                    <span class="specimen-btn" onclick="document.getElementById('specimenDisplay').style.fontFamily='monospace'">Dipto Mono</span>
+                    <span class="specimen-btn" onclick="document.getElementById('specimenDisplay').style.fontFamily='cursive'">Dipto Script</span>
+                    <span class="specimen-btn" onclick="document.getElementById('specimenDisplay').style.fontSize='5rem'">Larger</span>
+                    <span class="specimen-btn" onclick="document.getElementById('specimenDisplay').style.fontSize='3rem'">Smaller</span>
                 </div>
             </div>
         </div>
@@ -690,73 +888,85 @@
         <div class="container">
             <div class="section-header fade-up">
                 <h2>Custom type design</h2>
-                <p class="section-subtitle">Unique fonts for your brand, product, or publication</p>
+                <p class="section-subtitle">A font as unique as your brand — commissioned exclusively for you</p>
             </div>
 
             <div class="services-grid">
                 <div class="service-card fade-up">
-                    <div class="service-icon"><i class="fas fa-brush"></i></div>
-                    <h3>Brand typefaces</h3>
-                    <p>Exclusive custom fonts that reinforce your brand identity and stand out from competitors.</p>
+                    <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+                    <div class="service-title">Brand typefaces</div>
+                    <p>Exclusive custom fonts that capture your brand's essence and differentiate you in the market.</p>
                 </div>
                 <div class="service-card fade-up delay-1">
-                    <div class="service-icon"><i class="fas fa-book-open"></i></div>
-                    <h3>Editorial families</h3>
-                    <p>Comprehensive families for magazines, books, and long-form publications.</p>
+                    <div class="service-icon"><i class="fas fa-book"></i></div>
+                    <div class="service-title">Editorial families</div>
+                    <p>Comprehensive families for magazines, books, and publications with complex typographic needs.</p>
                 </div>
                 <div class="service-card fade-up delay-2">
-                    <div class="service-icon"><i class="fas fa-code"></i></div>
-                    <h3>Interface fonts</h3>
-                    <p>Optimized for screens, with excellent legibility at small sizes and hinting.</p>
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="service-title">Interface fonts</div>
+                    <p>Optimized for screens with exceptional legibility at small sizes and perfect hinting.</p>
                 </div>
             </div>
 
             <div style="text-align: center; margin-top: 50px;">
-                <a href="#" class="btn btn-primary">Discuss your project</a>
+                <a href="#" class="btn btn-primary" style="padding: 16px 50px;">Start a conversation</a>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT / PROCESS -->
-    <section id="about">
+    <!-- STUDIO / PROCESS -->
+    <section id="studio">
         <div class="container">
             <div class="section-header fade-up">
-                <h2>Craft & process</h2>
-                <p class="section-subtitle">How we design fonts that work</p>
+                <h2>The studio</h2>
+                <p class="section-subtitle">Craft, precision, and passion for letterforms</p>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                <div class="fade-up">
+                    <p style="font-size: 1.3rem; font-style: italic; color: var(--deep-forest);">“Type is a beautiful group of letters, not a group of beautiful letters.”</p>
+                    <p>Based in India, Dipto Design creates original typefaces for clients worldwide. Each font is meticulously crafted, with attention to every curve, serif, and spacing.</p>
+                    <p>We believe typography is the voice of design — and we help you find yours.</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px;">Meet the designer</a>
+                </div>
+                <div style="background: var(--gold-light); height: 400px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--deep-forest); font-size: 8rem; opacity: 0.8;" class="fade-up delay-1">
+                    <i class="fas fa-feather-alt"></i>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 80px;">
                 <div style="text-align: center;" class="fade-up">
-                    <div style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;">01</div>
+                    <div style="font-size: 3.5rem; color: var(--gold); margin-bottom: 15px;">01</div>
                     <h3>Concept</h3>
-                    <p>Research, sketching, and defining the character set and use cases.</p>
+                    <p style="font-size: 0.95rem;">Research, sketching, defining character and use cases</p>
                 </div>
                 <div style="text-align: center;" class="fade-up delay-1">
-                    <div style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;">02</div>
-                    <h3>Drawing</h3>
-                    <p>Precise vector outlines, spacing, and kerning for each glyph.</p>
+                    <div style="font-size: 3.5rem; color: var(--gold); margin-bottom: 15px;">02</div>
+                    <h3>Craft</h3>
+                    <p style="font-size: 0.95rem;">Precise vector outlines, spacing, kerning, OpenType features</p>
                 </div>
                 <div style="text-align: center;" class="fade-up delay-2">
-                    <div style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;">03</div>
-                    <h3>Production</h3>
-                    <p>Hinting, OpenType features, and testing across platforms.</p>
+                    <div style="font-size: 3.5rem; color: var(--gold); margin-bottom: 15px;">03</div>
+                    <h3>Deliver</h3>
+                    <p style="font-size: 0.95rem;">Hinting, testing, multiple formats, and ongoing support</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer" id="contact">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a href="#" class="footer-logo">Your Foundry</a>
-                    <p style="color: #a0a7b5; max-width: 260px;">Independent type foundry creating original fonts for brands and designers.</p>
+                    <a href="#" class="footer-logo">Dipto Design</a>
+                    <p class="footer-text">Independent type foundry creating original fonts with precision and personality.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div>
@@ -765,7 +975,7 @@
                         <li><a href="#">All families</a></li>
                         <li><a href="#">New releases</a></li>
                         <li><a href="#">Best sellers</a></li>
-                        <li><a href="#">Specimen</a></li>
+                        <li><a href="#">Specimens</a></li>
                     </ul>
                 </div>
                 <div>
@@ -773,22 +983,23 @@
                     <ul>
                         <li><a href="#">Custom fonts</a></li>
                         <li><a href="#">Licensing</a></li>
-                        <li><a href="#">Consulting</a></li>
                         <li><a href="#">Webfonts</a></li>
+                        <li><a href="#">Consulting</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Contact</h4>
+                    <h4>Studio</h4>
                     <ul>
-                        <li><a href="mailto:hello@yourfoundry.com">hello@yourfoundry.com</a></li>
-                        <li><a href="#">Studio</a></li>
-                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Journal</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="mailto:hello@diptodesign.com">hello@diptodesign.com</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>© <span id="currentYear"></span> Your Foundry · All rights reserved</p>
-                <p style="margin-top: 8px; font-size: 0.8rem;">Designed with ♥ for typography</p>
+                <p>© <span id="currentYear"></span> Dipto Design · All rights reserved</p>
+                <p style="margin-top: 10px;">Handcrafted with ♥ in India</p>
             </div>
         </div>
     </footer>
@@ -816,10 +1027,10 @@
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
-                    entry.target.classList.add('fade-up');
+                    entry.target.classList.add('appear');
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1 });
         
         faders.forEach(el => observer.observe(el));
     </script>

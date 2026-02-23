@@ -25,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        /* ---------- ENTIRE PAGE STYLE (PRESERVED) — same beautiful, airy, glass ---------- */
+        /* ---------- ENTIRE PAGE STYLE — same beautiful, airy, glass ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -63,6 +63,7 @@
             color: var(--text-body);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -262,6 +263,45 @@
             font-size: 1.8rem;
         }
 
+        /* ---------- BACK TO TOP BUTTON ---------- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--lime);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--ink);
+            box-shadow: 0 4px 20px rgba(203, 255, 60, 0.3);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--lime-bright);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(203, 255, 60, 0.5);
+        }
+
+        .back-to-top:active {
+            transform: translateY(0);
+        }
+
         /* ---------- HERO ---------- */
         .hero {
             padding-top: 160px;
@@ -323,6 +363,114 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+        }
+
+        /* ---------- LOGO CLOUD SECTION WITH 12 REQUESTED COMPANY LOGOS ---------- */
+        .logo-cloud-section {
+            padding: 60px 0;
+            background: rgba(10, 16, 24, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-edge-strong);
+            border-bottom: 1px solid var(--glass-edge-strong);
+            overflow: hidden;
+        }
+
+        .logo-cloud-content {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-cloud-text {
+            font-size: 1.2rem;
+            color: var(--text-body);
+        }
+
+        .logo-cloud-text b {
+            color: var(--lime);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-cloud-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                black 10%,
+                black 90%,
+                transparent 100%
+            );
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent 0%,
+                black 10%,
+                black 90%,
+                transparent 100%
+            );
+        }
+
+        .logo-cloud-track {
+            display: flex;
+            gap: 3rem;
+            animation: scrollLogos 30s linear infinite;
+            width: fit-content;
+        }
+
+        .logo-cloud-track:hover {
+            animation-play-state: paused;
+        }
+
+        .logo-item {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid var(--glass-edge);
+            border-radius: 60px;
+            padding: 0.5rem 1.5rem;
+            transition: var(--transition);
+            height: 70px;
+            width: auto;
+            min-width: 120px;
+        }
+
+        .logo-item:hover {
+            border-color: var(--lime);
+            background: rgba(203, 255, 60, 0.1);
+            transform: translateY(-3px);
+            box-shadow: var(--lime-glow);
+        }
+
+        /* All logos start in grayscale */
+        .logo-item img {
+            width: auto;
+            height: 30px;
+            max-width: 100px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.8);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        /* On hover, logos return to full color */
+        .logo-item:hover img {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+        }
+
+        @keyframes scrollLogos {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(-50% - 1.5rem));
+            }
         }
 
         /* ---------- FEATURES ---------- */
@@ -748,6 +896,10 @@
             .stats-showcase { grid-template-columns: repeat(2, 1fr); }
             .contribution-steps { grid-template-columns: repeat(2, 1fr); }
             .roadmap-left, .roadmap-right { width: 40%; }
+            
+            .logo-cloud-track {
+                gap: 2rem;
+            }
         }
         
         @media (max-width: 700px) {
@@ -759,6 +911,22 @@
             .roadmap-item { flex-direction: column; align-items: flex-start; gap: 20px; }
             .roadmap-left, .roadmap-right { width: 100%; }
             .roadmap-center { margin-left: 30px; }
+            
+            .logo-cloud-track {
+                gap: 1.5rem;
+                animation-duration: 20s;
+            }
+            
+            .logo-item {
+                height: 60px;
+                padding: 0.4rem 1rem;
+                min-width: 100px;
+            }
+            
+            .logo-item img {
+                height: 24px;
+                max-width: 80px;
+            }
         }
 
         .fade-up {
@@ -775,7 +943,7 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
 
-        /* Footer Styles (kept from original) */
+        /* Footer Styles */
         .footer {
             background: linear-gradient(145deg, #0b111c, #05080f);
             border-top: 1px solid rgba(203, 255, 60, 0.2);
@@ -1061,6 +1229,11 @@
         </div>
     </nav>
 
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container hero-content">
@@ -1083,7 +1256,7 @@
         </div>
     </section>
 
-    <!-- STATS COUNTER SECTION (NEW) -->
+    <!-- STATS COUNTER SECTION -->
     <section style="padding-top: 0;">
         <div class="container">
             <div class="stats-showcase">
@@ -1111,6 +1284,168 @@
         </div>
     </section>
 
+    <!-- LOGO CLOUD SECTION WITH 12 REQUESTED COMPANY LOGOS (GRAYSCALE THAT TURN COLOR ON HOVER) -->
+    <section class="logo-cloud-section">
+        <div class="container">
+            <div class="logo-cloud-content fade-up">
+                <p class="logo-cloud-text">
+                    <b>200,000+</b> users have found focus with Clify
+                </p>
+            </div>
+            <div class="logo-cloud-container fade-up delay-1">
+                <div class="logo-cloud-track">
+                    <!-- First set - 12 requested SVG logos (all grayscale by default, color on hover via CSS) -->
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/google.svg" 
+                             alt="Google" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Google'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/paypal-wordmark.svg" 
+                             alt="PayPal" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=PayPal'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/twitter.svg" 
+                             alt="Twitter" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Twitter'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/git.svg" 
+                             alt="Git" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Git'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/nvidia-wordmark-dark.svg" 
+                             alt="NVIDIA" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=NVIDIA'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/spotify_wordmark.svg" 
+                             alt="Spotify" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Spotify'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/bluesky.svg" 
+                             alt="Bluesky" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Bluesky'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/behance.svg" 
+                             alt="Behance" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Behance'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/dribbble.svg" 
+                             alt="Dribbble" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Dribbble'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/fastify.svg" 
+                             alt="Fastify" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Fastify'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/firecrawl.svg" 
+                             alt="Firecrawl" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Firecrawl'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/platzi.svg" 
+                             alt="Platzi" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Platzi'">
+                    </div>
+                    
+                    <!-- Duplicate set for seamless scrolling (same 12 logos) -->
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/google.svg" 
+                             alt="Google" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Google'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/paypal-wordmark.svg" 
+                             alt="PayPal" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=PayPal'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/twitter.svg" 
+                             alt="Twitter" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Twitter'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/git.svg" 
+                             alt="Git" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Git'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/nvidia-wordmark-dark.svg" 
+                             alt="NVIDIA" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=NVIDIA'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/spotify_wordmark.svg" 
+                             alt="Spotify" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Spotify'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/bluesky.svg" 
+                             alt="Bluesky" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Bluesky'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/behance.svg" 
+                             alt="Behance" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Behance'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/dribbble.svg" 
+                             alt="Dribbble" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Dribbble'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/fastify.svg" 
+                             alt="Fastify" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Fastify'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/firecrawl.svg" 
+                             alt="Firecrawl" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Firecrawl'">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://svgl.app/library/platzi.svg" 
+                             alt="Platzi" 
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Platzi'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FEATURES SECTION -->
     <section id="features">
         <div class="container">
@@ -1129,7 +1464,7 @@
         </div>
     </section>
 
-    <!-- COMPARISON TABLE SECTION (NEW) -->
+    <!-- COMPARISON TABLE SECTION -->
     <section style="background: radial-gradient(at 30% 40%, rgba(203,255,60,0.05), transparent 70%);">
         <div class="container">
             <div class="section-header fade-up">
@@ -1182,7 +1517,7 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS SECTION (NEW) -->
+    <!-- TESTIMONIALS SECTION -->
     <section id="testimonials">
         <div class="container">
             <div class="section-header fade-up">
@@ -1268,7 +1603,7 @@
         </div>
     </section>
 
-    <!-- ROADMAP SECTION (NEW) -->
+    <!-- ROADMAP SECTION -->
     <section id="roadmap" style="background: radial-gradient(at 30% 40%, rgba(203,255,60,0.05), transparent 70%);">
         <div class="container">
             <div class="section-header fade-up">
@@ -1306,7 +1641,7 @@
         </div>
     </section>
 
-    <!-- CONTRIBUTION GUIDE (NEW) -->
+    <!-- CONTRIBUTION GUIDE -->
     <section>
         <div class="container">
             <div class="section-header fade-up">
@@ -1333,7 +1668,7 @@
         </div>
     </section>
 
-    <!-- INTEGRATION PARTNERS (NEW) -->
+    <!-- INTEGRATION PARTNERS -->
     <section style="background: radial-gradient(at 30% 40%, rgba(203,255,60,0.05), transparent 70%);">
         <div class="container">
             <div class="section-header fade-up">
@@ -1349,7 +1684,7 @@
         </div>
     </section>
 
-    <!-- NEWSLETTER SECTION (NEW) -->
+    <!-- NEWSLETTER SECTION -->
     <section>
         <div class="container">
             <div class="newsletter-box fade-up">
@@ -1470,11 +1805,13 @@
 
     <script>
         (function(){
+            // Mobile menu
             document.getElementById('mobileMenuBtn')?.addEventListener('click', function(){
                 const nav = document.getElementById('navLinks');
                 nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
             });
             
+            // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e){
                     e.preventDefault();
@@ -1485,14 +1822,17 @@
                 });
             });
             
+            // FAQ accordion
             document.querySelectorAll('.faq-question').forEach(q => {
                 q.addEventListener('click', function(){
                     this.parentElement.classList.toggle('active');
                 });
             });
             
+            // Current year
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
+            // Intersection Observer for fade-up animations
             const faders = document.querySelectorAll('.fade-up');
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('fade-up'); });
@@ -1503,8 +1843,25 @@
             document.querySelector('.newsletter-form .btn')?.addEventListener('click', function() {
                 alert('Newsletter subscription demo — in production this would connect to your mailing list!');
             });
+
+            // Back to top button functionality
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+            
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         })();
     </script>
 </body>
 </html>
-

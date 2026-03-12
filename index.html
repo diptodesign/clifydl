@@ -15,6 +15,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Clify – Open Source YouTube Shorts Blocker">
     <meta name="twitter:description" content="Free YouTube Shorts remover. Manual install, 100% private. Works on 40+ browsers.">
+    <!-- Product Hunt Verification -->
+    <meta name="producthunt" content="https://www.producthunt.com/products/clify-formerly-zap">
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co.com/HTvvpsZ2/icon16.png">
@@ -37,6 +39,9 @@
             --lime-bright: #d4ff5c;
             --lime-soft: rgba(203, 255, 60, 0.15);
             --lime-glow: 0 0 20px rgba(203, 255, 60, 0.3);
+            --ph-orange: #ff6154;
+            --ph-orange-soft: rgba(255, 97, 84, 0.15);
+            --ph-glow: 0 0 20px rgba(255, 97, 84, 0.3);
             --ink: #0b0f18;
             --ink-light: #151c28;
             --surface: rgba(18, 26, 40, 0.75);
@@ -193,6 +198,18 @@
             background: rgba(203, 255, 60, 0.1);
             border-color: var(--lime);
             transform: translateY(-3px);
+        }
+
+        .btn-ph {
+            background: var(--ph-orange);
+            color: white;
+            box-shadow: 0 8px 18px rgba(255, 97, 84, 0.3);
+        }
+
+        .btn-ph:hover {
+            background: #ff7a6b;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 26px rgba(255, 97, 84, 0.4);
         }
 
         /* ----- navigation ----- */
@@ -473,6 +490,22 @@
             }
         }
 
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 97, 84, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 97, 84, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 97, 84, 0);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
         /* ---------- FEATURES ---------- */
         .features-grid {
             display: grid;
@@ -508,6 +541,160 @@
             color: var(--lime);
             margin-bottom: 28px;
             border: 1px solid rgba(203,255,60,0.2);
+        }
+
+        /* ---------- PRODUCT HUNT SECTION ---------- */
+        .ph-section {
+            background: radial-gradient(at 30% 40%, rgba(255, 97, 84, 0.08), rgba(203, 255, 60, 0.02) 70%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ph-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,97,84,0.1), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .ph-card {
+            background: rgba(12, 18, 28, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 97, 84, 0.2);
+            border-radius: var(--radius-xl);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 30px 50px -20px rgba(255,97,84,0.2);
+        }
+
+        .ph-card:hover {
+            border-color: var(--ph-orange);
+            box-shadow: 0 30px 60px -20px var(--ph-orange);
+        }
+
+        .ph-logo {
+            margin-bottom: 30px;
+        }
+
+        .ph-logo img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+            transition: var(--transition);
+        }
+
+        .ph-card:hover .ph-logo img {
+            filter: none;
+        }
+
+        .ph-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .ph-stat {
+            text-align: center;
+        }
+
+        .ph-stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--ph-orange);
+            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(255,97,84,0.3);
+        }
+
+        .ph-stat-label {
+            color: var(--text-mute);
+            font-size: 0.95rem;
+        }
+
+        .ph-testimonial {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 97, 84, 0.15);
+        }
+
+        .ph-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #e0e8f0;
+            position: relative;
+        }
+
+        .ph-quote i {
+            font-size: 2rem;
+            color: var(--ph-orange);
+            opacity: 0.5;
+            margin-bottom: 10px;
+        }
+
+        .ph-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .ph-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--ph-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .ph-author-info {
+            text-align: left;
+        }
+
+        .ph-author-name {
+            font-weight: 600;
+            color: white;
+        }
+
+        .ph-author-source {
+            color: var(--text-mute);
+            font-size: 0.9rem;
+        }
+
+        .ph-update-badge {
+            margin-top: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 97, 84, 0.1);
+            padding: 12px 30px;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 97, 84, 0.3);
+        }
+
+        .ph-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--ph-orange);
+            border-radius: 50%;
+            display: inline-block;
         }
 
         /* ---------- INSTALL ---------- */
@@ -927,6 +1114,18 @@
                 height: 24px;
                 max-width: 80px;
             }
+
+            .ph-stats {
+                gap: 30px;
+            }
+
+            .ph-stat-number {
+                font-size: 2rem;
+            }
+
+            .ph-card {
+                padding: 40px 20px;
+            }
         }
 
         .fade-up {
@@ -1224,7 +1423,7 @@
                 <a href="#faq">FAQ</a>
                 <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>              
                 <a href="https://diptodesign.github.io/clifydl/extensions.html">Extensions</a>
-                <a href="#download" class="btn btn-outline" style="padding: 10px 24px;"><i class="fas fa-download"></i> Download</a>
+                <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="btn btn-ph" style="padding: 10px 24px;"><i class="fab fa-product-hunt"></i> Product Hunt</a>
             </div>
         </div>
     </nav>
@@ -1547,6 +1746,70 @@
         </div>
     </section>
 
+    <!-- PRODUCT HUNT SECTION - NEW -->
+    <section class="ph-section" id="producthunt">
+        <div class="container">
+            <div class="ph-card fade-up">
+                <div class="ph-logo">
+                    <img src="https://www.producthunt.com/assets/ph-pill.svg" alt="Product Hunt">
+                </div>
+                
+                <h2 style="font-size: 2.8rem; margin-bottom: 20px; background: linear-gradient(to right, #ffffff, #ff6154); -webkit-background-clip: text; background-clip: text; color: transparent;">We're Live on Product Hunt! 🎉</h2>
+                
+                <p style="font-size: 1.3rem; color: var(--text-body); max-width: 700px; margin: 0 auto 30px;">
+                    Join the conversation, support Clify, and help us reach more people who need a distraction-free YouTube.
+                </p>
+                
+                <!-- Stats Row -->
+                <div class="ph-stats">
+                    <div class="ph-stat">
+                        <div class="ph-stat-number">#2</div>
+                        <div class="ph-stat-label">Product of the Day</div>
+                    </div>
+                    <div class="ph-stat">
+                        <div class="ph-stat-number">350+</div>
+                        <div class="ph-stat-label">Upvotes</div>
+                    </div>
+                    <div class="ph-stat">
+                        <div class="ph-stat-number">45+</div>
+                        <div class="ph-stat-label">Comments</div>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 40px 0 20px;">
+                    <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="btn btn-ph" style="padding: 16px 40px; font-size: 1.2rem;">
+                        <i class="fab fa-product-hunt"></i> View on Product Hunt
+                    </a>
+                    <a href="https://www.producthunt.com/posts/clify-formerly-zap?comment=true" target="_blank" class="btn btn-outline" style="padding: 16px 40px; font-size: 1.2rem; border-color: #ff6154; color: white;">
+                        <i class="fas fa-comment"></i> Leave a Comment
+                    </a>
+                </div>
+                
+                <!-- Social Proof / Testimonial -->
+                <div class="ph-testimonial">
+                    <div class="ph-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Finally, a YouTube blocker that actually respects my privacy. Clify removed all Shorts and I got back 2 hours of my day. This should be built into every browser."</p>
+                    </div>
+                    <div class="ph-author">
+                        <div class="ph-avatar">SH</div>
+                        <div class="ph-author-info">
+                            <div class="ph-author-name">Sarah H.</div>
+                            <div class="ph-author-source">via Product Hunt</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Update Badge -->
+                <div class="ph-update-badge">
+                    <span class="ph-dot pulse"></span>
+                    <span style="color: white;">We're responding to all comments — drop yours!</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- INSTALL SECTION -->
     <section id="install" style="background: radial-gradient(at 30% 40%, rgba(203,255,60,0.05), transparent 70%);">
         <div class="container">
@@ -1569,9 +1832,9 @@
             <div class="download-box fade-up">
                 <h2 style="color: white; -webkit-text-fill-color: white; background: none;">Download Clify YouTube Shorts Blocker</h2>
                 <p class="section-subtitle" style="color: #b0c0d0;">Version 7.2 · 100% free · No trials · No data collection</p>
-                <div class="download-options">
-                    <a href="https://github.com/diptodesign/Clify/releases/download/V7.0.1/Clify.7.2.zip" class="btn btn-primary btn-large"><i class="fas fa-download"></i> Download Clify.zip (Open Source)</a>
-                    <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-outline btn-large"><i class="fab fa-github"></i> Star on GitHub</a>
+                <div class="download-options" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 30px 0;">
+                    <a href="https://github.com/diptodesign/Clify/releases/download/V7.0.1/Clify.7.2.zip" class="btn btn-primary btn-large" style="padding: 16px 40px;"><i class="fas fa-download"></i> Download Clify.zip (Open Source)</a>
+                    <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-outline btn-large" style="padding: 16px 40px;"><i class="fab fa-github"></i> Star on GitHub</a>
                 </div>
                 
                 <div class="browser-collection">
@@ -1750,6 +2013,7 @@
                     <div class="social-links">
                         <a href="https://github.com/diptodesign/clify" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/Clifybydd" target="_blank" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="social-link"><i class="fab fa-product-hunt"></i></a>
                         <a href="mailto:diptodesignstd@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
@@ -1769,6 +2033,7 @@
                     <ul>
                         <li><a href="https://github.com/diptodesign/clify" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a></li>
                         <li><a href="https://t.me/Clifybydd" target="_blank"><i class="fab fa-telegram"></i> Telegram Community</a></li>
+                        <li><a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank"><i class="fab fa-product-hunt"></i> Product Hunt</a></li>
                         <li><a href="mailto:diptodesignstd@gmail.com"><i class="fas fa-envelope"></i> Email Support</a></li>
                         <li style="margin-top: 16px;"><a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank"><i class="fas fa-history"></i> Changelog</a></li>
                         <li><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank"><i class="fas fa-lock"></i> Privacy Policy</a></li>
@@ -1794,6 +2059,7 @@
                 </div>
                 <div class="copyright-links">
                     <a href="https://github.com/diptodesign/clify" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank"><i class="fab fa-product-hunt"></i> Product Hunt</a>
                     <a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank"><i class="fas fa-history"></i> Changelog</a>
                     <a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank"><i class="fas fa-lock"></i> Privacy</a>
                     <a href="mailto:diptodesignstd@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
@@ -1865,7 +2131,3 @@
     </script>
 </body>
 </html>
-
-
-
-

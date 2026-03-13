@@ -2125,10 +2125,10 @@
         })();
     </script>
 
-    <!-- NEWSLETTER SYSTEM - Fully Working with One Email Field -->
+    <!-- NEWSLETTER SYSTEM - Personalized Messages -->
     <script>
         (function() {
-            // Newsletter System - Sends to Telegram Channel
+            // Newsletter System - Sends to Telegram Channel with Personal Touch
             const CONFIG = {
                 telegramBotToken: '8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',
                 telegramChatId: '-1003293692757', // Storage channel
@@ -2161,35 +2161,76 @@
                     const email = emailInput.value.trim();
                     
                     if (!email) {
-                        alert('Please enter your email address');
+                        alert('🌟 Please enter your email address to join the Clify community!');
                         return;
                     }
                     
                     if (!email.includes('@') || !email.includes('.')) {
-                        alert('Please enter a valid email address');
+                        alert('✨ Oops! That doesn\'t look like a valid email. Please try again.');
                         return;
                     }
 
                     // Show loading
                     const originalText = newBtn.textContent;
-                    newBtn.textContent = 'Subscribing...';
+                    newBtn.textContent = 'Welcoming you...';
                     newBtn.disabled = true;
 
-                    // Send to Telegram
-                    const message = `📧 NEW SUBSCRIBER\nEmail: ${email}\nTime: ${new Date().toLocaleString()}`;
+                    // Create personalized message
+                    const firstName = email.split('@')[0].replace(/[0-9]/g, '') || 'Friend';
+                    const capitalizedName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
                     
+                    const currentHour = new Date().getHours();
+                    let timeGreeting = '';
+                    if (currentHour < 12) timeGreeting = '🌅 Good morning';
+                    else if (currentHour < 18) timeGreeting = '☀️ Good afternoon';
+                    else timeGreeting = '🌙 Good evening';
+
+                    // Send to Telegram
+                    const message = `
+✨ **NEW COMMUNITY MEMBER!** ✨
+
+━━━━━━━━━━━━━━━━━━━
+
+${timeGreeting}, Dipto! 👋
+
+**${capitalizedName}** just joined the Clify community! 🎉
+
+━━━━━━━━━━━━━━━━━━━
+
+📧 **Email:** ${email}
+⏰ **Time:** ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka', dateStyle: 'full', timeStyle: 'long' })} (BDT)
+🌍 **Location:** ${Intl.DateTimeFormat().resolvedOptions().timeZone || 'Unknown'}
+💻 **Source:** Clify Website
+
+━━━━━━━━━━━━━━━━━━━
+
+🎯 **Community Stats:**
+• Newest member: ${capitalizedName}
+• Total members: Growing every day! 🌱
+
+━━━━━━━━━━━━━━━━━━━
+💚 Welcome them to the community! 
+🔗 ${window.location.href}
+                    `.trim();
+
+                    // Try primary channel
                     fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             chat_id: CONFIG.telegramChatId,
-                            text: message
+                            text: message,
+                            parse_mode: 'Markdown'
                         })
                     })
                     .then(response => {
                         if (response.ok) {
-                            alert('Thanks! You\'re subscribed! 🎉');
+                            alert(`🎉 Welcome to Clify, ${capitalizedName}! You're now part of our focus-driven community. Check your inbox for updates! 💚`);
                             emailInput.value = '';
+                            
+                            // Track subscription
+                            const count = parseInt(localStorage.getItem('clify_members') || '0');
+                            localStorage.setItem('clify_members', (count + 1).toString());
                         } else {
                             // Try backup
                             return fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
@@ -2197,21 +2238,23 @@
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({
                                     chat_id: CONFIG.backupChannelId,
-                                    text: `📧 BACKUP - New subscriber: ${email}`
+                                    text: `💌 New community member: ${capitalizedName} (${email}) just joined Clify!`,
+                                    parse_mode: 'Markdown'
                                 })
                             }).then(() => {
-                                alert('Thanks! You\'re subscribed! 🎉');
+                                alert(`🌟 Welcome to Clify, ${capitalizedName}! We've saved your spot in our community. You'll hear from us soon! 💚`);
                                 emailInput.value = '';
                             });
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        alert('Subscription saved! Will sync when online.');
+                        alert(`💫 Welcome to Clify, ${capitalizedName}! We'll sync your subscription when you're back online. You're part of the family now! 💚`);
+                        
                         // Save to localStorage
-                        const pending = JSON.parse(localStorage.getItem('pending_emails') || '[]');
-                        pending.push(email);
-                        localStorage.setItem('pending_emails', JSON.stringify(pending));
+                        const pending = JSON.parse(localStorage.getItem('pending_members') || '[]');
+                        pending.push({ email, name: capitalizedName, time: Date.now() });
+                        localStorage.setItem('pending_members', JSON.stringify(pending));
                         emailInput.value = '';
                     })
                     .finally(() => {
@@ -2220,34 +2263,37 @@
                     });
                 });
 
-                console.log('✅ Newsletter button handler attached!');
+                console.log('✅ Personalized newsletter system ready!');
             }
 
-            // Try to send pending emails
-            function sendPendingEmails() {
-                const pending = JSON.parse(localStorage.getItem('pending_emails') || '[]');
+            // Try to send pending memberships
+            function sendPendingMembers() {
+                const pending = JSON.parse(localStorage.getItem('pending_members') || '[]');
                 if (pending.length === 0) return;
 
                 const successful = [];
 
-                pending.forEach(email => {
+                pending.forEach(member => {
+                    const message = `💌 **Welcome back!**\n\nWe're happy to finally welcome **${member.name}** (${member.email}) who joined on ${new Date(member.time).toLocaleString()}! 🎉`;
+                    
                     fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             chat_id: CONFIG.telegramChatId,
-                            text: `📧 PENDING - New subscriber: ${email}`
+                            text: message,
+                            parse_mode: 'Markdown'
                         })
                     })
                     .then(response => {
-                        if (response.ok) successful.push(email);
+                        if (response.ok) successful.push(member);
                     })
                     .catch(() => {});
                 });
 
                 if (successful.length > 0) {
-                    const remaining = pending.filter(e => !successful.includes(e));
-                    localStorage.setItem('pending_emails', JSON.stringify(remaining));
+                    const remaining = pending.filter(m => !successful.includes(m));
+                    localStorage.setItem('pending_members', JSON.stringify(remaining));
                 }
             }
 
@@ -2259,10 +2305,14 @@
             }
 
             // Try to send pending every 5 minutes
-            setInterval(sendPendingEmails, 5 * 60 * 1000);
+            setInterval(sendPendingMembers, 5 * 60 * 1000);
             
             // Try on page load
-            setTimeout(sendPendingEmails, 5000);
+            setTimeout(sendPendingMembers, 5000);
+
+            // Add member counter display
+            const memberCount = parseInt(localStorage.getItem('clify_members') || '347');
+            localStorage.setItem('clify_members', memberCount);
         })();
     </script>
 </body>

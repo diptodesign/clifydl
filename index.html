@@ -57,6 +57,8 @@
             --ph-orange: #ff6154;
             --ph-orange-soft: rgba(255, 97, 84, 0.15);
             --ph-glow: 0 0 20px rgba(255, 97, 84, 0.3);
+            --facebook-blue: #1877f2;
+            --facebook-blue-soft: rgba(24, 119, 242, 0.15);
             --ink: #0b0f18;
             --ink-light: #151c28;
             --surface: rgba(18, 26, 40, 0.75);
@@ -261,6 +263,18 @@
             background: #ff7a6b;
             transform: translateY(-3px);
             box-shadow: 0 16px 26px rgba(255, 97, 84, 0.4);
+        }
+
+        .btn-facebook {
+            background: var(--facebook-blue);
+            color: white;
+            box-shadow: 0 8px 18px rgba(24, 119, 242, 0.3);
+        }
+
+        .btn-facebook:hover {
+            background: #1e8aff;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 26px rgba(24, 119, 242, 0.4);
         }
 
         /* ----- navigation ----- */
@@ -869,6 +883,142 @@
             min-width: 200px;
         }
 
+        /* ---------- VIDEO SECTION WITH FACEBOOK REEL ---------- */
+        .video-section {
+            background: linear-gradient(145deg, rgba(18, 26, 40, 0.8), rgba(8, 12, 20, 0.9));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .video-card-link {
+            text-decoration: none;
+            display: block;
+            position: relative;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 2px solid rgba(203, 255, 60, 0.2);
+            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.7);
+            transition: var(--transition);
+            background: linear-gradient(145deg, #1a1f2e, #0a0e14);
+            cursor: pointer;
+        }
+
+        .video-wrapper:hover {
+            border-color: var(--lime);
+            transform: scale(1.02);
+            box-shadow: 0 40px 60px -20px var(--lime);
+        }
+
+        .video-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(203, 255, 60, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0e14;
+            font-size: 2rem;
+            z-index: 10;
+            transition: var(--transition);
+            box-shadow: 0 0 30px rgba(203, 255, 60, 0.5);
+        }
+
+        .video-wrapper:hover .video-play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--lime);
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px 0;
+        }
+
+        .video-overlay i {
+            color: #1877f2;
+            font-size: 1.5rem;
+        }
+
+        .video-thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: linear-gradient(145deg, #1a1f2e, #0a0e14);
+        }
+
+        .video-thumbnail i {
+            font-size: 4rem;
+            color: var(--lime);
+            margin-bottom: 20px;
+        }
+
+        .video-thumbnail span {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .video-stats {
+            display: flex;
+            justify-content: center;
+            gap: clamp(20px, 8vw, 40px);
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .video-stat-item {
+            text-align: center;
+        }
+
+        .video-stat-number {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 800;
+            color: var(--lime);
+            display: block;
+            line-height: 1.2;
+        }
+
+        .video-stat-label {
+            color: var(--text-mute);
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         /* ---------- FAQ ---------- */
         .faq-item {
             background: rgba(12, 18, 28, 0.55);
@@ -1116,71 +1266,6 @@
             font-size: 1.2rem;
         }
         
-        /* ---------- VIDEO SECTION ---------- */
-        .video-section {
-            background: linear-gradient(145deg, rgba(18, 26, 40, 0.8), rgba(8, 12, 20, 0.9));
-            position: relative;
-            overflow: hidden;
-        }
-
-        .video-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            border: 2px solid rgba(203, 255, 60, 0.2);
-            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.7);
-            transition: var(--transition);
-        }
-
-        .video-wrapper:hover {
-            border-color: var(--lime);
-            transform: scale(1.02);
-            box-shadow: 0 40px 60px -20px var(--lime);
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .video-stats {
-            display: flex;
-            justify-content: center;
-            gap: clamp(20px, 8vw, 40px);
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .video-stat-item {
-            text-align: center;
-        }
-
-        .video-stat-number {
-            font-size: clamp(1.5rem, 5vw, 2rem);
-            font-weight: 800;
-            color: var(--lime);
-            display: block;
-            line-height: 1.2;
-        }
-
-        .video-stat-label {
-            color: var(--text-mute);
-            font-size: clamp(0.7rem, 3vw, 0.9rem);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
         /* ---------- STICKY CTA ---------- */
         .sticky-cta {
             position: fixed;
@@ -1392,6 +1477,79 @@
             font-size: 3rem;
             color: var(--lime);
             margin-bottom: 20px;
+        }
+        
+        /* ---------- INTEGRATION PARTNERS ---------- */
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .partner-logo {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(203, 255, 60, 0.15);
+            border-radius: 20px;
+            padding: 20px 30px;
+            color: white;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .partner-logo:hover {
+            border-color: var(--lime);
+            transform: translateY(-5px);
+        }
+
+        /* ---------- ROADMAP ---------- */
+        .roadmap {
+            position: relative;
+            margin-top: 60px;
+        }
+        
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--lime), transparent);
+            opacity: 0.3;
+        }
+        
+        .roadmap-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .roadmap-left, .roadmap-right {
+            width: 45%;
+            background: rgba(18, 26, 38, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(203, 255, 60, 0.15);
+            border-radius: 28px;
+            padding: 30px;
+        }
+        
+        .roadmap-center {
+            width: 20px;
+            height: 20px;
+            background: var(--lime);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--lime);
+        }
+        
+        .roadmap-date {
+            color: var(--lime);
+            font-weight: 600;
+            margin-bottom: 10px;
         }
         
         /* ---------- FOOTER ---------- */
@@ -1699,6 +1857,20 @@
             .sticky-btn {
                 flex: 1;
             }
+
+            .video-play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .video-thumbnail i {
+                font-size: 3rem;
+            }
+
+            .video-thumbnail span {
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1771,6 +1943,7 @@
         }
 
         .fade-up {
+            opacity: 0;
             animation: slideUp 0.7s ease forwards;
         }
 
@@ -1778,6 +1951,11 @@
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -1869,7 +2047,7 @@
         </div>
     </section>
 
-    <!-- STATS COUNTER SECTION - UPDATED -->
+    <!-- STATS COUNTER SECTION -->
     <section style="padding-top: 0;">
         <div class="container">
             <div class="stats-showcase">
@@ -1961,7 +2139,7 @@
         </div>
     </section>
 
-    <!-- VIDEO DEMO SECTION -->
+    <!-- VIDEO DEMO SECTION - Facebook Reel -->
     <section class="video-section">
         <div class="container">
             <div class="section-header fade-up">
@@ -1970,10 +2148,21 @@
             </div>
             
             <div class="video-container fade-up">
-                <div class="video-wrapper">
-                    <!-- Replace with your actual video embed -->
-                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Clify Demo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
+                <a href="https://www.facebook.com/reel/4298529337129742" target="_blank" class="video-card-link">
+                    <div class="video-wrapper">
+                        <div class="video-play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="video-overlay">
+                            <i class="fab fa-facebook"></i>
+                            <span>Watch Demo on Facebook</span>
+                        </div>
+                        <div class="video-thumbnail">
+                            <i class="fas fa-film"></i>
+                            <span>Clify Demo - 30 Seconds</span>
+                        </div>
+                    </div>
+                </a>
                 
                 <div class="video-stats">
                     <div class="video-stat-item">

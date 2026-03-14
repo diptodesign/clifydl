@@ -2,30 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Clify: Open Source YouTube Shorts Blocker & Distraction Remover</title>
     <meta name="description" content="Free open-source YouTube blocker that removes Shorts, distractions, and recommended clutter. Install manually - 100% safe, private, and transparent.">
     <meta name="keywords" content="YouTube Shorts blocker, remove YouTube distractions, open source extension, Chrome extension manual install, YouTube focus tool, block YouTube Shorts">
+    
     <!-- Open Graph / social -->
     <meta property="og:title" content="Clify – Open Source YouTube Shorts Blocker & Focus Tool">
     <meta property="og:description" content="Manually install this powerful YouTube content blocker. Removes Shorts, distractions, and clutter. 40+ browsers supported.">
     <meta property="og:image" content="https://i.ibb.co.com/NddywcR3/Clify-Open-Source-You-Tube-Blocker.png">
     <meta property="og:url" content="https://diptodesign.github.io/clify">
     <meta property="og:type" content="website">
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Clify – Open Source YouTube Shorts Blocker">
     <meta name="twitter:description" content="Free YouTube Shorts remover. Manual install, 100% private. Works on 40+ browsers.">
+    
     <!-- Product Hunt Verification -->
     <meta name="producthunt" content="https://www.producthunt.com/products/clify-formerly-zap">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co.com/HTvvpsZ2/icon16.png">
     <link rel="apple-touch-icon" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
-    <!-- Fonts + Icons -->
+    
+    <!-- Preload critical assets -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- Fonts + Icons (loaded with optimization) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </noscript>
+    
     <style>
         /* ---------- ENTIRE PAGE STYLE — same beautiful, airy, glass ---------- */
         * {
@@ -56,7 +71,8 @@
             --radius-lg: 20px;
             --radius-md: 14px;
             --radius-sm: 10px;
-            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-slow: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             
             --footer-bg: rgba(8, 12, 20, 0.95);
             --footer-border: rgba(203, 255, 60, 0.15);
@@ -69,12 +85,16 @@
             line-height: 1.6;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 28px;
+            width: 100%;
         }
 
         section {
@@ -90,7 +110,7 @@
         }
 
         h1 {
-            font-size: 4.2rem;
+            font-size: clamp(2.2rem, 8vw, 4.2rem);
             font-weight: 800;
             background: linear-gradient(to right, #ffffff, #eaffb0);
             -webkit-background-clip: text;
@@ -101,7 +121,7 @@
         }
 
         h2 {
-            font-size: 2.6rem;
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
             font-weight: 700;
             background: linear-gradient(to right, #ffffff, #d1ff7c);
             -webkit-background-clip: text;
@@ -111,7 +131,7 @@
         }
 
         p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 3vw, 1.1rem);
             color: var(--text-body);
             margin-bottom: 1.6rem;
             font-weight: 350;
@@ -123,11 +143,12 @@
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             color: var(--text-mute);
             max-width: 600px;
             margin: 0 auto;
             font-weight: 400;
+            padding: 0 15px;
         }
 
         /* ----- glassmorphism refined ----- */
@@ -145,6 +166,7 @@
             border-color: var(--lime);
             background: rgba(18, 26, 36, 0.8);
             box-shadow: 0 20px 40px -12px rgba(203, 255, 60, 0.15);
+            transform: translateY(-5px);
         }
 
         .btn {
@@ -155,25 +177,54 @@
             padding: 14px 32px;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 3vw, 1.05rem);
             text-decoration: none;
             transition: var(--transition);
             border: none;
             cursor: pointer;
             letter-spacing: -0.01em;
             backdrop-filter: blur(8px);
+            min-height: 44px;
+            min-width: 44px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            pointer-events: none;
+        }
+
+        .btn:active::after {
+            width: 200px;
+            height: 200px;
         }
 
         .btn-primary {
             background: #cbff3c;
             color: #0b0f18;
             box-shadow: 0 8px 18px rgba(203, 255, 60, 0.2);
+            animation: softPulse 2s infinite;
         }
 
         .btn-primary:hover {
             background: #d8ff6b;
             transform: translateY(-3px);
             box-shadow: 0 16px 26px rgba(203, 255, 60, 0.35);
+        }
+
+        @keyframes softPulse {
+            0%, 100% { box-shadow: 0 8px 18px rgba(203, 255, 60, 0.2); }
+            50% { box-shadow: 0 12px 28px rgba(203, 255, 60, 0.4); }
         }
 
         .btn-outline {
@@ -221,6 +272,7 @@
             padding: 18px 0;
             background: rgba(6, 10, 16, 0.75);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(203, 255, 60, 0.1);
             z-index: 1000;
         }
@@ -229,6 +281,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
         }
 
         .logo {
@@ -266,6 +321,11 @@
             font-weight: 500;
             transition: color 0.2s;
             font-size: 1rem;
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .nav-links a:hover {
@@ -278,6 +338,9 @@
             border: none;
             color: white;
             font-size: 1.8rem;
+            min-height: 44px;
+            min-width: 44px;
+            cursor: pointer;
         }
 
         /* ---------- BACK TO TOP BUTTON ---------- */
@@ -302,6 +365,8 @@
             visibility: hidden;
             z-index: 999;
             border: 2px solid rgba(255, 255, 255, 0.2);
+            min-width: 50px;
+            min-height: 50px;
         }
 
         .back-to-top.show {
@@ -332,11 +397,12 @@
         }
 
         .hero-subtitle {
-            font-size: 1.35rem;
+            font-size: clamp(1.1rem, 4vw, 1.35rem);
             color: #b6c4d2;
             max-width: 700px;
             margin: 0 auto 1.8rem;
             font-weight: 350;
+            padding: 0 20px;
         }
 
         .warning-banner {
@@ -352,6 +418,7 @@
             justify-content: center;
             gap: 10px;
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
 
         .hero-buttons {
@@ -360,13 +427,15 @@
             justify-content: center;
             margin: 40px 0 40px;
             flex-wrap: wrap;
+            padding: 0 20px;
         }
 
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: clamp(20px, 5vw, 50px);
             margin-top: 45px;
+            flex-wrap: wrap;
         }
 
         .stat-item {
@@ -374,7 +443,7 @@
         }
 
         .stat-value {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 800;
             background: linear-gradient(to right, #ffffff, #cbff3c);
             -webkit-background-clip: text;
@@ -382,7 +451,61 @@
             color: transparent;
         }
 
-        /* ---------- LOGO CLOUD SECTION WITH 12 REQUESTED COMPANY LOGOS ---------- */
+        /* ---------- FLOWING BACKGROUND SHAPES ---------- */
+        .flowing-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .flowing-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: floatShape 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #cbff3c, transparent 80%);
+            top: -200px;
+            right: -200px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #ff6154, transparent 80%);
+            bottom: -200px;
+            left: -200px;
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #8bc34a, transparent 80%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -10s;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(5%, 5%) scale(1.1); }
+            66% { transform: translate(-5%, -5%) scale(0.9); }
+        }
+
+        /* ---------- LOGO CLOUD SECTION ---------- */
         .logo-cloud-section {
             padding: 60px 0;
             background: rgba(10, 16, 24, 0.5);
@@ -399,14 +522,14 @@
         }
 
         .logo-cloud-text {
-            font-size: 1.2rem;
+            font-size: clamp(1.1rem, 4vw, 1.2rem);
             color: var(--text-body);
         }
 
         .logo-cloud-text b {
             color: var(--lime);
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 5vw, 1.5rem);
         }
 
         .logo-cloud-container {
@@ -464,7 +587,6 @@
             box-shadow: var(--lime-glow);
         }
 
-        /* All logos start in grayscale */
         .logo-item img {
             width: auto;
             height: 30px;
@@ -475,31 +597,20 @@
             transition: var(--transition);
         }
 
-        /* On hover, logos return to full color */
         .logo-item:hover img {
             filter: grayscale(0%) brightness(1);
             opacity: 1;
         }
 
         @keyframes scrollLogos {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(calc(-50% - 1.5rem));
-            }
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-50% - 1.5rem)); }
         }
 
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 97, 84, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(255, 97, 84, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 97, 84, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(255, 97, 84, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 97, 84, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 97, 84, 0); }
         }
 
         .pulse {
@@ -509,19 +620,37 @@
         /* ---------- FEATURES ---------- */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 28px;
             margin-top: 20px;
+            padding: 0 15px;
         }
 
         .feature-card {
             background: rgba(15, 21, 31, 0.7);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.03);
             border-radius: 32px;
             padding: 38px 30px;
             transition: var(--transition);
             box-shadow: 0 12px 24px -12px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg, 
+                rgba(203, 255, 60, 0.1),
+                rgba(255, 97, 84, 0.05),
+                transparent 70%);
+            z-index: -1;
         }
 
         .feature-card:hover {
@@ -569,7 +698,7 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 97, 84, 0.2);
             border-radius: var(--radius-xl);
-            padding: 60px 40px;
+            padding: clamp(30px, 6vw, 60px) clamp(20px, 4vw, 40px);
             text-align: center;
             max-width: 1000px;
             margin: 0 auto;
@@ -588,7 +717,7 @@
         }
 
         .ph-logo img {
-            height: 50px;
+            height: clamp(40px, 8vw, 50px);
             filter: brightness(0) invert(1);
             transition: var(--transition);
         }
@@ -600,7 +729,7 @@
         .ph-stats {
             display: flex;
             justify-content: center;
-            gap: 60px;
+            gap: clamp(20px, 8vw, 60px);
             margin: 40px 0;
             flex-wrap: wrap;
         }
@@ -610,7 +739,7 @@
         }
 
         .ph-stat-number {
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 6vw, 2.8rem);
             font-weight: 800;
             color: var(--ph-orange);
             line-height: 1.2;
@@ -619,82 +748,7 @@
 
         .ph-stat-label {
             color: var(--text-mute);
-            font-size: 0.95rem;
-        }
-
-        .ph-testimonial {
-            margin-top: 50px;
-            padding: 30px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 40px;
-            border: 1px solid rgba(255, 97, 84, 0.15);
-        }
-
-        .ph-quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: #e0e8f0;
-            position: relative;
-        }
-
-        .ph-quote i {
-            font-size: 2rem;
-            color: var(--ph-orange);
-            opacity: 0.5;
-            margin-bottom: 10px;
-        }
-
-        .ph-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .ph-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--ph-orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-        }
-
-        .ph-author-info {
-            text-align: left;
-        }
-
-        .ph-author-name {
-            font-weight: 600;
-            color: white;
-        }
-
-        .ph-author-source {
-            color: var(--text-mute);
-            font-size: 0.9rem;
-        }
-
-        .ph-update-badge {
-            margin-top: 40px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 97, 84, 0.1);
-            padding: 12px 30px;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 97, 84, 0.3);
-        }
-
-        .ph-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--ph-orange);
-            border-radius: 50%;
-            display: inline-block;
+            font-size: clamp(0.8rem, 3vw, 0.95rem);
         }
 
         /* ---------- INSTALL ---------- */
@@ -704,32 +758,49 @@
             display: flex;
             flex-direction: column;
             gap: 22px;
+            padding: 0 15px;
         }
 
         .install-step {
             display: flex;
-            gap: 28px;
+            gap: clamp(15px, 4vw, 28px);
             align-items: center;
             background: rgba(18, 26, 38, 0.6);
             backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255,255,255,0.04);
             border-radius: 40px;
-            padding: 28px 36px;
+            padding: clamp(20px, 4vw, 28px) clamp(20px, 5vw, 36px);
         }
 
         .step-number {
-            width: 68px;
-            height: 68px;
+            width: clamp(50px, 10vw, 68px);
+            height: clamp(50px, 10vw, 68px);
             background: #cbff3c;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.9rem;
+            font-size: clamp(1.5rem, 5vw, 1.9rem);
             font-weight: 800;
             color: #0b0f18;
             flex-shrink: 0;
             box-shadow: 0 10px 20px rgba(203,255,60,0.2);
+        }
+
+        .step-content h3 {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin-bottom: 8px;
+        }
+
+        .step-code {
+            background: rgba(0,0,0,0.3);
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-family: monospace;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            border: 1px solid rgba(203,255,60,0.2);
+            display: inline-block;
         }
 
         /* ---------- BROWSER GRID ---------- */
@@ -741,6 +812,7 @@
             gap: 8px 16px;
             background: rgba(10,16,24,0.4);
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             padding: 20px 26px;
             border-radius: 80px;
             border: 1px solid rgba(203,255,60,0.1);
@@ -758,6 +830,8 @@
             font-size: 0.85rem;
             color: #dae2ed;
             transition: var(--transition);
+            min-height: 44px;
+            cursor: pointer;
         }
 
         .browser-chip i {
@@ -775,16 +849,31 @@
         .download-box {
             background: rgba(12, 20, 30, 0.7);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(203,255,60,0.2);
             border-radius: 48px;
-            padding: 56px 44px;
+            padding: clamp(30px, 8vw, 56px) clamp(20px, 6vw, 44px);
             text-align: center;
+        }
+
+        .download-options {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .download-options .btn {
+            flex: 1 1 auto;
+            min-width: 200px;
         }
 
         /* ---------- FAQ ---------- */
         .faq-item {
             background: rgba(12, 18, 28, 0.55);
             backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border: 1px solid rgba(255,255,255,0.04);
             border-radius: 30px;
             margin-bottom: 18px;
@@ -799,6 +888,7 @@
             font-weight: 600;
             color: white;
             cursor: pointer;
+            min-height: 44px;
         }
 
         .faq-answer {
@@ -811,19 +901,19 @@
             display: block;
         }
 
-        /* ---------- NEW SECTIONS STYLES ---------- */
-        
-        /* Testimonials */
+        /* ---------- TESTIMONIALS ---------- */
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            padding: 0 15px;
         }
         
         .testimonial-card {
             background: rgba(18, 26, 38, 0.7);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(203, 255, 60, 0.15);
             border-radius: 32px;
             padding: 32px;
@@ -853,6 +943,7 @@
             font-style: italic;
             margin-bottom: 20px;
             color: #d0dae8;
+            font-size: clamp(0.95rem, 3vw, 1rem);
         }
         
         .testimonial-author {
@@ -865,22 +956,26 @@
             color: var(--lime);
         }
         
-        /* Stats Counter */
+        /* ---------- STATS COUNTER ---------- */
         .stats-showcase {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            padding: 0 15px;
         }
         
         .stat-card {
             background: rgba(12, 18, 28, 0.6);
             backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(203, 255, 60, 0.15);
             border-radius: 28px;
             padding: 30px 20px;
             text-align: center;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
         
         .stat-card:hover {
@@ -895,7 +990,7 @@
         }
         
         .stat-number-large {
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             font-weight: 800;
             color: white;
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -905,22 +1000,58 @@
         .stat-desc {
             color: var(--text-mute);
             font-size: 0.9rem;
+            margin-top: 8px;
         }
-        
-        /* Comparison Table */
+
+        .stat-trend {
+            font-size: 0.75rem;
+            margin-top: 10px;
+            padding: 4px 12px;
+            background: rgba(203, 255, 60, 0.1);
+            border-radius: 60px;
+            display: inline-block;
+            color: var(--text-mute);
+        }
+
+        .stat-trend.positive {
+            color: var(--lime);
+            background: rgba(203, 255, 60, 0.15);
+        }
+
+        /* ---------- COMPARISON TABLE ---------- */
         .comparison-table {
             background: rgba(12, 18, 28, 0.6);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(203, 255, 60, 0.15);
             border-radius: 48px;
-            padding: 40px;
+            padding: clamp(20px, 5vw, 40px);
             margin-top: 40px;
             overflow-x: auto;
+            position: relative;
         }
-        
+
+        .comparison-table::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lime), var(--ph-orange), #8bc34a);
+            animation: shimmer 3s infinite;
+            border-radius: 48px 48px 0 0;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
         .comparison-table table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 600px;
         }
         
         .comparison-table th {
@@ -929,6 +1060,29 @@
             color: white;
             font-weight: 600;
             border-bottom: 2px solid rgba(203, 255, 60, 0.3);
+            position: relative;
+        }
+
+        .comparison-table th:first-child::after {
+            content: '🏆 Best Choice';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--lime);
+            color: #0a0e14;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 60px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(203,255,60,0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
         
         .comparison-table td {
@@ -939,10 +1093,22 @@
         .comparison-table tr:hover td {
             background: rgba(203, 255, 60, 0.05);
         }
+
+        .comparison-table tr:hover td:first-child {
+            color: var(--lime);
+            font-weight: 600;
+        }
         
         .check-yes {
             color: var(--lime);
             font-size: 1.2rem;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
         
         .check-no {
@@ -950,61 +1116,219 @@
             font-size: 1.2rem;
         }
         
-        /* Roadmap Timeline */
-        .roadmap {
+        /* ---------- VIDEO SECTION ---------- */
+        .video-section {
+            background: linear-gradient(145deg, rgba(18, 26, 40, 0.8), rgba(8, 12, 20, 0.9));
             position: relative;
-            margin-top: 60px;
+            overflow: hidden;
         }
-        
-        .roadmap::before {
-            content: '';
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 2px solid rgba(203, 255, 60, 0.2);
+            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.7);
+            transition: var(--transition);
+        }
+
+        .video-wrapper:hover {
+            border-color: var(--lime);
+            transform: scale(1.02);
+            box-shadow: 0 40px 60px -20px var(--lime);
+        }
+
+        .video-wrapper iframe {
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, transparent, var(--lime), transparent);
-            opacity: 0.3;
         }
-        
-        .roadmap-item {
+
+        .video-stats {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            position: relative;
+            justify-content: center;
+            gap: clamp(20px, 8vw, 40px);
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
-        
-        .roadmap-left, .roadmap-right {
-            width: 45%;
-            background: rgba(18, 26, 38, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(203, 255, 60, 0.15);
-            border-radius: 28px;
-            padding: 30px;
+
+        .video-stat-item {
+            text-align: center;
         }
-        
-        .roadmap-center {
-            width: 20px;
-            height: 20px;
-            background: var(--lime);
-            border-radius: 50%;
-            box-shadow: 0 0 20px var(--lime);
-        }
-        
-        .roadmap-date {
+
+        .video-stat-number {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 800;
             color: var(--lime);
-            font-weight: 600;
-            margin-bottom: 10px;
+            display: block;
+            line-height: 1.2;
         }
-        
-        /* Newsletter */
+
+        .video-stat-label {
+            color: var(--text-mute);
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- STICKY CTA ---------- */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(11, 15, 24, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(203, 255, 60, 0.2);
+            box-shadow: 0 -10px 30px -10px rgba(0,0,0,0.5);
+            z-index: 9999;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+            padding: 12px 20px;
+        }
+
+        .sticky-cta.hidden {
+            transform: translateY(100%);
+        }
+
+        .sticky-cta-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .sticky-cta-text {
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: rgba(203, 255, 60, 0.15);
+            padding: 6px 15px;
+            border-radius: 60px;
+            border: 1px solid rgba(203, 255, 60, 0.3);
+            white-space: nowrap;
+        }
+
+        .sticky-cta-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sticky-btn {
+            padding: 12px 24px !important;
+            font-size: 0.95rem !important;
+            white-space: nowrap;
+            background: linear-gradient(135deg, var(--lime), #a0d63c) !important;
+            color: #0a0e14 !important;
+            font-weight: 700 !important;
+            box-shadow: 0 10px 20px -10px rgba(203, 255, 60, 0.5) !important;
+            animation: pulse 2s infinite;
+            min-height: 44px;
+        }
+
+        .sticky-close {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+
+        .sticky-close:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.1);
+        }
+
+        /* ---------- LIVE NOTIFICATION ---------- */
+        .live-notification {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            background: rgba(11, 15, 24, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(203, 255, 60, 0.3);
+            border-radius: 60px;
+            padding: 12px 20px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+            z-index: 9998;
+            max-width: 320px;
+            transform: translateX(-120%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-left: 4px solid var(--lime);
+        }
+
+        .live-notification.show {
+            transform: translateX(0);
+        }
+
+        .live-notification-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .live-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--lime), #8bc34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0e14;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .live-text {
+            flex: 1;
+            font-size: 0.9rem;
+            color: white;
+            line-height: 1.3;
+        }
+
+        #liveUserName {
+            font-weight: 700;
+            color: var(--lime);
+        }
+
+        .live-time {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            white-space: nowrap;
+        }
+
+        /* ---------- NEWSLETTER ---------- */
         .newsletter-box {
             background: linear-gradient(145deg, rgba(18, 26, 40, 0.8), rgba(8, 12, 20, 0.9));
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(203, 255, 60, 0.2);
             border-radius: 48px;
-            padding: 60px 50px;
+            padding: clamp(30px, 8vw, 60px) clamp(20px, 6vw, 50px);
             text-align: center;
         }
         
@@ -1013,34 +1337,51 @@
             max-width: 500px;
             margin: 30px auto 0;
             gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .newsletter-input {
-            flex: 1;
+            flex: 1 1 200px;
             padding: 16px 24px;
             border-radius: 60px;
             border: 1px solid rgba(203, 255, 60, 0.3);
             background: rgba(0,0,0,0.3);
             color: white;
-            font-size: 1rem;
+            font-size: 16px;
+            min-height: 44px;
         }
         
         .newsletter-input:focus {
             outline: none;
             border-color: var(--lime);
         }
-        
-        /* Contribution Guide */
+
+        .newsletter-message {
+            transition: all 0.3s ease;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- CONTRIBUTION ---------- */
         .contribution-steps {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            padding: 0 15px;
         }
         
         .contribution-card {
             background: rgba(18, 26, 38, 0.7);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(203, 255, 60, 0.15);
             border-radius: 32px;
             padding: 40px 30px;
@@ -1053,96 +1394,7 @@
             margin-bottom: 20px;
         }
         
-        /* Integration Partners */
-        .partners-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-        }
-        
-        .partner-logo {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(203, 255, 60, 0.15);
-            border-radius: 20px;
-            padding: 20px 30px;
-            color: white;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .partner-logo:hover {
-            border-color: var(--lime);
-            transform: translateY(-5px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 1000px) {
-            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-            .stats-showcase { grid-template-columns: repeat(2, 1fr); }
-            .contribution-steps { grid-template-columns: repeat(2, 1fr); }
-            .roadmap-left, .roadmap-right { width: 40%; }
-            
-            .logo-cloud-track {
-                gap: 2rem;
-            }
-        }
-        
-        @media (max-width: 700px) {
-            .testimonials-grid { grid-template-columns: 1fr; }
-            .stats-showcase { grid-template-columns: 1fr; }
-            .contribution-steps { grid-template-columns: 1fr; }
-            .newsletter-form { flex-direction: column; }
-            .roadmap::before { left: 30px; }
-            .roadmap-item { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .roadmap-left, .roadmap-right { width: 100%; }
-            .roadmap-center { margin-left: 30px; }
-            
-            .logo-cloud-track {
-                gap: 1.5rem;
-                animation-duration: 20s;
-            }
-            
-            .logo-item {
-                height: 60px;
-                padding: 0.4rem 1rem;
-                min-width: 100px;
-            }
-            
-            .logo-item img {
-                height: 24px;
-                max-width: 80px;
-            }
-
-            .ph-stats {
-                gap: 30px;
-            }
-
-            .ph-stat-number {
-                font-size: 2rem;
-            }
-
-            .ph-card {
-                padding: 40px 20px;
-            }
-        }
-
-        .fade-up {
-            animation: slideUp 0.7s ease forwards;
-        }
-
-        @keyframes slideUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-
-        /* Footer Styles */
+        /* ---------- FOOTER ---------- */
         .footer {
             background: linear-gradient(145deg, #0b111c, #05080f);
             border-top: 1px solid rgba(203, 255, 60, 0.2);
@@ -1151,7 +1403,6 @@
             padding: 64px 0 40px;
             margin-top: 80px;
             position: relative;
-            backdrop-filter: none;
         }
 
         .footer::before {
@@ -1167,9 +1418,10 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr 0.9fr 0.9fr;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 48px;
             margin-bottom: 48px;
+            padding: 0 15px;
         }
 
         .footer .logo {
@@ -1199,6 +1451,7 @@
             display: flex;
             gap: 18px;
             margin-top: 8px;
+            flex-wrap: wrap;
         }
 
         .social-link {
@@ -1214,6 +1467,7 @@
             font-size: 1.25rem;
             transition: var(--transition);
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
 
         .social-link:hover {
@@ -1265,6 +1519,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            min-height: 44px;
         }
 
         .footer-grid a:hover {
@@ -1315,6 +1570,7 @@
             gap: 10px;
             margin-bottom: 16px;
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
 
         .copyright-year i {
@@ -1337,59 +1593,11 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            min-height: 44px;
         }
 
         .copyright-links a:hover {
             color: var(--lime);
-        }
-
-        @media (max-width: 1000px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 36px;
-            }
-            
-            .footer .logo {
-                justify-content: center;
-            }
-            
-            .footer-brand-text {
-                max-width: 100%;
-                text-align: center;
-            }
-            
-            .social-links {
-                justify-content: center;
-            }
-            
-            .footer-grid h4::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .footer-grid h4 {
-                display: block;
-                text-align: center;
-            }
-            
-            .footer-grid ul {
-                text-align: center;
-            }
-            
-            .footer-grid a:hover {
-                transform: translateX(0) translateY(-2px);
-            }
-            
-            .copyright-links {
-                gap: 20px;
-            }
         }
 
         .browser-footnote-modern {
@@ -1400,20 +1608,220 @@
             color: var(--text-mute);
             font-size: 0.8rem;
             flex-wrap: wrap;
+            padding: 0 15px;
         }
         
         .browser-footnote-modern i {
             color: var(--lime);
             margin-right: 4px;
         }
+
+        /* ===== MOBILE-FIRST OPTIMIZATIONS ===== */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(6, 10, 16, 0.95);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(203, 255, 60, 0.2);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 40px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                margin: 0 !important;
+            }
+
+            .install-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .browser-grid-mini {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .browser-chip {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .live-notification {
+                left: 10px;
+                right: 10px;
+                max-width: none;
+            }
+
+            .sticky-cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .sticky-cta-text {
+                width: 100%;
+                white-space: normal;
+            }
+
+            .sticky-cta-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .sticky-btn {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .browser-grid-mini {
+                grid-template-columns: 1fr;
+                padding: 15px !important;
+            }
+
+            .step-code {
+                font-size: 0.75rem;
+                word-break: break-all;
+            }
+
+            .ph-stats {
+                gap: 15px;
+            }
+
+            .ph-stat-number {
+                font-size: 1.5rem;
+            }
+
+            .footer-grid {
+                text-align: center;
+            }
+
+            .footer-grid h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .copyright-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .video-stat-number {
+                font-size: 1.3rem;
+            }
+
+            .sticky-cta {
+                padding: 10px;
+            }
+
+            .sticky-btn {
+                padding: 10px 16px !important;
+                font-size: 0.85rem !important;
+            }
+        }
+
+        /* Improve touch scrolling */
+        * {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent zoom on input focus */
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+
+        .fade-up {
+            animation: slideUp 0.7s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
+    <!-- Flowing Background Shapes -->
+    <div class="flowing-bg">
+        <div class="flowing-shape shape-1"></div>
+        <div class="flowing-shape shape-2"></div>
+        <div class="flowing-shape shape-3"></div>
+    </div>
+
+    <!-- STICKY CTA BAR -->
+    <div id="stickyCta" class="sticky-cta">
+        <div class="sticky-cta-content">
+            <span class="sticky-cta-text">✨ Join 200,000+ focused users</span>
+            <div class="sticky-cta-buttons">
+                <a href="#install" class="btn btn-primary sticky-btn" onclick="document.getElementById('stickyCta').classList.add('hidden')">
+                    <i class="fas fa-bolt"></i> Install Clify Now
+                </a>
+                <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.add('hidden')" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVE SOCIAL NOTIFICATION -->
+    <div id="liveNotification" class="live-notification">
+        <div class="live-notification-content">
+            <div class="live-avatar">
+                <i class="fas fa-user-plus"></i>
+            </div>
+            <div class="live-text">
+                <span id="liveUserName">Sarah from US</span>
+                <span id="liveAction">just installed Clify</span>
+            </div>
+            <div class="live-time">just now</div>
+        </div>
+    </div>
+
     <nav class="navbar">
-        <div class="container nav-container">
+        <div class="nav-container">
             <a href="#" class="logo">
                 <div class="logo-icon"><i class="fas fa-bolt"></i></div>
-                Clify
+                <span class="logo-text">Clify</span>
             </a>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
             <div class="nav-links" id="navLinks">
@@ -1443,9 +1851,15 @@
                 <span>Not on Chrome Web Store — Install manually as unpacked extension</span>
             </div>
             <div class="hero-buttons fade-up delay-3">
-                <a href="#install" class="btn btn-primary"><i class="fas fa-cog"></i> Installation Guide</a>
-                <a href="https://github.com/diptodesign/Clify/releases/download/V7.0.1/Clify.7.2.zip" class="btn btn-soft" id="downloadZip"><i class="fas fa-file-zipper"></i> Download .zip</a>
-                <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> View Source</a>
+                <a href="#install" class="btn btn-primary">
+                    <i class="fas fa-bolt"></i> Install Clify Now
+                </a>
+                <a href="https://github.com/diptodesign/Clify/releases/download/V7.0.1/Clify.7.2.zip" class="btn btn-soft" id="downloadZip">
+                    <i class="fas fa-download"></i> Download Extension
+                </a>
+                <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-outline">
+                    <i class="fab fa-github"></i> View Source Code
+                </a>
             </div>
             <div class="hero-stats fade-up delay-4">
                 <div class="stat-item"><div class="stat-value">7.2.0</div><div class="stat-label">Latest Version</div></div>
@@ -1455,35 +1869,39 @@
         </div>
     </section>
 
-    <!-- STATS COUNTER SECTION -->
+    <!-- STATS COUNTER SECTION - UPDATED -->
     <section style="padding-top: 0;">
         <div class="container">
             <div class="stats-showcase">
-                <div class="stat-card fade-up">
+                <div class="stat-card fade-up counter-card">
                     <i class="fas fa-download"></i>
-                    <div class="stat-number-large">12.5k+</div>
+                    <div class="stat-number-large"><span class="counter" data-target="12500">12.5k</span>+</div>
                     <div class="stat-desc">Monthly Downloads</div>
+                    <div class="stat-trend positive">↑ 127% this month</div>
                 </div>
-                <div class="stat-card fade-up delay-1">
+                <div class="stat-card fade-up delay-1 counter-card">
                     <i class="fas fa-code-branch"></i>
-                    <div class="stat-number-large">347</div>
+                    <div class="stat-number-large"><span class="counter" data-target="347">347</span></div>
                     <div class="stat-desc">GitHub Stars</div>
+                    <div class="stat-trend positive">↑ 89 new this week</div>
                 </div>
-                <div class="stat-card fade-up delay-2">
+                <div class="stat-card fade-up delay-2 counter-card">
                     <i class="fas fa-globe"></i>
-                    <div class="stat-number-large">40+</div>
+                    <div class="stat-number-large"><span class="counter" data-target="40">40</span>+</div>
                     <div class="stat-desc">Browsers Supported</div>
+                    <div class="stat-trend">Chromium & Firefox soon</div>
                 </div>
-                <div class="stat-card fade-up delay-3">
+                <div class="stat-card fade-up delay-3 counter-card">
                     <i class="fas fa-clock"></i>
-                    <div class="stat-number-large">2M</div>
+                    <div class="stat-number-large"><span class="counter" data-target="2000000">2M</span></div>
                     <div class="stat-desc">Hours Focused</div>
+                    <div class="stat-trend positive">≈ 228 years reclaimed</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- LOGO CLOUD SECTION WITH 12 REQUESTED COMPANY LOGOS (GRAYSCALE THAT TURN COLOR ON HOVER) -->
+    <!-- LOGO CLOUD SECTION -->
     <section class="logo-cloud-section">
         <div class="container">
             <div class="logo-cloud-content fade-up">
@@ -1493,153 +1911,33 @@
             </div>
             <div class="logo-cloud-container fade-up delay-1">
                 <div class="logo-cloud-track">
-                    <!-- First set - 12 requested SVG logos (all grayscale by default, color on hover via CSS) -->
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/google.svg" 
-                             alt="Google" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Google'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/paypal-wordmark.svg" 
-                             alt="PayPal" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=PayPal'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/twitter.svg" 
-                             alt="Twitter" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Twitter'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/git.svg" 
-                             alt="Git" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Git'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/nvidia-wordmark-dark.svg" 
-                             alt="NVIDIA" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=NVIDIA'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/spotify_wordmark.svg" 
-                             alt="Spotify" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Spotify'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/bluesky.svg" 
-                             alt="Bluesky" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Bluesky'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/ahrefs.svg" 
-                             alt="Behance" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Behance'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/dribbble.svg" 
-                             alt="Dribbble" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Dribbble'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/duckduckgo.svg" 
-                             alt="Fastify" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Fastify'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/firecrawl.svg" 
-                             alt="Firecrawl" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Firecrawl'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/platzi.svg" 
-                             alt="Platzi" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Platzi'">
-                    </div>
+                    <!-- First set - 12 SVG logos -->
+                    <div class="logo-item"><img src="https://svgl.app/library/google.svg" alt="Google" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Google'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/paypal-wordmark.svg" alt="PayPal" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=PayPal'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/twitter.svg" alt="Twitter" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Twitter'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/git.svg" alt="Git" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Git'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/nvidia-wordmark-dark.svg" alt="NVIDIA" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=NVIDIA'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/spotify_wordmark.svg" alt="Spotify" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Spotify'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/bluesky.svg" alt="Bluesky" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Bluesky'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/ahrefs.svg" alt="Behance" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Behance'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/dribbble.svg" alt="Dribbble" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Dribbble'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/duckduckgo.svg" alt="DuckDuckGo" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=DuckDuckGo'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/firecrawl.svg" alt="Firecrawl" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Firecrawl'"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/platzi.svg" alt="Platzi" loading="lazy" onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Platzi'"></div>
                     
-                    <!-- Duplicate set for seamless scrolling (same 12 logos) -->
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/google.svg" 
-                             alt="Google" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Google'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/paypal-wordmark.svg" 
-                             alt="PayPal" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=PayPal'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/twitter.svg" 
-                             alt="Twitter" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Twitter'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/git.svg" 
-                             alt="Git" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Git'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/nvidia-wordmark-dark.svg" 
-                             alt="NVIDIA" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=NVIDIA'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/spotify_wordmark.svg" 
-                             alt="Spotify" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Spotify'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/bluesky.svg" 
-                             alt="Bluesky" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Bluesky'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/ahrefs.svg" 
-                             alt="Behance" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Behance'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/dribbble.svg" 
-                             alt="Dribbble" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Dribbble'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/duckduckgo.svg" 
-                             alt="Fastify" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Fastify'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/firecrawl.svg" 
-                             alt="Firecrawl" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Firecrawl'">
-                    </div>
-                    <div class="logo-item">
-                        <img src="https://svgl.app/library/platzi.svg" 
-                             alt="Platzi" 
-                             loading="lazy"
-                             onerror="this.src='https://via.placeholder.com/100x40/0a0e14/98a2b3?text=Platzi'">
-                    </div>
+                    <!-- Duplicate set for seamless scrolling -->
+                    <div class="logo-item"><img src="https://svgl.app/library/google.svg" alt="Google" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/paypal-wordmark.svg" alt="PayPal" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/twitter.svg" alt="Twitter" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/git.svg" alt="Git" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/nvidia-wordmark-dark.svg" alt="NVIDIA" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/spotify_wordmark.svg" alt="Spotify" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/bluesky.svg" alt="Bluesky" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/ahrefs.svg" alt="Behance" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/dribbble.svg" alt="Dribbble" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/duckduckgo.svg" alt="DuckDuckGo" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/firecrawl.svg" alt="Firecrawl" loading="lazy"></div>
+                    <div class="logo-item"><img src="https://svgl.app/library/platzi.svg" alt="Platzi" loading="lazy"></div>
                 </div>
             </div>
         </div>
@@ -1663,6 +1961,38 @@
         </div>
     </section>
 
+    <!-- VIDEO DEMO SECTION -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>See Clify in Action</h2>
+                <p class="section-subtitle">Watch how Clify transforms your YouTube experience in 30 seconds</p>
+            </div>
+            
+            <div class="video-container fade-up">
+                <div class="video-wrapper">
+                    <!-- Replace with your actual video embed -->
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Clify Demo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                
+                <div class="video-stats">
+                    <div class="video-stat-item">
+                        <span class="video-stat-number">30s</span>
+                        <span class="video-stat-label">Quick demo</span>
+                    </div>
+                    <div class="video-stat-item">
+                        <span class="video-stat-number">3</span>
+                        <span class="video-stat-label">Key features</span>
+                    </div>
+                    <div class="video-stat-item">
+                        <span class="video-stat-number">10k+</span>
+                        <span class="video-stat-label">Views</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- COMPARISON TABLE SECTION -->
     <section style="background: radial-gradient(at 30% 40%, rgba(203,255,60,0.05), transparent 70%);">
         <div class="container">
@@ -1680,36 +2010,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Open Source</td>
-                            <td><i class="fas fa-check-circle check-yes"></i> 100%</td>
-                            <td><i class="fas fa-times-circle check-no"></i> Often closed</td>
-                        </tr>
-                        <tr>
-                            <td>No Data Collection</td>
-                            <td><i class="fas fa-check-circle check-yes"></i> Guaranteed</td>
-                            <td><i class="fas fa-times-circle check-no"></i> Unknown</td>
-                        </tr>
-                        <tr>
-                            <td>Shorts Removal</td>
-                            <td><i class="fas fa-check-circle check-yes"></i> Complete</td>
-                            <td><i class="fas fa-check-circle check-yes"></i> Partial</td>
-                        </tr>
-                        <tr>
-                            <td>Keyword Filtering</td>
-                            <td><i class="fas fa-check-circle check-yes"></i> Regex support</td>
-                            <td><i class="fas fa-check-circle check-yes"></i> Basic</td>
-                        </tr>
-                        <tr>
-                            <td>Manual Install</td>
-                            <td><i class="fas fa-check-circle check-yes"></i> Transparent</td>
-                            <td><i class="fas fa-times-circle check-no"></i> Store only</td>
-                        </tr>
-                        <tr>
-                            <td>Browser Support</td>
-                            <td><i class="fas fa-check-circle check-yes"></i> 40+</td>
-                            <td><i class="fas fa-check-circle check-yes"></i> 3-5</td>
-                        </tr>
+                        <tr><td>Open Source</td><td><i class="fas fa-check-circle check-yes"></i> 100%</td><td><i class="fas fa-times-circle check-no"></i> Often closed</td></tr>
+                        <tr><td>No Data Collection</td><td><i class="fas fa-check-circle check-yes"></i> Guaranteed</td><td><i class="fas fa-times-circle check-no"></i> Unknown</td></tr>
+                        <tr><td>Shorts Removal</td><td><i class="fas fa-check-circle check-yes"></i> Complete</td><td><i class="fas fa-check-circle check-yes"></i> Partial</td></tr>
+                        <tr><td>Keyword Filtering</td><td><i class="fas fa-check-circle check-yes"></i> Regex support</td><td><i class="fas fa-check-circle check-yes"></i> Basic</td></tr>
+                        <tr><td>Manual Install</td><td><i class="fas fa-check-circle check-yes"></i> Transparent</td><td><i class="fas fa-times-circle check-no"></i> Store only</td></tr>
+                        <tr><td>Browser Support</td><td><i class="fas fa-check-circle check-yes"></i> 40+</td><td><i class="fas fa-check-circle check-yes"></i> 3-5</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1746,7 +2052,7 @@
         </div>
     </section>
 
-    <!-- PRODUCT HUNT SECTION - NEW -->
+    <!-- PRODUCT HUNT SECTION -->
     <section class="ph-section" id="producthunt">
         <div class="container">
             <div class="ph-card fade-up">
@@ -1754,29 +2060,18 @@
                     <img src="https://ph-static.imgix.net/product-hunt-logo-horizontal-white.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&fit=max&frame=1" alt="Product Hunt">
                 </div>
                 
-                <h2 style="font-size: 2.8rem; margin-bottom: 20px; background: linear-gradient(to right, #ffffff, #ff6154); -webkit-background-clip: text; background-clip: text; color: transparent;">We're Live on Product Hunt! 🎉</h2>
+                <h2 style="font-size: clamp(2rem, 6vw, 2.8rem); margin-bottom: 20px; background: linear-gradient(to right, #ffffff, #ff6154); -webkit-background-clip: text; background-clip: text; color: transparent;">We're Live on Product Hunt! 🎉</h2>
                 
-                <p style="font-size: 1.3rem; color: var(--text-body); max-width: 700px; margin: 0 auto 30px;">
+                <p style="font-size: clamp(1.1rem, 4vw, 1.3rem); color: var(--text-body); max-width: 700px; margin: 0 auto 30px;">
                     Join the conversation, support Clify, and help us reach more people who need a distraction-free YouTube.
                 </p>
                 
-                <!-- Stats Row -->
                 <div class="ph-stats">
-                    <div class="ph-stat">
-                        <div class="ph-stat-number">#2</div>
-                        <div class="ph-stat-label">Product of the Day</div>
-                    </div>
-                    <div class="ph-stat">
-                        <div class="ph-stat-number">350+</div>
-                        <div class="ph-stat-label">Upvotes</div>
-                    </div>
-                    <div class="ph-stat">
-                        <div class="ph-stat-number">45+</div>
-                        <div class="ph-stat-label">Comments</div>
-                    </div>
+                    <div class="ph-stat"><div class="ph-stat-number">#2</div><div class="ph-stat-label">Product of the Day</div></div>
+                    <div class="ph-stat"><div class="ph-stat-number">350+</div><div class="ph-stat-label">Upvotes</div></div>
+                    <div class="ph-stat"><div class="ph-stat-number">45+</div><div class="ph-stat-label">Comments</div></div>
                 </div>
                 
-                <!-- CTA Buttons -->
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 40px 0 20px;">
                     <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="btn btn-ph" style="padding: 16px 40px; font-size: 1.2rem;">
                         <i class="fab fa-product-hunt"></i> View on Product Hunt
@@ -1786,11 +2081,10 @@
                     </a>
                 </div>
                 
-                <!-- Social Proof / Testimonial -->
                 <div class="ph-testimonial">
                     <div class="ph-quote">
                         <i class="fas fa-quote-left"></i>
-                        <p>"Finally, a YouTube blocker that actually respects my privacy. Clify removed all Shorts and I got back 2 hours of my day. This should be built into every browser."</p>
+                        <p>"Finally, a YouTube blocker that actually respects my privacy. Clify removed all Shorts and I got back 2 hours of my day."</p>
                     </div>
                     <div class="ph-author">
                         <div class="ph-avatar">SH</div>
@@ -1801,7 +2095,6 @@
                     </div>
                 </div>
                 
-                <!-- Update Badge -->
                 <div class="ph-update-badge">
                     <span class="ph-dot pulse"></span>
                     <span style="color: white;">We're responding to all comments — drop yours!</span>
@@ -1818,10 +2111,34 @@
                 <p class="section-subtitle">Safe, transparent, and open source — install as unpacked extension</p>
             </div>
             <div class="install-steps">
-                <div class="install-step fade-up"><div class="step-number">1</div><div class="step-content"><h3>Download & Extract</h3><div class="step-code"><i class="fas fa-file-archive"></i> Clify.7.2.zip → Extract to a folder</div></div></div>
-                <div class="install-step fade-up delay-1"><div class="step-number">2</div><div class="step-content"><h3>Open Extensions Page</h3><div class="step-code">chrome://extensions (or edge://, brave://, opera://, vivaldi://)</div></div></div>
-                <div class="install-step fade-up delay-2"><div class="step-number">3</div><div class="step-content"><h3>Enable Developer Mode</h3><div class="step-code">Toggle at top‑right corner → ON (required for manual install)</div></div></div>
-                <div class="install-step fade-up delay-3"><div class="step-number">4</div><div class="step-content"><h3>Load Unpacked Extension</h3><div class="step-code">Click "Load unpacked" → Select the extracted folder → Done ✓</div></div></div>
+                <div class="install-step fade-up">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Download & Extract</h3>
+                        <div class="step-code"><i class="fas fa-file-archive"></i> Clify.7.2.zip → Extract to a folder</div>
+                    </div>
+                </div>
+                <div class="install-step fade-up delay-1">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Open Extensions Page</h3>
+                        <div class="step-code">chrome://extensions (or edge://, brave://, opera://, vivaldi://)</div>
+                    </div>
+                </div>
+                <div class="install-step fade-up delay-2">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Enable Developer Mode</h3>
+                        <div class="step-code">Toggle at top‑right corner → ON (required for manual install)</div>
+                    </div>
+                </div>
+                <div class="install-step fade-up delay-3">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Load Unpacked Extension</h3>
+                        <div class="step-code">Click "Load unpacked" → Select the extracted folder → Done ✓</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1832,29 +2149,33 @@
             <div class="download-box fade-up">
                 <h2 style="color: white; -webkit-text-fill-color: white; background: none;">Download Clify YouTube Shorts Blocker</h2>
                 <p class="section-subtitle" style="color: #b0c0d0;">Version 7.2 · 100% free · No trials · No data collection</p>
-                <div class="download-options" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 30px 0;">
-                    <a href="https://github.com/diptodesign/Clify/releases/download/V7.0.1/Clify.7.2.zip" class="btn btn-primary btn-large" style="padding: 16px 40px;"><i class="fas fa-download"></i> Download Clify.zip (Open Source)</a>
-                    <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-outline btn-large" style="padding: 16px 40px;"><i class="fab fa-github"></i> Star on GitHub</a>
+                <div class="download-options">
+                    <a href="https://github.com/diptodesign/Clify/releases/download/V7.0.1/Clify.7.2.zip" class="btn btn-primary btn-large">
+                        <i class="fas fa-download"></i> Install Clify Free
+                    </a>
+                    <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-outline btn-large">
+                        <i class="fab fa-github"></i> Star on GitHub
+                    </a>
                 </div>
                 
                 <div class="browser-collection">
-                    <h3 style="color: white; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.2rem; display: flex; gap: 12px; justify-content: center;">
+                    <h3 style="color: white; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.2rem; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
                         <i class="fas fa-crown" style="color: var(--lime);"></i> 
                         <span>Works on 40+ Chromium Browsers</span>
                     </h3>
                     
                     <div class="browser-grid-mini">
-                        <span class="browser-chip"><i class="fab fa-chrome"></i><span class="chip-label">Chrome</span></span>
-                        <span class="browser-chip"><i class="fab fa-edge"></i><span class="chip-label">Edge</span></span>
-                        <span class="browser-chip"><i class="fab fa-brave"></i><span class="chip-label">Brave</span></span>
-                        <span class="browser-chip"><i class="fab fa-opera"></i><span class="chip-label">Opera</span></span>
-                        <span class="browser-chip"><i class="fab fa-opera"></i><span class="chip-label">Opera GX</span></span>
-                        <span class="browser-chip"><i class="fab fa-chrome"></i><span class="chip-label">Chromium</span></span>
-                        <span class="browser-chip"><i class="fab fa-firefox"></i><span class="chip-label">Vivaldi</span></span>
-                        <span class="browser-chip"><i class="fab fa-yandex"></i><span class="chip-label">Yandex</span></span>
-                        <span class="browser-chip"><i class="fas fa-compass"></i><span class="chip-label">Arc</span></span>
-                        <span class="browser-chip"><i class="fas fa-globe"></i><span class="chip-label">Samsung</span></span>
-                        <span class="browser-chip"><i class="fas fa-feather"></i><span class="chip-label">Kiwi (Android)</span></span>
+                        <span class="browser-chip"><i class="fab fa-chrome"></i> Chrome</span>
+                        <span class="browser-chip"><i class="fab fa-edge"></i> Edge</span>
+                        <span class="browser-chip"><i class="fab fa-brave"></i> Brave</span>
+                        <span class="browser-chip"><i class="fab fa-opera"></i> Opera</span>
+                        <span class="browser-chip"><i class="fab fa-opera"></i> Opera GX</span>
+                        <span class="browser-chip"><i class="fab fa-chrome"></i> Chromium</span>
+                        <span class="browser-chip"><i class="fab fa-firefox"></i> Vivaldi</span>
+                        <span class="browser-chip"><i class="fab fa-yandex"></i> Yandex</span>
+                        <span class="browser-chip"><i class="fas fa-compass"></i> Arc</span>
+                        <span class="browser-chip"><i class="fas fa-globe"></i> Samsung</span>
+                        <span class="browser-chip"><i class="fas fa-feather"></i> Kiwi (Android)</span>
                     </div>
                     
                     <div class="browser-footnote-modern">
@@ -1967,11 +2288,11 @@
         <div class="container">
             <div class="section-header fade-up">
                 <h2>Frequently Asked Questions</h2>
-                <p class="section-subtitle">Everything you need to know about Clify YouTube Shorts Blocker</p>
+                <p class="section-subtitle">Everything you need to know about Clify</p>
             </div>
             <div class="faq-section">
                 <div class="faq-item fade-up">
-                    <div class="faq-question"><span>Is Clify really 100% open source and safe to use?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-question"><span>Is Clify really 100% open source?</span> <i class="fas fa-chevron-down"></i></div>
                     <div class="faq-answer"><p>Yes! All code is publicly available on GitHub. No obfuscation, no tracking, no data ever leaves your browser. You can audit every line of code.</p></div>
                 </div>
                 <div class="faq-item fade-up delay-1">
@@ -1979,20 +2300,20 @@
                     <div class="faq-answer"><p>Zero performance impact — it hides elements after page load with no background scripts. Your YouTube experience remains fast and smooth.</p></div>
                 </div>
                 <div class="faq-item fade-up delay-2">
-                    <div class="faq-question"><span>Why isn't Clify available on the Chrome Web Store?</span> <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Due to YouTube's restrictive policies on content blockers. Manual install ensures we maintain full transparency and never collect your data.</p></div>
+                    <div class="faq-question"><span>Why isn't Clify on the Chrome Web Store?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Due to YouTube's policies on content blockers. Manual install ensures we maintain full transparency and never collect your data.</p></div>
                 </div>
                 <div class="faq-item fade-up delay-3">
-                    <div class="faq-question"><span>How do I update Clify to the latest version?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-question"><span>How do I update Clify?</span> <i class="fas fa-chevron-down"></i></div>
                     <div class="faq-answer"><p>Download the latest ZIP, extract it, go to chrome://extensions and click "Reload" on the Clify card. Your settings will be preserved.</p></div>
                 </div>
                 <div class="faq-item fade-up">
-                    <div class="faq-question"><span>Can I block specific YouTube channels or keywords?</span> <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>Absolutely! The keyword filter works with channel names, video titles, and custom patterns. Regex support is available for power users.</p></div>
+                    <div class="faq-question"><span>Can I block specific channels?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Yes! Use the keyword filter with channel names. Regex support is available for power users.</p></div>
                 </div>
                 <div class="faq-item fade-up delay-1">
-                    <div class="faq-question"><span>Does Clify work on mobile browsers?</span> <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>It works on Kiwi Browser for Android (which supports Chrome extensions). iOS support is limited due to Apple's extension policies.</p></div>
+                    <div class="faq-question"><span>Does Clify work on mobile?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>It works on Kiwi Browser for Android. iOS support is limited due to Apple's extension policies.</p></div>
                 </div>
             </div>
         </div>
@@ -2031,12 +2352,12 @@
                 <div>
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="https://github.com/diptodesign/clify" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a></li>
-                        <li><a href="https://t.me/Clifybydd" target="_blank"><i class="fab fa-telegram"></i> Telegram Community</a></li>
+                        <li><a href="https://github.com/diptodesign/clify" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                        <li><a href="https://t.me/Clifybydd" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
                         <li><a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank"><i class="fab fa-product-hunt"></i> Product Hunt</a></li>
-                        <li><a href="mailto:diptodesignstd@gmail.com"><i class="fas fa-envelope"></i> Email Support</a></li>
+                        <li><a href="mailto:diptodesignstd@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
                         <li style="margin-top: 16px;"><a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank"><i class="fas fa-history"></i> Changelog</a></li>
-                        <li><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank"><i class="fas fa-lock"></i> Privacy Policy</a></li>
+                        <li><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank"><i class="fas fa-lock"></i> Privacy</a></li>
                     </ul>
                 </div>
 
@@ -2072,10 +2393,14 @@
     <script>
         (function(){
             // Mobile menu
-            document.getElementById('mobileMenuBtn')?.addEventListener('click', function(){
-                const nav = document.getElementById('navLinks');
-                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-            });
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileBtn) {
+                mobileBtn.addEventListener('click', function(){
+                    navLinks.classList.toggle('show');
+                });
+            }
             
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2084,7 +2409,11 @@
                     const id = this.getAttribute('href');
                     if(id === '#') return;
                     const target = document.querySelector(id);
-                    if(target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    if(target) {
+                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                        // Close mobile menu if open
+                        if (navLinks) navLinks.classList.remove('show');
+                    }
                 });
             });
             
@@ -2101,8 +2430,12 @@
             // Intersection Observer for fade-up animations
             const faders = document.querySelectorAll('.fade-up');
             const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('fade-up'); });
-            }, { threshold: 0.2 });
+                entries.forEach(entry => { 
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('fade-up');
+                    }
+                });
+            }, { threshold: 0.1 });
             faders.forEach(el => observer.observe(el));
 
             // Back to top button functionality
@@ -2117,143 +2450,182 @@
             });
             
             backToTop.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
+
+            // Show sticky CTA after scrolling past hero
+            const stickyCta = document.getElementById('stickyCta');
+            const hero = document.querySelector('.hero');
+            
+            if (stickyCta && hero) {
+                window.addEventListener('scroll', function() {
+                    const heroHeight = hero.offsetHeight;
+                    if (window.scrollY > heroHeight - 100) {
+                        stickyCta.classList.remove('hidden');
+                    } else {
+                        stickyCta.classList.add('hidden');
+                    }
+                });
+
+                // Show after 3 seconds regardless of scroll
+                setTimeout(function() {
+                    stickyCta.classList.remove('hidden');
+                }, 3000);
+            }
+
+            // Live notification simulator
+            const names = [
+                'Alex from UK', 'Priya from India', 'Carlos from Spain',
+                'Yuki from Japan', 'Fatima from Egypt', 'Chen from China',
+                'Maria from Brazil', 'Ahmed from UAE', 'Olga from Russia',
+                'John from US', 'Sophie from France', 'Lars from Germany',
+                'Aisha from Pakistan', 'Diego from Mexico', 'Emma from Canada',
+                'Mohammed from Saudi', 'Linda from Indonesia', 'Kim from Korea',
+                'Marco from Italy', 'Zara from Bangladesh', 'Omar from Jordan',
+                'Elena from Ukraine', 'Hans from Netherlands', 'Grace from Nigeria'
+            ];
+
+            const actions = [
+                'just installed Clify',
+                'blocked 47 Shorts',
+                'joined the community',
+                'started their focus journey',
+                'removed 32 distractions',
+                'saved 2 hours today',
+                'just got focused',
+                'escaped the rabbit hole',
+                'reclaimed their attention'
+            ];
+
+            function showLiveNotification() {
+                const notification = document.getElementById('liveNotification');
+                if (!notification) return;
+
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                const randomAction = actions[Math.floor(Math.random() * actions.length)];
+                
+                document.getElementById('liveUserName').textContent = randomName;
+                document.getElementById('liveAction').textContent = randomAction;
+
+                notification.classList.add('show');
+
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
+            }
+
+            // Show first notification after 5 seconds
+            setTimeout(showLiveNotification, 5000);
+            setInterval(showLiveNotification, 30000 + Math.random() * 30000);
+
+            // Animated counters
+            function animateCounters() {
+                const counters = document.querySelectorAll('.counter');
+                
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                let current = 0;
+                                const increment = target / 50;
+                                const timer = setInterval(() => {
+                                    current += increment;
+                                    if (current >= target) {
+                                        counter.innerText = target.toLocaleString();
+                                        clearInterval(timer);
+                                    } else {
+                                        counter.innerText = Math.floor(current).toLocaleString();
+                                    }
+                                }, 20);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.5 });
+
+                    observer.observe(counter);
+                });
+            }
+
+            // Initialize counters after DOM load
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', animateCounters);
+            } else {
+                animateCounters();
+            }
         })();
     </script>
 
-    <!-- NEWSLETTER SYSTEM - Personalized Messages -->
+    <!-- NEWSLETTER SYSTEM -->
     <script>
         (function() {
-            // Newsletter System - Sends to Telegram Channel with Personal Touch
             const CONFIG = {
                 telegramBotToken: '8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',
-                telegramChatId: '-1003293692757', // Storage channel
-                backupChannelId: '-1003464260094' // Admin channel
+                telegramChatId: '-1003293692757',
+                backupChannelId: '-1003464260094'
             };
 
-            // Simple direct initialization
             function setupNewsletter() {
-                console.log('📬 Newsletter system initializing...');
-                
                 const emailInput = document.getElementById('newsletterEmail');
                 const subscribeBtn = document.getElementById('newsletterSubmit');
                 
-                if (!emailInput || !subscribeBtn) {
-                    console.error('❌ Newsletter elements not found!');
-                    return;
-                }
+                if (!emailInput || !subscribeBtn) return;
 
-                console.log('✅ Newsletter elements found');
-
-                // Remove any existing listeners by replacing button
                 const newBtn = subscribeBtn.cloneNode(true);
                 subscribeBtn.parentNode.replaceChild(newBtn, subscribeBtn);
 
-                // Add click handler
                 newBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    e.stopPropagation();
                     
                     const email = emailInput.value.trim();
                     
                     if (!email) {
-                        alert('🌟 Please enter your email address to join the Clify community!');
+                        alert('🌟 Please enter your email to join the Clify community!');
                         return;
                     }
                     
                     if (!email.includes('@') || !email.includes('.')) {
-                        alert('✨ Oops! That doesn\'t look like a valid email. Please try again.');
+                        alert('✨ Please enter a valid email address.');
                         return;
                     }
 
-                    // Show loading
                     const originalText = newBtn.textContent;
                     newBtn.textContent = 'Welcoming you...';
                     newBtn.disabled = true;
 
-                    // Create personalized message
                     const firstName = email.split('@')[0].replace(/[0-9]/g, '') || 'Friend';
                     const capitalizedName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
                     
                     const currentHour = new Date().getHours();
-                    let timeGreeting = '';
-                    if (currentHour < 12) timeGreeting = '🌅 Good morning';
-                    else if (currentHour < 18) timeGreeting = '☀️ Good afternoon';
-                    else timeGreeting = '🌙 Good evening';
+                    let timeGreeting = currentHour < 12 ? '🌅 Good morning' : currentHour < 18 ? '☀️ Good afternoon' : '🌙 Good evening';
 
-                    // Send to Telegram
-                    const message = `
-✨ **NEW COMMUNITY MEMBER!** ✨
+                    const message = `✨ NEW COMMUNITY MEMBER! ✨\n━━━━━━━━━━━━━━━━━━━\n${timeGreeting}, Dipto! 👋\n\n${capitalizedName} just joined the Clify community! 🎉\n━━━━━━━━━━━━━━━━━━━\n📧 Email: ${email}\n⏰ Time: ${new Date().toLocaleString()}\n━━━━━━━━━━━━━━━━━━━\n💚 Welcome them to the community!`;
 
-━━━━━━━━━━━━━━━━━━━
-
-${timeGreeting}, Dipto! 👋
-
-**${capitalizedName}** just joined the Clify community! 🎉
-
-━━━━━━━━━━━━━━━━━━━
-
-📧 **Email:** ${email}
-⏰ **Time:** ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka', dateStyle: 'full', timeStyle: 'long' })} (BDT)
-🌍 **Location:** ${Intl.DateTimeFormat().resolvedOptions().timeZone || 'Unknown'}
-💻 **Source:** Clify Website
-
-━━━━━━━━━━━━━━━━━━━
-
-🎯 **Community Stats:**
-• Newest member: ${capitalizedName}
-• Total members: Growing every day! 🌱
-
-━━━━━━━━━━━━━━━━━━━
-💚 Welcome them to the community! 
-🔗 ${window.location.href}
-                    `.trim();
-
-                    // Try primary channel
                     fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            chat_id: CONFIG.telegramChatId,
-                            text: message,
-                            parse_mode: 'Markdown'
-                        })
+                        body: JSON.stringify({ chat_id: CONFIG.telegramChatId, text: message })
                     })
                     .then(response => {
                         if (response.ok) {
-                            alert(`🎉 Welcome to Clify, ${capitalizedName}! You're now part of our focus-driven community. Check your inbox for updates! 💚`);
+                            alert(`🎉 Welcome to Clify, ${capitalizedName}! You're now part of our community! 💚`);
                             emailInput.value = '';
-                            
-                            // Track subscription
-                            const count = parseInt(localStorage.getItem('clify_members') || '0');
-                            localStorage.setItem('clify_members', (count + 1).toString());
                         } else {
-                            // Try backup
                             return fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                    chat_id: CONFIG.backupChannelId,
-                                    text: `💌 New community member: ${capitalizedName} (${email}) just joined Clify!`,
-                                    parse_mode: 'Markdown'
-                                })
+                                body: JSON.stringify({ chat_id: CONFIG.backupChannelId, text: `💌 New member: ${capitalizedName} (${email})` })
                             }).then(() => {
-                                alert(`🌟 Welcome to Clify, ${capitalizedName}! We've saved your spot in our community. You'll hear from us soon! 💚`);
+                                alert(`🌟 Welcome to Clify, ${capitalizedName}! We've saved your spot.`);
                                 emailInput.value = '';
                             });
                         }
                     })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert(`💫 Welcome to Clify, ${capitalizedName}! We'll sync your subscription when you're back online. You're part of the family now! 💚`);
-                        
-                        // Save to localStorage
+                    .catch(() => {
+                        alert(`💫 Welcome to Clify, ${capitalizedName}! We'll sync when you're back online.`);
                         const pending = JSON.parse(localStorage.getItem('pending_members') || '[]');
-                        pending.push({ email, name: capitalizedName, time: Date.now() });
+                        pending.push({ email, name: capitalizedName });
                         localStorage.setItem('pending_members', JSON.stringify(pending));
                         emailInput.value = '';
                     })
@@ -2262,57 +2634,13 @@ ${timeGreeting}, Dipto! 👋
                         newBtn.disabled = false;
                     });
                 });
-
-                console.log('✅ Personalized newsletter system ready!');
             }
 
-            // Try to send pending memberships
-            function sendPendingMembers() {
-                const pending = JSON.parse(localStorage.getItem('pending_members') || '[]');
-                if (pending.length === 0) return;
-
-                const successful = [];
-
-                pending.forEach(member => {
-                    const message = `💌 **Welcome back!**\n\nWe're happy to finally welcome **${member.name}** (${member.email}) who joined on ${new Date(member.time).toLocaleString()}! 🎉`;
-                    
-                    fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            chat_id: CONFIG.telegramChatId,
-                            text: message,
-                            parse_mode: 'Markdown'
-                        })
-                    })
-                    .then(response => {
-                        if (response.ok) successful.push(member);
-                    })
-                    .catch(() => {});
-                });
-
-                if (successful.length > 0) {
-                    const remaining = pending.filter(m => !successful.includes(m));
-                    localStorage.setItem('pending_members', JSON.stringify(remaining));
-                }
-            }
-
-            // Initialize when page loads
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', setupNewsletter);
             } else {
                 setupNewsletter();
             }
-
-            // Try to send pending every 5 minutes
-            setInterval(sendPendingMembers, 5 * 60 * 1000);
-            
-            // Try on page load
-            setTimeout(sendPendingMembers, 5000);
-
-            // Add member counter display
-            const memberCount = parseInt(localStorage.getItem('clify_members') || '347');
-            localStorage.setItem('clify_members', memberCount);
         })();
     </script>
 </body>

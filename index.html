@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Clify: Open Source YouTube Shorts Blocker & Distraction Remover</title>
-    <meta name="description" content="Free open-source YouTube blocker that removes Shorts, distractions, and recommended clutter. Install manually - 100% safe, private, and transparent.">
-    <meta name="keywords" content="YouTube Shorts blocker, remove YouTube distractions, open source extension, Chrome extension manual install, YouTube focus tool, block YouTube Shorts">
+    <meta name="description" content="Free open-source YouTube blocker that removes Shorts, distractions, and recommended clutter. Install manually - 100% safe, private, and transparent. Works on Kiwi Browser and Quetta Browser for Android.">
+    <meta name="keywords" content="YouTube Shorts blocker, remove YouTube distractions, open source extension, Chrome extension manual install, YouTube focus tool, block YouTube Shorts, Kiwi Browser, Quetta Browser, Android extension">
     
     <!-- Open Graph / social -->
     <meta property="og:title" content="Clify – Open Source YouTube Shorts Blocker & Focus Tool">
-    <meta property="og:description" content="Manually install this powerful YouTube content blocker. Removes Shorts, distractions, and clutter. 40+ browsers supported.">
+    <meta property="og:description" content="Manually install this powerful YouTube content blocker. Removes Shorts, distractions, and clutter. 40+ browsers supported including Kiwi and Quetta on Android.">
     <meta property="og:image" content="https://i.ibb.co.com/NddywcR3/Clify-Open-Source-You-Tube-Blocker.png">
     <meta property="og:url" content="https://diptodesign.github.io/clify">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Clify – Open Source YouTube Shorts Blocker">
-    <meta name="twitter:description" content="Free YouTube Shorts remover. Manual install, 100% private. Works on 40+ browsers.">
+    <meta name="twitter:description" content="Free YouTube Shorts remover. Manual install, 100% private. Works on 40+ browsers including Kiwi and Quetta on Android.">
     
     <!-- Product Hunt Verification -->
     <meta name="producthunt" content="https://www.producthunt.com/products/clify-formerly-zap">
@@ -59,6 +59,8 @@
             --ph-glow: 0 0 20px rgba(255, 97, 84, 0.3);
             --facebook-blue: #1877f2;
             --facebook-blue-soft: rgba(24, 119, 242, 0.15);
+            --kiwi-green: #8cc84b;
+            --quetta-purple: #8b5cf6;
             --ink: #0b0f18;
             --ink-light: #151c28;
             --surface: rgba(18, 26, 40, 0.75);
@@ -275,6 +277,30 @@
             background: #1e8aff;
             transform: translateY(-3px);
             box-shadow: 0 16px 26px rgba(24, 119, 242, 0.4);
+        }
+
+        .btn-kiwi {
+            background: var(--kiwi-green);
+            color: #0a0e14;
+            box-shadow: 0 8px 18px rgba(140, 200, 75, 0.3);
+        }
+
+        .btn-kiwi:hover {
+            background: #9fd96b;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 26px rgba(140, 200, 75, 0.4);
+        }
+
+        .btn-quetta {
+            background: var(--quetta-purple);
+            color: white;
+            box-shadow: 0 8px 18px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-quetta:hover {
+            background: #a07eff;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 26px rgba(139, 92, 246, 0.4);
         }
 
         /* ----- navigation ----- */
@@ -686,6 +712,140 @@
             border: 1px solid rgba(203,255,60,0.2);
         }
 
+        /* ---------- ANDROID BROWSER SUPPORT SECTION ---------- */
+        .android-section {
+            background: linear-gradient(145deg, rgba(18, 26, 40, 0.9), rgba(8, 12, 20, 0.95));
+            padding: 60px 0;
+            border-top: 1px solid rgba(203, 255, 60, 0.1);
+            border-bottom: 1px solid rgba(203, 255, 60, 0.1);
+        }
+
+        .android-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .android-card {
+            background: rgba(12, 18, 28, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(203, 255, 60, 0.15);
+            border-radius: 32px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .android-card:hover {
+            border-color: var(--lime);
+            transform: translateY(-5px);
+            box-shadow: var(--lime-glow);
+        }
+
+        .android-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-radius: 20px;
+        }
+
+        .kiwi-icon {
+            background: rgba(140, 200, 75, 0.15);
+            color: var(--kiwi-green);
+        }
+
+        .quetta-icon {
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--quetta-purple);
+        }
+
+        .android-card h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .android-badge {
+            display: inline-block;
+            background: rgba(203, 255, 60, 0.15);
+            color: var(--lime);
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .android-features {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .android-features li {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .android-features i {
+            color: var(--lime);
+        }
+
+        .android-steps {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .android-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: var(--text-body);
+        }
+
+        .android-step-number {
+            width: 28px;
+            height: 28px;
+            background: var(--lime);
+            color: #0a0e14;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .download-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(203,255,60,0.2);
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: var(--text-body);
+            margin-bottom: 20px;
+        }
+
+        .download-badge i {
+            color: var(--lime);
+        }
+
         /* ---------- PRODUCT HUNT SECTION ---------- */
         .ph-section {
             background: radial-gradient(at 30% 40%, rgba(255, 97, 84, 0.08), rgba(203, 255, 60, 0.02) 70%);
@@ -857,6 +1017,34 @@
             border-color: var(--lime);
             color: white;
             transform: translateY(-2px);
+        }
+
+        .browser-chip.kiwi {
+            background: rgba(140, 200, 75, 0.15);
+            border-color: rgba(140, 200, 75, 0.3);
+        }
+
+        .browser-chip.kiwi i {
+            color: var(--kiwi-green);
+        }
+
+        .browser-chip.kiwi:hover {
+            background: rgba(140, 200, 75, 0.25);
+            border-color: var(--kiwi-green);
+        }
+
+        .browser-chip.quetta {
+            background: rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .browser-chip.quetta i {
+            color: var(--quetta-purple);
+        }
+
+        .browser-chip.quetta:hover {
+            background: rgba(139, 92, 246, 0.25);
+            border-color: var(--quetta-purple);
         }
 
         /* ---------- DOWNLOAD BOX ---------- */
@@ -1774,6 +1962,14 @@
             margin-right: 4px;
         }
 
+        .browser-footnote-modern .kiwi {
+            color: var(--kiwi-green);
+        }
+
+        .browser-footnote-modern .quetta {
+            color: var(--quetta-purple);
+        }
+
         /* ===== MOBILE-FIRST OPTIMIZATIONS ===== */
         @media (max-width: 1024px) {
             .nav-links {
@@ -1822,6 +2018,10 @@
             .install-step {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .android-grid {
+                grid-template-columns: 1fr;
             }
 
             .browser-grid-mini {
@@ -2139,6 +2339,102 @@
         </div>
     </section>
 
+    <!-- ANDROID BROWSER SUPPORT SECTION (NEW) -->
+    <section class="android-section" id="android">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>📱 Android Browser Support</h2>
+                <p class="section-subtitle">Take Clify with you on your Android device</p>
+            </div>
+            
+            <div class="android-grid">
+                <!-- Kiwi Browser Card -->
+                <div class="android-card fade-up">
+                    <div class="android-icon kiwi-icon">
+                        <i class="fab fa-chrome"></i>
+                    </div>
+                    <h3>Kiwi Browser</h3>
+                    <div class="android-badge">✅ Fully Supported</div>
+                    <p>The only Android browser that supports Chrome extensions natively.</p>
+                    
+                    <ul class="android-features">
+                        <li><i class="fas fa-check-circle"></i> Install from Play Store</li>
+                        <li><i class="fas fa-check-circle"></i> Same installation steps</li>
+                        <li><i class="fas fa-check-circle"></i> Full extension support</li>
+                        <li><i class="fas fa-check-circle"></i> Sync with desktop</li>
+                    </ul>
+                    
+                    <div class="android-steps">
+                        <div class="android-step">
+                            <span class="android-step-number">1</span>
+                            <span>Install Kiwi Browser from Play Store</span>
+                        </div>
+                        <div class="android-step">
+                            <span class="android-step-number">2</span>
+                            <span>Download Clify .zip on your phone</span>
+                        </div>
+                        <div class="android-step">
+                            <span class="android-step-number">3</span>
+                            <span>Go to <code>kiwi://extensions</code></span>
+                        </div>
+                        <div class="android-step">
+                            <span class="android-step-number">4</span>
+                            <span>Enable Developer Mode → Load unpacked</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://play.google.com/store/apps/details?id=com.kiwibrowser.browser" target="_blank" class="btn btn-kiwi">
+                        <i class="fab fa-google-play"></i> Get Kiwi Browser
+                    </a>
+                </div>
+                
+                <!-- Quetta Browser Card -->
+                <div class="android-card fade-up delay-1">
+                    <div class="android-icon quetta-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Quetta Browser</h3>
+                    <div class="android-badge">✅ Fully Supported</div>
+                    <p>Privacy-focused browser with Chrome extension support.</p>
+                    
+                    <ul class="android-features">
+                        <li><i class="fas fa-check-circle"></i> Built-in ad blocker</li>
+                        <li><i class="fas fa-check-circle"></i> Privacy-focused</li>
+                        <li><i class="fas fa-check-circle"></i> Extension compatible</li>
+                        <li><i class="fas fa-check-circle"></i> Lightweight & fast</li>
+                    </ul>
+                    
+                    <div class="android-steps">
+                        <div class="android-step">
+                            <span class="android-step-number">1</span>
+                            <span>Install Quetta Browser from Play Store</span>
+                        </div>
+                        <div class="android-step">
+                            <span class="android-step-number">2</span>
+                            <span>Download Clify .zip on your phone</span>
+                        </div>
+                        <div class="android-step">
+                            <span class="android-step-number">3</span>
+                            <span>Go to <code>quetta://extensions</code></span>
+                        </div>
+                        <div class="android-step">
+                            <span class="android-step-number">4</span>
+                            <span>Load unpacked extension</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://play.google.com/store/apps/details?id=com.quetta.browser" target="_blank" class="btn btn-quetta">
+                        <i class="fab fa-google-play"></i> Get Quetta Browser
+                    </a>
+                </div>
+            </div>
+            
+            <div class="download-badge fade-up delay-2">
+                <i class="fas fa-download"></i> Download Clify on your Android: <a href="https://github.com/diptodesign/Clify/releases/download/V7.0.1/Clify.7.2.zip" style="color: var(--lime); margin-left: 5px;">Clify.7.2.zip</a>
+            </div>
+        </div>
+    </section>
+
     <!-- VIDEO DEMO SECTION - Facebook Reel -->
     <section class="video-section">
         <div class="container">
@@ -2204,7 +2500,8 @@
                         <tr><td>Shorts Removal</td><td><i class="fas fa-check-circle check-yes"></i> Complete</td><td><i class="fas fa-check-circle check-yes"></i> Partial</td></tr>
                         <tr><td>Keyword Filtering</td><td><i class="fas fa-check-circle check-yes"></i> Regex support</td><td><i class="fas fa-check-circle check-yes"></i> Basic</td></tr>
                         <tr><td>Manual Install</td><td><i class="fas fa-check-circle check-yes"></i> Transparent</td><td><i class="fas fa-times-circle check-no"></i> Store only</td></tr>
-                        <tr><td>Browser Support</td><td><i class="fas fa-check-circle check-yes"></i> 40+</td><td><i class="fas fa-check-circle check-yes"></i> 3-5</td></tr>
+                        <tr><td>Browser Support</td><td><i class="fas fa-check-circle check-yes"></i> 40+ (Kiwi, Quetta)</td><td><i class="fas fa-check-circle check-yes"></i> 3-5</td></tr>
+                        <tr><td>Android Support</td><td><i class="fas fa-check-circle check-yes"></i> Kiwi & Quetta</td><td><i class="fas fa-times-circle check-no"></i> Limited</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -2311,7 +2608,7 @@
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Open Extensions Page</h3>
-                        <div class="step-code">chrome://extensions (or edge://, brave://, opera://, vivaldi://)</div>
+                        <div class="step-code">chrome://extensions (or edge://, brave://, opera://, vivaldi://, kiwi://extensions, quetta://extensions)</div>
                     </div>
                 </div>
                 <div class="install-step fade-up delay-2">
@@ -2350,7 +2647,7 @@
                 <div class="browser-collection">
                     <h3 style="color: white; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.2rem; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
                         <i class="fas fa-crown" style="color: var(--lime);"></i> 
-                        <span>Works on 40+ Chromium Browsers</span>
+                        <span>Works on 40+ Browsers</span>
                     </h3>
                     
                     <div class="browser-grid-mini">
@@ -2364,12 +2661,17 @@
                         <span class="browser-chip"><i class="fab fa-yandex"></i> Yandex</span>
                         <span class="browser-chip"><i class="fas fa-compass"></i> Arc</span>
                         <span class="browser-chip"><i class="fas fa-globe"></i> Samsung</span>
-                        <span class="browser-chip"><i class="fas fa-feather"></i> Kiwi (Android)</span>
+                        <span class="browser-chip kiwi"><i class="fas fa-leaf"></i> Kiwi (Android)</span>
+                        <span class="browser-chip quetta"><i class="fas fa-shield-alt"></i> Quetta (Android)</span>
                     </div>
                     
                     <div class="browser-footnote-modern">
                         <span><i class="fa-regular fa-circle-check"></i> Edge Dev, Canary, all Chromium‑based browsers supported</span>
                         <span><i class="fa-regular fa-clock"></i> Firefox support coming 2026 Q3</span>
+                    </div>
+                    <div class="browser-footnote-modern" style="margin-top: 10px;">
+                        <span><i class="fas fa-leaf kiwi"></i> Kiwi Browser: <code>kiwi://extensions</code></span>
+                        <span><i class="fas fa-shield-alt quetta"></i> Quetta Browser: <code>quetta://extensions</code></span>
                     </div>
                 </div>
             </div>
@@ -2453,6 +2755,8 @@
                 <span class="partner-logo"><i class="fab fa-github"></i> Open Source Community</span>
                 <span class="partner-logo"><i class="fas fa-shield-alt"></i> Digital Minimalists</span>
                 <span class="partner-logo"><i class="fas fa-code"></i> Dev.to</span>
+                <span class="partner-logo"><i class="fas fa-leaf"></i> Kiwi Browser</span>
+                <span class="partner-logo"><i class="fas fa-shield-alt"></i> Quetta Browser</span>
             </div>
         </div>
     </section>
@@ -2502,7 +2806,7 @@
                 </div>
                 <div class="faq-item fade-up delay-1">
                     <div class="faq-question"><span>Does Clify work on mobile?</span> <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p>It works on Kiwi Browser for Android. iOS support is limited due to Apple's extension policies.</p></div>
+                    <div class="faq-answer"><p>Yes! It works on <strong>Kiwi Browser</strong> and <strong>Quetta Browser</strong> for Android. Simply install the browser, download Clify, and load it at <code>kiwi://extensions</code> or <code>quetta://extensions</code>. iOS support is limited due to Apple's extension policies.</p></div>
                 </div>
             </div>
         </div>
@@ -2545,6 +2849,8 @@
                         <li><a href="https://t.me/Clifybydd" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
                         <li><a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank"><i class="fab fa-product-hunt"></i> Product Hunt</a></li>
                         <li><a href="mailto:diptodesignstd@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
+                        <li><a href="https://play.google.com/store/apps/details?id=com.kiwibrowser.browser" target="_blank"><i class="fas fa-leaf"></i> Kiwi Browser</a></li>
+                        <li><a href="https://play.google.com/store/apps/details?id=com.quetta.browser" target="_blank"><i class="fas fa-shield-alt"></i> Quetta Browser</a></li>
                         <li style="margin-top: 16px;"><a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank"><i class="fas fa-history"></i> Changelog</a></li>
                         <li><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank"><i class="fas fa-lock"></i> Privacy</a></li>
                     </ul>

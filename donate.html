@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Support Clify - Donate to Keep YouTube Focused & Free</title>
+    <meta name="description" content="Support Clify development with a donation. Help us keep this open-source YouTube Shorts blocker free, private, and ad-free for everyone.">
+    
+    <!-- Open Graph / social -->
+    <meta property="og:title" content="Support Clify - Donate to Keep YouTube Focused">
+    <meta property="og:description" content="Help keep Clify free, open source, and privacy-focused. Your donation supports development, server costs, and future features.">
+    <meta property="og:image" content="https://i.ibb.co.com/NddywcR3/Clify-Open-Source-You-Tube-Blocker.png">
+    <meta property="og:url" content="https://diptodesign.github.io/clify/donate">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co.com/HTvvpsZ2/icon16.png">
+    
+    <!-- Fonts + Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <style>
+        /* ===== SAME STYLES AS MAIN SITE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lime: #cbff3c;
+            --lime-bright: #d4ff5c;
+            --lime-soft: rgba(203, 255, 60, 0.15);
+            --lime-glow: 0 0 20px rgba(203, 255, 60, 0.3);
+            --ph-orange: #ff6154;
+            --donate-heart: #ff3366;
+            --donate-heart-soft: rgba(255, 51, 102, 0.15);
+            --stripe-purple: #635bff;
+            --paypal-blue: #003087;
+            --payoneer-blue: #1f2b6b;
+            --bkash-pink: #e2136e;
+            --nagad-orange: #f37124;
+            --rocket-green: #00a651;
+            --islami-green: #006a4e;
+            --upay-purple: #8a2be2;
+            --celfin-blue: #0066b3;
+            --mcash-blue: #0099ff;
+            --nsave-green: #00c853;
+            --ink: #0b0f18;
+            --ink-light: #151c28;
+            --surface: rgba(18, 26, 40, 0.75);
+            --glass-edge: rgba(255, 255, 255, 0.06);
+            --text-head: #ffffff;
+            --text-body: #cdd5e0;
+            --text-mute: #98a2b3;
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 20%, #111a24, #0a0e14 90%);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-body);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 0;
+            background: rgba(6, 10, 16, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(203, 255, 60, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--lime);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #0a0e14;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e0e7f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--lime);
+        }
+
+        .nav-links .donate-btn {
+            background: var(--donate-heart);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+        }
+
+        .nav-links .donate-btn:hover {
+            background: #ff4d7a;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .donate-hero {
+            padding-top: 140px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+
+        .donate-hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #ff99bb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .donate-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #b0c0d0;
+        }
+
+        .donate-heart {
+            color: var(--donate-heart);
+            font-size: 2rem;
+            margin: 20px 0;
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            35% { transform: scale(1); }
+            45% { transform: scale(1.05); }
+            55% { transform: scale(1); }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.03);
+            padding: 20px 30px;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--lime);
+        }
+
+        .stat-label {
+            color: var(--text-mute);
+            font-size: 0.9rem;
+        }
+
+        /* Donation Grid */
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .donation-card {
+            background: rgba(18, 26, 38, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(203, 255, 60, 0.15);
+            border-radius: 32px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-card:hover {
+            border-color: var(--donate-heart);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 51, 102, 0.15);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--donate-heart);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            color: var(--donate-heart);
+            margin-bottom: 20px;
+        }
+
+        .donation-card h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .card-subtitle {
+            color: var(--text-mute);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .feature-list li {
+            color: var(--text-body);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list i {
+            color: var(--lime);
+        }
+
+        .donate-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        .donate-btn.primary {
+            background: var(--donate-heart);
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
+        }
+
+        .donate-btn.primary:hover {
+            background: #ff4d7a;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 51, 102, 0.4);
+        }
+
+        .donate-btn.outline {
+            background: transparent;
+            border: 2px solid var(--lime);
+            color: white;
+        }
+
+        .donate-btn.outline:hover {
+            background: rgba(203, 255, 60, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .donate-btn.stripe {
+            background: var(--stripe-purple);
+            color: white;
+        }
+
+        .donate-btn.stripe:hover {
+            background: #7a73ff;
+        }
+
+        .donate-btn.paypal {
+            background: var(--paypal-blue);
+            color: white;
+        }
+
+        .donate-btn.paypal:hover {
+            background: #0035a0;
+        }
+
+        .donate-btn.payoneer {
+            background: var(--payoneer-blue);
+            color: white;
+        }
+
+        .donate-btn.payoneer:hover {
+            background: #2a3a8c;
+        }
+
+        .donate-btn.nsave {
+            background: var(--nsave-green);
+            color: white;
+        }
+
+        .donate-btn.nsave:hover {
+            background: #00e676;
+        }
+
+        .donate-btn.bkash {
+            background: var(--bkash-pink);
+            color: white;
+        }
+
+        .donate-btn.nagad {
+            background: var(--nagad-orange);
+            color: white;
+        }
+
+        .donate-btn.rocket {
+            background: var(--rocket-green);
+            color: white;
+        }
+
+        .donate-btn.islami {
+            background: var(--islami-green);
+            color: white;
+        }
+
+        .donate-btn.upay {
+            background: var(--upay-purple);
+            color: white;
+        }
+
+        .donate-btn.celfin {
+            background: var(--celfin-blue);
+            color: white;
+        }
+
+        .donate-btn.mcash {
+            background: var(--mcash-blue);
+            color: white;
+        }
+
+        /* Payment Methods */
+        .payment-section {
+            margin-top: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-mute);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .payment-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .payment-tab {
+            padding: 12px 30px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(203,255,60,0.1);
+            border-radius: 60px;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .payment-tab:hover {
+            border-color: var(--lime);
+            background: rgba(203,255,60,0.05);
+        }
+
+        .payment-tab.active {
+            background: var(--lime);
+            color: #0a0e14;
+            border-color: var(--lime);
+        }
+
+        .payment-panel {
+            display: none;
+        }
+
+        .payment-panel.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .payment-card {
+            background: rgba(12, 18, 28, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(203, 255, 60, 0.1);
+            border-radius: 24px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .payment-card:hover {
+            border-color: var(--donate-heart);
+            transform: translateY(-5px);
+        }
+
+        .payment-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .payment-card h4 {
+            color: white;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .payment-card p {
+            color: var(--text-mute);
+            font-size: 0.85rem;
+        }
+
+        /* Payment Details */
+        .payment-details {
+            background: rgba(12, 18, 28, 0.8);
+            border-radius: 32px;
+            padding: 30px;
+            margin-top: 30px;
+            border: 1px solid rgba(203,255,60,0.15);
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: var(--text-mute);
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: var(--lime);
+            font-family: monospace;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copy-btn {
+            background: rgba(203,255,60,0.1);
+            border: none;
+            color: var(--lime);
+            padding: 5px 15px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background: var(--lime);
+            color: #0a0e14;
+        }
+
+        .qr-code {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #1a1f2e, #0a0e14);
+            border: 2px solid var(--lime);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--lime);
+            font-size: 3rem;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: linear-gradient(145deg, rgba(18, 26, 40, 0.8), rgba(8, 12, 20, 0.9));
+            border-radius: 48px;
+            padding: 60px 40px;
+            margin: 80px 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .impact-item i {
+            font-size: 2.5rem;
+            color: var(--lime);
+            margin-bottom: 15px;
+        }
+
+        .impact-item h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .impact-item p {
+            color: var(--text-mute);
+            font-size: 0.9rem;
+        }
+
+        /* Supporters */
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .supporter-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(203,255,60,0.1);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .supporter-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--lime), #8bc34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: 700;
+            color: #0a0e14;
+        }
+
+        .supporter-name {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .supporter-amount {
+            color: var(--lime);
+            font-size: 0.85rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: rgba(12, 18, 28, 0.55);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 30px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            padding: 0 25px 20px;
+            color: var(--text-body);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(145deg, #0b111c, #05080f);
+            border-top: 1px solid rgba(203, 255, 60, 0.2);
+            padding: 40px 0;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--lime);
+        }
+
+        .copyright {
+            color: var(--text-mute);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(6,10,16,0.95);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(203,255,60,0.2);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .stats-bar {
+                gap: 20px;
+            }
+            
+            .stat-item {
+                padding: 15px 20px;
+            }
+
+            .payment-tabs {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .payment-tab {
+                text-align: center;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-body);
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: color 0.2s;
+        }
+
+        .back-home:hover {
+            color: var(--lime);
+        }
+
+        .flag-bd {
+            background: linear-gradient(135deg, #006a4e 50%, #f42a41 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                Clify
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#install">Install</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>
+                <a href="donate.html" class="donate-btn"><i class="fas fa-heart"></i> Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Back Link -->
+        <a href="index.html" class="back-home fade-up">
+            <i class="fas fa-arrow-left"></i> Back to Clify
+        </a>
+
+        <!-- Hero Section -->
+        <section class="donate-hero fade-up">
+            <div class="donate-heart">
+                <i class="fas fa-heart"></i>
+            </div>
+            <h1>Keep Clify Free & Focused</h1>
+            <p>Your support helps us maintain servers, develop new features, and keep Clify 100% free, open source, and ad-free for everyone.</p>
+        </section>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar fade-up delay-1">
+            <div class="stat-item">
+                <div class="stat-number">200k+</div>
+                <div class="stat-label">Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500k+</div>
+                <div class="stat-label">Videos Blocked</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Open Source</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$0</div>
+                <div class="stat-label">Server Cost to You</div>
+            </div>
+        </div>
+
+        <!-- International Payment Methods -->
+        <div class="payment-section">
+            <div class="section-title fade-up">
+                <h2>🌍 International Payments</h2>
+                <p>Support from anywhere in the world</p>
+            </div>
+
+            <div class="payment-grid fade-up delay-1">
+                <a href="https://buy.stripe.com/your_stripe_link" target="_blank" class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fab fa-stripe-s" style="color: #635bff;"></i>
+                    </div>
+                    <h4>Stripe</h4>
+                    <p>Credit Card · Apple Pay · Google Pay</p>
+                </a>
+                
+                <a href="https://paypal.me/diptodesign98" target="_blank" class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fab fa-paypal" style="color: #003087;"></i>
+                    </div>
+                    <h4>PayPal</h4>
+                    <p>Credit Card · PayPal Balance</p>
+                </a>
+                
+                <!-- Payoneer - Using Email -->
+                <div class="payment-card" onclick="showPaymentDetails('payoneer')">
+                    <div class="payment-icon">
+                        <i class="fas fa-globe" style="color: #1f2b6b;"></i>
+                    </div>
+                    <h4>Payoneer</h4>
+                    <p>Send to email address</p>
+                </div>
+                
+                <!-- nSave - Using Tag -->
+                <div class="payment-card" onclick="showPaymentDetails('nsave')">
+                    <div class="payment-icon">
+                        <i class="fas fa-piggy-bank" style="color: #00c853;"></i>
+                    </div>
+                    <h4>nSave</h4>
+                    <p>Send to @dipto_das</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bangladesh Local Payments -->
+        <div class="payment-section">
+            <div class="section-title fade-up">
+                <h2>🇧🇩 Bangladesh Payments</h2>
+                <p>Local payment methods for our Bangladeshi supporters</p>
+            </div>
+
+            <div class="payment-tabs fade-up">
+                <button class="payment-tab active" onclick="switchPaymentTab('mobile')">📱 Mobile Banking</button>
+                <button class="payment-tab" onclick="switchPaymentTab('bank')">🏦 Bank Transfer</button>
+            </div>
+
+            <!-- Mobile Banking Panel -->
+            <div id="mobile-panel" class="payment-panel active fade-up">
+                <div class="payment-grid">
+                    <!-- bKash -->
+                    <div class="payment-card" onclick="showPaymentDetails('bkash')">
+                        <div class="payment-icon">
+                            <i class="fas fa-mobile-alt" style="color: #e2136e;"></i>
+                        </div>
+                        <h4>bKash</h4>
+                        <p>Send Money · Merchant Payment</p>
+                    </div>
+
+                    <!-- Nagad -->
+                    <div class="payment-card" onclick="showPaymentDetails('nagad')">
+                        <div class="payment-icon">
+                            <i class="fas fa-wallet" style="color: #f37124;"></i>
+                        </div>
+                        <h4>Nagad</h4>
+                        <p>Send Money · Cash Out</p>
+                    </div>
+
+                    <!-- Rocket -->
+                    <div class="payment-card" onclick="showPaymentDetails('rocket')">
+                        <div class="payment-icon">
+                            <i class="fas fa-rocket" style="color: #00a651;"></i>
+                        </div>
+                        <h4>Rocket</h4>
+                        <p>Dutch-Bangla Bank</p>
+                    </div>
+
+                    <!-- Upay -->
+                    <div class="payment-card" onclick="showPaymentDetails('upay')">
+                        <div class="payment-icon">
+                            <i class="fas fa-bolt" style="color: #8a2be2;"></i>
+                        </div>
+                        <h4>Upay</h4>
+                        <p>Union Pay</p>
+                    </div>
+
+                    <!-- MCash -->
+                    <div class="payment-card" onclick="showPaymentDetails('mcash')">
+                        <div class="payment-icon">
+                            <i class="fas fa-coins" style="color: #0099ff;"></i>
+                        </div>
+                        <h4>MCash</h4>
+                        <p>Mobile Financial Service</p>
+                    </div>
+
+                    <!-- Celfin -->
+                    <div class="payment-card" onclick="showPaymentDetails('celfin')">
+                        <div class="payment-icon">
+                            <i class="fas fa-hand-holding-usd" style="color: #0066b3;"></i>
+                        </div>
+                        <h4>Celfin</h4>
+                        <p>Islamic Finance</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bank Transfer Panel -->
+            <div id="bank-panel" class="payment-panel fade-up">
+                <div class="payment-grid">
+                    <!-- Islami Bank -->
+                    <div class="payment-card" onclick="showPaymentDetails('islami')">
+                        <div class="payment-icon">
+                            <i class="fas fa-university" style="color: #006a4e;"></i>
+                        </div>
+                        <h4>Islami Bank PLC</h4>
+                        <p>Agent Banking · Account Transfer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Details Section -->
+            <div id="payment-details" class="payment-details fade-up" style="display: none;">
+                <!-- Payoneer Details - UPDATED -->
+                <div id="payoneer-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">🌍 Payoneer Payment</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Payoneer Email</span>
+                        <span class="detail-value" style="font-family: 'Inter', sans-serif;">
+                            diptodas1998bd@gmail.com
+                            <button class="copy-btn" onclick="copyText('diptodas1998bd@gmail.com')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Reference</span>
+                        <span class="detail-value">
+                            CLIFY
+                            <button class="copy-btn" onclick="copyText('CLIFY')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <p style="color: var(--text-mute); margin-top: 20px; font-size: 0.9rem;">
+                        <i class="fas fa-info-circle"></i> Send payment to this Payoneer email address. Include "CLIFY" in the notes.
+                    </p>
+                </div>
+
+                <!-- nSave Details -->
+                <div id="nsave-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">💰 nSave Payment</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">nSave Tag</span>
+                        <span class="detail-value" style="font-family: 'Inter', sans-serif;">
+                            @dipto_das
+                            <button class="copy-btn" onclick="copyText('@dipto_das')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Reference</span>
+                        <span class="detail-value">
+                            CLIFY
+                            <button class="copy-btn" onclick="copyText('CLIFY')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <p style="color: var(--text-mute); margin-top: 20px; font-size: 0.9rem;">
+                        <i class="fas fa-info-circle"></i> Send via nSave app to @dipto_das. Use reference "CLIFY".
+                    </p>
+                </div>
+
+                <!-- bKash Details -->
+                <div id="bkash-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">📱 bKash Payment</h3>
+                    <div class="qr-code">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">bKash Number (Send Money)</span>
+                        <span class="detail-value">
+                            01627588083
+                            <button class="copy-btn" onclick="copyText('01627588083')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Reference</span>
+                        <span class="detail-value">
+                            CLIFY
+                            <button class="copy-btn" onclick="copyText('CLIFY')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <p style="color: var(--text-mute); margin-top: 20px; font-size: 0.9rem;">
+                        <i class="fas fa-info-circle"></i> Send any amount via bKash Send Money. Use reference "CLIFY".
+                    </p>
+                </div>
+
+                <!-- Nagad Details -->
+                <div id="nagad-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">📱 Nagad Payment</h3>
+                    <div class="qr-code">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Nagad Number</span>
+                        <span class="detail-value">
+                            01627588083
+                            <button class="copy-btn" onclick="copyText('01627588083')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Reference</span>
+                        <span class="detail-value">
+                            CLIFY
+                            <button class="copy-btn" onclick="copyText('CLIFY')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Rocket Details -->
+                <div id="rocket-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">🚀 Rocket (DBBL) Payment</h3>
+                    <div class="qr-code">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Rocket Number</span>
+                        <span class="detail-value">
+                            017855101573
+                            <button class="copy-btn" onclick="copyText('017855101573')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Reference</span>
+                        <span class="detail-value">
+                            CLIFY
+                            <button class="copy-btn" onclick="copyText('CLIFY')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Upay Details -->
+                <div id="upay-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">⚡ Upay Payment</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Upay Number</span>
+                        <span class="detail-value">
+                            01627588083
+                            <button class="copy-btn" onclick="copyText('01627588083')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- MCash Details -->
+                <div id="mcash-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">💰 MCash Payment</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">MCash Number</span>
+                        <span class="detail-value">
+                            016275880839
+                            <button class="copy-btn" onclick="copyText('016275880839')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Celfin Details -->
+                <div id="celfin-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">🤝 Celfin Payment</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Celfin Number</span>
+                        <span class="detail-value">
+                            01627588083
+                            <button class="copy-btn" onclick="copyText('01627588083')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Islami Bank Details -->
+                <div id="islami-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">🏦 Islami Bank Bangladesh PLC</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Title</span>
+                        <span class="detail-value" style="font-family: 'Inter', sans-serif;">DIPTO DAS</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Account Number</span>
+                        <span class="detail-value">
+                            20507770206430163
+                            <button class="copy-btn" onclick="copyText('20507770206430163')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Branch</span>
+                        <span class="detail-value">Agent Banking</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Routing Number</span>
+                        <span class="detail-value">
+                            125270607
+                            <button class="copy-btn" onclick="copyText('125270607')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Bank</span>
+                        <span class="detail-value">Islami Bank Bangladesh PLC</span>
+                    </div>
+                    <p style="color: var(--text-mute); margin-top: 20px;">
+                        <i class="fas fa-info-circle"></i> Agent banking available at any Islami Bank agent point. Send via any bank in Bangladesh using these details.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coffee & Community Support - UPDATED LINKS -->
+        <div class="payment-section">
+            <div class="section-title fade-up">
+                <h2>☕ Coffee & Community</h2>
+                <p>Support with a cup of coffee (or tea!)</p>
+            </div>
+
+            <div class="payment-grid fade-up">
+                <a href="https://buymeacoffee.com/diptodesign100" target="_blank" class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-mug-hot" style="color: #FFDD00;"></i>
+                    </div>
+                    <h4>Buy Me a Coffee</h4>
+                    <p>$3 · $5 · $10 · Custom</p>
+                </a>
+                
+                <a href="https://ko-fi.com/diptodesignz" target="_blank" class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-coffee" style="color: #00B9FE;"></i>
+                    </div>
+                    <h4>Ko-fi</h4>
+                    <p>One-time · Monthly · Shop</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Impact Section -->
+        <div class="impact-section fade-up">
+            <div class="section-title">
+                <h2>Your Donation Helps</h2>
+                <p>Every contribution directly supports Clify's development</p>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <i class="fas fa-server"></i>
+                    <h4>Server Costs</h4>
+                    <p>Keep our servers running and fast</p>
+                </div>
+                <div class="impact-item">
+                    <i class="fas fa-code"></i>
+                    <h4>Development</h4>
+                    <p>Fund new features and improvements</p>
+                </div>
+                <div class="impact-item">
+                    <i class="fas fa-globe"></i>
+                    <h4>Translations</h4>
+                    <p>Support more languages (currently 40+)</p>
+                </div>
+                <div class="impact-item">
+                    <i class="fas fa-bug"></i>
+                    <h4>Bug Bounties</h4>
+                    <p>Reward security researchers</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Supporters -->
+        <div class="section-title fade-up">
+            <h2>Recent Supporters</h2>
+            <p>Thank you to our amazing community! 💚</p>
+        </div>
+
+        <div class="supporters-grid fade-up delay-1">
+            <div class="supporter-card">
+                <div class="supporter-avatar">🇺🇸</div>
+                <div class="supporter-name">John D.</div>
+                <div class="supporter-amount">$50</div>
+            </div>
+            <div class="supporter-card">
+                <div class="supporter-avatar">🇧🇩</div>
+                <div class="supporter-name">Rafiq A.</div>
+                <div class="supporter-amount">500 ৳</div>
+            </div>
+            <div class="supporter-card">
+                <div class="supporter-avatar">🇩🇪</div>
+                <div class="supporter-name">Maria S.</div>
+                <div class="supporter-amount">€25</div>
+            </div>
+            <div class="supporter-card">
+                <div class="supporter-avatar">🇧🇩</div>
+                <div class="supporter-name">Tasnim K.</div>
+                <div class="supporter-amount">1000 ৳</div>
+            </div>
+            <div class="supporter-card">
+                <div class="supporter-avatar">🇯🇵</div>
+                <div class="supporter-name">Yuki T.</div>
+                <div class="supporter-amount">¥3000</div>
+            </div>
+            <div class="supporter-card">
+                <div class="supporter-avatar">🇧🇩</div>
+                <div class="supporter-name">Nadia R.</div>
+                <div class="supporter-amount">300 ৳</div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="section-title fade-up" style="margin-top: 60px;">
+            <h2>Donation FAQ</h2>
+        </div>
+
+        <div class="faq-section fade-up delay-1">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is my donation tax-deductible?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Clify is a personal open-source project, not a registered non-profit. Donations are not tax-deductible in most countries. However, your support helps keep the project alive and growing!</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Where does my money go?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>100% of donations go towards server costs ($20/month), development tools, bug bounties, and compensating translators. I don't take a salary - this is a passion project.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I donate via bKash/Nagad?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Select your preferred mobile banking method above. Send any amount via "Send Money" to the provided number (01627588083 for most services, 017855101573 for Rocket, 016275880839 for MCash). Use "CLIFY" as reference. After sending, you can optionally email us for acknowledgment.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I donate via Payoneer?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Send payment to diptodas1998bd@gmail.com via Payoneer. Include "CLIFY" in the notes so we can acknowledge your support.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I donate via nSave?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Open nSave app and send to @dipto_das. Use reference "CLIFY". Thank you for your support!</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I donate via bank transfer?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Use the Islami Bank Bangladesh PLC details provided above. Account Name: DIPTO DAS, Account Number: 20507770206430163, Routing: 125270607. Send from any bank in Bangladesh.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I donate anonymously?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Use cryptocurrency, choose "anonymous" on donation platforms, or donate via mobile banking without sharing your name. Your name won't appear in the supporters list.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA - UPDATED LINKS -->
+        <div style="text-align: center; margin: 80px 0 40px;" class="fade-up">
+            <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">Love Clify? Support Us! 💚</h2>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://buymeacoffee.com/diptodesign100" target="_blank" class="donate-btn primary" style="width: auto; padding: 18px 50px;">
+                    <i class="fas fa-mug-hot"></i> Buy Me a Coffee
+                </a>
+                <a href="https://ko-fi.com/diptodesignz" target="_blank" class="donate-btn outline" style="width: auto; padding: 18px 50px;">
+                    <i class="fas fa-coffee"></i> Ko-fi
+                </a>
+            </div>
+            <p style="color: var(--text-mute); margin-top: 20px;">Join 50+ amazing supporters keeping Clify free</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <a href="index.html" class="logo" style="justify-content: center; margin-bottom: 20px;">
+                <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                Clify
+            </a>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#install">Install</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>
+                <a href="donate.html">Donate</a>
+            </div>
+            <div class="copyright">
+                © <span id="currentYear"></span> Clify · Open source · Made with ❤️ in Bangladesh <span class="flag-bd">🇧🇩</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile menu
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', function(){
+            document.getElementById('navLinks').classList.toggle('show');
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', function() {
+                this.parentElement.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (this.parentElement.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Payment tabs
+        function switchPaymentTab(tab) {
+            document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.payment-panel').forEach(p => p.classList.remove('active'));
+            
+            if (tab === 'mobile') {
+                document.querySelector('.payment-tab').classList.add('active');
+                document.getElementById('mobile-panel').classList.add('active');
+            } else {
+                document.querySelectorAll('.payment-tab')[1].classList.add('active');
+                document.getElementById('bank-panel').classList.add('active');
+            }
+            
+            // Hide payment details when switching tabs
+            document.getElementById('payment-details').style.display = 'none';
+        }
+
+        // Show payment details
+        function showPaymentDetails(method) {
+            const detailsContainer = document.getElementById('payment-details');
+            detailsContainer.style.display = 'block';
+            
+            // Hide all details
+            document.querySelectorAll('#payment-details > div').forEach(div => {
+                div.style.display = 'none';
+            });
+            
+            // Show selected details
+            document.getElementById(method + '-details').style.display = 'block';
+            
+            // Scroll to details
+            detailsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Copy text function
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.currentTarget;
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                }, 2000);
+            });
+        }
+
+        // Fade up animations
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-up');
+                }
+            });
+        }, { threshold: 0.1 });
+        faders.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

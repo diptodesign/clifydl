@@ -42,6 +42,8 @@
             --stripe-purple: #635bff;
             --paypal-blue: #003087;
             --payoneer-blue: #1f2b6b;
+            --binance-yellow: #f0b90b;
+            --binance-black: #1a1e28;
             --bkash-pink: #e2136e;
             --nagad-orange: #f37124;
             --rocket-green: #00a651;
@@ -369,6 +371,15 @@
 
         .donate-btn.payoneer:hover {
             background: #2a3a8c;
+        }
+
+        .donate-btn.binance {
+            background: var(--binance-yellow);
+            color: var(--binance-black);
+        }
+
+        .donate-btn.binance:hover {
+            background: #f8d447;
         }
 
         .donate-btn.nsave {
@@ -859,13 +870,14 @@
             </div>
 
             <div class="payment-grid fade-up delay-1">
-                <a href="https://buy.stripe.com/your_stripe_link" target="_blank" class="payment-card">
+                <!-- Stripe - Using Email -->
+                <div class="payment-card" onclick="showPaymentDetails('stripe')">
                     <div class="payment-icon">
                         <i class="fab fa-stripe-s" style="color: #635bff;"></i>
                     </div>
                     <h4>Stripe</h4>
                     <p>Credit Card · Apple Pay · Google Pay</p>
-                </a>
+                </div>
                 
                 <a href="https://paypal.me/diptodesign98" target="_blank" class="payment-card">
                     <div class="payment-icon">
@@ -882,6 +894,15 @@
                     </div>
                     <h4>Payoneer</h4>
                     <p>Send to email address</p>
+                </div>
+                
+                <!-- Binance - Updated Email -->
+                <div class="payment-card" onclick="showPaymentDetails('binance')">
+                    <div class="payment-icon">
+                        <i class="fab fa-bitcoin" style="color: #f0b90b;"></i>
+                    </div>
+                    <h4>Binance</h4>
+                    <p>UID: 835991485 · hiredipto@gmail.com</p>
                 </div>
                 
                 <!-- nSave - Using Tag -->
@@ -982,7 +1003,30 @@
 
             <!-- Payment Details Section -->
             <div id="payment-details" class="payment-details fade-up" style="display: none;">
-                <!-- Payoneer Details - UPDATED -->
+                <!-- Stripe Details -->
+                <div id="stripe-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">💳 Stripe Payment</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Stripe Account Email</span>
+                        <span class="detail-value" style="font-family: 'Inter', sans-serif;">
+                            diptodas1998bd@gmail.com
+                            <button class="copy-btn" onclick="copyText('diptodas1998bd@gmail.com')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Payment Link</span>
+                        <span class="detail-value" style="font-family: 'Inter', sans-serif;">
+                            stripe.com/pay/... (Coming Soon)
+                        </span>
+                    </div>
+                    <p style="color: var(--text-mute); margin-top: 20px; font-size: 0.9rem;">
+                        <i class="fas fa-info-circle"></i> Stripe payments are being set up. For now, you can use PayPal or local payment methods.
+                    </p>
+                </div>
+
+                <!-- Payoneer Details -->
                 <div id="payoneer-details" style="display: none;">
                     <h3 style="color: white; margin-bottom: 20px;">🌍 Payoneer Payment</h3>
                     <div class="detail-row">
@@ -1005,6 +1049,91 @@
                     </div>
                     <p style="color: var(--text-mute); margin-top: 20px; font-size: 0.9rem;">
                         <i class="fas fa-info-circle"></i> Send payment to this Payoneer email address. Include "CLIFY" in the notes.
+                    </p>
+                </div>
+
+                <!-- Binance Details - Updated with new email -->
+                <div id="binance-details" style="display: none;">
+                    <h3 style="color: white; margin-bottom: 20px;">💰 Binance Crypto Payment</h3>
+                    
+                    <div class="qr-code">
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Binance UID</span>
+                        <span class="detail-value" style="font-family: 'Inter', sans-serif;">
+                            835991485
+                            <button class="copy-btn" onclick="copyText('835991485')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Binance Email</span>
+                        <span class="detail-value" style="font-family: 'Inter', sans-serif;">
+                            hiredipto@gmail.com
+                            <button class="copy-btn" onclick="copyText('hiredipto@gmail.com')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">USDT (BEP20)</span>
+                        <span class="detail-value" style="font-size: 0.9rem;">
+                            Add your USDT address
+                            <button class="copy-btn" onclick="copyText('Add your USDT address')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">BNB (BEP20)</span>
+                        <span class="detail-value" style="font-size: 0.9rem;">
+                            Add your BNB address
+                            <button class="copy-btn" onclick="copyText('Add your BNB address')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Bitcoin (BTC)</span>
+                        <span class="detail-value" style="font-size: 0.9rem;">
+                            Add your BTC address
+                            <button class="copy-btn" onclick="copyText('Add your BTC address')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Ethereum (ERC20)</span>
+                        <span class="detail-value" style="font-size: 0.9rem;">
+                            Add your ETH address
+                            <button class="copy-btn" onclick="copyText('Add your ETH address')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="detail-label">Reference</span>
+                        <span class="detail-value">
+                            CLIFY
+                            <button class="copy-btn" onclick="copyText('CLIFY')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </span>
+                    </div>
+                    
+                    <p style="color: var(--text-mute); margin-top: 20px; font-size: 0.9rem;">
+                        <i class="fas fa-info-circle"></i> Send via Binance Pay using UID <strong>835991485</strong> or email <strong>hiredipto@gmail.com</strong>. For crypto transfers, use BEP20 network for low fees. Include "CLIFY" in the memo if possible.
                     </p>
                 </div>
 
@@ -1203,7 +1332,7 @@
             </div>
         </div>
 
-        <!-- Coffee & Community Support - UPDATED LINKS -->
+        <!-- Coffee & Community Support -->
         <div class="payment-section">
             <div class="section-title fade-up">
                 <h2>☕ Coffee & Community</h2>
@@ -1342,6 +1471,24 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">
+                    <span>How do I donate via Binance?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Send via Binance Pay using UID <strong>835991485</strong> or email <strong>hiredipto@gmail.com</strong>. For crypto transfers, use BEP20 network for lower fees. Include "CLIFY" in the memo if possible. Contact us after sending for acknowledgment.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I donate via Stripe?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Stripe payments are being set up. For now, please use PayPal or local payment methods. Thank you for your patience!</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
                     <span>How do I donate via nSave?</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
@@ -1369,7 +1516,7 @@
             </div>
         </div>
 
-        <!-- Final CTA - UPDATED LINKS -->
+        <!-- Final CTA -->
         <div style="text-align: center; margin: 80px 0 40px;" class="fade-up">
             <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">Love Clify? Support Us! 💚</h2>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">

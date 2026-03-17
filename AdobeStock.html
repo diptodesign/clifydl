@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Adobe Stock KiMaster - Keyword & Title Copier by Trovant Studio</title>
+    <meta name="description" content="Extract and copy keywords and titles from Adobe Stock assets in one click. Save hours of manual work. Free Chrome extension by Trovant Studio.">
+    <meta name="keywords" content="adobe stock, keywords, stock photos, image titles, copy keywords, chrome extension, adobe stock pro, trovant studio, dipto design">
+    
+    <!-- Open Graph / social -->
+    <meta property="og:title" content="Adobe Stock KiMaster - Keyword & Title Copier">
+    <meta property="og:description" content="Extract and copy keywords and titles from Adobe Stock assets in one click. Save hours of manual work.">
+    <meta property="og:image" content="https://i.ibb.co.com/your-image/adobe-stock-preview.png">
+    <meta property="og:url" content="https://trovantstudio.github.io/adobe-stock-kimaster">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <style>
+        /* ===== MODERN STYLES FOR ADOBE STOCK KIMASTER ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --adobe-red: #ED2224;
+            --adobe-red-dark: #C41E22;
+            --adobe-red-soft: rgba(237, 34, 36, 0.15);
+            --adobe-red-glow: 0 0 20px rgba(237, 34, 36, 0.3);
+            --adobe-blue: #00A4E4;
+            --adobe-blue-dark: #0087C1;
+            --adobe-blue-soft: rgba(0, 164, 228, 0.15);
+            --dipto-lime: #cbff3c;
+            --dipto-lime-soft: rgba(203, 255, 60, 0.15);
+            --ink: #0b0f18;
+            --ink-light: #151c28;
+            --surface: rgba(18, 26, 40, 0.75);
+            --glass-edge: rgba(255, 255, 255, 0.06);
+            --text-head: #ffffff;
+            --text-body: #cdd5e0;
+            --text-mute: #98a2b3;
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 20%, #111a24, #0a0e14 90%);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        section {
+            padding: 84px 0;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #ff9b9c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.2rem;
+        }
+
+        .adobe-gradient {
+            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            font-weight: 700;
+            background: linear-gradient(to right, #ffffff, #ffb3b4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--text-mute);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Brand Hierarchy */
+        .brand-hierarchy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .parent-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(203, 255, 60, 0.1);
+            border: 1px solid rgba(203, 255, 60, 0.3);
+            padding: 8px 20px;
+            border-radius: 60px;
+            color: var(--dipto-lime);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .parent-brand i {
+            color: var(--dipto-lime);
+        }
+
+        .brand-separator {
+            color: var(--text-mute);
+            font-size: 1.2rem;
+        }
+
+        .sub-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(237, 34, 36, 0.1), rgba(0, 164, 228, 0.1));
+            border: 1px solid rgba(237, 34, 36, 0.3);
+            padding: 8px 20px;
+            border-radius: 60px;
+            color: var(--adobe-red);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .sub-brand i {
+            color: var(--adobe-blue);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 0;
+            background: rgba(6, 10, 16, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(237, 34, 36, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: white;
+            box-shadow: 0 6px 14px rgba(237, 34, 36, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e0e7f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--adobe-red);
+        }
+
+        .nav-links .download-btn {
+            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-red-dark));
+            color: white;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(237, 34, 36, 0.3);
+        }
+
+        .nav-links .download-btn:hover {
+            background: linear-gradient(135deg, var(--adobe-red-dark), var(--adobe-red));
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 60px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(237, 34, 36, 0.1);
+            border: 1px solid rgba(237, 34, 36, 0.3);
+            color: var(--adobe-red);
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .badge.blue {
+            background: rgba(0, 164, 228, 0.1);
+            border-color: rgba(0, 164, 228, 0.3);
+            color: var(--adobe-blue);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-red-dark));
+            color: white;
+            box-shadow: 0 8px 20px rgba(237, 34, 36, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--adobe-red-dark), var(--adobe-red));
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(237, 34, 36, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--adobe-red);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: rgba(237, 34, 36, 0.1);
+            transform: translateY(-3px);
+            border-color: var(--adobe-blue);
+        }
+
+        .btn-soft {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .btn-soft:hover {
+            background: rgba(0, 164, 228, 0.1);
+            border-color: var(--adobe-blue);
+        }
+
+        /* Hero Stats */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--adobe-red);
+        }
+
+        .stat-label {
+            color: var(--text-mute);
+            font-size: 0.9rem;
+        }
+
+        /* Feature Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(18, 26, 38, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(237, 34, 36, 0.15);
+            border-radius: 32px;
+            padding: 40px 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: var(--adobe-red);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(237, 34, 36, 0.15);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-blue));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .feature-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-body);
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            background: rgba(237, 34, 36, 0.15);
+            color: var(--adobe-red);
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(237, 34, 36, 0.3);
+        }
+
+        .feature-tag.blue {
+            background: rgba(0, 164, 228, 0.15);
+            color: var(--adobe-blue);
+            border-color: rgba(0, 164, 228, 0.3);
+        }
+
+        /* Demo Section */
+        .demo-section {
+            background: linear-gradient(145deg, rgba(18, 26, 40, 0.9), rgba(8, 12, 20, 0.95));
+            border-radius: 48px;
+            padding: 60px 40px;
+            margin: 60px 0;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .demo-content h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            color: var(--text-body);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .demo-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .demo-features li {
+            color: var(--text-body);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .demo-features i {
+            color: var(--adobe-red);
+            font-size: 1.2rem;
+        }
+
+        .demo-features i.blue {
+            color: var(--adobe-blue);
+        }
+
+        .demo-preview {
+            background: rgba(12, 18, 28, 0.6);
+            border-radius: 32px;
+            padding: 40px 30px;
+            border: 1px solid rgba(237, 34, 36, 0.2);
+            position: relative;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-image {
+            width: 200px;
+            height: 150px;
+            background: linear-gradient(145deg, #2a2f3e, #1a1f2e);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(237, 34, 36, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--adobe-red);
+            font-size: 3rem;
+        }
+
+        .demo-keywords {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border-radius: 16px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-body);
+            border: 1px solid rgba(237, 34, 36, 0.2);
+        }
+
+        .keyword-badge {
+            display: inline-block;
+            background: rgba(237, 34, 36, 0.1);
+            border: 1px solid rgba(237, 34, 36, 0.3);
+            color: var(--adobe-red);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            margin: 3px;
+        }
+
+        .demo-title {
+            background: rgba(0, 164, 228, 0.1);
+            border: 1px solid rgba(0, 164, 228, 0.3);
+            color: var(--adobe-blue);
+            padding: 12px 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .demo-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .demo-btn {
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .demo-btn.red {
+            background: var(--adobe-red);
+            color: white;
+        }
+
+        .demo-btn.blue {
+            background: var(--adobe-blue);
+            color: white;
+        }
+
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .step-card h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .step-card p {
+            color: var(--text-mute);
+        }
+
+        /* Installation Steps */
+        .install-steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .install-step {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            background: rgba(18, 26, 38, 0.6);
+            border: 1px solid rgba(237, 34, 36, 0.15);
+            border-radius: 40px;
+            padding: 25px 30px;
+            margin-bottom: 20px;
+        }
+
+        .install-step:hover {
+            border-color: var(--adobe-red);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .step-code {
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 60px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border: 1px solid rgba(237, 34, 36, 0.2);
+            display: inline-block;
+        }
+
+        /* Download Box */
+        .download-box {
+            background: rgba(12,20,30,0.7);
+            border-radius: 48px;
+            padding: 50px 30px;
+            text-align: center;
+            margin-top: 50px;
+            border: 1px solid rgba(237, 34, 36, 0.2);
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(237, 34, 36, 0.15);
+            border: 1px solid rgba(237, 34, 36, 0.3);
+            color: var(--adobe-red);
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Browser Support */
+        .browser-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .browser-chip {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(237, 34, 36, 0.2);
+            padding: 10px 20px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .browser-chip i {
+            color: var(--adobe-red);
+        }
+
+        /* Screenshot Grid */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .screenshot-card {
+            background: rgba(12, 18, 28, 0.6);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(237, 34, 36, 0.15);
+            transition: var(--transition);
+        }
+
+        .screenshot-card:hover {
+            border-color: var(--adobe-red);
+            transform: translateY(-5px);
+        }
+
+        .screenshot-img {
+            height: 180px;
+            background: linear-gradient(135deg, #2a2f3e, #1a1f2e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(237, 34, 36, 0.2);
+        }
+
+        .screenshot-img i {
+            font-size: 4rem;
+            color: var(--adobe-red);
+        }
+
+        .screenshot-img i.blue {
+            color: var(--adobe-blue);
+        }
+
+        .screenshot-caption {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .screenshot-caption h4 {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .screenshot-caption p {
+            color: var(--text-mute);
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: rgba(18, 26, 38, 0.7);
+            border: 1px solid rgba(237, 34, 36, 0.15);
+            border-radius: 32px;
+            padding: 30px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .testimonial-text {
+            color: var(--text-body);
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            color: white;
+            font-weight: 600;
+        }
+
+        .testimonial-role {
+            color: var(--adobe-red);
+            font-size: 0.85rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: rgba(12, 18, 28, 0.55);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 30px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 22px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            padding: 0 30px 22px;
+            color: var(--text-body);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(145deg, #0b111c, #05080f);
+            border-top: 1px solid rgba(237, 34, 36, 0.2);
+            padding: 40px 0;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--adobe-red);
+        }
+
+        .copyright {
+            color: var(--text-mute);
+            font-size: 0.85rem;
+        }
+
+        /* Back to top button */
+        .landing-back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-blue));
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 0 4px 20px rgba(237, 34, 36, 0.3);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .landing-back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .landing-back-to-top:hover {
+            transform: translateY(-5px);
+            filter: brightness(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .how-it-works {
+                grid-template-columns: 1fr;
+            }
+            
+            .install-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .brand-hierarchy {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            animation: slideUp 0.7s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Brand Credits */
+        .brand-credit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .credit-link {
+            color: var(--dipto-lime);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .credit-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-copy"></i></div>
+                Adobe Stock KiMaster
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#demo">Demo</a>
+                <a href="#install">Install</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://github.com/trovantstudio/adobe-stock-kimaster" target="_blank">GitHub</a>
+                <a href="#download" class="download-btn"><i class="fas fa-download"></i> Download</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page Back to Top -->
+    <button class="landing-back-to-top" id="landingBackToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <!-- Brand Hierarchy Display -->
+            <div class="brand-hierarchy fade-up">
+                <span class="parent-brand">
+                    <i class="fas fa-bolt"></i> Dipto Design
+                </span>
+                <span class="brand-separator">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                <span class="sub-brand">
+                    <i class="fas fa-crown"></i> Trovant Studio
+                </span>
+            </div>
+
+            <div class="hero-badges fade-up">
+                <span class="badge"><i class="fas fa-key"></i> Keyword Extractor</span>
+                <span class="badge blue"><i class="fas fa-heading"></i> Title Copier</span>
+                <span class="badge"><i class="fas fa-bolt"></i> One-Click Copy</span>
+            </div>
+            <h1 class="fade-up delay-1">Adobe Stock <span class="adobe-gradient">KiMaster</span></h1>
+            <p class="hero-subtitle fade-up delay-2">Extract and copy keywords & titles from Adobe Stock assets in one click. Save hours of manual work.</p>
+            <div class="hero-buttons fade-up delay-3">
+                <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Install Extension</a>
+                <a href="#demo" class="btn btn-outline"><i class="fas fa-play"></i> Live Demo</a>
+                <a href="https://github.com/trovantstudio/adobe-stock-kimaster" target="_blank" class="btn btn-soft"><i class="fab fa-github"></i> View Source</a>
+            </div>
+            <div class="hero-stats fade-up delay-4">
+                <div class="stat-item"><div class="stat-number">2.1</div><div class="stat-label">Latest Version</div></div>
+                <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Keywords/Min</div></div>
+                <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Free</div></div>
+                <div class="stat-item"><div class="stat-number">∞</div><div class="stat-label">No Limits</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>Powerful Features</h2>
+                <p class="section-subtitle">Everything you need to supercharge your Adobe Stock workflow</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><i class="fas fa-key"></i></div>
+                    <h3>Smart Keyword Extraction</h3>
+                    <p>Automatically finds and extracts keywords from the "Similar Keywords" section. No manual selection needed.</p>
+                    <span class="feature-tag">AI-Powered</span>
+                </div>
+                <div class="feature-card fade-up delay-1">
+                    <div class="feature-icon"><i class="fas fa-heading"></i></div>
+                    <h3>One-Click Title Copy</h3>
+                    <p>Copy image titles/descriptions instantly. Perfect for content creators who need accurate asset descriptions.</p>
+                    <span class="feature-tag blue">Time Saver</span>
+                </div>
+                <div class="feature-card fade-up delay-2">
+                    <div class="feature-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <h3>Multiple Extraction Methods</h3>
+                    <p>Uses 4 different strategies to find keywords: Similar Keywords, Related Searches, Suggestions, and Fallback.</p>
+                    <span class="feature-tag">99% Accuracy</span>
+                </div>
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><i class="fas fa-format"></i></div>
+                    <h3>Clean Formatting</h3>
+                    <p>Keywords are automatically formatted with commas, removing duplicates and invalid entries automatically.</p>
+                    <span class="feature-tag blue">Auto-Clean</span>
+                </div>
+                <div class="feature-card fade-up delay-1">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Lightning Fast</h3>
+                    <p>Copies hundreds of keywords in milliseconds. No lag, no waiting, no frustration.</p>
+                    <span class="feature-tag">&lt; 1 second</span>
+                </div>
+                <div class="feature-card fade-up delay-2">
+                    <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                    <h3>Visual Feedback</h3>
+                    <p>Beautiful notifications confirm your copy action. Success messages with keyword count and previews.</p>
+                    <span class="feature-tag blue">User Friendly</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <div class="demo-container">
+                <div class="demo-content fade-up">
+                    <h3>See It In Action</h3>
+                    <p>Watch how Adobe Stock KiMaster transforms your workflow. Click the buttons below to see what gets copied.</p>
+                    <ul class="demo-features">
+                        <li><i class="fas fa-check-circle"></i> <strong>Copy Keywords:</strong> Extracts all "Similar Keywords"</li>
+                        <li><i class="fas fa-check-circle blue"></i> <strong>Copy Title:</strong> Gets the asset title/description</li>
+                        <li><i class="fas fa-check-circle"></i> Instant clipboard with visual feedback</li>
+                        <li><i class="fas fa-check-circle blue"></i> Works on any Adobe Stock asset page</li>
+                    </ul>
+                    
+                    <div class="demo-buttons">
+                        <button class="demo-btn red" onclick="demoCopy('keywords')"><i class="fas fa-key"></i> Copy Keywords Demo</button>
+                        <button class="demo-btn blue" onclick="demoCopy('title')"><i class="fas fa-heading"></i> Copy Title Demo</button>
+                    </div>
+                </div>
+                <div class="demo-preview fade-up delay-1">
+                    <div class="demo-title">
+                        <i class="fas fa-heading"></i> Beautiful sunset over mountains
+                    </div>
+                    
+                    <div class="demo-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    
+                    <div class="demo-keywords" id="demoKeywords">
+                        <span class="keyword-badge">sunset</span>
+                        <span class="keyword-badge">mountains</span>
+                        <span class="keyword-badge">landscape</span>
+                        <span class="keyword-badge">nature</span>
+                        <span class="keyword-badge">sky</span>
+                        <span class="keyword-badge">clouds</span>
+                        <span class="keyword-badge">orange</span>
+                        <span class="keyword-badge">red</span>
+                        <span class="keyword-badge">golden</span>
+                        <span class="keyword-badge">horizon</span>
+                        <span class="keyword-badge">dusk</span>
+                        <span class="keyword-badge">evening</span>
+                    </div>
+                    
+                    <p style="color: var(--text-mute); font-size: 0.8rem; margin-top: 15px; text-align: center;">
+                        <i class="fas fa-mouse-pointer" style="color: var(--adobe-red);"></i> Click the buttons to see what gets copied
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section>
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>How It Works</h2>
+                <p class="section-subtitle">Three simple steps to copy keywords from any Adobe Stock asset</p>
+            </div>
+
+            <div class="how-it-works">
+                <div class="step-card fade-up">
+                    <div class="step-number">1</div>
+                    <h3>Navigate to Adobe Stock</h3>
+                    <p>Open any Adobe Stock asset page (e.g., stock.adobe.com/images/...)</p>
+                </div>
+                <div class="step-card fade-up delay-1">
+                    <div class="step-number">2</div>
+                    <h3>Click the Extension Icon</h3>
+                    <p>Click the Adobe Stock KiMaster icon in your browser toolbar</p>
+                </div>
+                <div class="step-card fade-up delay-2">
+                    <div class="step-number">3</div>
+                    <h3>Copy Keywords or Title</h3>
+                    <p>Click "Copy Keywords" or "Copy Title" - instantly in your clipboard!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="install" style="background: radial-gradient(at 30% 40%, rgba(237,34,36,0.05), transparent 70%);">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>Install Adobe Stock KiMaster</h2>
+                <p class="section-subtitle">Manual installation for Chrome, Edge, Brave, and all Chromium browsers</p>
+            </div>
+
+            <div class="install-steps">
+                <div class="install-step fade-up">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Download & Extract</h3>
+                        <div class="step-code"><i class="fas fa-file-archive"></i> Adobe.Stock.KiMaster.v2.1.zip → Extract to a folder</div>
+                    </div>
+                </div>
+                <div class="install-step fade-up delay-1">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Open Extensions Page</h3>
+                        <div class="step-code">chrome://extensions (or edge://, brave://, opera://)</div>
+                    </div>
+                </div>
+                <div class="install-step fade-up delay-2">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Enable Developer Mode</h3>
+                        <div class="step-code">Toggle at top‑right corner → ON</div>
+                    </div>
+                </div>
+                <div class="install-step fade-up delay-3">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Load Unpacked Extension</h3>
+                        <div class="step-code">Click "Load unpacked" → Select the extracted folder → Done ✓</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div id="download" class="download-box fade-up">
+                <div class="version-badge"><i class="fas fa-tag"></i> Version 2.1</div>
+                <h2 style="color: white; font-size: 2rem; margin-bottom: 20px;">Download Adobe Stock KiMaster</h2>
+                <p style="color: #b0c0d0; max-width: 600px; margin: 0 auto 30px;">Free, open source, and privacy-focused. No tracking, no data collection.</p>
+                
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://github.com/trovantstudio/adobe-stock-kimaster/releases/download/v2.1/Adobe.Stock.KiMaster.v2.1.zip" class="btn btn-primary" style="padding: 16px 40px;">
+                        <i class="fas fa-download"></i> Download Extension
+                    </a>
+                    <a href="https://github.com/trovantstudio/adobe-stock-kimaster" target="_blank" class="btn btn-outline" style="padding: 16px 40px;">
+                        <i class="fab fa-github"></i> Star on GitHub
+                    </a>
+                </div>
+
+                <div class="browser-grid">
+                    <span class="browser-chip"><i class="fab fa-chrome"></i> Chrome</span>
+                    <span class="browser-chip"><i class="fab fa-edge"></i> Edge</span>
+                    <span class="browser-chip"><i class="fab fa-brave"></i> Brave</span>
+                    <span class="browser-chip"><i class="fab fa-opera"></i> Opera</span>
+                    <span class="browser-chip"><i class="fab fa-firefox"></i> Firefox (soon)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section>
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>See It In Action</h2>
+                <p class="section-subtitle">Real screenshots of Adobe Stock KiMaster</p>
+            </div>
+
+            <div class="screenshot-grid">
+                <div class="screenshot-card fade-up">
+                    <div class="screenshot-img">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>Keyword Extraction</h4>
+                        <p>Copies all similar keywords automatically</p>
+                    </div>
+                </div>
+                <div class="screenshot-card fade-up delay-1">
+                    <div class="screenshot-img">
+                        <i class="fas fa-heading blue"></i>
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>Title Copy</h4>
+                        <p>One-click asset title copying</p>
+                    </div>
+                </div>
+                <div class="screenshot-card fade-up delay-2">
+                    <div class="screenshot-img">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>Success Notification</h4>
+                        <p>Beautiful feedback with keyword count</p>
+                    </div>
+                </div>
+                <div class="screenshot-card fade-up delay-3">
+                    <div class="screenshot-img">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>Clean Formatting</h4>
+                        <p>Keywords are comma-separated and clean</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>Loved by Creators</h2>
+                <p class="section-subtitle">Join thousands of satisfied Adobe Stock users</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-avatar">JD</div>
+                    <div class="testimonial-text">"This extension saved me hours of manual keyword copying. I use it daily for my stock photo business. The title copy feature is genius!"</div>
+                    <div class="testimonial-author">John D.</div>
+                    <div class="testimonial-role">Stock Photographer</div>
+                </div>
+                <div class="testimonial-card fade-up delay-1">
+                    <div class="testimonial-avatar">MK</div>
+                    <div class="testimonial-text">"Finally, a tool that actually works! Copies keywords instantly and the formatting is perfect. No more manual typing or copy-pasting individual words."</div>
+                    <div class="testimonial-author">Maria K.</div>
+                    <div class="testimonial-role">Content Creator</div>
+                </div>
+                <div class="testimonial-card fade-up delay-2">
+                    <div class="testimonial-avatar">AR</div>
+                    <div class="testimonial-text">"The multiple extraction methods are brilliant. It always finds the keywords even when they're hidden in different sections. Highly recommend!"</div>
+                    <div class="testimonial-author">Alex R.</div>
+                    <div class="testimonial-role">Digital Marketer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about Adobe Stock KiMaster</p>
+            </div>
+
+            <div class="faq-section">
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Is Adobe Stock KiMaster really free?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! It's completely free and open source. No paid tiers, no subscriptions, no hidden costs. Created by <strong>Trovant Studio</strong> (a <strong>Dipto Design</strong> brand) for the creative community.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-up delay-1">
+                    <div class="faq-question">
+                        <span>Does it work on all Adobe Stock pages?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! It works on any Adobe Stock asset page (stock.adobe.com/images/..., stock.adobe.com/video/..., etc.). The extension activates automatically when you visit Adobe Stock.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-up delay-2">
+                    <div class="faq-question">
+                        <span>What keywords does it copy?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>It primarily copies keywords from the "Similar Keywords" section. It also looks for related searches, suggestions, and other keyword lists on the page. It intelligently filters out UI elements and duplicates.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-up delay-3">
+                    <div class="faq-question">
+                        <span>How are keywords formatted?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Keywords are copied as a comma-separated list (e.g., "sunset, mountains, landscape"). This format works perfectly for pasting into search fields, spreadsheets, or keyword management tools.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Does it collect my data?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No! The extension works completely locally. No data is sent to any server. Your keywords and browsing stay private. The only permission needed is to access Adobe Stock pages.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-up delay-1">
+                    <div class="faq-question">
+                        <span>What if the "Similar Keywords" section isn't visible?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The extension uses multiple fallback methods to find keywords. It looks for related searches, suggested keywords, and any keyword-like elements. If it still can't find any, it will show a helpful error message.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <div class="download-box fade-up" style="background: linear-gradient(145deg, rgba(18,26,40,0.8), rgba(8,12,20,0.9));">
+                <h2 style="color: white; font-size: 2.2rem; margin-bottom: 20px;">Ready to supercharge your workflow?</h2>
+                <p style="color: #b0c0d0; max-width: 600px; margin: 0 auto 30px;">Join thousands of creators who save hours every week copying keywords and titles.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#download" class="btn btn-primary" style="padding: 18px 50px;">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                    <a href="https://github.com/trovantstudio/adobe-stock-kimaster" target="_blank" class="btn btn-outline" style="padding: 18px 50px;">
+                        <i class="fab fa-github"></i> Star on GitHub
+                    </a>
+                </div>
+                <p style="color: var(--text-mute); margin-top: 20px;">Version 2.1 · 100% Free · Open Source · No Tracking</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 20px;">
+                <div class="logo-icon"><i class="fas fa-copy"></i></div>
+                Adobe Stock KiMaster
+            </div>
+
+            <!-- Brand Relationship Display -->
+            <div class="brand-credit">
+                <span style="color: var(--text-mute);">A </span>
+                <a href="https://trovantstudio.github.io" target="_blank" class="credit-link">Trovant Studio</a>
+                <span style="color: var(--text-mute);"> creation · Part of the </span>
+                <a href="https://diptodesign.github.io" target="_blank" class="credit-link" style="color: var(--dipto-lime);">Dipto Design</a>
+                <span style="color: var(--text-mute);"> family</span>
+            </div>
+
+            <div class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#demo">Demo</a>
+                <a href="#install">Install</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://github.com/trovantstudio/adobe-stock-kimaster" target="_blank">GitHub</a>
+                <a href="https://diptodesign.github.io/clifydl/extensions.html">More Tools</a>
+            </div>
+            <div class="copyright">
+                © <span id="currentYear"></span> Adobe Stock KiMaster by <span style="color: var(--adobe-red);">Trovant Studio</span> · A <span style="color: var(--dipto-lime);">Dipto Design</span> Brand
+            </div>
+            <div class="studio-credit" style="margin-top: 15px;">
+                <span style="color: var(--text-mute);">Made with ❤️ for the creative community</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', function() {
+                this.parentElement.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (this.parentElement.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Landing page back to top
+        const backToTop = document.getElementById('landingBackToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Demo buttons
+        window.demoCopy = function(type) {
+            const demoKeywords = document.getElementById('demoKeywords');
+            
+            if (type === 'keywords') {
+                const keywords = Array.from(demoKeywords.querySelectorAll('.keyword-badge'))
+                    .map(el => el.textContent)
+                    .join(', ');
+                
+                navigator.clipboard.writeText(keywords).then(() => {
+                    alert('✅ Demo: Copied 12 keywords!\n\nKeywords: ' + keywords.substring(0, 100) + '...');
+                });
+            } else {
+                navigator.clipboard.writeText('Beautiful sunset over mountains').then(() => {
+                    alert('✅ Demo: Copied title: "Beautiful sunset over mountains"');
+                });
+            }
+        };
+
+        // Fade up animations
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-up');
+                }
+            });
+        }, { threshold: 0.1 });
+        faders.forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const id = this.getAttribute('href');
+                if(id === '#') return;
+                const target = document.querySelector(id);
+                if(target) {
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

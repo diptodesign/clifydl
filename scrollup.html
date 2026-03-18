@@ -644,12 +644,13 @@
             <div class="install-step fade-up delay-3"><div class="step-number">4</div><div><h3 style="color:white;">Load unpacked</h3><div>select the extracted folder → Done ✓</div></div></div>
         </div>
 
-        <!-- DOWNLOAD BLOCK (version 3.0) -->
+        <!-- DOWNLOAD BLOCK (version 3.0) with updated link from user request -->
         <div id="download" class="fade-up" style="background:rgba(18,26,38,0.7); backdrop-filter:blur(24px); border-radius:64px; padding:56px 32px; text-align:center; margin-top:60px;">
             <h2 style="color:white;">Download ScrollUp 3.0</h2>
             <p style="color:#b4c8e0; max-width:500px; margin:20px auto;">Glass UI, reverse scroll, 4 positions, marketplace popup, changelog. 100% free.</p>
             <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
-                <a href="https://github.com/diptodesign/scrollup/releases/download/v3.0/ScrollUp.v3.0.zip" class="btn btn-primary" style="padding:16px 44px;"><i class="fas fa-download"></i> ScrollUp.v3.0.zip</a>
+                <!-- UPDATED DOWNLOAD LINK: using the direct google drive link from the request -->
+                <a href="https://drive.google.com/file/d/13EdiRw8nKz7NvEywYekQG58QPluVla7p/view?usp=sharing" class="btn btn-primary" style="padding:16px 44px;"><i class="fas fa-download"></i> Download ScrollUp.v3.0 (Drive)</a>
                 <a href="https://github.com/diptodesign/scrollup" target="_blank" class="btn btn-outline" style="padding:16px 44px;"><i class="fab fa-github"></i> Star on GitHub</a>
             </div>
             <p style="margin-top:20px; color:var(--text-mute); font-size:0.85rem;">no tracking · open source · MIT</p>
@@ -714,9 +715,6 @@
 <!-- SCRIPTS -->
 <script>
     (function() {
-        // current year
-        document.getElementById('currentYear') && (document.getElementById('currentYear').textContent = new Date().getFullYear());
-
         // fade-up observer
         const faders = document.querySelectorAll('.fade-up');
         const appear = new IntersectionObserver(entries => {

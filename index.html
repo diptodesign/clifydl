@@ -846,6 +846,72 @@
             color: var(--lime);
         }
 
+        /* ---------- SCREENSHOT GALLERY (NEW) ---------- */
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            padding: 0 15px;
+        }
+
+        .screenshot-card {
+            background: rgba(12, 18, 28, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(203, 255, 60, 0.15);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.6);
+        }
+
+        .screenshot-card:hover {
+            border-color: var(--lime);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 25px 40px -15px rgba(203, 255, 60, 0.3);
+        }
+
+        .screenshot-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(145deg, #1a1f2e, #0a0e14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(203, 255, 60, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screenshot-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .screenshot-card:hover .screenshot-img img {
+            transform: scale(1.05);
+        }
+
+        .screenshot-caption {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .screenshot-caption h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .screenshot-caption p {
+            color: var(--text-mute);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
         /* ---------- PRODUCT HUNT SECTION ---------- */
         .ph-section {
             background: radial-gradient(at 30% 40%, rgba(255, 97, 84, 0.08), rgba(203, 255, 60, 0.02) 70%);
@@ -2205,7 +2271,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="#features">Features</a>
                 <a href="#install">Install</a>
-                
+                <a href="#screenshots">Screenshots</a>
                 <a href="#testimonials">Testimonials</a>
                 <a href="#faq">FAQ</a>
                 <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>              
@@ -2341,7 +2407,7 @@
         </div>
     </section>
 
-    <!-- ANDROID BROWSER SUPPORT SECTION (NEW) -->
+    <!-- ANDROID BROWSER SUPPORT SECTION -->
     <section class="android-section" id="android">
         <div class="container">
             <div class="section-header fade-up">
@@ -2433,6 +2499,73 @@
             
             <div class="download-badge fade-up delay-2">
                 <i class="fas fa-download"></i> Download Clify on your Android: <a href="https://github.com/diptodesign/Clify/releases/download/V7.0.1/Clify.7.2.zip" style="color: var(--lime); margin-left: 5px;">Clify.7.2.zip</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCREENSHOTS SECTION (NEW - images provided) -->
+    <section id="screenshots">
+        <div class="container">
+            <div class="section-header fade-up">
+                <h2>See Clify in Action</h2>
+                <p class="section-subtitle">Real screenshots of the extension interface</p>
+            </div>
+            
+            <div class="screenshot-gallery">
+                <div class="screenshot-card fade-up">
+                    <div class="screenshot-img">
+                        <img src="https://i.ibb.co.com/27NP1pFt/Mission-Control.png" alt="Mission Control Dashboard" loading="lazy">
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>Mission Control</h4>
+                        <p>Track your focus stats and blocked distractions</p>
+                    </div>
+                </div>
+                <div class="screenshot-card fade-up delay-1">
+                    <div class="screenshot-img">
+                        <img src="https://i.ibb.co.com/HLqf9qJt/Language.png" alt="Language Settings" loading="lazy">
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>40+ Languages</h4>
+                        <p>Fully localized interface for global users</p>
+                    </div>
+                </div>
+                <div class="screenshot-card fade-up delay-2">
+                    <div class="screenshot-img">
+                        <img src="https://i.ibb.co.com/ymnyCcXg/Shorts-Gone.png" alt="Shorts Removed" loading="lazy">
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>Shorts Removed</h4>
+                        <p>Clean YouTube without Shorts distractions</p>
+                    </div>
+                </div>
+                <div class="screenshot-card fade-up delay-3">
+                    <div class="screenshot-img">
+                        <img src="https://i.ibb.co.com/VWT409PF/Shorts-Gone-2.png" alt="Shorts Gone" loading="lazy">
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>Clean Homepage</h4>
+                        <p>No more infinite Shorts scroll</p>
+                    </div>
+                </div>
+                <div class="screenshot-card fade-up delay-4">
+                    <div class="screenshot-img">
+                        <img src="https://i.ibb.co.com/vvHJNsw9/Screenshot-2026-03-12-141221.png" alt="Keyword Blocker" loading="lazy">
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>Keyword Blocker</h4>
+                        <p>Hide videos by title keywords</p>
+                    </div>
+                </div>
+                <div class="screenshot-card fade-up delay-4">
+                    <div class="screenshot-img">
+                        <img src="https://i.ibb.co.com/vxkWqWVB/Screenshot-2026-03-12-141338.png" alt="Focus Dashboard" loading="lazy">
+                    </div>
+                    <div class="screenshot-caption">
+                        <h4>Focus Dashboard</h4>
+                        <p>Detailed analytics of your focus time</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

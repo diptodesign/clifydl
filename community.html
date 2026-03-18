@@ -1,47 +1,943 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Same head -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Clify Community · focus together · open source</title>
+    <meta name="description" content="Join the Clify community — share focus tips, get help, request features, and connect with other users who reclaimed their YouTube attention.">
+    <meta name="keywords" content="Clify community, YouTube blocker forum, focus group, open source community, digital minimalism">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Clify Community — focus together">
+    <meta property="og:description" content="Official community hub for Clify users. Discussions, tips, translations, and support.">
+    <meta property="og:image" content="https://i.ibb.co.com/NddywcR3/Clify-Open-Source-You-Tube-Blocker.png">
+    <meta property="og:url" content="https://diptodesign.github.io/clify/community">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
+    
+    <!-- Fonts + Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lime: #cbff3c;
+            --lime-bright: #d8ff6b;
+            --lime-soft: rgba(203, 255, 60, 0.15);
+            --lime-glow: 0 0 25px rgba(203, 255, 60, 0.2);
+            --ink: #0a0e17;
+            --ink-light: #151f2c;
+            --surface: rgba(18, 26, 40, 0.75);
+            --surface-card: rgba(15, 22, 33, 0.8);
+            --border-glow: rgba(203, 255, 60, 0.2);
+            --text-head: #ffffff;
+            --text-body: #d0ddea;
+            --text-mute: #95a6bb;
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            background: radial-gradient(circle at 30% 30%, #121b28, #090d15 90%);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            background: linear-gradient(140deg, #fff, #e0ffb0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 2.6rem);
+            background: linear-gradient(to right, #ffffff, #cbff3c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-mute);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        /* ----- glass navigation (consistent with clify) ----- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 18px 0;
+            background: rgba(6, 10, 16, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glow);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--lime);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #0a0e14;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #e0eaf5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--lime);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 30px;
+            border-radius: 60px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--lime);
+            color: #0a0e14;
+            box-shadow: 0 8px 18px rgba(203,255,60,0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--lime-bright);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--lime);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: var(--lime-soft);
+            transform: translateY(-3px);
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            background: rgba(203,255,60,0.1);
+            border: 1px solid rgba(203,255,60,0.3);
+            border-radius: 60px;
+            padding: 8px 24px;
+            display: inline-block;
+            color: var(--lime);
+            font-weight: 600;
+            margin-bottom: 30px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-stats-mini {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(10,16,24,0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(203,255,60,0.15);
+            border-radius: 60px;
+            padding: 10px 28px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+        }
+
+        .stat-item i {
+            color: var(--lime);
+            font-size: 1.2rem;
+        }
+
+        /* ---------- community pillars ---------- */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 50px 0;
+        }
+
+        .pillar-card {
+            background: var(--surface-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(203,255,60,0.15);
+            border-radius: var(--radius-xl);
+            padding: 40px 28px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .pillar-card:hover {
+            border-color: var(--lime);
+            transform: translateY(-8px);
+            box-shadow: var(--lime-glow);
+        }
+
+        .pillar-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(203,255,60,0.1);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2.2rem;
+            color: var(--lime);
+            border: 1px solid rgba(203,255,60,0.3);
+        }
+
+        .pillar-card h3 {
+            color: white;
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+        }
+
+        .member-count {
+            font-size: 0.9rem;
+            color: var(--lime);
+            background: rgba(203,255,60,0.1);
+            padding: 5px 15px;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        /* ---------- discussion feed (simulated) ---------- */
+        .discussion-section {
+            background: linear-gradient(145deg, rgba(18,26,40,0.8), rgba(8,12,20,0.95));
+            border-radius: 60px;
+            padding: 60px 40px;
+            margin: 40px 0;
+        }
+
+        .feed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .feed-header h3 {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .feed-tabs {
+            display: flex;
+            gap: 10px;
+            background: rgba(0,0,0,0.25);
+            padding: 6px;
+            border-radius: 60px;
+            border: 1px solid rgba(203,255,60,0.2);
+        }
+
+        .feed-tab {
+            padding: 10px 24px;
+            border-radius: 60px;
+            background: transparent;
+            border: none;
+            color: var(--text-mute);
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .feed-tab.active {
+            background: var(--lime);
+            color: #0a0e14;
+        }
+
+        .post-card {
+            background: rgba(12, 18, 26, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(203,255,60,0.1);
+            border-radius: 40px;
+            padding: 28px 32px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .post-card:hover {
+            border-color: var(--lime);
+            background: rgba(16, 24, 34, 0.8);
+        }
+
+        .post-avatar {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(145deg, #2a3344, #1a1f2e);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--lime);
+            border: 1px solid rgba(203,255,60,0.4);
+            flex-shrink: 0;
+        }
+
+        .post-content {
+            flex: 1;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .post-author {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .post-time {
+            color: var(--text-mute);
+            font-size: 0.9rem;
+        }
+
+        .post-badge {
+            background: rgba(203,255,60,0.1);
+            border: 1px solid rgba(203,255,60,0.2);
+            color: var(--lime);
+            padding: 4px 14px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+        }
+
+        .post-title {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .post-excerpt {
+            color: #b5c6d9;
+            margin-bottom: 16px;
+        }
+
+        .post-stats {
+            display: flex;
+            gap: 24px;
+            color: var(--text-mute);
+            font-size: 0.95rem;
+        }
+
+        .post-stats i {
+            color: var(--lime);
+            margin-right: 6px;
+        }
+
+        /* ---------- translation contributors ---------- */
+        .translators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .translator-card {
+            background: rgba(12, 18, 26, 0.6);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(203,255,60,0.1);
+            border-radius: 40px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .translator-card:hover {
+            border-color: var(--lime);
+        }
+
+        .flag-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        }
+
+        .lang-name {
+            color: white;
+            font-weight: 600;
+        }
+
+        .translator-name {
+            font-size: 0.9rem;
+            color: var(--lime);
+            margin-top: 5px;
+        }
+
+        /* ---------- feature requests board ---------- */
+        .request-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .request-card {
+            background: rgba(15, 22, 32, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(203,255,60,0.15);
+            border-radius: 32px;
+            padding: 28px;
+            transition: var(--transition);
+        }
+
+        .request-card:hover {
+            border-color: var(--lime);
+            transform: translateY(-5px);
+        }
+
+        .request-votes {
+            display: inline-block;
+            background: rgba(203,255,60,0.15);
+            padding: 4px 14px;
+            border-radius: 60px;
+            color: var(--lime);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .request-title {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .request-desc {
+            color: var(--text-mute);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .request-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .request-author {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-body);
+        }
+
+        .upvote-btn {
+            background: transparent;
+            border: 1px solid rgba(203,255,60,0.4);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .upvote-btn:hover {
+            background: var(--lime);
+            color: #0a0e14;
+            border-color: var(--lime);
+        }
+
+        /* ---------- get involved ---------- */
+        .get-involved {
+            background: rgba(8, 14, 22, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 60px;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .involve-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px 0 20px;
+        }
+
+        /* ---------- footer ---------- */
+        .footer {
+            background: #070b14;
+            border-top: 1px solid rgba(203,255,60,0.15);
+            padding: 48px 0 24px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 40px;
+        }
+
+        .footer a {
+            color: #b0c2d5;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--lime);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-mute);
+            font-size: 0.9rem;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ---------- responsive ---------- */
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none;
+            }
+            .feed-header {
+                flex-direction: column;
+                align-items: start;
+                gap: 20px;
+            }
+            .post-card {
+                flex-direction: column;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    
-    <div class="content">
-        <div class="container">
-            <h1>Clify Community</h1>
-            
-            <!-- Community Links -->
-            <div class="community-grid">
-                <a href="https://github.com/diptodesign/clify" class="community-card">
-                    <i class="fab fa-github fa-3x"></i>
-                    <h3>GitHub</h3>
-                    <p>Star the repo, report issues, contribute</p>
-                </a>
-                
-                <a href="https://t.me/Clifybydd" class="community-card">
-                    <i class="fab fa-telegram fa-3x"></i>
-                    <h3>Telegram Channel</h3>
-                    <p>Get updates and announcements</p>
-                </a>
-                
-                <a href="https://discord.gg/your-invite" class="community-card">
-                    <i class="fab fa-discord fa-3x"></i>
-                    <h3>Discord Server</h3>
-                    <p>Chat with other users</p>
-                </a>
+
+<!-- simple navigation, consistent with Clify style -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span>Clify · community</span>
+        </a>
+        <div class="nav-links">
+            <a href="#discuss">Discuss</a>
+            <a href="#translations">Translations</a>
+            <a href="#requests">Requests</a>
+            <a href="#contribute">Contribute</a>
+            <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>
+            <a href="#join" class="btn btn-primary" style="padding:8px 24px;">Join</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge fade-in">✨ 12,500+ focus members</div>
+        <h1 class="fade-in" style="animation-delay:0.1s;">where focus people<br>gather <span style="color:var(--lime);">⎯</span></h1>
+        <p class="section-subtitle fade-in" style="animation-delay:0.15s;">Share tips, translate Clify, request features, and help each other reclaim attention.</p>
+
+        <div class="hero-stats-mini fade-in" style="animation-delay:0.2s;">
+            <span class="stat-item"><i class="fa-regular fa-message"></i> 2.4k discussions</span>
+            <span class="stat-item"><i class="fa-regular fa-compass"></i> 40 languages</span>
+            <span class="stat-item"><i class="fa-regular fa-star"></i> 347 GitHub stars</span>
+        </div>
+    </div>
+</section>
+
+<!-- 3 community pillars -->
+<section>
+    <div class="container">
+        <div class="pillars-grid">
+            <div class="pillar-card fade-in">
+                <div class="pillar-icon"><i class="fa-regular fa-comments"></i></div>
+                <h3>discussions</h3>
+                <p>Share your setup, ask questions, and post focus wins. No judgment, just support.</p>
+                <span class="member-count">1.2k active</span>
             </div>
-            
-            <!-- User Contributions -->
-            <div class="contributions">
-                <h2>User Contributions</h2>
-                <div class="contribution-list">
-                    <div class="contribution">
-                        <h4>Language Translation: Spanish</h4>
-                        <p>By @username • Added Feb 10, 2026</p>
-                    </div>
-                </div>
+            <div class="pillar-card fade-in" style="animation-delay:0.1s;">
+                <div class="pillar-icon"><i class="fa-regular fa-language"></i></div>
+                <h3>translations</h3>
+                <p>Clify speaks 40+ languages thanks to contributors like you. Help make it 50.</p>
+                <span class="member-count">24 translators</span>
+            </div>
+            <div class="pillar-card fade-in" style="animation-delay:0.2s;">
+                <div class="pillar-icon"><i class="fa-regular fa-lightbulb"></i></div>
+                <h3>feature requests</h3>
+                <p>Vote on what gets built next. The community shapes the roadmap.</p>
+                <span class="member-count">47 proposals</span>
             </div>
         </div>
     </div>
+</section>
+
+<!-- DISCUSSION FEED (simulated, interactive) -->
+<section id="discuss" class="discussion-section">
+    <div class="container" style="padding:0;">
+        <div class="feed-header">
+            <h3><i class="fas fa-message" style="color:var(--lime); margin-right:10px;"></i> recent discussions</h3>
+            <div class="feed-tabs">
+                <button class="feed-tab active">hot</button>
+                <button class="feed-tab">new</button>
+                <button class="feed-tab">unanswered</button>
+            </div>
+        </div>
+
+        <!-- sample posts (static but feel like community) -->
+        <div class="post-card fade-in">
+            <div class="post-avatar"><i class="fas fa-user-astronaut"></i></div>
+            <div class="post-content">
+                <div class="post-meta">
+                    <span class="post-author">alex_focus</span>
+                    <span class="post-time">2 hours ago</span>
+                    <span class="post-badge">tip</span>
+                </div>
+                <div class="post-title">How I blocked entire channels with regex</div>
+                <div class="post-excerpt">I used the keyword filter with `channel:name` pattern — works like a charm. Here's my blocklist for news channels...</div>
+                <div class="post-stats">
+                    <span><i class="fa-regular fa-heart"></i> 24</span>
+                    <span><i class="fa-regular fa-comment"></i> 8 replies</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-card fade-in" style="animation-delay:0.05s;">
+            <div class="post-avatar"><i class="fas fa-user-ninja"></i></div>
+            <div class="post-content">
+                <div class="post-meta">
+                    <span class="post-author">maria_editor</span>
+                    <span class="post-time">yesterday</span>
+                    <span class="post-badge">question</span>
+                </div>
+                <div class="post-title">Clify on Kiwi — does it also block shorts in the mobile app?</div>
+                <div class="post-excerpt">I installed Kiwi + Clify, works perfectly on m.youtube.com. But is there any way to block shorts inside the native YouTube app? </div>
+                <div class="post-stats">
+                    <span><i class="fa-regular fa-heart"></i> 17</span>
+                    <span><i class="fa-regular fa-comment"></i> 5 replies</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="post-card fade-in" style="animation-delay:0.1s;">
+            <div class="post-avatar"><i class="fas fa-user-graduate"></i></div>
+            <div class="post-content">
+                <div class="post-meta">
+                    <span class="post-author">dipto (creator)</span>
+                    <span class="post-time">3 days ago</span>
+                    <span class="post-badge">announcement</span>
+                </div>
+                <div class="post-title">Firefox beta testers needed 🙌</div>
+                <div class="post-excerpt">We're preparing the Firefox version. If you'd like to test the beta, drop a comment. First 20 testers get a shoutout.</div>
+                <div class="post-stats">
+                    <span><i class="fa-regular fa-heart"></i> 86</span>
+                    <span><i class="fa-regular fa-comment"></i> 31 replies</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-top:40px;">
+            <a href="#" class="btn btn-outline"><i class="fa-regular fa-eye"></i> see all discussions</a>
+        </div>
+    </div>
+</section>
+
+<!-- TRANSLATIONS SECTION -->
+<section id="translations">
+    <div class="container">
+        <h2 style="text-align:center;">🌍 translation contributors</h2>
+        <p class="section-subtitle">Clify is available in 40+ languages — all thanks to this community.</p>
+
+        <div class="translators-grid">
+            <div class="translator-card fade-in"><div class="flag-icon">🇪🇸</div><div class="lang-name">Spanish</div><div class="translator-name">@carlos_ml</div></div>
+            <div class="translator-card fade-in" style="animation-delay:0.05s;"><div class="flag-icon">🇫🇷</div><div class="lang-name">French</div><div class="translator-name">@claire_du</div></div>
+            <div class="translator-card fade-in" style="animation-delay:0.1s;"><div class="flag-icon">🇩🇪</div><div class="lang-name">German</div><div class="translator-name">@lars_fokus</div></div>
+            <div class="translator-card fade-in" style="animation-delay:0.15s;"><div class="flag-icon">🇮🇳</div><div class="lang-name">Hindi</div><div class="translator-name">@priya_sh</div></div>
+            <div class="translator-card fade-in" style="animation-delay:0.2s;"><div class="flag-icon">🇯🇵</div><div class="lang-name">Japanese</div><div class="translator-name">@yuki_t</div></div>
+            <div class="translator-card fade-in" style="animation-delay:0.25s;"><div class="flag-icon">🇧🇷</div><div class="lang-name">Portuguese</div><div class="translator-name">@caio_ol</div></div>
+            <div class="translator-card fade-in" style="animation-delay:0.3s;"><div class="flag-icon">🇧🇩</div><div class="lang-name">Bengali</div><div class="translator-name">@rahman_z</div></div>
+            <div class="translator-card fade-in" style="animation-delay:0.35s;"><div class="flag-icon">🇷🇺</div><div class="lang-name">Russian</div><div class="translator-name">@olga_s</div></div>
+            <div class="translator-card fade-in" style="animation-delay:0.4s;"><div class="flag-icon">🇨🇳</div><div class="lang-name">Chinese</div><div class="translator-name">@li_wei</div></div>
+        </div>
+        <div style="text-align:center;">
+            <a href="#" class="btn btn-primary"><i class="fa-regular fa-plus"></i> become a translator</a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE REQUESTS BOARD -->
+<section id="requests" style="background: radial-gradient(at 30% 30%, rgba(203,255,60,0.05), transparent 70%);">
+    <div class="container">
+        <h2 style="text-align:center;">🗳️ feature requests</h2>
+        <p class="section-subtitle">upvote the ideas you want — the most requested get built.</p>
+
+        <div class="request-grid">
+            <div class="request-card fade-in">
+                <span class="request-votes"><i class="fa-regular fa-thumbs-up"></i> 124 votes</span>
+                <h4 class="request-title">channel whitelist</h4>
+                <p class="request-desc">block everything except a few channels I subscribe to — focus mode extreme.</p>
+                <div class="request-footer">
+                    <span class="request-author"><i class="fa-regular fa-circle-user"></i> @deep_focus</span>
+                    <button class="upvote-btn"><i class="fa-regular fa-thumbs-up"></i> 124</button>
+                </div>
+            </div>
+            <div class="request-card fade-in" style="animation-delay:0.1s;">
+                <span class="request-votes"><i class="fa-regular fa-thumbs-up"></i> 98 votes</span>
+                <h4 class="request-title">dark/light theme toggle</h4>
+                <p class="request-desc">some users prefer light mode for the popup. follow system or manual switch.</p>
+                <div class="request-footer">
+                    <span class="request-author"><i class="fa-regular fa-circle-user"></i> @emily_c</span>
+                    <button class="upvote-btn"><i class="fa-regular fa-thumbs-up"></i> 98</button>
+                </div>
+            </div>
+            <div class="request-card fade-in" style="animation-delay:0.2s;">
+                <span class="request-votes"><i class="fa-regular fa-thumbs-up"></i> 87 votes</span>
+                <h4 class="request-title">block youtube music</h4>
+                <p class="request-desc">optional toggle to hide music sections / music.youtube.com redirect.</p>
+                <div class="request-footer">
+                    <span class="request-author"><i class="fa-regular fa-circle-user"></i> @marcus</span>
+                    <button class="upvote-btn"><i class="fa-regular fa-thumbs-up"></i> 87</button>
+                </div>
+            </div>
+            <div class="request-card fade-in" style="animation-delay:0.3s;">
+                <span class="request-votes"><i class="fa-regular fa-thumbs-up"></i> 52 votes</span>
+                <h4 class="request-title">focus stats export (csv)</h4>
+                <p class="request-desc">export your distraction‑free stats to track progress over time.</p>
+                <div class="request-footer">
+                    <span class="request-author"><i class="fa-regular fa-circle-user"></i> @julia_t</span>
+                    <button class="upvote-btn"><i class="fa-regular fa-thumbs-up"></i> 52</button>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center;">
+            <a href="#" class="btn btn-outline"><i class="fa-regular fa-lightbulb"></i> submit your idea</a>
+        </div>
+    </div>
+</section>
+
+<!-- GET INVOLVED + NEWSLETTER / JOIN -->
+<section id="contribute">
+    <div class="container">
+        <div class="get-involved fade-in">
+            <h2 style="color:white; -webkit-text-fill-color:white; background:none;">🧑‍💻 become a contributor</h2>
+            <p style="color:#b0c6da; max-width:600px; margin:0 auto;">code, translate, design, or simply help others. there's a place for you.</p>
+            <div class="involve-buttons">
+                <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub issues</a>
+                <a href="#" class="btn btn-outline"><i class="fa-regular fa-message"></i> join telegram</a>
+                <a href="#" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> translation team</a>
+            </div>
+            <p style="margin-top:30px; color:var(--text-mute);">or just hang out, ask questions, and share your setup.</p>
+        </div>
+    </div>
+</section>
+
+<!-- mini newsletter (simplified, community update) -->
+<section style="padding:40px 0;">
+    <div class="container">
+        <div style="background:rgba(12,20,30,0.6); backdrop-filter:blur(16px); border-radius:60px; padding:48px 32px; text-align:center; border:1px solid rgba(203,255,60,0.15);">
+            <h3 style="color:white; font-size:2rem;">community newsletter</h3>
+            <p style="color:#a0b8d0; max-width:500px; margin:10px auto 30px;">monthly updates — new contributors, feature releases, focus stories.</p>
+            <div style="display:flex; max-width:500px; margin:0 auto; gap:12px; flex-wrap:wrap; justify-content:center;">
+                <input type="email" placeholder="your@email.com" style="flex:1 1 200px; padding:16px 24px; border-radius:60px; border:1px solid rgba(203,255,60,0.3); background:rgba(0,0,0,0.3); color:white;">
+                <button class="btn btn-primary" style="padding:16px 36px;">subscribe</button>
+            </div>
+            <p style="font-size:0.8rem; color:var(--text-mute); margin-top:20px;">no spam, unsubscribe anytime · we respect your focus 💚</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER (matches main site) -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom:15px;"><div class="logo-icon"><i class="fas fa-bolt"></i></div> Clify</div>
+                <p style="color:#9bacc2;">open source · no tracking · your attention, protected.</p>
+            </div>
+            <div>
+                <h4 style="color:white;">community</h4>
+                <ul style="list-style:none; padding:0;">
+                    <li style="margin-bottom:10px;"><a href="#">discussions</a></li>
+                    <li style="margin-bottom:10px;"><a href="#">translations</a></li>
+                    <li style="margin-bottom:10px;"><a href="#">feature requests</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:white;">resources</h4>
+                <ul style="list-style:none; padding:0;">
+                    <li style="margin-bottom:10px;"><a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a></li>
+                    <li style="margin-bottom:10px;"><a href="#">Telegram</a></li>
+                    <li style="margin-bottom:10px;"><a href="#">Product Hunt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color:white;">legal</h4>
+                <ul style="list-style:none; padding:0;">
+                    <li style="margin-bottom:10px;"><a href="#">privacy</a></li>
+                    <li style="margin-bottom:10px;"><a href="#">MIT license</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <i class="fas fa-bolt" style="color:var(--lime);"></i> © 2026 Clify community · Dipto Design studio · built with 💚
+        </div>
+    </div>
+</footer>
+
+<!-- simple script for upvote simulation and tab highlight (purely cosmetic) -->
+<script>
+    (function() {
+        // smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const id = this.getAttribute('href');
+                if(id === '#') return;
+                const target = document.querySelector(id);
+                if(target) window.scrollTo({top: target.offsetTop - 80, behavior:'smooth'});
+            });
+        });
+
+        // upvote buttons (visual only)
+        document.querySelectorAll('.upvote-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const icon = this.querySelector('i');
+                let count = parseInt(this.innerText.match(/\d+/)?.[0] || '0');
+                if (this.classList.contains('voted')) {
+                    count -= 1;
+                    this.classList.remove('voted');
+                    this.style.background = 'transparent';
+                    this.style.color = 'white';
+                    icon?.classList.remove('fa-solid');
+                    icon?.classList.add('fa-regular');
+                } else {
+                    count += 1;
+                    this.classList.add('voted');
+                    this.style.background = 'var(--lime)';
+                    this.style.color = '#0a0e14';
+                    icon?.classList.remove('fa-regular');
+                    icon?.classList.add('fa-solid');
+                }
+                this.innerHTML = (icon?.outerHTML || '') + ' ' + count;
+            });
+        });
+
+        // tab switching simulation
+        document.querySelectorAll('.feed-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.feed-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                // static feed – no real change, just vibe
+            });
+        });
+    })();
+</script>
 </body>
 </html>

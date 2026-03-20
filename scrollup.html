@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>ScrollUp 3.4 · Smart scroll button by Dipto Design</title>
-    <meta name="description" content="Customizable scroll to top button for every website. Position anywhere, reverse scroll, beautiful glass design, zero tracking.">
-    <meta name="keywords" content="scroll to top, back to top, chrome extension, scroll button, scrollup, dipto design, glass morphism">
+    <title>ScrollUp 3.5 · Smart scroll button with resize</title>
+    <meta name="description" content="Customizable scroll to top button with resize slider, global settings, 4 positions, reverse scroll, beautiful glass design, zero tracking.">
+    <meta name="keywords" content="scroll to top, back to top, chrome extension, scroll button, scrollup, dipto design, glass morphism, resize button">
     
     <!-- Open Graph / social -->
-    <meta property="og:title" content="ScrollUp 3.4 – Smart Scroll to Top Button">
-    <meta property="og:description" content="Position anywhere, reverse scroll, live settings panel. Free & open source.">
+    <meta property="og:title" content="ScrollUp 3.5 – Smart Scroll Button with Resize">
+    <meta property="og:description" content="Position anywhere, resize with slider, reverse scroll, live settings panel. Free & open source.">
     <meta property="og:image" content="https://i.ibb.co.com/L4SSbTj/Scroll-Up-1.png">
     <meta property="og:url" content="https://diptodesign.github.io/scrollup">
     <meta property="og:type" content="website">
@@ -500,6 +500,69 @@
             font-size: 0.8rem;
             font-weight: 600;
             border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        /* Button Resize Demo */
+        .resize-demo {
+            background: rgba(12, 20, 30, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 40px 20px;
+            border: 1px solid var(--border-light);
+            margin: 30px 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resize-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .resize-slider-container {
+            flex: 2;
+            min-width: 250px;
+        }
+
+        .resize-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            accent-color: var(--primary);
+        }
+
+        .resize-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            color: var(--text-mute);
+            font-size: 0.85rem;
+        }
+
+        .resize-button-preview {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 120px;
+        }
+
+        .preview-btn {
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 15px 25px -10px var(--primary);
+            transition: all 0.2s ease;
         }
 
         /* Demo Preview */
@@ -1063,13 +1126,14 @@
     <div class="nav-container">
         <a href="#" class="logo">
             <div class="logo-icon"><i class="fas fa-arrow-up"></i></div>
-            ScrollUp<span style="color:var(--primary); margin-left:4px;">3.4</span>
+            ScrollUp<span style="color:var(--primary); margin-left:4px;">3.5</span>
         </a>
         
         <!-- Desktop Navigation -->
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#demo">Live demo</a>
+            <a href="#resize">Resize</a>
             <a href="#install">Install</a>
             <a href="#faq">FAQ</a>
             <a href="https://github.com/diptodesign/scrollup" target="_blank">GitHub</a>
@@ -1089,10 +1153,11 @@
 <div class="mobile-menu" id="mobileMenu">
     <a href="#features">Features</a>
     <a href="#demo">Live demo</a>
+    <a href="#resize">Resize</a>
     <a href="#install">Install</a>
     <a href="#faq">FAQ</a>
     <a href="https://github.com/diptodesign/scrollup" target="_blank">GitHub</a>
-    <a href="#download" class="download-btn"><i class="fas fa-download"></i> Download v3.4</a>
+    <a href="#download" class="download-btn"><i class="fas fa-download"></i> Download v3.5</a>
 </div>
 
 <!-- Back to top button -->
@@ -1102,10 +1167,10 @@
 <section class="hero">
     <div class="container">
         <div class="fade-up appear">
-            <span class="hero-badge"><i class="fas fa-globe" style="margin-right:6px;"></i> Now with global settings</span>
+            <span class="hero-badge"><i class="fas fa-arrows-alt" style="margin-right:6px;"></i> Now with button resize</span>
         </div>
-        <h1 class="fade-up appear">ScrollUp <span style="color:var(--primary);">3.4</span></h1>
-        <p class="hero-subtitle fade-up appear delay-1">The most customizable scroll button. Glass morphism, 4 positions, reverse scroll, real‑time settings. Zero tracking.</p>
+        <h1 class="fade-up appear">ScrollUp <span style="color:var(--primary);">3.5</span></h1>
+        <p class="hero-subtitle fade-up appear delay-1">The most customizable scroll button. Glass morphism, 4 positions, reverse scroll, real‑time settings, and now with BUTTON RESIZE.</p>
         
         <div class="hero-buttons fade-up appear delay-2">
             <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Install</a>
@@ -1114,10 +1179,10 @@
         </div>
 
         <div class="hero-stats fade-up appear delay-3">
-            <div class="stat-item"><span class="stat-number">3.4</span><div class="stat-label">latest</div></div>
+            <div class="stat-item"><span class="stat-number">3.5</span><div class="stat-label">latest</div></div>
             <div class="stat-item"><span class="stat-number">4</span><div class="stat-label">positions</div></div>
             <div class="stat-item"><span class="stat-number">🌐</span><div class="stat-label">global</div></div>
-            <div class="stat-item"><span class="stat-number">⚡</span><div class="stat-label">real-time</div></div>
+            <div class="stat-item"><span class="stat-number">📏</span><div class="stat-label">resize</div></div>
         </div>
     </div>
 </section>
@@ -1160,10 +1225,10 @@
             </div>
 
             <div class="feature-card fade-up delay-1">
-                <div class="feature-icon"><i class="fas fa-copyright"></i></div>
-                <h3>Optional branding</h3>
-                <p>Show/hide "ScrollUp by Dipto Design" footer credit. Support by keeping it.</p>
-                <span class="feature-tag">your call</span>
+                <div class="feature-icon"><i class="fas fa-arrows-alt-h"></i></div>
+                <h3>Button resize</h3>
+                <p>Adjust button size from 32px to 96px with a smooth slider. Live preview!</p>
+                <span class="feature-tag">v3.5</span>
             </div>
 
             <div class="feature-card fade-up delay-2">
@@ -1171,6 +1236,33 @@
                 <h3>Lightweight</h3>
                 <p>~15 KB, no dependencies, smooth 60fps, will-change optimized.</p>
                 <span class="feature-tag">fast</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RESIZE DEMO -->
+<section id="resize">
+    <div class="container">
+        <div class="section-header fade-up">
+            <h2>Resize any time</h2>
+            <p class="section-subtitle">Drag the slider to see how the button scales</p>
+        </div>
+
+        <div class="resize-demo fade-up">
+            <div class="resize-preview">
+                <div class="resize-slider-container">
+                    <input type="range" id="demo-size-slider" class="resize-slider" min="32" max="96" value="54" step="1">
+                    <div class="resize-values">
+                        <span>32px</span>
+                        <span id="demo-size-value">54px</span>
+                        <span>96px</span>
+                    </div>
+                    <p style="color:var(--text-mute); margin-top:15px; font-size:0.9rem;"><i class="fas fa-arrows-alt-h" style="color:var(--primary);"></i> Drag to resize • Font and border scale proportionally</p>
+                </div>
+                <div class="resize-button-preview">
+                    <div id="demo-resize-btn" class="preview-btn" style="width:54px; height:54px; font-size:24px; border-radius:16px;">▲</div>
+                </div>
             </div>
         </div>
     </div>
@@ -1186,13 +1278,14 @@
 
         <div class="demo-preview fade-up">
             <div class="demo-button" onclick="alert('Smooth scroll to top!')"><i class="fas fa-arrow-up"></i></div>
-            <div class="demo-settings-panel" onclick="alert('Settings panel would appear')"><i class="fas fa-cog"></i></div>
+            <div class="demo-settings-panel" onclick="alert('Settings panel would appear with resize slider!')"><i class="fas fa-cog"></i></div>
         </div>
 
         <ul style="list-style:none; margin-top:20px; font-size:0.95rem;">
-            <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--primary); margin-right:8px;"></i> ⚙️ Gear opens settings panel</li>
+            <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--primary); margin-right:8px;"></i> ⚙️ Gear opens settings panel with resize slider</li>
             <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--primary); margin-right:8px;"></i> Four position options</li>
             <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--primary); margin-right:8px;"></i> Footer credit with marketplaces & donate</li>
+            <li style="margin-bottom:10px;"><i class="fas fa-check-circle" style="color:var(--primary); margin-right:8px;"></i> Button size from 32px to 96px</li>
         </ul>
     </div>
 </section>
@@ -1216,15 +1309,15 @@
         <div class="settings-preview fade-up">
             <div style="display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-weight:600;">⚙️ Live settings</span>
-                <span style="color:var(--primary); background:rgba(76,175,80,0.15); padding:4px 12px; border-radius:30px; font-size:0.85rem;">global</span>
+                <span style="color:var(--primary); background:rgba(76,175,80,0.15); padding:4px 12px; border-radius:30px; font-size:0.85rem;">v3.5</span>
             </div>
             <div class="settings-grid">
                 <div class="settings-item"><span>Position</span><div class="settings-value">bottom-left</div></div>
-                <div class="settings-item"><span>X offset</span><div class="settings-value">25px</div></div>
-                <div class="settings-item"><span>Y offset</span><div class="settings-value">25px</div></div>
+                <div class="settings-item"><span>Button size</span><div class="settings-value">54px</div></div>
                 <div class="settings-item"><span>reverse</span><div class="settings-value">off</div></div>
                 <div class="settings-item"><span>branding</span><div class="settings-value">visible</div></div>
                 <div class="settings-item"><span>global</span><div class="settings-value">✅ active</div></div>
+                <div class="settings-item"><span>resize</span><div class="settings-value">32-96px</div></div>
             </div>
         </div>
 
@@ -1236,8 +1329,8 @@
                 <span style="color:#ddd;">Dipto</span>
                 <span class="market"><i class="fas fa-shopping-cart"></i> Markets</span>
                 <span class="market" style="background:rgba(255,80,80,0.1);"><i class="fas fa-heart" style="color:#ff5e5e;"></i> Donate</span>
-                <span style="background:rgba(255,255,255,0.05); padding:6px 12px; border-radius:30px;">v3.4</span>
-                <span style="background:rgba(255,255,255,0.03); padding:6px 12px; border-radius:30px;">© 2025</span>
+                <span style="background:rgba(255,255,255,0.05); padding:6px 12px; border-radius:30px;">v3.5</span>
+                <span style="background:rgba(255,255,255,0.03); padding:6px 12px; border-radius:30px;">© 2026</span>
             </div>
         </div>
     </div>
@@ -1256,7 +1349,7 @@
                 <div class="step-number">1</div>
                 <div>
                     <h3>Download & extract</h3>
-                    <code>ScrollUp.v3.4.zip → folder</code>
+                    <code>ScrollUp.v3.5.zip → folder</code>
                 </div>
             </div>
 
@@ -1285,13 +1378,13 @@
             </div>
         </div>
 
-        <!-- DOWNLOAD -->
+        <!-- DOWNLOAD - UPDATED LINK -->
         <div id="download" class="download-block fade-up">
-            <h2>Download ScrollUp 3.4</h2>
-            <p style="color:#b4c8e0; margin:15px auto; max-width:500px;">Glass UI, reverse scroll, 4 positions, marketplace popup, changelog, and now with GLOBAL SETTINGS. 100% free.</p>
+            <h2>Download ScrollUp 3.5</h2>
+            <p style="color:#b4c8e0; margin:15px auto; max-width:500px;">Glass UI, reverse scroll, 4 positions, marketplace popup, GLOBAL SETTINGS, and now with BUTTON RESIZE (32px-96px). 100% free.</p>
             
             <div style="display:flex; flex-direction:column; gap:12px; max-width:400px; margin:0 auto;">
-                <a href="https://drive.google.com/file/d/1Q10z2bImBXFPHr7Y_OnfQmDF_cgE0S4K/view?usp=sharing" class="btn btn-primary"><i class="fas fa-download"></i> Download (Google Drive)</a>
+                <a href="https://drive.google.com/file/d/1D2eFd2yDzYtreHaXysxq95u13TNeuvfS/view?usp=sharing" class="btn btn-primary"><i class="fas fa-download"></i> Download v3.5 (Google Drive)</a>
                 <a href="https://github.com/diptodesign/scrollup" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> Star on GitHub</a>
             </div>
             
@@ -1325,8 +1418,8 @@
             </div>
 
             <div class="faq-item fade-up delay-3">
-                <div class="faq-question">What's new in v3.4? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">Global settings! Configure once and it works on all websites. Settings sync across all your tabs automatically.</div>
+                <div class="faq-question">What's new in v3.5? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Button resize! Adjust size from 32px to 96px with a smooth slider. Font size and border radius scale automatically.</div>
             </div>
 
             <div class="faq-item fade-up delay-4">
@@ -1342,8 +1435,8 @@
     <div class="container">
         <div class="download-block fade-up" style="padding:50px 20px;">
             <h2 style="font-size:2rem;">Scroll easier, not harder</h2>
-            <p style="color:#b4c8e0; margin:20px 0;">Join thousands of users. Now with global settings!</p>
-            <a href="#download" class="btn btn-primary" style="max-width:300px; margin:0 auto;"><i class="fas fa-download"></i> Download v3.4</a>
+            <p style="color:#b4c8e0; margin:20px 0;">Join thousands of users. Now with button resize!</p>
+            <a href="#download" class="btn btn-primary" style="max-width:300px; margin:0 auto;"><i class="fas fa-download"></i> Download v3.5</a>
         </div>
     </div>
 </section>
@@ -1358,6 +1451,7 @@
         <div class="footer-links">
             <a href="#features">Features</a>
             <a href="#demo">Demo</a>
+            <a href="#resize">Resize</a>
             <a href="#install">Install</a>
             <a href="#faq">FAQ</a>
             <a href="https://github.com/diptodesign/scrollup">GitHub</a>
@@ -1365,7 +1459,7 @@
 
         <div class="copyright">
             <p>© 2026 Dipto Design. All rights reserved.</p>
-            <p style="margin-top:10px;">ScrollUp v3.4 · Global settings · Zero tracking</p>
+            <p style="margin-top:10px;">ScrollUp v3.5 · Global settings · Button resize · Zero tracking</p>
             <p style="margin-top:10px; font-size:0.8rem;">Made with <i class="fas fa-heart" style="color:#ff5e5e;"></i> for the open source community</p>
         </div>
     </div>
@@ -1439,6 +1533,30 @@
                 this.classList.add('active');
             });
         });
+
+        // Resize demo slider
+        const slider = document.getElementById('demo-size-slider');
+        const sizeValue = document.getElementById('demo-size-value');
+        const previewBtn = document.getElementById('demo-resize-btn');
+
+        if (slider && sizeValue && previewBtn) {
+            slider.addEventListener('input', function() {
+                const size = this.value;
+                sizeValue.textContent = size + 'px';
+                
+                // Update button size
+                previewBtn.style.width = size + 'px';
+                previewBtn.style.height = size + 'px';
+                
+                // Update font size (proportional)
+                const fontSize = Math.round(size * 0.45);
+                previewBtn.style.fontSize = fontSize + 'px';
+                
+                // Update border radius (proportional)
+                const borderRadius = Math.round(size * 0.3);
+                previewBtn.style.borderRadius = borderRadius + 'px';
+            });
+        }
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {

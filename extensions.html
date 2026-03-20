@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dipto Studio · Tools for Creators</title>
-    <meta name="description" content="Open-source browser extensions for stock photographers and creators. Copy keywords from Shutterstock, iStock, Adobe Stock with one click.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Dipto Studio · Premium Tools for Creators</title>
+    <meta name="description" content="Open-source browser extensions for stock photographers and creators. Copy keywords from Shutterstock, iStock, Adobe Stock with one click. 100% free.">
     <!-- Open Graph -->
-    <meta property="og:title" content="Dipto Studio – Tools for Creators">
+    <meta property="og:title" content="Dipto Studio – Premium Tools for Creators">
     <meta property="og:description" content="Copy keywords and titles from stock agencies with one click. 100% free and open source.">
+    <meta property="og:image" content="https://i.ibb.co.com/L4SSbTj/Scroll-Up-1.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://diptodesign.github.io/clifydl">
     <!-- Favicon -->
@@ -19,7 +20,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        /* ===== MODERN REDESIGN ===== */
         * {
             margin: 0;
             padding: 0;
@@ -27,39 +27,29 @@
         }
 
         :root {
-            /* Fresh color palette */
             --primary: #9ef01a;
             --primary-dark: #70b800;
             --primary-light: #caff80;
             --primary-soft: rgba(158, 240, 26, 0.1);
             --primary-glow: 0 0 30px rgba(158, 240, 26, 0.3);
-            
             --bg-deep: #0a0c12;
             --bg-dark: #0f1117;
             --bg-card: #1a1e2a;
             --bg-card-hover: #222834;
-            --bg-surface: #232834;
-            --bg-gradient: linear-gradient(145deg, #1e2432, #151b26);
-            
             --text-primary: #ffffff;
             --text-secondary: #e0e4f0;
             --text-muted: #9aa1b5;
-            --text-soft: #b8c1d1;
-            
             --border-light: #2a2f3c;
             --border-glow: rgba(158, 240, 26, 0.3);
-            
             --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
             --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
             --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
             --shadow-glow: 0 8px 24px rgba(158, 240, 26, 0.15);
-            
             --radius-sm: 12px;
             --radius-md: 20px;
             --radius-lg: 32px;
             --radius-xl: 48px;
             --radius-full: 9999px;
-            
             --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -78,7 +68,6 @@
             padding: 0 32px;
         }
 
-        /* ===== TYPOGRAPHY ===== */
         h1, h2, h3, h4 {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
@@ -87,7 +76,7 @@
         }
 
         h1 {
-            font-size: 4.2rem;
+            font-size: clamp(2.8rem, 8vw, 4.5rem);
             font-weight: 800;
             background: linear-gradient(135deg, #ffffff, #d1ff7c);
             -webkit-background-clip: text;
@@ -97,7 +86,7 @@
         }
 
         h2 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #ffffff, #e0ffb0);
             -webkit-background-clip: text;
@@ -117,13 +106,13 @@
             margin: 0 auto;
         }
 
-        /* ===== NAVIGATION ===== */
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 0;
+            padding: 18px 0;
             background: rgba(10, 12, 18, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -141,7 +130,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: white;
             text-decoration: none;
@@ -158,7 +147,6 @@
             font-size: 1.6rem;
             color: var(--bg-deep);
             box-shadow: 0 8px 20px rgba(158, 240, 26, 0.3);
-            transform: rotate(0deg);
             transition: var(--transition);
         }
 
@@ -168,12 +156,13 @@
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 32px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
-            color: var(--text-soft);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
@@ -193,29 +182,24 @@
             transition: width 0.2s;
         }
 
-        .nav-links a:hover {
-            color: white;
-        }
-
         .nav-links a:hover::after {
             width: 70%;
         }
 
-        .nav-links .btn {
-            padding: 8px 20px;
-            font-size: 0.9rem;
+        .nav-links a:hover {
+            color: white;
         }
 
-        /* ===== BUTTONS ===== */
+        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 14px 32px;
+            padding: 12px 28px;
             border-radius: var(--radius-full);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             text-decoration: none;
             transition: var(--transition);
             border: none;
@@ -280,14 +264,14 @@
         }
 
         .btn-small {
-            padding: 10px 20px;
+            padding: 8px 20px;
             font-size: 0.85rem;
         }
 
-        /* ===== HERO SECTION ===== */
+        /* Hero */
         .hero {
-            padding-top: 160px;
-            padding-bottom: 80px;
+            padding-top: 140px;
+            padding-bottom: 60px;
             position: relative;
             overflow: hidden;
         }
@@ -342,7 +326,7 @@
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 60px;
+            gap: 40px;
             margin-top: 50px;
             flex-wrap: wrap;
         }
@@ -353,12 +337,18 @@
             border: 1px solid rgba(158, 240, 26, 0.1);
             border-radius: var(--radius-md);
             padding: 20px 30px;
-            min-width: 140px;
+            min-width: 130px;
             backdrop-filter: blur(4px);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--primary);
             line-height: 1;
@@ -366,17 +356,17 @@
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* ===== TOOLS GRID ===== */
+        /* Tools Grid */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            gap: 30px;
             margin-top: 40px;
         }
 
@@ -387,7 +377,6 @@
             padding: 32px;
             transition: var(--transition-slow);
             position: relative;
-            backdrop-filter: blur(4px);
         }
 
         .tool-card:hover {
@@ -398,7 +387,7 @@
         }
 
         .tool-card.popular {
-            border-color: var(--primary);
+            border: 1px solid var(--primary);
             box-shadow: 0 0 0 1px var(--primary), var(--shadow-glow);
         }
 
@@ -408,9 +397,9 @@
             left: 32px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--bg-deep);
-            padding: 6px 20px;
+            padding: 5px 18px;
             border-radius: var(--radius-full);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             box-shadow: 0 4px 15px rgba(158, 240, 26, 0.4);
             z-index: 2;
@@ -424,10 +413,10 @@
         }
 
         .tool-icon {
-            width: 64px;
-            height: 64px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #232834, #1a1e2a);
-            border-radius: 18px;
+            border-radius: 16px;
             overflow: hidden;
             border: 2px solid rgba(158, 240, 26, 0.2);
             transition: var(--transition);
@@ -444,7 +433,7 @@
         }
 
         .tool-title h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: white;
             margin-bottom: 4px;
         }
@@ -454,7 +443,7 @@
             background: rgba(158, 240, 26, 0.08);
             border: 1px solid rgba(158, 240, 26, 0.2);
             border-radius: var(--radius-full);
-            padding: 4px 12px;
+            padding: 3px 10px;
             font-size: 0.7rem;
             color: var(--primary);
         }
@@ -476,7 +465,7 @@
         }
 
         .tool-description {
-            color: var(--text-soft);
+            color: var(--text-secondary);
             margin-bottom: 20px;
             line-height: 1.6;
             font-size: 0.95rem;
@@ -508,10 +497,10 @@
 
         .tool-actions .btn {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
         }
 
-        /* ===== DETAILS CARDS ===== */
+        /* Details Cards */
         .details-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -554,15 +543,15 @@
         }
 
         .detail-icon {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #1e2432, #151b26);
             border-radius: 50%;
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--primary);
             border: 2px solid rgba(158, 240, 26, 0.2);
             transition: var(--transition);
@@ -596,26 +585,15 @@
             font-size: 0.85rem;
         }
 
-        /* ===== STATS SECTION ===== */
+        /* Stats Section */
         .stats-section {
             background: linear-gradient(145deg, #1a1e2a, #121624);
             border-radius: var(--radius-xl);
-            padding: 60px 40px;
+            padding: 50px 40px;
             margin: 60px 0;
             border: 1px solid rgba(158, 240, 26, 0.1);
             position: relative;
             overflow: hidden;
-        }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(158, 240, 26, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
         }
 
         .stats-grid {
@@ -632,13 +610,13 @@
         }
 
         .stat-card i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary);
             margin-bottom: 16px;
         }
 
         .stat-card .number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: white;
             line-height: 1;
@@ -650,7 +628,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== INSTALL GUIDE ===== */
+        /* Install Guide */
         .install-guide {
             background: linear-gradient(145deg, #1a1e2a, #121624);
             border: 1px solid rgba(158, 240, 26, 0.1);
@@ -688,7 +666,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--bg-deep);
             margin: 0 auto 16px;
@@ -705,7 +683,7 @@
             font-size: 0.85rem;
         }
 
-        /* ===== BROWSER GRID ===== */
+        /* Browser Grid */
         .browser-grid {
             display: flex;
             flex-wrap: wrap;
@@ -720,11 +698,11 @@
             gap: 8px;
             background: rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(158, 240, 26, 0.12);
-            padding: 10px 22px;
+            padding: 8px 20px;
             border-radius: var(--radius-full);
-            color: var(--text-soft);
+            color: var(--text-secondary);
             transition: var(--transition);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .browser-chip:hover {
@@ -736,10 +714,10 @@
 
         .browser-chip i {
             color: var(--primary);
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
-        /* ===== SUPPORT CARDS ===== */
+        /* Support Grid */
         .support-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -752,7 +730,7 @@
             backdrop-filter: blur(8px);
             border: 1px solid rgba(158, 240, 26, 0.1);
             border-radius: var(--radius-lg);
-            padding: 35px 20px 30px;
+            padding: 30px 20px;
             text-align: center;
             transition: var(--transition-slow);
             position: relative;
@@ -781,7 +759,7 @@
         }
 
         .support-card i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary);
             margin-bottom: 16px;
         }
@@ -802,7 +780,7 @@
             margin: 5px 3px;
         }
 
-        /* ===== PARTNERS ===== */
+        /* Partners Grid */
         .partners-grid {
             display: flex;
             flex-wrap: wrap;
@@ -816,12 +794,12 @@
             backdrop-filter: blur(8px);
             border: 1px solid rgba(158, 240, 26, 0.1);
             border-radius: var(--radius-full);
-            padding: 16px 32px;
+            padding: 14px 28px;
             display: flex;
             align-items: center;
             gap: 12px;
             transition: var(--transition);
-            color: var(--text-soft);
+            color: var(--text-secondary);
         }
 
         .partner-card:hover {
@@ -831,16 +809,16 @@
         }
 
         .partner-card i {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--primary);
         }
 
-        /* ===== PARTNER CTA ===== */
+        /* Partner CTA */
         .partner-cta {
             background: linear-gradient(145deg, rgba(158, 240, 26, 0.05), transparent);
             border: 1px solid rgba(158, 240, 26, 0.15);
             border-radius: var(--radius-xl);
-            padding: 60px 40px;
+            padding: 50px 40px;
             text-align: center;
             margin: 60px 0;
             position: relative;
@@ -870,180 +848,163 @@
             margin-top: 30px;
             position: relative;
             z-index: 2;
+            flex-wrap: wrap;
         }
 
-        /* ===== APPS SECTION ===== */
-        .apps-section {
-            padding: 80px 0;
-            background: linear-gradient(180deg, rgba(158, 240, 26, 0.02), transparent);
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
         }
 
-        .apps-category {
-            margin-bottom: 50px;
+        .modal-overlay.active {
+            display: flex;
         }
 
-        .category-title {
-            color: white;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
+        .modal-container {
+            width: 90%;
+            max-width: 550px;
+            background: linear-gradient(145deg, #1a1e2a, #121624);
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         }
 
-        .category-title i {
-            color: var(--primary);
-            margin-right: 10px;
-        }
-
-        .stock-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .integration-card {
-            background: rgba(26, 30, 42, 0.5);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(158, 240, 26, 0.1);
-            border-radius: var(--radius-lg);
-            padding: 30px 20px;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .integration-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-4px);
-        }
-
-        .integration-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .integration-card h4 {
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        .integration-card p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-        }
-
-        .integration-badge {
-            display: inline-block;
-            background: rgba(158, 240, 26, 0.08);
-            color: var(--primary);
-            padding: 4px 12px;
-            border-radius: var(--radius-full);
-            font-size: 0.7rem;
-        }
-
-        .tools-grid-small {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .tool-chip {
-            background: rgba(26, 30, 42, 0.5);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(158, 240, 26, 0.1);
-            border-radius: var(--radius-full);
-            padding: 12px 20px;
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(158, 240, 26, 0.2);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
             transition: var(--transition);
         }
 
-        .tool-chip:hover {
+        .modal-close:hover {
+            background: var(--primary);
+            color: var(--bg-deep);
             border-color: var(--primary);
-            transform: translateY(-3px);
         }
 
-        .tool-chip i {
-            color: var(--primary);
+        .form-group {
+            margin-bottom: 20px;
         }
 
-        .tool-chip span {
+        .form-label {
+            display: block;
             color: white;
+            margin-bottom: 8px;
+            font-weight: 500;
             font-size: 0.9rem;
         }
 
-        .tool-chip .badge {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            margin-left: auto;
-        }
-
-        .community-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .community-badge {
-            background: rgba(26, 30, 42, 0.5);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(158, 240, 26, 0.1);
-            border-radius: var(--radius-full);
-            padding: 12px 28px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(158, 240, 26, 0.2);
+            border-radius: var(--radius-md);
+            color: white;
+            font-size: 0.9rem;
             transition: var(--transition);
         }
 
-        .community-badge:hover {
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
             border-color: var(--primary);
-            transform: translateY(-3px);
         }
 
-        .community-badge i {
-            color: var(--primary);
-            font-size: 1.3rem;
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
-        .integration-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 60px;
-            padding: 30px 40px;
-            background: rgba(158, 240, 26, 0.03);
+        .partner-type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0 20px;
+        }
+
+        .partner-type-card {
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(158, 240, 26, 0.1);
-            border-radius: var(--radius-full);
-        }
-
-        .stat-box {
+            border-radius: var(--radius-md);
+            padding: 12px;
             text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        .stat-box .number {
-            font-size: 2rem;
-            font-weight: 700;
+        .partner-type-card:hover,
+        .partner-type-card.selected {
+            border-color: var(--primary);
+            background: rgba(158, 240, 26, 0.08);
+        }
+
+        .partner-type-card i {
+            font-size: 1.2rem;
             color: var(--primary);
-            line-height: 1;
+            margin-bottom: 6px;
         }
 
-        .stat-box .label {
+        .partner-type-card span {
+            display: block;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .success-message i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .success-message h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .success-message p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            margin-bottom: 20px;
         }
 
-        /* ===== FOOTER ===== */
+        /* Footer */
         .footer {
             background: linear-gradient(180deg, var(--bg-deep), #080a0f);
             border-top: 1px solid rgba(158, 240, 26, 0.1);
-            padding: 60px 0 30px;
+            padding: 50px 0 30px;
             margin-top: 60px;
         }
 
@@ -1081,13 +1042,13 @@
 
         .social-links {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             margin-top: 20px;
         }
 
         .social-link {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(158, 240, 26, 0.15);
             border-radius: 50%;
@@ -1113,156 +1074,7 @@
             font-size: 0.85rem;
         }
 
-        /* ===== MODAL ===== */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-container {
-            width: 90%;
-            max-width: 600px;
-            background: linear-gradient(145deg, #1a1e2a, #121624);
-            border: 2px solid var(--primary);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(158, 240, 26, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-close:hover {
-            background: var(--primary);
-            color: var(--bg-deep);
-            border-color: var(--primary);
-        }
-
-        /* ===== FORM STYLES ===== */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            color: white;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 14px 18px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(158, 240, 26, 0.2);
-            border-radius: var(--radius-md);
-            color: white;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .partner-type-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .partner-type-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(158, 240, 26, 0.1);
-            border-radius: var(--radius-md);
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .partner-type-card:hover,
-        .partner-type-card.selected {
-            border-color: var(--primary);
-            background: rgba(158, 240, 26, 0.08);
-        }
-
-        .partner-type-card i {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .partner-type-card span {
-            display: block;
-            color: white;
-            font-size: 0.85rem;
-        }
-
-        .success-message {
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .success-message i {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .success-message h3 {
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .success-message p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        /* ===== ANIMATIONS ===== */
+        /* Animations */
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -1274,13 +1086,7 @@
             }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         .animate {
-            opacity: 0;
             animation: slideUp 0.5s ease forwards;
         }
 
@@ -1289,83 +1095,73 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
 
-        /* ===== RESPONSIVE ===== */
+        /* Responsive */
         @media (max-width: 1000px) {
             .tools-grid,
             .details-grid,
-            .stock-grid,
-            .tools-grid-small {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats-grid,
             .support-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+            .stats-grid,
             .install-steps {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2.8rem; }
-            h2 { font-size: 2.2rem; }
-            
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .nav-links {
+                display: none;
+            }
             .tools-grid,
             .details-grid,
-            .stats-grid,
-            .support-grid,
-            .stock-grid,
-            .tools-grid-small {
+            .support-grid {
                 grid-template-columns: 1fr;
             }
-            
+            .stats-grid,
             .install-steps {
                 grid-template-columns: 1fr;
             }
-            
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            
-            .nav-links {
-                display: none;
-            }
-            
             .hero-stats {
-                flex-direction: column;
-                align-items: center;
                 gap: 15px;
             }
-            
             .stat-item {
                 width: 100%;
-                max-width: 250px;
+                max-width: 200px;
             }
-            
             .cta-buttons {
                 flex-direction: column;
+                align-items: center;
             }
-            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
             .partner-type-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .integration-stats {
-                flex-direction: column;
-                gap: 20px;
-            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .stat-item { min-width: 120px; padding: 15px 20px; }
+            .stat-number { font-size: 1.8rem; }
+            .tool-card { padding: 24px; }
+            .tool-title h3 { font-size: 1.4rem; }
+            .install-guide, .stats-section, .partner-cta { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
@@ -1374,9 +1170,7 @@
             </a>
             <div class="nav-links">
                 <a href="#tools">Tools</a>
-                <a href="#details">Details</a>
                 <a href="#stats">Stats</a>
-                <a href="#apps">Apps</a>
                 <a href="#support">Support</a>
                 <a href="https://github.com/diptodesign" target="_blank">GitHub</a>
                 <a href="#install" class="btn btn-outline btn-small">Install</a>
@@ -1384,7 +1178,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -1394,618 +1187,144 @@
                 <h1 class="animate delay-1">Tools for<br>Creators</h1>
                 <p class="section-subtitle animate delay-2">Copy keywords and titles from stock agencies with one click. Save hours on metadata entry.</p>
                 <div class="hero-stats animate delay-3">
-                    <div class="stat-item">
-                        <div class="stat-number">4</div>
-                        <div class="stat-label">Extensions</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">40+</div>
-                        <div class="stat-label">Browsers</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">15k+</div>
-                        <div class="stat-label">Downloads</div>
-                    </div>
+                    <div class="stat-item"><div class="stat-number">4</div><div class="stat-label">Extensions</div></div>
+                    <div class="stat-item"><div class="stat-number">40+</div><div class="stat-label">Browsers</div></div>
+                    <div class="stat-item"><div class="stat-number">15k+</div><div class="stat-label">Downloads</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tools Section -->
     <section id="tools">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Tools</h2>
-                <p class="section-subtitle">Designed for stock contributors and designers</p>
-            </div>
-
+            <div class="section-header"><h2>Our Tools</h2><p class="section-subtitle">Designed for stock contributors and designers</p></div>
             <div class="tools-grid">
-                <!-- Shutterstock Pro -->
-                <div class="tool-card popular animate">
-                    <div class="popular-badge">⭐ Most Popular</div>
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <img src="https://i.ibb.co.com/60SqS87L/icon128.png" alt="Shutterstock">
-                        </div>
-                        <div class="tool-title">
-                            <h3>Shutterstock Pro</h3>
-                            <span class="tool-version">v2.0</span>
-                        </div>
-                    </div>
-                    <div class="tool-tags">
-                        <span class="tool-tag">Shutterstock</span>
-                        <span class="tool-tag">Keywords</span>
-                    </div>
+                <div class="tool-card popular animate"><div class="popular-badge">⭐ Most Popular</div>
+                    <div class="tool-header"><div class="tool-icon"><img src="https://i.ibb.co.com/60SqS87L/icon128.png" alt="Shutterstock"></div><div class="tool-title"><h3>Shutterstock Pro</h3><span class="tool-version">v2.0</span></div></div>
+                    <div class="tool-tags"><span class="tool-tag">Shutterstock</span><span class="tool-tag">Keywords</span></div>
                     <p class="tool-description">Copy keywords and titles from Shutterstock assets with one click. Save hours of manual work.</p>
-                    <div class="tool-features">
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> One-click copy all keywords</div>
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Copy title & description</div>
-                    </div>
-                    <div class="tool-actions">
-                        <a href="https://diptodesign.github.io/clifydl/shutterstock.html" class="btn btn-outline btn-small"><i class="fas fa-external-link-alt"></i> View More</a>
-                        <a href="https://pixeldrain.com/u/WDuW9SGp" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a>
-                    </div>
+                    <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> One-click copy all keywords</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Copy title & description</div></div>
+                    <div class="tool-actions"><a href="https://diptodesign.github.io/clifydl/shutterstock.html" class="btn btn-outline btn-small"><i class="fas fa-external-link-alt"></i> Details</a><a href="https://drive.google.com/file/d/1lzK7ZLgUoN_CafTbfnQyB2hftf_UjWzH/view?usp=sharing" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a></div>
                 </div>
-
-                <!-- iStock Pro -->
                 <div class="tool-card animate delay-1">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <img src="https://i.ibb.co.com/JF7qGs80/icon128.png" alt="iStock">
-                        </div>
-                        <div class="tool-title">
-                            <h3>iStock Pro</h3>
-                            <span class="tool-version">v2.0</span>
-                        </div>
-                    </div>
-                    <div class="tool-tags">
-                        <span class="tool-tag">iStock</span>
-                        <span class="tool-tag">Getty</span>
-                    </div>
+                    <div class="tool-header"><div class="tool-icon"><img src="https://i.ibb.co.com/JF7qGs80/icon128.png" alt="iStock"></div><div class="tool-title"><h3>iStock Pro</h3><span class="tool-version">v2.0</span></div></div>
+                    <div class="tool-tags"><span class="tool-tag">iStock</span><span class="tool-tag">Getty</span></div>
                     <p class="tool-description">Extract keywords and titles from iStock assets instantly. Perfect for stock contributors.</p>
-                    <div class="tool-features">
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Copy keywords with formatting</div>
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Works on iStock & Getty</div>
-                    </div>
-                    <div class="tool-actions">
-                        <a href="https://diptodesign.github.io/clifydl/istock.html" class="btn btn-outline btn-small"><i class="fas fa-external-link-alt"></i> View More</a>
-                        <a href="https://pixeldrain.com/u/fvBpa5gr" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a>
-                    </div>
+                    <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> Copy keywords with formatting</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Works on iStock & Getty</div></div>
+                    <div class="tool-actions"><a href="https://diptodesign.github.io/clifydl/istock.html" class="btn btn-outline btn-small"><i class="fas fa-external-link-alt"></i> Details</a><a href="https://drive.google.com/file/d/1jOT3sfBkqD4bS45jZf3hQh8LcX_P3pYb/view?usp=sharing" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a></div>
                 </div>
-
-                <!-- Adobe Stock Pro -->
                 <div class="tool-card animate delay-2">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <img src="https://i.ibb.co.com/bgy2NFcS/icon128.png" alt="Adobe Stock">
-                        </div>
-                        <div class="tool-title">
-                            <h3>Adobe Stock Pro</h3>
-                            <span class="tool-version">v2.1</span>
-                        </div>
-                    </div>
-                    <div class="tool-tags">
-                        <span class="tool-tag">Adobe</span>
-                        <span class="tool-tag">Keywords</span>
-                    </div>
+                    <div class="tool-header"><div class="tool-icon"><img src="https://i.ibb.co.com/bgy2NFcS/icon128.png" alt="Adobe Stock"></div><div class="tool-title"><h3>Adobe Stock Pro</h3><span class="tool-version">v2.1</span></div></div>
+                    <div class="tool-tags"><span class="tool-tag">Adobe</span><span class="tool-tag">Keywords</span></div>
                     <p class="tool-description">Copy keywords and titles from Adobe Stock assets. Save time on metadata entry.</p>
-                    <div class="tool-features">
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> One-click keyword extraction</div>
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Copy title & description</div>
-                    </div>
-                    <div class="tool-actions">
-                        <a href="https://diptodesign.github.io/clifydl/adobestock.html" class="btn btn-outline btn-small"><i class="fas fa-external-link-alt"></i> View More</a>
-                        <a href="https://pixeldrain.com/u/Ankk6v5C" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a>
-                    </div>
+                    <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> One-click keyword extraction</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Copy title & description</div></div>
+                    <div class="tool-actions"><a href="https://diptodesign.github.io/clifydl/adobestock.html" class="btn btn-outline btn-small"><i class="fas fa-external-link-alt"></i> Details</a><a href="https://drive.google.com/file/d/1aBcDeFgHiJkLmNoPqRsTuVwXyZ123456/view?usp=sharing" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a></div>
                 </div>
-
-                <!-- ScrollUp -->
                 <div class="tool-card animate delay-3">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <img src="https://i.ibb.co.com/V0Dzy2k0/icon128.png" alt="ScrollUp">
-                        </div>
-                        <div class="tool-title">
-                            <h3>ScrollUp</h3>
-                            <span class="tool-version">v3.0</span>
-                        </div>
-                    </div>
-                    <div class="tool-tags">
-                        <span class="tool-tag">Utility</span>
-                        <span class="tool-tag">Navigation</span>
-                    </div>
-                    <p class="tool-description">Simple scroll-to-top button for any website. Customizable and lightweight.</p>
-                    <div class="tool-features">
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Floating scroll button</div>
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Customizable position</div>
-                    </div>
-                    <div class="tool-actions">
-                        <a href="https://diptodesign.github.io/clifydl/scrollup.html" class="btn btn-outline btn-small"><i class="fas fa-external-link-alt"></i> View More</a>
-                        <a href="https://pixeldrain.com/u/Wq8cBUbp" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a>
-                    </div>
+                    <div class="tool-header"><div class="tool-icon"><img src="https://i.ibb.co.com/V0Dzy2k0/icon128.png" alt="ScrollUp"></div><div class="tool-title"><h3>ScrollUp</h3><span class="tool-version">v3.5</span></div></div>
+                    <div class="tool-tags"><span class="tool-tag">Utility</span><span class="tool-tag">Navigation</span></div>
+                    <p class="tool-description">Smart scroll to top button with resize, reverse scroll & global settings. Customizable and lightweight.</p>
+                    <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> Button resize (32-96px)</div><div class="tool-feature"><i class="fas fa-check-circle"></i> 4 positions, reverse scroll</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Global settings sync</div></div>
+                    <div class="tool-actions"><a href="https://diptodesign.github.io/clifydl/scrollup.html" class="btn btn-outline btn-small"><i class="fas fa-external-link-alt"></i> Details</a><a href="https://drive.google.com/file/d/1D2eFd2yDzYtreHaXysxq95u13TNeuvfS/view?usp=sharing" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Details Section -->
-    <section id="details">
-        <div class="container">
-            <div class="section-header">
-                <h2>Quick Details</h2>
-                <p class="section-subtitle">Click "View More" for complete information and demos</p>
-            </div>
-
-            <div class="details-grid">
-                <div class="detail-card animate">
-                    <div class="detail-icon">
-                        <i class="fas fa-camera"></i>
-                    </div>
-                    <span class="detail-badge">Shutterstock</span>
-                    <h3>Shutterstock Pro</h3>
-                    <p>Complete details, features, demo, and installation guide</p>
-                    <a href="https://diptodesign.github.io/clifydl/shutterstock.html" class="btn btn-primary btn-small">View More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="detail-card animate delay-1">
-                    <div class="detail-icon">
-                        <i class="fas fa-images"></i>
-                    </div>
-                    <span class="detail-badge">iStock | Getty</span>
-                    <h3>iStock Pro</h3>
-                    <p>Complete details, features, demo, and installation guide</p>
-                    <a href="https://diptodesign.github.io/clifydl/istock.html" class="btn btn-primary btn-small">View More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="detail-card animate delay-2">
-                    <div class="detail-icon">
-                        <i class="fab fa-adobe"></i>
-                    </div>
-                    <span class="detail-badge">Adobe Stock</span>
-                    <h3>Adobe Stock Pro</h3>
-                    <p>Complete details, features, demo, and installation guide</p>
-                    <a href="https://diptodesign.github.io/clifydl/adobestock.html" class="btn btn-primary btn-small">View More <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="detail-card animate delay-3">
-                    <div class="detail-icon">
-                        <i class="fas fa-arrow-up"></i>
-                    </div>
-                    <span class="detail-badge">Utility</span>
-                    <h3>ScrollUp</h3>
-                    <p>Complete details, features, demo, and installation guide</p>
-                    <a href="https://diptodesign.github.io/clifydl/scrollup.html" class="btn btn-primary btn-small">View More <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
     <section id="stats">
         <div class="container">
             <div class="stats-section animate">
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <i class="fas fa-download"></i>
-                        <div class="number">15k+</div>
-                        <div>Monthly Downloads</div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-star"></i>
-                        <div class="number">450+</div>
-                        <div>GitHub Stars</div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-key"></i>
-                        <div class="number">1M+</div>
-                        <div>Keywords Copied</div>
-                    </div>
+                    <div class="stat-card"><i class="fas fa-download"></i><div class="number">15k+</div><div>Monthly Downloads</div></div>
+                    <div class="stat-card"><i class="fas fa-star"></i><div class="number">450+</div><div>GitHub Stars</div></div>
+                    <div class="stat-card"><i class="fas fa-key"></i><div class="number">1M+</div><div>Keywords Copied</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Install Guide -->
     <section id="install">
         <div class="container">
             <div class="install-guide animate">
                 <h2 style="text-align: center;">Universal Install Guide</h2>
                 <p class="section-subtitle" style="text-align: center;">Same 2-minute process for all extensions</p>
-                
                 <div class="install-steps">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <h4>Download</h4>
-                        <p>Get the ZIP from GitHub</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <h4>Extract</h4>
-                        <p>Unzip to a folder</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">3</div>
-                        <h4>Extensions</h4>
-                        <p>chrome://extensions</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">4</div>
-                        <h4>Load</h4>
-                        <p>Load unpacked → Done</p>
-                    </div>
+                    <div class="step-item"><div class="step-number">1</div><h4>Download</h4><p>Get the ZIP from Google Drive</p></div>
+                    <div class="step-item"><div class="step-number">2</div><h4>Extract</h4><p>Unzip to a folder</p></div>
+                    <div class="step-item"><div class="step-number">3</div><h4>Extensions</h4><p>chrome://extensions</p></div>
+                    <div class="step-item"><div class="step-number">4</div><h4>Load</h4><p>Load unpacked → Done</p></div>
                 </div>
-
                 <h3 style="color: white; text-align: center; margin: 40px 0 20px;">Works on 40+ Browsers</h3>
                 <div class="browser-grid">
                     <span class="browser-chip"><i class="fab fa-chrome"></i> Chrome</span>
                     <span class="browser-chip"><i class="fab fa-edge"></i> Edge</span>
                     <span class="browser-chip"><i class="fab fa-brave"></i> Brave</span>
                     <span class="browser-chip"><i class="fab fa-opera"></i> Opera</span>
-                    <span class="browser-chip"><i class="fab fa-opera"></i> Opera GX</span>
                     <span class="browser-chip"><i class="fab fa-chrome"></i> Chromium</span>
-                    <span class="browser-chip"><i class="fab fa-firefox"></i> Vivaldi</span>
-                    <span class="browser-chip"><i class="fab fa-yandex"></i> Yandex</span>
-                    <span class="browser-chip"><i class="fas fa-compass"></i> Arc</span>
-                    <span class="browser-chip"><i class="fas fa-globe"></i> Samsung</span>
-                    <span class="browser-chip"><i class="fas fa-mobile-alt"></i> Kiwi</span>
-                    <span class="browser-chip"><i class="fas fa-window-maximize"></i> Whale</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Apps Integration Section -->
-    <section id="apps" class="apps-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Works With</h2>
-                <p class="section-subtitle">Seamless integration with your favorite platforms</p>
-            </div>
-
-            <!-- Stock Platforms -->
-            <div class="apps-category">
-                <h3 class="category-title">
-                    <i class="fas fa-camera"></i> Stock Photography
-                </h3>
-                <div class="stock-grid">
-                    <div class="integration-card animate">
-                        <i class="fas fa-camera-retro"></i>
-                        <h4>Shutterstock</h4>
-                        <p>Keyword extraction</p>
-                        <span class="integration-badge">Certified</span>
-                    </div>
-                    <div class="integration-card animate delay-1">
-                        <i class="fas fa-images"></i>
-                        <h4>iStock | Getty</h4>
-                        <p>Bulk keyword copy</p>
-                        <span class="integration-badge">Certified</span>
-                    </div>
-                    <div class="integration-card animate delay-2">
-                        <i class="fab fa-adobe"></i>
-                        <h4>Adobe Stock</h4>
-                        <p>Metadata extraction</p>
-                        <span class="integration-badge">Partner</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Browser Support -->
-            <div class="apps-category">
-                <h3 class="category-title">
-                    <i class="fas fa-globe"></i> Browser Support
-                </h3>
-                <div class="browser-grid">
-                    <span class="browser-chip"><i class="fab fa-chrome"></i> Chrome</span>
-                    <span class="browser-chip"><i class="fab fa-edge"></i> Edge</span>
-                    <span class="browser-chip"><i class="fab fa-brave"></i> Brave</span>
-                    <span class="browser-chip"><i class="fab fa-opera"></i> Opera</span>
-                    <span class="browser-chip"><i class="fab fa-chrome"></i> Chromium</span>
-                    <span class="browser-chip"><i class="fab fa-firefox"></i> Vivaldi</span>
+                    <span class="browser-chip"><i class="fab fa-firefox-browser"></i> Vivaldi</span>
                     <span class="browser-chip"><i class="fab fa-yandex"></i> Yandex</span>
                     <span class="browser-chip"><i class="fas fa-compass"></i> Arc</span>
                     <span class="browser-chip"><i class="fas fa-mobile-alt"></i> Kiwi</span>
                 </div>
             </div>
-
-            <!-- Integration Stats -->
-            <div class="integration-stats">
-                <div class="stat-box">
-                    <div class="number">40+</div>
-                    <div class="label">Browsers</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">12+</div>
-                    <div class="label">Partners</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">100%</div>
-                    <div class="label">Free</div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- Support Section -->
     <section id="support">
         <div class="container">
-            <div class="section-header">
-                <h2>Support Open Source</h2>
-                <p class="section-subtitle">Help keep these tools free and continuously improved</p>
-            </div>
-
+            <div class="section-header"><h2>Support Open Source</h2><p class="section-subtitle">Help keep these tools free and continuously improved</p></div>
             <div class="support-grid">
-                <div class="support-card animate">
-                    <i class="fab fa-github"></i>
-                    <h4>GitHub Sponsors</h4>
-                    <div>
-                        <span class="support-badge">$5/mo</span>
-                        <span class="support-badge">$10/mo</span>
-                    </div>
-                    <a href="https://github.com/diptodesign" class="btn btn-outline btn-small" style="margin-top: 20px;">Sponsor</a>
-                </div>
-                <div class="support-card animate delay-1">
-                    <i class="fas fa-mug-hot"></i>
-                    <h4>Buy Me a Coffee</h4>
-                    <div>
-                        <span class="support-badge">$3</span>
-                        <span class="support-badge">$5</span>
-                    </div>
-                    <a href="https://buymeacoffee.com/diptodesign100" class="btn btn-outline btn-small" style="margin-top: 20px;">Support</a>
-                </div>
-                <div class="support-card animate delay-2">
-                    <i class="fab fa-patreon"></i>
-                    <h4>Patreon</h4>
-                    <div>
-                        <span class="support-badge">$2/mo</span>
-                        <span class="support-badge">$5/mo</span>
-                    </div>
-                    <a href="https://www.patreon.com/c/diptodesign" class="btn btn-outline btn-small" style="margin-top: 20px;">Become a Patron</a>
-                </div>
-                <div class="support-card animate delay-3">
-                    <i class="fas fa-coffee"></i>
-                    <h4>Ko-fi</h4>
-                    <div>
-                        <span class="support-badge">$3</span>
-                        <span class="support-badge">$6</span>
-                    </div>
-                    <a href="https://ko-fi.com/diptodesignz" class="btn btn-outline btn-small" style="margin-top: 20px;">Support</a>
-                </div>
+                <div class="support-card animate"><i class="fab fa-github"></i><h4>GitHub Sponsors</h4><div><span class="support-badge">$5/mo</span><span class="support-badge">$10/mo</span></div><a href="https://github.com/diptodesign" class="btn btn-outline btn-small" style="margin-top: 20px;">Sponsor</a></div>
+                <div class="support-card animate delay-1"><i class="fas fa-mug-hot"></i><h4>Buy Me a Coffee</h4><div><span class="support-badge">$3</span><span class="support-badge">$5</span></div><a href="https://buymeacoffee.com/diptodesign100" class="btn btn-outline btn-small" style="margin-top: 20px;">Support</a></div>
+                <div class="support-card animate delay-2"><i class="fab fa-patreon"></i><h4>Patreon</h4><div><span class="support-badge">$2/mo</span><span class="support-badge">$5/mo</span></div><a href="https://www.patreon.com/c/diptodesign" class="btn btn-outline btn-small" style="margin-top: 20px;">Become a Patron</a></div>
+                <div class="support-card animate delay-3"><i class="fas fa-coffee"></i><h4>Ko-fi</h4><div><span class="support-badge">$3</span><span class="support-badge">$6</span></div><a href="https://ko-fi.com/diptodesignz" class="btn btn-outline btn-small" style="margin-top: 20px;">Support</a></div>
             </div>
         </div>
     </section>
 
-    <!-- Partners Section -->
     <section id="partners">
         <div class="container">
-            <div class="section-header">
-                <h2>Trusted Partners</h2>
-                <p class="section-subtitle">Seamlessly integrated with these platforms</p>
-            </div>
-
+            <div class="section-header"><h2>Trusted Partners</h2><p class="section-subtitle">Seamlessly integrated with these platforms</p></div>
             <div class="partners-grid">
                 <div class="partner-card"><i class="fas fa-camera"></i> Shutterstock</div>
                 <div class="partner-card"><i class="fas fa-images"></i> iStock | Getty</div>
                 <div class="partner-card"><i class="fab fa-adobe"></i> Adobe Stock</div>
             </div>
-
-            <!-- Partner CTA -->
-            <div class="partner-cta animate">
-                <h3 style="color: white; margin-bottom: 15px;">Want to integrate with our tools?</h3>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">We're open to partnerships with stock platforms, browser vendors, and productivity tools.</p>
-                <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary" onclick="openPartnerModal('partner'); return false;"><i class="fas fa-handshake"></i> Become a Partner</a>
-                    <a href="#" class="btn btn-outline" onclick="openPartnerModal('contact'); return false;"><i class="fas fa-envelope"></i> Contact Us</a>
-                </div>
+            <div class="partner-cta animate"><h3 style="color: white; margin-bottom: 15px;">Want to integrate with our tools?</h3><p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">We're open to partnerships with stock platforms, browser vendors, and productivity tools.</p>
+                <div class="cta-buttons"><a href="#" class="btn btn-primary" onclick="openPartnerModal('partner'); return false;"><i class="fas fa-handshake"></i> Become a Partner</a><a href="#" class="btn btn-outline" onclick="openPartnerModal('contact'); return false;"><i class="fas fa-envelope"></i> Contact Us</a></div>
             </div>
         </div>
     </section>
 
-    <!-- Partner Modal -->
-    <div class="modal-overlay" id="partnerModal">
-        <div class="modal-container">
-            <div class="modal-close" onclick="closePartnerModal()"><i class="fas fa-times"></i></div>
-            
-            <div id="modalContent">
-                <div class="partner-form">
-                    <h2 class="modal-title">Become a Partner</h2>
-                    <p class="modal-subtitle">Let's collaborate! We'll get back to you within 24 hours.</p>
-                    
-                    <form id="partnerForm" onsubmit="submitPartnerForm(event)">
-                        <div class="form-group">
-                            <label class="form-label">I'm interested in:</label>
-                            <div class="partner-type-grid">
-                                <div class="partner-type-card" onclick="selectPartnerType('stock')">
-                                    <i class="fas fa-camera"></i>
-                                    <span>Stock Platform</span>
-                                </div>
-                                <div class="partner-type-card" onclick="selectPartnerType('browser')">
-                                    <i class="fas fa-globe"></i>
-                                    <span>Browser Vendor</span>
-                                </div>
-                                <div class="partner-type-card" onclick="selectPartnerType('tool')">
-                                    <i class="fas fa-wrench"></i>
-                                    <span>Productivity Tool</span>
-                                </div>
-                            </div>
-                            <input type="hidden" id="partnerType" name="partnerType">
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">First Name *</label>
-                                <input type="text" class="form-input" id="firstName" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Last Name *</label>
-                                <input type="text" class="form-input" id="lastName" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Company / Organization *</label>
-                            <input type="text" class="form-input" id="company" required>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Email *</label>
-                                <input type="email" class="form-input" id="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Phone</label>
-                                <input type="tel" class="form-input" id="phone">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">How would you like to collaborate? *</label>
-                            <textarea class="form-textarea" id="message" rows="4" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Send Request
-                        </button>
-                    </form>
-                </div>
-            </div>
-            
-            <div id="successMessage" style="display: none;" class="success-message">
-                <i class="fas fa-check-circle"></i>
-                <h3>Thank You!</h3>
-                <p>We'll get back to you within 24 hours.</p>
-                <button class="btn btn-primary" onclick="closePartnerModal()">Close</button>
-            </div>
-        </div>
-    </div>
+    <div class="modal-overlay" id="partnerModal"><div class="modal-container"><div class="modal-close" onclick="closePartnerModal()"><i class="fas fa-times"></i></div>
+        <div id="modalContent"><div class="partner-form"><h2 class="modal-title" style="color: white;">Become a Partner</h2><p style="color: var(--text-muted); margin-bottom: 25px;">Let's collaborate! We'll get back to you within 24 hours.</p>
+            <form id="partnerForm" onsubmit="submitPartnerForm(event)"><div class="form-group"><label class="form-label">I'm interested in:</label><div class="partner-type-grid"><div class="partner-type-card" onclick="selectPartnerType('stock')"><i class="fas fa-camera"></i><span>Stock Platform</span></div><div class="partner-type-card" onclick="selectPartnerType('browser')"><i class="fas fa-globe"></i><span>Browser Vendor</span></div><div class="partner-type-card" onclick="selectPartnerType('tool')"><i class="fas fa-wrench"></i><span>Productivity Tool</span></div></div><input type="hidden" id="partnerType" name="partnerType"></div>
+                <div class="form-row"><div class="form-group"><label class="form-label">First Name *</label><input type="text" class="form-input" id="firstName" required></div><div class="form-group"><label class="form-label">Last Name *</label><input type="text" class="form-input" id="lastName" required></div></div>
+                <div class="form-group"><label class="form-label">Company / Organization *</label><input type="text" class="form-input" id="company" required></div>
+                <div class="form-row"><div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" id="email" required></div><div class="form-group"><label class="form-label">Phone</label><input type="tel" class="form-input" id="phone"></div></div>
+                <div class="form-group"><label class="form-label">How would you like to collaborate? *</label><textarea class="form-textarea" id="message" rows="4" required></textarea></div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;"><i class="fas fa-paper-plane"></i> Send Request</button>
+            </form>
+        </div></div>
+        <div id="successMessage" style="display: none;" class="success-message"><i class="fas fa-check-circle"></i><h3>Thank You!</h3><p>We'll get back to you within 24 hours.</p><button class="btn btn-primary" onclick="closePartnerModal()">Close</button></div>
+    </div></div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="logo" style="margin-bottom: 15px;">
-                        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
-                        Dipto Studio
-                    </div>
-                    <p style="color: var(--text-muted);">Open source tools for creators. No tracking, no data collection.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/diptodesign" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="https://t.me/Clifybydd" class="social-link"><i class="fab fa-telegram"></i></a>
-                        <a href="mailto:diptodesignstd@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4>Tools</h4>
-                    <ul>
-                        <li><a href="https://diptodesign.github.io/clifydl/shutterstock.html">Shutterstock Pro</a></li>
-                        <li><a href="https://diptodesign.github.io/clifydl/istock.html">iStock Pro</a></li>
-                        <li><a href="https://diptodesign.github.io/clifydl/adobestock.html">Adobe Stock Pro</a></li>
-                        <li><a href="https://diptodesign.github.io/clifydl/scrollup.html">ScrollUp</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Details</h4>
-                    <ul>
-                        <li><a href="https://diptodesign.github.io/clifydl/shutterstock.html">Shutterstock Pro</a></li>
-                        <li><a href="https://diptodesign.github.io/clifydl/istock.html">iStock Pro</a></li>
-                        <li><a href="https://diptodesign.github.io/clifydl/adobestock.html">Adobe Stock Pro</a></li>
-                        <li><a href="https://diptodesign.github.io/clifydl/scrollup.html">ScrollUp</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="https://github.com/diptodesign">GitHub</a></li>
-                        <li><a href="#install">Install Guide</a></li>
-                        <li><a href="#">Changelog</a></li>
-                        <li><a href="mailto:diptodesignstd@gmail.com">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>© <span id="currentYear"></span> Dipto Studio · Open Source · Free Forever</p>
-            </div>
-        </div>
-    </footer>
+    <footer class="footer"><div class="container"><div class="footer-grid"><div><div class="logo" style="margin-bottom: 15px;"><div class="logo-icon"><i class="fas fa-bolt"></i></div>Dipto Studio</div><p style="color: var(--text-muted);">Open source tools for creators. No tracking, no data collection.</p><div class="social-links"><a href="https://github.com/diptodesign" class="social-link"><i class="fab fa-github"></i></a><a href="https://t.me/Clifybydd" class="social-link"><i class="fab fa-telegram"></i></a><a href="mailto:diptodesignstd@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a></div></div>
+            <div><h4>Tools</h4><ul><li><a href="https://diptodesign.github.io/clifydl/shutterstock.html">Shutterstock Pro</a></li><li><a href="https://diptodesign.github.io/clifydl/istock.html">iStock Pro</a></li><li><a href="https://diptodesign.github.io/clifydl/adobestock.html">Adobe Stock Pro</a></li><li><a href="https://diptodesign.github.io/clifydl/scrollup.html">ScrollUp</a></li></ul></div>
+            <div><h4>Resources</h4><ul><li><a href="https://github.com/diptodesign">GitHub</a></li><li><a href="#install">Install Guide</a></li><li><a href="#">Changelog</a></li><li><a href="mailto:diptodesignstd@gmail.com">Contact</a></li></ul></div>
+        </div><div class="copyright"><p>© <span id="currentYear"></span> Dipto Studio · Open Source · Free Forever</p></div>
+    </div></footer>
 
     <script>
-        // Current year
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Modal Functions
         let currentModalType = 'partner';
-        
-        function openPartnerModal(type) {
-            currentModalType = type;
-            const modal = document.getElementById('partnerModal');
-            const modalTitle = document.querySelector('.modal-title');
-            const modalSubtitle = document.querySelector('.modal-subtitle');
-            const partnerTypeGrid = document.querySelector('.partner-type-grid');
-            
-            if (type === 'contact') {
-                modalTitle.textContent = 'Contact Us';
-                modalSubtitle.textContent = 'Send us a message and we\'ll reply promptly.';
-                partnerTypeGrid.style.display = 'none';
-            } else {
-                modalTitle.textContent = 'Become a Partner';
-                modalSubtitle.textContent = 'Let\'s collaborate! We\'ll get back to you within 24 hours.';
-                partnerTypeGrid.style.display = 'grid';
-            }
-            
-            document.getElementById('partnerForm').reset();
-            document.getElementById('successMessage').style.display = 'none';
-            document.querySelector('.partner-form').style.display = 'block';
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closePartnerModal() {
-            document.getElementById('partnerModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function selectPartnerType(type) {
-            document.querySelectorAll('.partner-type-card').forEach(c => c.classList.remove('selected'));
-            event.currentTarget.classList.add('selected');
-            document.getElementById('partnerType').value = type;
-        }
-        
-        function submitPartnerForm(event) {
-            event.preventDefault();
-            
-            if (currentModalType === 'partner') {
-                const partnerType = document.getElementById('partnerType').value;
-                if (!partnerType) {
-                    alert('Please select a partner type');
-                    return;
-                }
-            }
-            
-            document.querySelector('.partner-form').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-        }
-        
-        // Close modal on outside click
-        document.getElementById('partnerModal').addEventListener('click', function(e) {
-            if (e.target === this) closePartnerModal();
-        });
-        
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closePartnerModal();
-        });
-
-        // Intersection observer for animations
-        const animated = document.querySelectorAll('.animate');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, { threshold: 0.1 });
-        animated.forEach(el => observer.observe(el));
+        function openPartnerModal(type) { currentModalType = type; const modal = document.getElementById('partnerModal'); const partnerTypeGrid = document.querySelector('.partner-type-grid'); if (type === 'contact') { document.querySelector('.modal-title').textContent = 'Contact Us'; document.querySelector('.partner-form p').textContent = 'Send us a message and we\'ll reply promptly.'; if(partnerTypeGrid) partnerTypeGrid.style.display = 'none'; } else { document.querySelector('.modal-title').textContent = 'Become a Partner'; document.querySelector('.partner-form p').textContent = 'Let\'s collaborate! We\'ll get back to you within 24 hours.'; if(partnerTypeGrid) partnerTypeGrid.style.display = 'grid'; } document.getElementById('partnerForm').reset(); document.getElementById('successMessage').style.display = 'none'; document.querySelector('.partner-form').style.display = 'block'; modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closePartnerModal() { document.getElementById('partnerModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        function selectPartnerType(type) { document.querySelectorAll('.partner-type-card').forEach(c => c.classList.remove('selected')); event.currentTarget.classList.add('selected'); document.getElementById('partnerType').value = type; }
+        function submitPartnerForm(event) { event.preventDefault(); if (currentModalType === 'partner') { const partnerType = document.getElementById('partnerType').value; if (!partnerType) { alert('Please select a partner type'); return; } } document.querySelector('.partner-form').style.display = 'none'; document.getElementById('successMessage').style.display = 'block'; }
+        document.getElementById('partnerModal').addEventListener('click', function(e) { if (e.target === this) closePartnerModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePartnerModal(); });
+        const animated = document.querySelectorAll('.animate'); const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('animate'); }); }, { threshold: 0.1 }); animated.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>

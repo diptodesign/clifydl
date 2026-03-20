@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Clify YouTube Content Blocker</title>
+    <meta name="description" content="Privacy policy for Clify - YouTube Content Blocker extension. Zero data collection, 100% privacy focused.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #c1f11d;
+            --primary-dark: #a0d116;
+            --primary-light: #d4f567;
+            --secondary: #8bc34a;
+            --accent: #4caf50;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+            --info: #2196f3;
+            
+            --bg-primary: #0A0F1C;
+            --bg-secondary: #13182B;
+            --bg-tertiary: #1C2238;
+            --bg-surface: rgba(255, 255, 255, 0.05);
+            --bg-hover: rgba(255, 255, 255, 0.08);
+            --bg-glass: rgba(255, 255, 255, 0.1);
+            
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B7C3;
+            --text-muted: #7A8291;
+            --text-accent: #c1f11d;
+            
+            --border-primary: rgba(255, 255, 255, 0.1);
+            --border-secondary: rgba(255, 255, 255, 0.05);
+            --border-glow: rgba(193, 241, 29, 0.4);
+            
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 25px rgba(193, 241, 29, 0.3);
+            
+            --radius-sm: 12px;
+            --radius-md: 16px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+            
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at 30% 20%, #1e3a2a, #0a0f1a 90%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(193, 241, 29, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 0%, rgba(139, 195, 74, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(212, 245, 103, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Header */
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 12px 24px;
+            border-radius: 60px;
+            margin-bottom: 24px;
+            color: #0A0F1C;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .logo i {
+            font-size: 1.4rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(193, 241, 29, 0.15);
+            border: 1px solid var(--border-glow);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-top: 16px;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        /* Cards */
+        .privacy-card {
+            background: rgba(18, 26, 38, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: var(--transition);
+            animation: fadeInUp 0.6s ease;
+            animation-fill-mode: both;
+        }
+
+        .privacy-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-secondary);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #0A0F1C;
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .card-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* Content Styling */
+        .content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .content p {
+            margin-bottom: 16px;
+        }
+
+        .content h3 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin: 24px 0 12px;
+        }
+
+        .content ul, .content ol {
+            margin: 16px 0 16px 24px;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+        }
+
+        .content strong {
+            color: var(--primary);
+        }
+
+        /* Data Collection Grid */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .data-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            border-left: 4px solid var(--success);
+        }
+
+        .data-item .data-icon {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .data-item .data-title {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .data-item .data-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .no-data-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .no-data-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: var(--radius-md);
+        }
+
+        .no-data-list li::before {
+            content: "❌";
+            font-size: 1rem;
+        }
+
+        /* Permissions Table */
+        .permissions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .permissions-table th,
+        .permissions-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-secondary);
+        }
+
+        .permissions-table th {
+            background: rgba(193, 241, 29, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .permissions-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .permission-badge {
+            background: rgba(193, 241, 29, 0.15);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(193, 241, 29, 0.1), rgba(139, 195, 74, 0.05));
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .contact-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            min-width: 200px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-4px);
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .contact-item a {
+            color: var(--text-primary);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-primary);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer .heart {
+            color: var(--danger);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .privacy-card {
+                padding: 24px;
+            }
+
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .card-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .permissions-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .contact-grid {
+                gap: 16px;
+            }
+
+            .contact-item {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .no-data-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="privacy-header">
+            <a href="https://diptodesign.github.io/clifydl/" class="logo" target="_blank">
+                <i class="fas fa-magnet"></i>
+                <span>Clify</span>
+            </a>
+            <h1>Privacy Policy</h1>
+            <div class="version-badge">Version 7.0.0 · Official Release</div>
+            <div class="last-updated">Last Updated: March 2026</div>
+            <div style="margin-top: 12px; color: var(--text-muted);">By Dipto Design Studio</div>
+        </div>
+
+        <!-- Commitment Card -->
+        <div class="privacy-card">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div>
+                    <h2>🛡️ Our Commitment to Privacy</h2>
+                    <p>Your privacy is not just a policy—it's built into Clify's core</p>
+                </div>
+            </div>
+            <div class="content">
+                <p>Clify is designed with a <strong>zero-data-collection</strong> philosophy. We believe that you should have complete control over your browsing experience without sacrificing your privacy. This extension works entirely locally on your device, and no data is ever transmitted to our servers or any third parties.</p>
+            </div>
+        </div>
+
+        <!-- No Data Collection Card -->
+        <div class="privacy-card delay-1">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <div>
+                    <h2>📊 What Data We Collect</h2>
+                    <p>Absolutely nothing. Zero. Zilch. Nada.</p>
+                </div>
+            </div>
+            <div class="content">
+                <p><strong>Clify collects NO data whatsoever.</strong> This includes:</p>
+                <ul class="no-data-list">
+                    <li>Personal information</li>
+                    <li>Browsing history</li>
+                    <li>YouTube watch history</li>
+                    <li>Usage statistics or analytics</li>
+                    <li>IP addresses</li>
+                    <li>Device information</li>
+                    <li>Cookies or trackers</li>
+                    <li>Any form of telemetry</li>
+                </ul>
+                <p>Your blocked videos and keywords are stored <strong>locally</strong> on your device using Chrome's <code>storage.sync</code> API. This data never leaves your browser and is not accessible to us or any third parties.</p>
+            </div>
+        </div>
+
+        <!-- Permissions Card -->
+        <div class="privacy-card delay-2">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <div>
+                    <h2>🔧 Required Permissions Explained</h2>
+                    <p>We only ask for what we need to function</p>
+                </div>
+            </div>
+            <div class="content">
+                <table class="permissions-table">
+                    <thead>
+                        <tr>
+                            <th>Permission</th>
+                            <th>Why It's Needed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="permission-badge">storage</span></td>
+                            <td>Saves your settings (keywords, blocked videos, preferences) locally on your device. This data never leaves your browser and is only accessible by you.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="permission-badge">scripting</span></td>
+                            <td>Allows the extension to interact with YouTube pages to block videos, remove Shorts, and apply your settings in real-time.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="permission-badge">tabs</span></td>
+                            <td>Detects when you navigate to YouTube pages to activate the blocking features automatically.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="permission-badge">notifications</span></td>
+                            <td>Shows optional notifications when videos are blocked (you can disable this in settings).</td>
+                        </tr>
+                        <tr>
+                            <td><span class="permission-badge">*://www.youtube.com/*</span></td>
+                            <td>Required to run Clify on YouTube. The extension only activates on YouTube pages and does not monitor or interact with any other websites.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- How Data is Stored Card -->
+        <div class="privacy-card delay-3">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div>
+                    <h2>💾 How Your Data is Stored</h2>
+                    <p>100% local, 100% private</p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-icon">🔒</div>
+                        <div class="data-title">Local Storage Only</div>
+                        <div class="data-desc">All settings and blocked videos are stored on your device using Chrome's storage.sync API.</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-icon">☁️</div>
+                        <div class="data-title">Optional Sync</div>
+                        <div class="data-desc">If you're signed into Chrome, settings can sync across your browsers—encrypted by Chrome, never by us.</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-icon">🚫</div>
+                        <div class="data-title">No External Servers</div>
+                        <div class="data-desc">Clify has no backend servers. We don't store, process, or have access to any of your data.</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-icon">🗑️</div>
+                        <div class="data-title">Complete Control</div>
+                        <div class="data-desc">You can clear all data anytime from the settings panel or by uninstalling the extension.</div>
+                    </div>
+                </div>
+                <p><strong>No data is ever sent to our servers (because we don't have any!).</strong> Your privacy is protected by design.</p>
+            </div>
+        </div>
+
+        <!-- Third Party Card -->
+        <div class="privacy-card delay-4">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div>
+                    <h2>🌐 Third-Party Services</h2>
+                    <p>We don't use them. Period.</p>
+                </div>
+            </div>
+            <div class="content">
+                <p>Clify does <strong>NOT</strong> use:</p>
+                <ul>
+                    <li>Google Analytics</li>
+                    <li>Any tracking pixels</li>
+                    <li>Advertising networks</li>
+                    <li>External APIs</li>
+                    <li>Any third-party services at all</li>
+                </ul>
+                <p style="margin-top: 16px;">The extension functions entirely offline and independently. No external requests are made from Clify to any servers.</p>
+            </div>
+        </div>
+
+        <!-- Open Source Card -->
+        <div class="privacy-card">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <div>
+                    <h2>🔓 Open Source & Transparent</h2>
+                    <p>100% open source, 100% auditable</p>
+                </div>
+            </div>
+            <div class="content">
+                <p>Clify is completely open source. You can inspect the entire codebase on GitHub:</p>
+                <ul>
+                    <li><strong>📁 Full source code:</strong> <a href="https://github.com/diptodesign/clify" target="_blank" style="color: var(--primary);">https://github.com/diptodesign/clify</a></li>
+                    <li><strong>🔍 Code reviews:</strong> Every update is visible to the community</li>
+                    <li><strong>🐛 Bug reports:</strong> Issues are tracked publicly</li>
+                    <li><strong>👥 Community contributions:</strong> Welcome and encouraged</li>
+                </ul>
+                <p>We believe transparency is the foundation of trust. If you're a developer, feel free to review the code and verify our privacy claims yourself.</p>
+            </div>
+        </div>
+
+        <!-- Children's Privacy -->
+        <div class="privacy-card">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <div>
+                    <h2>👶 Children's Privacy</h2>
+                    <p>We don't collect any data from anyone</p>
+                </div>
+            </div>
+            <div class="content">
+                <p>Since Clify collects no personal information from any user, we have no specific provisions for children's data. The extension is safe for users of all ages as it doesn't track, store, or transmit any personal information.</p>
+            </div>
+        </div>
+
+        <!-- Changes to Policy -->
+        <div class="privacy-card">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div>
+                    <h2>📅 Changes to This Policy</h2>
+                    <p>We'll let you know if anything changes</p>
+                </div>
+            </div>
+            <div class="content">
+                <p>Since Clify doesn't collect any data, this policy is unlikely to change. However, if we ever update it (for clarity or to reflect new features that still respect your privacy), we'll:</p>
+                <ul>
+                    <li>Update the "Last Updated" date at the top of this page</li>
+                    <li>Post a notice in the GitHub repository</li>
+                    <li>Include a notification in the extension's update notes</li>
+                </ul>
+                <p>You can always review the latest version of this policy at: <strong><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank" style="color: var(--primary);">https://diptodesign.github.io/clifydl/privacy.html</a></strong></p>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <div class="card-header" style="border-bottom: none; justify-content: center;">
+                <div class="card-icon" style="background: linear-gradient(135deg, var(--warning), var(--danger));">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                    <h2 style="color: var(--text-primary);">📞 Contact Us</h2>
+                    <p>Have questions about your privacy?</p>
+                </div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div><strong>Email</strong></div>
+                    <a href="mailto:DiptoDesignStd@gmail.com">DiptoDesignStd@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <div><strong>GitHub Issues</strong></div>
+                    <a href="https://github.com/diptodesign/clify/issues" target="_blank">github.com/diptodesign/clify/issues</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <div><strong>Project Home</strong></div>
+                    <a href="https://diptodesign.github.io/clifydl/" target="_blank">diptodesign.github.io/clifydl/</a>
+                </div>
+            </div>
+            <p style="margin-top: 24px; font-size: 0.9rem; color: var(--text-muted);">We'll respond within 2-3 business days</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 Dipto Design Studio. All rights reserved.</p>
+            <p style="margin-top: 8px;">Made with <span class="heart">❤️</span> for the open source community</p>
+            <p style="margin-top: 8px; font-size: 0.8rem;">Clify · YouTube Content Blocker · Zero Data Collection · 100% Private</p>
+            <p style="margin-top: 8px; font-size: 0.75rem; opacity: 0.6;">This extension is not affiliated with YouTube or Google</p>
+        </div>
+    </div>
+</body>
+</html>

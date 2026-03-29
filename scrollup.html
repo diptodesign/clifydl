@@ -349,10 +349,6 @@
             font-weight: 700;
         }
 
-        .firefox-badge {
-            background: #FF7139;
-        }
-
         /* Section */
         .section {
             padding: 80px 0;
@@ -621,31 +617,38 @@
             margin: 32px 0 24px;
         }
 
-        /* FAQ */
+        /* FAQ - Enhanced for 10 items */
         .faq-grid {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .faq-item {
             background: var(--dark-card);
             border-radius: 24px;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             border: 1px solid var(--border-light);
+            transition: all 0.2s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-light);
         }
 
         .faq-question {
-            padding: 20px 26px;
+            padding: 22px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
             cursor: pointer;
+            font-size: 1.05rem;
         }
 
         .faq-question i {
             color: var(--primary);
-            transition: transform 0.2s;
+            transition: transform 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .faq-item.active .faq-question i {
@@ -653,13 +656,23 @@
         }
 
         .faq-answer {
-            padding: 0 26px 24px;
+            padding: 0 28px 28px 28px;
             color: var(--gray-400);
             display: none;
+            line-height: 1.7;
+            border-top: 1px solid var(--border-light);
+            margin-top: 8px;
+            padding-top: 20px;
         }
 
         .faq-item.active .faq-answer {
             display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Footer */
@@ -739,6 +752,13 @@
             }
             .store-item span {
                 font-size: 0.8rem;
+            }
+            .faq-question {
+                padding: 18px 22px;
+                font-size: 0.95rem;
+            }
+            .faq-answer {
+                padding: 0 22px 22px 22px;
             }
         }
 
@@ -911,13 +931,27 @@
 
     <section id="faq" class="section">
         <div class="container">
-            <div class="section-header"><h2>Frequently asked questions</h2><p>Everything you need to know</p></div>
+            <div class="section-header"><h2>Frequently asked questions</h2><p>Got questions? We've got answers — 10 common questions answered</p></div>
             <div class="faq-grid">
-                <div class="faq-item"><div class="faq-question"><span>Which browsers are supported?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">ScrollUp is now available on <strong>Microsoft Edge</strong> and <strong>Firefox</strong>! Chrome version is coming soon. You can also manually install on any Chromium browser via developer mode.</div></div>
-                <div class="faq-item"><div class="faq-question"><span>How do I get the Edge or Firefox add-on?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Just click the "Install for Edge" or "Install for Firefox" buttons above. You'll be redirected to the official store for a one-click installation.</div></div>
-                <div class="faq-item"><div class="faq-question"><span>How does the resize slider work?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Open settings (gear icon) and drag the slider from 32px to 96px. Button size, icon scale & radius adjust in real time.</div></div>
-                <div class="faq-item"><div class="faq-question"><span>Does it track my browsing activity?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">No. ScrollUp has zero tracking, no analytics, and only requests storage permission to save your settings. Full privacy.</div></div>
-                <div class="faq-item"><div class="faq-question"><span>Can I change scroll direction?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes! Toggle between scroll to top (▲) or scroll to bottom (▼) — ideal for chat apps or long comment sections.</div></div>
+                <div class="faq-item"><div class="faq-question"><span>🌐 Which browsers are supported?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">ScrollUp is now available on <strong>Microsoft Edge</strong> and <strong>Firefox</strong> via official stores! Chrome version is coming soon. You can also manually install on any Chromium browser (Brave, Vivaldi, Opera) via developer mode using the ZIP file.</div></div>
+                
+                <div class="faq-item"><div class="faq-question"><span>📥 How do I install ScrollUp on Edge or Firefox?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Simply click the "Install for Edge" or "Install for Firefox" buttons on this page. You'll be redirected to the official add-on store where you can install with one click. No technical knowledge required!</div></div>
+                
+                <div class="faq-item"><div class="faq-question"><span>📏 How does the resize slider work?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Click the settings gear icon (⚙️) next to the scroll button, then drag the size slider from 32px to 96px. The button size, icon scale, and border radius adjust in real-time. Your preference is saved automatically across all tabs.</div></div>
+                
+                <div class="faq-item"><div class="faq-question"><span>🔄 Can I change the scroll direction?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! In the settings panel, you can toggle between "Scroll to Top" (▲) and "Scroll to Bottom" (▼). This is perfect for long chat threads, comment sections, or when you want to quickly reach the bottom of a page.</div></div>
+                
+                <div class="faq-item"><div class="faq-question"><span>🛡️ Does ScrollUp track my browsing data?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">No! ScrollUp has <strong>zero tracking, no analytics, and no data collection</strong>. The only permission we request is "storage" to save your settings locally on your device. Your privacy is 100% respected.</div></div>
+                
+                <div class="faq-item"><div class="faq-question"><span>🎨 Can I change the button position?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes! ScrollUp offers 4 corner positions: bottom-left, bottom-right, top-left, and top-right. Simply choose your preferred corner in the settings panel, and the button will move there instantly.</div></div>
+                
+                <div class="faq-item"><div class="faq-question"><span>💾 Are my settings saved across tabs?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes! Your preferences (button size, position, scroll direction) are saved globally using Chrome/Firefox storage API. Once configured, the same settings apply to every website and every new tab you open.</div></div>
+                
+                <div class="faq-item"><div class="faq-question"><span>💰 Is ScrollUp really free?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">100% free and open source under the MIT License! There are no premium tiers, no hidden payments, and no feature paywalls. ScrollUp is built by developers who believe in accessible, privacy-focused tools.</div></div>
+                
+                <div class="faq-item"><div class="faq-question"><span>🔧 How do I report a bug or request a feature?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">We'd love to hear from you! Please open an issue on our <a href="https://github.com/diptodesign/scrollup" target="_blank" style="color: var(--primary);">GitHub repository</a>. You can also star the repo to follow development updates. Feature requests are always welcome!</div></div>
+                
+                <div class="faq-item"><div class="faq-question"><span>📱 Does ScrollUp work on mobile browsers?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">ScrollUp is designed for desktop browsers. For mobile devices, we recommend using Firefox for Android or Kiwi Browser which support extensions. However, the best experience is on desktop/laptop browsers where the button is most useful for long-page navigation.</div></div>
             </div>
         </div>
     </section>
@@ -931,7 +965,7 @@
             <a href="https://microsoftedge.microsoft.com/addons/detail/fehindkkplbakpfiakoecabejkbaehac" target="_blank">Edge Store</a>
             <a href="https://addons.mozilla.org/en-US/firefox/addon/scrollup/" target="_blank">Firefox Store</a>
         </div>
-        <div class="copyright">© 2026 Dipto Design · MIT License · ScrollUp 3.6 — Fresh Green Edition</div>
+        <div class="copyright">© 2026 Dipto Design · MIT License · ScrollUp 3.6 — Fresh Green Edition · 10 FAQs Answered</div>
     </div>
 </footer>
 <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>

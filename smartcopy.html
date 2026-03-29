@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Smart Copy · Copy smarter, not harder | Firefox & Chrome extension</title>
-    <meta name="description" content="Smart Copy extension - Copy any text with one click. Smart formatting, copy history, keyboard shortcuts. Now available for Firefox and Chrome.">
+    <title>Smart Copy · Copy smarter, not harder | Premium Extension</title>
+    <meta name="description" content="Smart Copy extension - Copy any text with one click. Smart formatting, copy history, keyboard shortcuts. Available for Firefox & Chrome.">
     <meta name="theme-color" content="#10b981">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Smart Copy - Copy smarter, not harder">
-    <meta property="og:description" content="One-click smart text copying with formatting, history & stats. Available for Firefox & Chrome.">
+    <meta property="og:description" content="One-click smart text copying with formatting, history & stats. Premium extension for power users.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://i.ibb.co.com/Zf38mhL/icon128.png">
     
@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" href="https://i.ibb.co.com/Zf38mhL/icon128.png">
     <link rel="apple-touch-icon" href="https://i.ibb.co.com/Zf38mhL/icon128.png">
     
-    <!-- Fonts & Icons -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     
@@ -33,6 +33,7 @@
             --primary-dark: #059669;
             --primary-light: #34d399;
             --primary-bg: rgba(16, 185, 129, 0.08);
+            --primary-glow: rgba(16, 185, 129, 0.3);
             --dark-bg: #0a0c12;
             --dark-card: #11131f;
             --dark-elevated: #1a1d2b;
@@ -63,7 +64,7 @@
             padding: 0 32px;
         }
 
-        /* Navigation - Desktop first */
+        /* Navigation */
         .navbar {
             position: fixed;
             top: 0;
@@ -99,8 +100,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
             box-shadow: var(--shadow-glow);
+        }
+
+        .logo-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            stroke-width: 1.8;
         }
 
         .logo-text {
@@ -202,7 +209,7 @@
         }
 
         h1 {
-            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
             font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1.2;
@@ -311,7 +318,7 @@
         }
 
         .section-header h2 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 16px;
         }
@@ -382,6 +389,12 @@
             padding: 24px;
             margin: 32px 0;
             text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .demo-box:hover {
+            background: #22263a;
         }
 
         .demo-text {
@@ -392,6 +405,15 @@
         .demo-text a {
             color: var(--primary);
             text-decoration: none;
+        }
+
+        .demo-note {
+            display: inline-block;
+            background: var(--primary-bg);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: var(--primary);
         }
 
         /* Stats */
@@ -417,7 +439,7 @@
         }
 
         .stat-number {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--white);
         }
@@ -427,7 +449,7 @@
             font-size: 0.85rem;
         }
 
-        /* Shortcuts */
+        /* Shortcuts - Updated to Ctrl+1 */
         .shortcuts-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -485,6 +507,47 @@
             margin: 0 auto 16px;
         }
 
+        /* Download Section */
+        .download-card {
+            background: linear-gradient(135deg, #0f1220, #090b12);
+            border-radius: 48px;
+            padding: 56px 40px;
+            text-align: center;
+            border: 1px solid var(--border-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(16,185,129,0.08), transparent);
+            pointer-events: none;
+        }
+
+        .drive-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--dark-elevated);
+            padding: 12px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            border: 1px solid var(--border-medium);
+            transition: all 0.2s;
+        }
+
+        .drive-link:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
         /* FAQ */
         .faq-grid {
             max-width: 800px;
@@ -520,6 +583,7 @@
             padding: 0 24px 24px;
             color: var(--gray-400);
             display: none;
+            line-height: 1.6;
         }
 
         .faq-item.active .faq-answer {
@@ -584,10 +648,13 @@
                 padding: 0 20px;
             }
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             .demo-card {
                 padding: 32px 24px;
+            }
+            .download-card {
+                padding: 40px 24px;
             }
         }
 
@@ -599,6 +666,15 @@
         .animate {
             animation: fadeUp 0.6s ease forwards;
         }
+        
+        kbd {
+            background: #1e2130;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            border: 1px solid rgba(16,185,129,0.3);
+        }
     </style>
 </head>
 <body>
@@ -606,7 +682,12 @@
 <nav class="navbar">
     <div class="nav-container">
         <a href="#" class="logo">
-            <div class="logo-icon"><i class="fas fa-copy"></i></div>
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+            </div>
             <div class="logo-text">Smart<span>Copy</span></div>
         </a>
         <div class="nav-links">
@@ -633,8 +714,8 @@
     <section class="hero">
         <div class="container">
             <div class="badge animate">
-                <i class="fas fa-firefox"></i>
-                <span>Now available on Firefox Add-ons!</span>
+                <i class="fab fa-firefox"></i>
+                <span>Now live on Firefox Add-ons!</span>
             </div>
             <h1 class="animate" style="animation-delay: 0.1s;">Copy smarter,<br>not harder</h1>
             <p class="hero-subtitle animate" style="animation-delay: 0.2s;">Smart formatting, copy history, keyboard shortcuts — all in one lightweight extension.</p>
@@ -652,8 +733,8 @@
             </div>
             
             <div class="btn-group animate" style="animation-delay: 0.4s;">
-                <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Manual Install</a>
-                <a href="#demo" class="btn btn-outline"><i class="fas fa-play"></i> See it in action</a>
+                <a href="#download" class="btn btn-primary"><i class="fas fa-file-zipper"></i> Manual Install (ZIP)</a>
+                <a href="#demo" class="btn btn-outline"><i class="fas fa-play"></i> Live Demo</a>
             </div>
         </div>
     </section>
@@ -667,7 +748,7 @@
             <div class="features-grid">
                 <div class="feature-card"><div class="feature-icon"><i class="fas fa-magic"></i></div><h3>Smart Formatting</h3><p>Preserves text structure, removes extra spaces, and keeps links intact.</p></div>
                 <div class="feature-card"><div class="feature-icon"><i class="fas fa-history"></i></div><h3>Copy History</h3><p>Save up to 100 copied items with timestamps and source URLs.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-keyboard"></i></div><h3>Keyboard Shortcut</h3><p>Press <kbd style="background:#1e2130;padding:2px 8px;border-radius:6px;">Ctrl+Shift+C</kbd> for instant smart copy.</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-keyboard"></i></div><h3>Keyboard Shortcut</h3><p>Press <kbd>Ctrl+1</kbd> (Windows) / <kbd>⌘+1</kbd> (Mac) for instant smart copy.</p></div>
                 <div class="feature-card"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>Auto-Copy Mode</h3><p>Copy automatically when you select text — no button click needed.</p></div>
                 <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3>Copy Statistics</h3><p>Track your total copies and productivity over time.</p></div>
                 <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Privacy First</h3><p>Zero tracking, all data stays on your device. 100% private.</p></div>
@@ -679,20 +760,20 @@
         <div class="container">
             <div class="demo-card">
                 <h3 style="font-size: 1.8rem;">Live preview</h3>
-                <p style="color: var(--gray-400);">Select any text below to see the floating copy button in action</p>
+                <p style="color: var(--gray-400);">Select any text below to see how Smart Copy works</p>
                 <div class="demo-box" id="demoTextArea">
                     <div class="demo-text">
-                        <p><strong>✨ Smart Copy Demo</strong> — Try selecting this text!</p>
+                        <p><strong>✨ Try selecting this text!</strong> — A floating button would appear.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#">This is a clickable link</a> that will be preserved when copied.</p>
                         <ul style="margin-top: 12px; padding-left: 20px;">
                             <li>✓ Smart formatting preserves structure</li>
                             <li>✓ Links become readable URLs</li>
                             <li>✓ Extra spaces are automatically cleaned</li>
                         </ul>
-                        <p style="margin-top: 12px;">Select any part of this box → a green button appears → click to copy!</p>
+                        <p style="margin-top: 12px;"><i class="fas fa-mouse-pointer"></i> Select any text → green button appears → click to copy!</p>
                     </div>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--gray-500);"><i class="fas fa-info-circle"></i> The floating button will appear when you select text</p>
+                <span class="demo-note"><i class="fas fa-info-circle"></i> Or press <kbd>Ctrl+1</kbd> / <kbd>⌘+1</kbd> to copy selected text instantly</span>
             </div>
         </div>
     </section>
@@ -705,7 +786,7 @@
             </div>
             <div class="steps-grid">
                 <div class="step-card"><div class="step-number">1</div><h3>Select Text</h3><p>Highlight any text on any webpage</p></div>
-                <div class="step-card"><div class="step-number">2</div><h3>Click or Shortcut</h3><p>Floating button appears, or press <kbd>Ctrl+Shift+C</kbd></p></div>
+                <div class="step-card"><div class="step-number">2</div><h3>Press Shortcut</h3><p>Hit <kbd>Ctrl+1</kbd> (or click floating button)</p></div>
                 <div class="step-card"><div class="step-number">3</div><h3>Smart Copy</h3><p>Text is cleaned, links preserved, source added</p></div>
                 <div class="step-card"><div class="step-number">4</div><h3>Review & Manage</h3><p>Access history and settings from the popup</p></div>
             </div>
@@ -716,7 +797,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Usage statistics</h2>
-                <p>Trusted by thousands of users</p>
+                <p>Trusted by users worldwide</p>
             </div>
             <div class="stats-grid">
                 <div class="stat-card"><i class="fas fa-users"></i><div class="stat-number">2,500+</div><div class="stat-label">Active users</div></div>
@@ -734,26 +815,33 @@
                 <p>Work faster with these hotkeys</p>
             </div>
             <div class="shortcuts-grid">
-                <div class="shortcut-item"><span>Smart Copy</span><span class="shortcut-key">⌘/Ctrl + Shift + C</span></div>
+                <div class="shortcut-item"><span>Smart Copy (Windows)</span><span class="shortcut-key">Ctrl + 1</span></div>
+                <div class="shortcut-item"><span>Smart Copy (Mac)</span><span class="shortcut-key">⌘ + 1</span></div>
                 <div class="shortcut-item"><span>Hide floating button</span><span class="shortcut-key">ESC</span></div>
                 <div class="shortcut-item"><span>Clear copy history</span><span class="shortcut-key">Via popup</span></div>
                 <div class="shortcut-item"><span>Reset statistics</span><span class="shortcut-key">Via popup</span></div>
+                <div class="shortcut-item"><span>Open extension popup</span><span class="shortcut-key">Click toolbar icon</span></div>
             </div>
         </div>
     </section>
 
     <section id="download" class="section">
         <div class="container">
-            <div class="demo-card" style="background: linear-gradient(135deg, #0f1220, #090b12);">
+            <div class="download-card">
                 <i class="fas fa-copy" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 16px;"></i>
                 <h2 style="font-size: 2rem;">Get Smart Copy</h2>
                 <p style="color: var(--gray-400);">Free • Open source • Privacy-first</p>
                 <div class="btn-group" style="margin-top: 28px;">
                     <a href="https://addons.mozilla.org/en-US/firefox/addon/smartcopy/" target="_blank" class="btn btn-primary"><i class="fab fa-firefox-browser"></i> Firefox Add-on</a>
                     <a href="#" class="btn btn-outline"><i class="fab fa-chrome"></i> Chrome Store</a>
-                    <a href="https://github.com/diptodesign/smart-copy/archive/main.zip" class="btn btn-outline"><i class="fas fa-file-zipper"></i> Download ZIP</a>
                 </div>
-                <div class="install-note" style="background: var(--dark-elevated); border-radius: 60px; display: inline-flex; gap: 12px; padding: 10px 20px; margin-top: 28px;">
+                <div style="margin: 24px 0;">
+                    <a href="https://drive.google.com/file/d/1iRv55QAOhyI82xxLMVjUe0xiBRh1zA9o/view?usp=sharing" target="_blank" class="drive-link">
+                        <i class="fab fa-google-drive fa-lg"></i> Download ZIP (Manual Install)
+                        <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i>
+                    </a>
+                </div>
+                <div class="install-note" style="background: var(--dark-elevated); border-radius: 60px; display: inline-flex; gap: 12px; padding: 10px 20px;">
                     <i class="fas fa-code"></i>
                     <span style="font-size: 0.8rem;">Manual install: chrome://extensions → Developer mode → Load unpacked</span>
                 </div>
@@ -768,12 +856,13 @@
                 <p>Everything you need to know</p>
             </div>
             <div class="faq-grid">
+                <div class="faq-item"><div class="faq-question"><span>What's the keyboard shortcut?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Press <strong>Ctrl+1</strong> on Windows/Linux or <strong>⌘+1</strong> on Mac to instantly copy any selected text with smart formatting.</div></div>
                 <div class="faq-item"><div class="faq-question"><span>Is Smart Copy really free?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes! 100% free and open source under MIT License. No premium features, no paywalls.</div></div>
                 <div class="faq-item"><div class="faq-question"><span>Does it track my browsing activity?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">No. Smart Copy has zero tracking, no analytics. All data stays on your device. Only storage permission is used to save your settings and history.</div></div>
-                <div class="faq-item"><div class="faq-question"><span>Which browsers are supported?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Currently available on <strong>Firefox</strong> (official add-on store) and <strong>Chrome</strong> (coming soon). Also works on Edge, Brave, Vivaldi, and any Chromium browser via manual install.</div></div>
+                <div class="faq-item"><div class="faq-question"><span>Which browsers are supported?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Currently available on <strong>Firefox</strong> (official add-on store). Chrome version coming soon. Also works on Edge, Brave, Vivaldi via manual install using the ZIP file.</div></div>
+                <div class="faq-item"><div class="faq-question"><span>How do I manually install the extension?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Download the ZIP from Google Drive, extract it, go to chrome://extensions (or edge://extensions), enable Developer Mode, click "Load unpacked", and select the extracted folder.</div></div>
                 <div class="faq-item"><div class="faq-question"><span>How do I enable auto-copy mode?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Open the extension popup (click the icon in your toolbar), go to Settings, and toggle "Auto-Copy Mode". When enabled, text copies automatically when you select it.</div></div>
-                <div class="faq-item"><div class="faq-question"><span>Where can I view my copy history?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Click the Smart Copy icon in your browser toolbar. The popup shows your recent copies with timestamps and source URLs. You can also clear history from there.</div></div>
-                <div class="faq-item"><div class="faq-question"><span>How do I report a bug or request a feature?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Visit our <a href="https://github.com/diptodesign/smart-copy" target="_blank" style="color: var(--primary);">GitHub repository</a> and open an issue. We welcome contributions and feedback!</div></div>
+                <div class="faq-item"><div class="faq-question"><span>Where can I report a bug?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Visit our <a href="https://github.com/diptodesign/smart-copy" target="_blank" style="color: var(--primary);">GitHub repository</a> and open an issue. We welcome contributions!</div></div>
             </div>
         </div>
     </section>
@@ -791,7 +880,7 @@
         </div>
         <div class="copyright">
             <p>© 2026 Smart Copy · Dipto Design Studio · MIT License</p>
-            <p style="margin-top: 8px; font-size: 0.75rem;">Copy smarter, not harder — now available on Firefox</p>
+            <p style="margin-top: 8px; font-size: 0.75rem;">Copy smarter, not harder — Press <kbd>Ctrl+1</kbd> to copy</p>
         </div>
     </div>
 </footer>
@@ -819,7 +908,7 @@
         });
     });
 
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const target = document.querySelector(this.getAttribute('href'));
@@ -832,18 +921,19 @@
         });
     });
 
-    // Demo: Simulate floating button (educational)
+    // Demo selection alert
     const demoBox = document.getElementById('demoTextArea');
     if (demoBox) {
         demoBox.addEventListener('mouseup', () => {
             const selection = window.getSelection();
             if (selection.toString().trim().length > 0) {
-                alert('✨ Smart Copy would appear here!\n\nIn the actual extension, a floating button lets you copy with smart formatting.');
+                alert('✨ Smart Copy would appear here!\n\nIn the actual extension, press Ctrl+1 (or click the floating button) to copy with smart formatting.');
+                window.getSelection().removeAllRanges();
             }
         });
     }
 
-    // Fade-in animation on scroll
+    // Fade animation on scroll
     const animateElements = document.querySelectorAll('.feature-card, .step-card, .stat-card, .shortcut-item, .faq-item');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

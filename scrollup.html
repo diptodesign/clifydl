@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ScrollUp 3.6 — Smart Scroll Button | Edge Add-ons Available</title>
-    <meta name="description" content="The most customizable scroll-to-top button. Resize, 4 positions, reverse scroll, glass morphism. Now on Microsoft Edge Add-ons Store!">
+    <title>ScrollUp 3.6 — Smart Scroll Button | Edge & Firefox Available</title>
+    <meta name="description" content="The most customizable scroll-to-top button. Resize, 4 positions, reverse scroll, glass morphism. Now on Edge & Firefox Add-ons Stores!">
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,30 +20,29 @@
         }
 
         :root {
-            /* Vibrant new color palette */
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --primary-glow: rgba(99, 102, 241, 0.4);
-            --primary-bg: rgba(99, 102, 241, 0.12);
+            /* Fresh Green Color Palette */
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #34d399;
+            --primary-glow: rgba(16, 185, 129, 0.4);
+            --primary-bg: rgba(16, 185, 129, 0.12);
             --accent: #f59e0b;
             --accent-glow: rgba(245, 158, 11, 0.3);
-            --dark-bg: #0a0a0f;
-            --dark-card: #12121a;
-            --dark-elevated: #1a1a24;
-            --gray-200: #e4e4e7;
-            --gray-300: #d4d4d8;
-            --gray-400: #a1a1aa;
-            --gray-500: #71717a;
-            --gray-600: #52525b;
+            --dark-bg: #0a0c15;
+            --dark-card: #11131f;
+            --dark-elevated: #1a1d2b;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
             --white: #ffffff;
             --border-light: rgba(255, 255, 255, 0.08);
             --border-medium: rgba(255, 255, 255, 0.12);
             --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
             --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.4);
-            --shadow-glow-orange: 0 0 20px rgba(245, 158, 11, 0.3);
+            --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.4);
         }
 
         body {
@@ -77,7 +76,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(10, 10, 15, 0.92);
+            background: rgba(10, 12, 21, 0.95);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-light);
             z-index: 1100;
@@ -175,7 +174,7 @@
             top: 70px;
             left: 0;
             right: 0;
-            background: rgba(18, 18, 26, 0.98);
+            background: rgba(17, 19, 31, 0.98);
             backdrop-filter: blur(20px);
             padding: 24px 28px;
             flex-direction: column;
@@ -203,21 +202,21 @@
             padding: 140px 0 70px;
             text-align: center;
             position: relative;
-            background: radial-gradient(circle at 20% 30%, rgba(99,102,241,0.08), transparent 70%);
+            background: radial-gradient(circle at 20% 30%, rgba(16,185,129,0.1), transparent 70%);
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, var(--primary-bg), rgba(245,158,11,0.1));
+            background: linear-gradient(135deg, var(--primary-bg), rgba(16,185,129,0.08));
             padding: 6px 18px;
             border-radius: 60px;
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--primary-light);
             margin-bottom: 32px;
-            border: 1px solid rgba(99,102,241,0.3);
+            border: 1px solid rgba(16,185,129,0.3);
             backdrop-filter: blur(4px);
         }
 
@@ -227,7 +226,7 @@
             letter-spacing: -0.03em;
             line-height: 1.15;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, #ffffff, var(--primary-light), var(--accent));
+            background: linear-gradient(135deg, #ffffff, var(--primary-light), var(--primary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -303,7 +302,7 @@
             flex-wrap: wrap;
             padding: 18px 0 0;
             border-top: 1px solid var(--border-light);
-            max-width: 650px;
+            max-width: 750px;
             margin: 0 auto;
         }
 
@@ -311,7 +310,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 8px 24px;
+            padding: 10px 28px;
             background: var(--dark-card);
             border-radius: 80px;
             border: 1px solid var(--border-light);
@@ -323,21 +322,21 @@
         .store-item:hover {
             border-color: var(--primary);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
         }
 
         .store-item i {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
         }
 
         .store-item span {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
         }
 
         .store-item.live {
-            background: linear-gradient(135deg, #1a1a2e, #12121a);
+            background: linear-gradient(135deg, #1a1d2b, #11131f);
             border-color: var(--primary);
-            box-shadow: 0 0 10px var(--primary-glow);
         }
 
         .live-badge {
@@ -345,9 +344,13 @@
             font-size: 0.7rem;
             padding: 2px 8px;
             border-radius: 40px;
-            margin-left: 6px;
+            margin-left: 8px;
             color: white;
             font-weight: 700;
+        }
+
+        .firefox-badge {
+            background: #FF7139;
         }
 
         /* Section */
@@ -398,7 +401,7 @@
         .feature-icon {
             width: 58px;
             height: 58px;
-            background: linear-gradient(135deg, var(--primary-bg), rgba(99,102,241,0.2));
+            background: linear-gradient(135deg, var(--primary-bg), rgba(16,185,129,0.2));
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -420,8 +423,8 @@
 
         .feature-tag {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary-bg), rgba(245,158,11,0.1));
-            color: var(--accent);
+            background: linear-gradient(135deg, var(--primary-bg), rgba(16,185,129,0.15));
+            color: var(--primary-light);
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.7rem;
@@ -431,7 +434,7 @@
 
         /* Demo Card */
         .demo-card {
-            background: linear-gradient(135deg, var(--dark-card), #0f0f17);
+            background: linear-gradient(135deg, var(--dark-card), #0c0e18);
             border-radius: 48px;
             padding: 48px 32px;
             text-align: center;
@@ -554,7 +557,7 @@
 
         /* Download Section */
         .download-card {
-            background: linear-gradient(135deg, #0f0f1a, #08080f);
+            background: linear-gradient(135deg, #0f1220, #090b12);
             border-radius: 48px;
             padding: 56px 40px;
             text-align: center;
@@ -570,19 +573,44 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(99,102,241,0.08), transparent);
+            background: radial-gradient(circle, rgba(16,185,129,0.08), transparent);
             pointer-events: none;
         }
 
-        .edge-badge-store {
+        .store-badge-group {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .store-badge-link {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(135deg, rgba(0,120,215,0.15), rgba(99,102,241,0.1));
-            padding: 10px 24px;
-            border-radius: 80px;
-            margin-bottom: 28px;
-            border: 1px solid rgba(99,102,241,0.4);
+            padding: 12px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .store-badge-link.edge {
+            background: linear-gradient(135deg, #0078D7, #106ebe);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,120,215,0.3);
+        }
+
+        .store-badge-link.firefox {
+            background: linear-gradient(135deg, #FF7139, #E05E2E);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255,113,57,0.3);
+        }
+
+        .store-badge-link:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
         }
 
         .download-buttons {
@@ -591,12 +619,6 @@
             justify-content: center;
             flex-wrap: wrap;
             margin: 32px 0 24px;
-        }
-
-        .btn-edge {
-            background: linear-gradient(135deg, #0078D7, #106ebe);
-            border: none;
-            box-shadow: 0 6px 14px rgba(0,120,215,0.3);
         }
 
         /* FAQ */
@@ -712,6 +734,12 @@
             .container {
                 padding: 0 20px;
             }
+            .store-item {
+                padding: 6px 18px;
+            }
+            .store-item span {
+                font-size: 0.8rem;
+            }
         }
 
         @media (max-width: 550px) {
@@ -720,6 +748,10 @@
                 gap: 14px;
             }
             .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .store-badge-link {
                 width: 100%;
                 justify-content: center;
             }
@@ -749,7 +781,7 @@
             <a href="#install">Install</a>
             <a href="#faq">FAQ</a>
             <a href="https://github.com/diptodesign/scrollup" target="_blank">GitHub</a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/scrollup/fehindkkplbakpfiakoecabejkbaehac" target="_blank" class="btn-nav"><i class="fab fa-edge"></i> Edge Store</a>
+            <a href="#install" class="btn-nav"><i class="fas fa-download"></i> Get Add-on</a>
         </div>
         <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -763,36 +795,39 @@
     <a href="#install">Install</a>
     <a href="#faq">FAQ</a>
     <a href="https://github.com/diptodesign/scrollup" target="_blank">GitHub</a>
-    <a href="https://microsoftedge.microsoft.com/addons/detail/scrollup/fehindkkplbakpfiakoecabejkbaehac" target="_blank"><i class="fab fa-edge"></i> Get on Edge Store</a>
+    <a href="https://microsoftedge.microsoft.com/addons/detail/fehindkkplbakpfiakoecabejkbaehac" target="_blank"><i class="fab fa-edge"></i> Edge Store</a>
+    <a href="https://addons.mozilla.org/en-US/firefox/addon/scrollup/" target="_blank"><i class="fab fa-firefox-browser"></i> Firefox Store</a>
 </div>
 
 <main>
     <section class="hero">
         <div class="container">
             <div class="badge animate-once">
-                <i class="fas fa-bolt"></i>
-                <span>v3.6 — Button Resize + Edge Store LIVE</span>
+                <i class="fas fa-leaf"></i>
+                <span>v3.6 — Now on Edge & Firefox Stores!</span>
             </div>
-            <h1 class="animate-once" style="animation-delay: 0.05s;">Scroll smarter,<br>with <span style="color: var(--primary-light);">vibrant control</span></h1>
-            <p class="hero-subtitle animate-once" style="animation-delay: 0.1s;">Resize slider, 4 positions, reverse scroll, glass morphism. Now available on Microsoft Edge Add-ons!</p>
+            <h1 class="animate-once" style="animation-delay: 0.05s;">Scroll smarter,<br>with <span style="color: var(--primary-light);">fresh green control</span></h1>
+            <p class="hero-subtitle animate-once" style="animation-delay: 0.1s;">Resize slider, 4 positions, reverse scroll, glass morphism. Available for Edge & Firefox — one-click install!</p>
             <div class="hero-buttons animate-once" style="animation-delay: 0.15s;">
-                <a href="https://microsoftedge.microsoft.com/addons/detail/scrollup/fehindkkplbakpfiakoecabejkbaehac" target="_blank" class="btn btn-primary"><i class="fab fa-edge"></i> Install for Edge</a>
+                <a href="https://microsoftedge.microsoft.com/addons/detail/fehindkkplbakpfiakoecabejkbaehac" target="_blank" class="btn btn-primary"><i class="fab fa-edge"></i> Edge Add-on</a>
+                <a href="https://addons.mozilla.org/en-US/firefox/addon/scrollup/" target="_blank" class="btn btn-accent"><i class="fab fa-firefox-browser"></i> Firefox Add-on</a>
                 <a href="#demo" class="btn btn-outline"><i class="fas fa-play"></i> Live Demo</a>
             </div>
             <div class="store-row animate-once" style="animation-delay: 0.2s;">
-                <a href="https://microsoftedge.microsoft.com/addons/detail/scrollup/fehindkkplbakpfiakoecabejkbaehac" target="_blank" class="store-item live">
+                <a href="https://microsoftedge.microsoft.com/addons/detail/fehindkkplbakpfiakoecabejkbaehac" target="_blank" class="store-item live">
                     <i class="fab fa-edge" style="color: #0078D7;"></i>
                     <span>Microsoft Edge Add-ons</span>
                     <span class="live-badge">LIVE</span>
                 </a>
+                <a href="https://addons.mozilla.org/en-US/firefox/addon/scrollup/" target="_blank" class="store-item live">
+                    <i class="fab fa-firefox-browser" style="color: #FF7139;"></i>
+                    <span>Firefox Add-ons</span>
+                    <span class="live-badge" style="background: #FF7139;">LIVE</span>
+                </a>
                 <div class="store-item">
                     <i class="fab fa-chrome" style="color: #4285F4;"></i>
                     <span>Chrome Web Store</span>
-                </div>
-                <div class="store-item">
-                    <i class="fab fa-opera" style="color: #FF1B2D;"></i>
-                    <span>Opera Addons</span>
-                    <span class="live-badge" style="background: var(--accent);">soon</span>
+                    <span class="live-badge" style="background: var(--gray-500);">soon</span>
                 </div>
             </div>
         </div>
@@ -801,7 +836,7 @@
     <section id="features" class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Features that shine</h2>
+                <h2>Features that shine in green</h2>
                 <p>Clean, fast, and packed with thoughtful details</p>
             </div>
             <div class="features-grid">
@@ -829,7 +864,7 @@
                         <input type="range" id="sizeSlider" min="32" max="96" value="68" step="1">
                         <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.75rem; color: var(--gray-500);"><span>32px</span><span id="sizeValue">68px</span><span>96px</span></div>
                     </div>
-                    <div id="resizePreview" class="resize-preview-btn" style="width: 68px; height: 68px; background: linear-gradient(135deg, #6366f1, #4f46e5); border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 30px; transition: 0.1s; color: white;">▲</div>
+                    <div id="resizePreview" class="resize-preview-btn" style="width: 68px; height: 68px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 30px; transition: 0.1s; color: white;">▲</div>
                 </div>
             </div>
         </div>
@@ -850,17 +885,25 @@
     <section id="install" class="section">
         <div class="container">
             <div class="download-card">
-                <div class="edge-badge-store"><i class="fab fa-edge fa-2x" style="color:#0078D7;"></i><span style="font-weight: 700;">Now on Microsoft Edge Add-ons</span></div>
+                <div class="store-badge-group">
+                    <a href="https://microsoftedge.microsoft.com/addons/detail/fehindkkplbakpfiakoecabejkbaehac" target="_blank" class="store-badge-link edge">
+                        <i class="fab fa-edge fa-lg"></i>
+                        <span>Install for Microsoft Edge</span>
+                    </a>
+                    <a href="https://addons.mozilla.org/en-US/firefox/addon/scrollup/" target="_blank" class="store-badge-link firefox">
+                        <i class="fab fa-firefox-browser fa-lg"></i>
+                        <span>Install for Firefox</span>
+                    </a>
+                </div>
                 <h2 style="font-size: 2rem;">Get ScrollUp 3.6</h2>
-                <p style="color: var(--gray-400); margin-top: 8px;">Free • Open source • Privacy-first</p>
+                <p style="color: var(--gray-400); margin-top: 8px;">Free • Open source • Privacy-first • Available on major browsers</p>
                 <div class="download-buttons">
-                    <a href="https://microsoftedge.microsoft.com/addons/detail/scrollup/fehindkkplbakpfiakoecabejkbaehac" target="_blank" class="btn btn-edge"><i class="fab fa-edge"></i> Add to Edge</a>
-                    <a href="https://github.com/diptodesign/scrollup" class="btn btn-outline" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="https://drive.google.com/file/d/1E7jbUPcMna3sQODA9uDrPY53msL98n_e/view?usp=sharing" target="_blank" class="btn btn-accent"><i class="fas fa-file-zipper"></i> Manual ZIP</a>
+                    <a href="https://github.com/diptodesign/scrollup" class="btn btn-outline" target="_blank"><i class="fab fa-github"></i> GitHub Source</a>
+                    <a href="https://drive.google.com/file/d/1E7jbUPcMna3sQODA9uDrPY53msL98n_e/view?usp=sharing" target="_blank" class="btn btn-primary"><i class="fas fa-file-zipper"></i> Manual ZIP (Dev)</a>
                 </div>
                 <div class="install-note" style="background: var(--dark-elevated); border-radius: 60px; display: inline-flex; gap: 12px; padding: 12px 24px; margin-top: 24px;">
                     <i class="fas fa-check-circle" style="color: var(--primary);"></i>
-                    <span>✔️ One-click install on Edge store • Chrome & Opera coming soon</span>
+                    <span>✔️ One-click install on Edge & Firefox • Chrome coming soon</span>
                 </div>
             </div>
         </div>
@@ -870,9 +913,10 @@
         <div class="container">
             <div class="section-header"><h2>Frequently asked questions</h2><p>Everything you need to know</p></div>
             <div class="faq-grid">
-                <div class="faq-item"><div class="faq-question"><span>Is ScrollUp on Edge Add-ons store?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes! We're officially live: <a href="https://microsoftedge.microsoft.com/addons/detail/scrollup/fehindkkplbakpfiakoecabejkbaehac" target="_blank" style="color: var(--primary);">Edge Add-ons Link</a>. Install in one click.</div></div>
+                <div class="faq-item"><div class="faq-question"><span>Which browsers are supported?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">ScrollUp is now available on <strong>Microsoft Edge</strong> and <strong>Firefox</strong>! Chrome version is coming soon. You can also manually install on any Chromium browser via developer mode.</div></div>
+                <div class="faq-item"><div class="faq-question"><span>How do I get the Edge or Firefox add-on?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Just click the "Install for Edge" or "Install for Firefox" buttons above. You'll be redirected to the official store for a one-click installation.</div></div>
                 <div class="faq-item"><div class="faq-question"><span>How does the resize slider work?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Open settings (gear icon) and drag the slider from 32px to 96px. Button size, icon scale & radius adjust in real time.</div></div>
-                <div class="faq-item"><div class="faq-question"><span>Does it track my browsing activity?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">No. ScrollUp has zero tracking, no analytics, and only requests storage permission to save your settings.</div></div>
+                <div class="faq-item"><div class="faq-question"><span>Does it track my browsing activity?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">No. ScrollUp has zero tracking, no analytics, and only requests storage permission to save your settings. Full privacy.</div></div>
                 <div class="faq-item"><div class="faq-question"><span>Can I change scroll direction?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes! Toggle between scroll to top (▲) or scroll to bottom (▼) — ideal for chat apps or long comment sections.</div></div>
             </div>
         </div>
@@ -884,9 +928,10 @@
         <div class="footer-links">
             <a href="#features">Features</a><a href="#demo">Demo</a><a href="#install">Install</a><a href="#faq">FAQ</a>
             <a href="https://github.com/diptodesign/scrollup" target="_blank">GitHub</a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/scrollup/fehindkkplbakpfiakoecabejkbaehac" target="_blank">Edge Store</a>
+            <a href="https://microsoftedge.microsoft.com/addons/detail/fehindkkplbakpfiakoecabejkbaehac" target="_blank">Edge Store</a>
+            <a href="https://addons.mozilla.org/en-US/firefox/addon/scrollup/" target="_blank">Firefox Store</a>
         </div>
-        <div class="copyright">© 2026 Dipto Design · MIT License · ScrollUp 3.6 — Vibrant & Smart</div>
+        <div class="copyright">© 2026 Dipto Design · MIT License · ScrollUp 3.6 — Fresh Green Edition</div>
     </div>
 </footer>
 <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidClear - Clean Up YouTube · Remove Shorts & Distractions</title>
+    <meta name="description" content="Remove YouTube Shorts, hide comments, block suggested videos, and clean up your YouTube feed. 100% free and open source.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #9ef01a; --primary-dark: #70b800; --primary-light: #caff80; --primary-soft: rgba(158, 240, 26, 0.1); --bg-deep: #0a0c12; --bg-card: #1a1e2a; --text-primary: #ffffff; --text-secondary: #e0e4f0; --text-muted: #9aa1b5; --border-light: #2a2f3c; --radius-lg: 32px; --radius-full: 9999px; }
+        body { background: var(--bg-deep); font-family: 'Inter', sans-serif; color: var(--text-secondary); line-height: 1.5; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 800; background: linear-gradient(135deg, #ffffff, #d1ff7c); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
+        h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); background: linear-gradient(135deg, #ffffff, #e0ffb0); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius-full); font-weight: 600; text-decoration: none; transition: all 0.2s; }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: var(--bg-deep); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(158, 240, 26, 0.35); }
+        .btn-outline { background: transparent; border: 1.5px solid rgba(158, 240, 26, 0.4); color: white; }
+        .btn-outline:hover { border-color: var(--primary); background: var(--primary-soft); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 40px 0; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 24px; padding: 24px; transition: all 0.2s; }
+        .feature-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+        .feature-icon { width: 50px; height: 50px; background: var(--primary-soft); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--primary); margin-bottom: 16px; }
+        .footer { background: #080a0f; border-top: 1px solid rgba(158, 240, 26, 0.1); padding: 40px 0 24px; margin-top: 60px; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+        @media (max-width: 768px) { .container { padding: 0 16px; } .features-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container" style="padding-top: 60px; padding-bottom: 40px; text-align: center;">
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(158, 240, 26, 0.08); border: 1px solid rgba(158, 240, 26, 0.2); border-radius: 9999px; padding: 6px 18px; margin-bottom: 24px;">
+            <i class="fas fa-video-slash"></i> Dipto Design | Trovant Studio
+        </div>
+        <h1>VidClear</h1>
+        <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">Clean up YouTube: remove Shorts, hide comments, block suggested videos. Focus on what matters.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 40px 0;">
+            <div><span style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">1.5</span><div style="font-size: 0.7rem;">Latest Version</div></div>
+            <div><span style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">100%</span><div style="font-size: 0.7rem;">Free</div></div>
+            <div><span style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">40+</span><div style="font-size: 0.7rem;">Browsers</div></div>
+            <div><span style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">∞</span><div style="font-size: 0.7rem;">No Limits</div></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 style="text-align: center;">Powerful Features</h2>
+        <div class="features-grid">
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-ban"></i></div><h3>Remove Shorts</h3><p>Completely removes YouTube Shorts from your feed, subscriptions, and search results.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-comment-slash"></i></div><h3>Hide Comments</h3><p>Removes the entire comment section from video pages. Clean, distraction-free viewing.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-thumbs-down"></i></div><h3>Block Suggestions</h3><p>Hides suggested videos and end-screen recommendations. Watch one video at a time.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-align-left"></i></div><h3>Clean Homepage</h3><p>Removes recommended feed, trending tabs, and other distracting elements from the homepage.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-keyboard"></i></div><h3>Custom Filters</h3><p>Block specific channels, keywords, or video titles with customizable filters.</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Privacy First</h3><p>100% local. No tracking, no data collection. All settings stay on your device.</p></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="background: linear-gradient(135deg, #1a1e2a, #121624); border-radius: 32px; padding: 40px; text-align: center; margin: 40px 0;">
+            <h2>Install VidClear</h2>
+            <p style="margin-bottom: 24px;">Manual installation for Chrome, Edge, Brave, and all Chromium browsers</p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 30px;">
+                <span style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-chrome"></i> Chrome</span>
+                <span style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-edge"></i> Edge</span>
+                <span style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-brave"></i> Brave</span>
+                <span style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-opera"></i> Opera</span>
+                <span style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-firefox-browser"></i> Firefox (soon)</span>
+            </div>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="btn btn-primary"><i class="fab fa-google-drive"></i> Download ZIP</a>
+                <a href="https://github.com/diptodesign/vidclear" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+            <p style="margin-top: 24px; font-size: 0.8rem; color: var(--text-muted);">Version 1.5 · 100% Free · Open Source · No Tracking</p>
+        </div>
+    </div>
+
+    <!-- SUPPORT SECTION - Add this to every page -->
+    <div class="container">
+        <div style="background: linear-gradient(135deg, #1a1e2a, #121624); border-radius: 32px; padding: 32px; text-align: center; margin: 20px auto; max-width: 600px;">
+            <i class="fas fa-heart" style="font-size: 2rem; color: #9ef01a; margin-bottom: 12px; display: inline-block;"></i>
+            <h3 style="color: white; margin-bottom: 12px;">Support Open Source Development</h3>
+            <p style="color: #9aa1b5; margin-bottom: 24px;">If this tool saves you time, please consider buying me a coffee. It helps me create more free tools.</p>
+            <a href="https://buymeacoffee.com/diptodesign100" target="_blank" style="display: inline-flex; align-items: center; gap: 12px; background: #FFDD00; color: #000000; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1rem;">
+                <i class="fas fa-mug-hot"></i> Buy me a coffee
+            </a>
+            <p style="margin-top: 16px; font-size: 0.7rem; color: #6b7280;">☕ 1 coffee = $5 · 100% supports development</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Dipto Design · VidClear · Open Source · Free Forever</p>
+    </div>
+</body>
+</html>

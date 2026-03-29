@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Clify Hub · Smart Copy & Stock Tools for Creators</title>
-    <meta name="description" content="5 powerful browser extensions: Smart Copy, Clify YouTube Blocker, Shutterstock Pro, iStock Pro, Adobe Stock Pro, ScrollUp. All free & open source.">
-    <meta name="keywords" content="clify, smart copy, youtube blocker, shutterstock pro, istock pro, adobe stock pro, scrollup, dipto design, chrome extension">
+    <title>Clify Hub · 7 Free Browser Extensions for Creators</title>
+    <meta name="description" content="7 powerful browser extensions: Smart Copy, Clify YouTube Blocker, VidClear, Shutterstock Pro, iStock Pro, Adobe Stock Pro, ScrollUp. All free & open source.">
+    <meta name="keywords" content="clify, smart copy, vidclear, youtube blocker, shutterstock pro, istock pro, adobe stock pro, scrollup, dipto design, chrome extension">
+    <meta name="author" content="Dipto Design">
+    <meta name="robots" content="index, follow">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Clify Hub – 5 Free Browser Extensions for Creators">
-    <meta property="og:description" content="Smart Copy, YouTube Blocker, Stock Tools, and ScrollUp. Copy keywords and text with one click. 100% free.">
+    <meta property="og:title" content="Clify Hub – 7 Free Browser Extensions for Creators">
+    <meta property="og:description" content="Smart Copy, YouTube Blocker, VidClear, Stock Tools, and ScrollUp. Copy keywords and text with one click. 100% free.">
     <meta property="og:image" content="https://i.ibb.co.com/rKDBkXfY/dipto-author.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://diptodesign.github.io/clify">
@@ -21,7 +23,7 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     
     <style>
@@ -55,7 +57,6 @@
             --radius-xl: 48px;
             --radius-full: 9999px;
             --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
@@ -80,7 +81,7 @@
         }
 
         h1 {
-            font-size: clamp(2.2rem, 7vw, 4rem);
+            font-size: clamp(2rem, 7vw, 3.8rem);
             font-weight: 800;
             background: linear-gradient(135deg, #ffffff, #d1ff7c);
             -webkit-background-clip: text;
@@ -90,7 +91,7 @@
         }
 
         h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
             margin-bottom: 0.8rem;
             background: linear-gradient(135deg, #ffffff, #e0ffb0);
             -webkit-background-clip: text;
@@ -100,7 +101,7 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .section-subtitle {
@@ -152,11 +153,6 @@
             justify-content: center;
             font-size: 1.2rem;
             color: var(--bg-deep);
-            transition: var(--transition);
-        }
-
-        .logo:hover .logo-icon {
-            transform: rotate(10deg) scale(1.05);
         }
 
         .nav-links {
@@ -192,7 +188,6 @@
             height: 2px;
             background: white;
             border-radius: 2px;
-            transition: 0.2s;
         }
 
         .mobile-menu {
@@ -214,7 +209,6 @@
             text-decoration: none;
             padding: 12px 16px;
             border-radius: 12px;
-            transition: background 0.2s;
             font-size: 0.95rem;
         }
 
@@ -259,7 +253,6 @@
         .btn-outline:hover {
             border-color: var(--primary);
             background: var(--primary-soft);
-            transform: translateY(-2px);
         }
 
         .btn-small {
@@ -308,7 +301,6 @@
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--primary);
-            line-height: 1;
         }
 
         .stat-label {
@@ -319,8 +311,8 @@
         /* Tools Grid */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
             margin-top: 30px;
         }
 
@@ -329,7 +321,7 @@
             border: 1px solid var(--border-light);
             border-radius: var(--radius-lg);
             padding: 24px;
-            transition: var(--transition-slow);
+            transition: var(--transition);
             position: relative;
         }
 
@@ -443,149 +435,6 @@
             font-size: 0.75rem;
         }
 
-        /* Feature Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin: 30px 0;
-        }
-
-        .feature-card {
-            background: rgba(26, 30, 42, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(158, 240, 26, 0.1);
-            border-radius: var(--radius-lg);
-            padding: 24px 16px;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #1e2432, #151b26);
-            border-radius: 50%;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--primary);
-        }
-
-        .feature-card h3 {
-            color: white;
-            font-size: 1rem;
-            margin-bottom: 8px;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-        }
-
-        /* Shortcut Card */
-        .shortcut-card {
-            background: linear-gradient(145deg, #1a1e2a, #121624);
-            border: 1px solid rgba(158, 240, 26, 0.15);
-            border-radius: var(--radius-xl);
-            padding: 30px 20px;
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .shortcut-keys {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .key {
-            background: #0f1117;
-            border: 1px solid var(--primary);
-            border-radius: 10px;
-            padding: 8px 18px;
-            font-family: monospace;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        /* Install Guide */
-        .install-guide {
-            background: linear-gradient(145deg, #1a1e2a, #121624);
-            border: 1px solid rgba(158, 240, 26, 0.1);
-            border-radius: var(--radius-xl);
-            padding: 30px 20px;
-            margin: 40px 0;
-        }
-
-        .install-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin: 30px 0;
-        }
-
-        .step-item {
-            text-align: center;
-            padding: 20px 12px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(158, 240, 26, 0.08);
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--bg-deep);
-            margin: 0 auto 12px;
-        }
-
-        .step-item h4 {
-            color: white;
-            font-size: 0.9rem;
-            margin-bottom: 6px;
-        }
-
-        .step-item p {
-            color: var(--text-muted);
-            font-size: 0.7rem;
-        }
-
-        .browser-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
-        .browser-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(158, 240, 26, 0.12);
-            padding: 6px 14px;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-        }
-
         /* Footer */
         .footer {
             background: linear-gradient(180deg, var(--bg-deep), #080a0f);
@@ -619,7 +468,6 @@
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.8rem;
-            transition: color 0.2s;
         }
 
         .footer-grid a:hover {
@@ -643,7 +491,6 @@
             align-items: center;
             justify-content: center;
             color: white;
-            transition: var(--transition);
         }
 
         .social-link:hover {
@@ -659,16 +506,28 @@
             font-size: 0.7rem;
         }
 
+        /* Ad Container */
+        .ad-container {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            margin: 20px 0;
+            border: 1px dashed rgba(158, 240, 26, 0.2);
+        }
+
+        .ad-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         /* Animations */
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .animate {
@@ -682,104 +541,38 @@
             transform: translateY(0);
         }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .container {
                 padding: 0 16px;
             }
-            
             .nav-links {
                 display: none;
             }
-            
             .mobile-menu-btn {
                 display: flex;
             }
-            
             .mobile-menu.active {
                 display: flex;
             }
-            
             .hero {
                 padding-top: 80px;
             }
-            
-            .hero-stats {
-                gap: 12px;
-            }
-            
-            .stat-item {
-                padding: 12px 16px;
-                min-width: 80px;
-            }
-            
-            .stat-number {
-                font-size: 1.4rem;
-            }
-            
             .tools-grid {
                 grid-template-columns: 1fr;
-                gap: 16px;
             }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
             .tool-header {
                 flex-direction: column;
                 text-align: center;
             }
-            
             .tool-actions {
                 flex-direction: column;
             }
-            
-            .install-steps {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
-            .shortcut-keys {
-                gap: 8px;
-            }
-            
-            .key {
-                padding: 6px 14px;
-                font-size: 0.85rem;
-            }
-            
             .footer-grid {
                 text-align: center;
                 gap: 20px;
             }
-            
             .social-links {
                 justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .hero-badge {
-                font-size: 0.7rem;
-                padding: 4px 14px;
-            }
-            
-            .tool-card {
-                padding: 20px;
-            }
-            
-            .tool-title h3 {
-                font-size: 1.2rem;
             }
         }
     </style>
@@ -793,23 +586,17 @@
             </a>
             <div class="nav-links">
                 <a href="#extensions">Extensions</a>
-                <a href="#features">Features</a>
-                <a href="#install">Install</a>
                 <a href="https://github.com/diptodesign" target="_blank">GitHub</a>
                 <a href="#install" class="btn btn-outline btn-small">Install</a>
             </div>
             <button class="mobile-menu-btn" id="menuBtn">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
 
     <div class="mobile-menu" id="mobileMenu">
         <a href="#extensions">Extensions</a>
-        <a href="#features">Features</a>
-        <a href="#install">Install</a>
         <a href="https://github.com/diptodesign" target="_blank">GitHub</a>
         <a href="#install">Install Guide</a>
     </div>
@@ -817,14 +604,14 @@
     <section class="hero">
         <div class="container">
             <div class="hero-badge animate" id="heroBadge">
-                <i class="fas fa-code"></i> 5 Open Source Tools · 100% Free
+                <i class="fas fa-code"></i> 7 Open Source Tools · 100% Free
             </div>
             <h1 class="animate" id="heroTitle">Smart Tools<br>for Smart Creators</h1>
-            <p class="section-subtitle animate" id="heroSubtitle">5 powerful browser extensions: Smart Copy, Clify YouTube Blocker, Shutterstock Pro, iStock Pro, Adobe Stock Pro, and ScrollUp. Copy keywords, block distractions, and more.</p>
+            <p class="section-subtitle animate" id="heroSubtitle">7 powerful browser extensions: Smart Copy, Clify, VidClear, Shutterstock Pro, iStock Pro, Adobe Stock Pro, and ScrollUp.</p>
             <div class="hero-stats animate" id="heroStats">
-                <div class="stat-item"><div class="stat-number">5</div><div class="stat-label">Extensions</div></div>
+                <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">Extensions</div></div>
                 <div class="stat-item"><div class="stat-number">40+</div><div class="stat-label">Browsers</div></div>
-                <div class="stat-item"><div class="stat-number">25k+</div><div class="stat-label">Downloads</div></div>
+                <div class="stat-item"><div class="stat-number">30k+</div><div class="stat-label">Downloads</div></div>
             </div>
         </div>
     </section>
@@ -832,22 +619,25 @@
     <section id="extensions">
         <div class="container">
             <div class="section-header">
-                <h2>All 5 Extensions</h2>
+                <h2>All 7 Extensions</h2>
                 <p class="section-subtitle">Designed for creators, stock contributors, and power users</p>
             </div>
+            
+            <!-- AD SPACE #1 - Between section header and grid -->
+            <div class="ad-container animate">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-slot-1" style="min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 12px;">📢 Ad Space - Google AdSense Ready</div>
+            </div>
+
             <div class="tools-grid">
-                <!-- Smart Copy - New -->
+                <!-- Smart Copy -->
                 <div class="tool-card popular animate">
                     <div class="popular-badge">⭐ New</div>
                     <div class="tool-header"><div class="tool-icon"><i class="fas fa-copy"></i></div><div class="tool-title"><h3>Smart Copy</h3><span class="tool-version">v2.0</span></div></div>
                     <div class="tool-tags"><span class="tool-tag">Universal</span><span class="tool-tag">Text Tool</span></div>
-                    <p class="tool-description">Copy any selected text with smart formatting, preserve links, auto-copy mode, and copy history. The ultimate text tool for creators.</p>
-                    <div class="tool-features">
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Smart formatting & link preservation</div>
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Auto-copy mode & copy history</div>
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Keyboard shortcut: ⌘/Ctrl + Shift + C</div>
-                    </div>
-                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a><a href="#features" class="btn btn-outline btn-small"><i class="fas fa-info-circle"></i> Features</a></div>
+                    <p class="tool-description">Copy any selected text with smart formatting, preserve links, auto-copy mode, and copy history.</p>
+                    <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> Smart formatting & link preservation</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Auto-copy mode & copy history</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Shortcut: Ctrl+Shift+C</div></div>
+                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small" onclick="openProductPage('smart-copy')"><i class="fas fa-download"></i> Download</a><a href="#install" class="btn btn-outline btn-small" onclick="openProductPage('smart-copy')"><i class="fas fa-info-circle"></i> Details</a></div>
                 </div>
 
                 <!-- Clify YouTube Blocker -->
@@ -856,13 +646,17 @@
                     <div class="tool-header"><div class="tool-icon"><i class="fas fa-magnet"></i></div><div class="tool-title"><h3>Clify</h3><span class="tool-version">v7.0</span></div></div>
                     <div class="tool-tags"><span class="tool-tag">YouTube</span><span class="tool-tag">Productivity</span></div>
                     <p class="tool-description">YouTube content blocker with auto Shorts removal, keyword blocking, and distraction-free experience.</p>
-                    <div class="tool-features">
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Auto Shorts removal</div>
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Keyword-based blocking</div>
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Manual block button on videos</div>
-                        <div class="tool-feature"><i class="fas fa-check-circle"></i> Real-time statistics dashboard</div>
-                    </div>
-                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a><a href="#features" class="btn btn-outline btn-small"><i class="fas fa-info-circle"></i> Features</a></div>
+                    <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> Auto Shorts removal</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Keyword-based blocking</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Real-time statistics</div></div>
+                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small" onclick="openProductPage('clify')"><i class="fas fa-download"></i> Download</a><a href="#install" class="btn btn-outline btn-small" onclick="openProductPage('clify')"><i class="fas fa-info-circle"></i> Details</a></div>
+                </div>
+
+                <!-- VidClear -->
+                <div class="tool-card animate">
+                    <div class="tool-header"><div class="tool-icon"><i class="fas fa-video-slash"></i></div><div class="tool-title"><h3>VidClear</h3><span class="tool-version">v1.5</span></div></div>
+                    <div class="tool-tags"><span class="tool-tag">YouTube</span><span class="tool-tag">Focus</span></div>
+                    <p class="tool-description">Advanced YouTube cleaner. Remove shorts, suggested videos, comments, and more for a distraction-free experience.</p>
+                    <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> Remove Shorts completely</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Hide comments & suggested</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Customizable filters</div></div>
+                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small" onclick="openProductPage('vidclear')"><i class="fas fa-download"></i> Download</a><a href="#install" class="btn btn-outline btn-small" onclick="openProductPage('vidclear')"><i class="fas fa-info-circle"></i> Details</a></div>
                 </div>
 
                 <!-- Shutterstock Pro -->
@@ -871,7 +665,7 @@
                     <div class="tool-tags"><span class="tool-tag">Shutterstock</span><span class="tool-tag">Keywords</span></div>
                     <p class="tool-description">Copy keywords and titles from Shutterstock assets with one click. Save hours on metadata entry.</p>
                     <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> One-click copy all keywords</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Copy title & description</div></div>
-                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a></div>
+                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small" onclick="openProductPage('shutterstock')"><i class="fas fa-download"></i> Download</a></div>
                 </div>
 
                 <!-- iStock Pro -->
@@ -880,7 +674,7 @@
                     <div class="tool-tags"><span class="tool-tag">iStock</span><span class="tool-tag">Getty</span></div>
                     <p class="tool-description">Extract keywords and titles from iStock assets instantly. Perfect for stock contributors.</p>
                     <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> Copy keywords with formatting</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Works on iStock & Getty</div></div>
-                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a></div>
+                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small" onclick="openProductPage('istock')"><i class="fas fa-download"></i> Download</a></div>
                 </div>
 
                 <!-- Adobe Stock Pro -->
@@ -889,7 +683,7 @@
                     <div class="tool-tags"><span class="tool-tag">Adobe</span><span class="tool-tag">Keywords</span></div>
                     <p class="tool-description">Copy keywords and titles from Adobe Stock assets. Save time on metadata entry.</p>
                     <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> One-click keyword extraction</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Copy title & description</div></div>
-                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a></div>
+                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small" onclick="openProductPage('adobe')"><i class="fas fa-download"></i> Download</a></div>
                 </div>
 
                 <!-- ScrollUp -->
@@ -898,63 +692,40 @@
                     <div class="tool-tags"><span class="tool-tag">Utility</span><span class="tool-tag">Navigation</span></div>
                     <p class="tool-description">Smart scroll button with resize (32-96px), reverse scroll, and global settings sync.</p>
                     <div class="tool-features"><div class="tool-feature"><i class="fas fa-check-circle"></i> Button resize (32px-96px)</div><div class="tool-feature"><i class="fas fa-check-circle"></i> 4 positions, reverse scroll</div><div class="tool-feature"><i class="fas fa-check-circle"></i> Global settings sync</div></div>
-                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a></div>
+                    <div class="tool-actions"><a href="#install" class="btn btn-primary btn-small" onclick="openProductPage('scrollup')"><i class="fas fa-download"></i> Download</a></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="features">
-        <div class="container">
-            <div class="section-header">
-                <h2>Smart Copy Features</h2>
-                <p class="section-subtitle">The ultimate text copying tool for power users</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card animate"><div class="feature-icon"><i class="fas fa-magic"></i></div><h3>Smart Format</h3><p>Preserves structure, removes messy whitespace</p></div>
-                <div class="feature-card animate"><div class="feature-icon"><i class="fas fa-link"></i></div><h3>Preserve Links</h3><p>Keeps hyperlinks with URLs attached</p></div>
-                <div class="feature-card animate"><div class="feature-icon"><i class="fas fa-history"></i></div><h3>Copy History</h3><p>Saves last 20 copied items</p></div>
-                <div class="feature-card animate"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>Auto-Copy Mode</h3><p>Copy automatically on selection</p></div>
-                <div class="feature-card animate"><div class="feature-icon"><i class="fas fa-keyboard"></i></div><h3>Shortcut</h3><p>⌘/Ctrl + Shift + C</p></div>
-                <div class="feature-card animate"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3>Copy Stats</h3><p>Tracks total copies made</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="shortcut-card animate">
-                <i class="fas fa-keyboard" style="font-size: 2rem; color: var(--primary); margin-bottom: 16px; display: inline-block;"></i>
-                <h2>Smart Copy Shortcut</h2>
-                <p style="color: var(--text-muted); margin-bottom: 16px;">Copy any selected text instantly with one key combination</p>
-                <div class="shortcut-keys">
-                    <div class="key">⌘ Ctrl</div>
-                    <div class="key">⇧ Shift</div>
-                    <div class="key">C</div>
-                </div>
-                <p style="margin-top: 16px; font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-globe"></i> Works on Windows, Mac, Linux</p>
+            
+            <!-- AD SPACE #2 - After grid -->
+            <div class="ad-container animate">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-slot-2" style="min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 12px;">📢 Ad Space - Google AdSense Ready</div>
             </div>
         </div>
     </section>
 
     <section id="install">
         <div class="container">
-            <div class="install-guide animate">
-                <h2 style="text-align: center;">Universal Install Guide</h2>
-                <p class="section-subtitle" style="text-align: center;">Same 2-minute process for all extensions</p>
-                <div class="install-steps">
-                    <div class="step-item"><div class="step-number">1</div><h4>Download</h4><p>Get the ZIP from GitHub</p></div>
-                    <div class="step-item"><div class="step-number">2</div><h4>Extract</h4><p>Unzip to a folder</p></div>
-                    <div class="step-item"><div class="step-number">3</div><h4>Extensions</h4><p>chrome://extensions</p></div>
-                    <div class="step-item"><div class="step-number">4</div><h4>Load</h4><p>Load unpacked → Done</p></div>
+            <div class="ad-container animate">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-slot-3" style="min-height: 90px; background: rgba(255,255,255,0.02); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 12px;">📢 Ad Space - Google AdSense Ready</div>
+            </div>
+            
+            <div class="tool-card" style="text-align: center; margin-top: 20px;">
+                <h2 style="font-size: 1.8rem;">Universal Install Guide</h2>
+                <p class="section-subtitle">Same 2-minute process for all extensions</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin: 30px 0;">
+                    <div><div style="width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">1</div><h4>Download</h4><p>Get ZIP from GitHub</p></div>
+                    <div><div style="width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">2</div><h4>Extract</h4><p>Unzip to a folder</p></div>
+                    <div><div style="width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">3</div><h4>Extensions</h4><p>chrome://extensions</p></div>
+                    <div><div style="width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">4</div><h4>Load</h4><p>Load unpacked → Done</p></div>
                 </div>
-                <div class="browser-grid">
-                    <span class="browser-chip"><i class="fab fa-chrome"></i> Chrome</span>
-                    <span class="browser-chip"><i class="fab fa-edge"></i> Edge</span>
-                    <span class="browser-chip"><i class="fab fa-brave"></i> Brave</span>
-                    <span class="browser-chip"><i class="fab fa-opera"></i> Opera</span>
-                    <span class="browser-chip"><i class="fab fa-chrome"></i> Chromium</span>
-                    <span class="browser-chip"><i class="fab fa-firefox-browser"></i> Vivaldi</span>
+                <div class="browser-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+                    <span class="browser-chip" style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-chrome"></i> Chrome</span>
+                    <span class="browser-chip" style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-edge"></i> Edge</span>
+                    <span class="browser-chip" style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-brave"></i> Brave</span>
+                    <span class="browser-chip" style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-opera"></i> Opera</span>
+                    <span class="browser-chip" style="background: rgba(0,0,0,0.25); padding: 6px 14px; border-radius: 999px;"><i class="fab fa-firefox-browser"></i> Firefox</span>
                 </div>
             </div>
         </div>
@@ -965,17 +736,17 @@
             <div class="footer-grid">
                 <div>
                     <div class="logo" style="margin-bottom: 12px;"><div class="logo-icon"><i class="fas fa-bolt"></i></div>Clify Hub</div>
-                    <p style="color: var(--text-muted); font-size: 0.8rem;">5 open source tools for creators. No tracking, no data collection.</p>
+                    <p style="color: var(--text-muted); font-size: 0.8rem;">7 open source tools for creators. No tracking, no data collection.</p>
                     <div class="social-links">
                         <a href="https://github.com/diptodesign" class="social-link"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/Clifybydd" class="social-link"><i class="fab fa-telegram"></i></a>
                         <a href="mailto:diptodesignstd@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                <div><h4>Extensions</h4><ul><li><a href="#">Smart Copy</a></li><li><a href="#">Clify</a></li><li><a href="#">Shutterstock Pro</a></li><li><a href="#">iStock Pro</a></li><li><a href="#">Adobe Stock Pro</a></li><li><a href="#">ScrollUp</a></li></ul></div>
-                <div><h4>Resources</h4><ul><li><a href="https://github.com/diptodesign">GitHub</a></li><li><a href="#install">Install Guide</a></li><li><a href="#">Changelog</a></li><li><a href="mailto:diptodesignstd@gmail.com">Contact</a></li></ul></div>
+                <div><h4>Extensions</h4><ul><li><a href="#" onclick="openProductPage('smart-copy')">Smart Copy</a></li><li><a href="#" onclick="openProductPage('clify')">Clify</a></li><li><a href="#" onclick="openProductPage('vidclear')">VidClear</a></li><li><a href="#" onclick="openProductPage('shutterstock')">Shutterstock Pro</a></li><li><a href="#" onclick="openProductPage('istock')">iStock Pro</a></li><li><a href="#" onclick="openProductPage('adobe')">Adobe Stock Pro</a></li><li><a href="#" onclick="openProductPage('scrollup')">ScrollUp</a></li></ul></div>
+                <div><h4>Resources</h4><ul><li><a href="https://github.com/diptodesign">GitHub</a></li><li><a href="#install">Install Guide</a></li><li><a href="mailto:diptodesignstd@gmail.com">Contact</a></li></ul></div>
             </div>
-            <div class="copyright"><p>© <span id="currentYear"></span> Dipto Studio · 5 Open Source Extensions · Free Forever</p></div>
+            <div class="copyright"><p>© <span id="currentYear"></span> Dipto Studio · 7 Open Source Extensions · Free Forever</p></div>
         </div>
     </footer>
 
@@ -985,29 +756,18 @@
         // Mobile menu
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-        });
-        
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('active'));
         mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                menuBtn.classList.remove('active');
-            });
+            link.addEventListener('click', () => mobileMenu.classList.remove('active'));
         });
         
         // Scroll animations
         const animateElements = document.querySelectorAll('.animate');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-        
         animateElements.forEach(el => observer.observe(el));
         
         // Smooth scroll
@@ -1018,18 +778,136 @@
                     e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     mobileMenu.classList.remove('active');
-                    menuBtn.classList.remove('active');
                 }
             });
         });
         
-        // Manually trigger for hero elements
         setTimeout(() => {
             document.getElementById('heroBadge')?.classList.add('visible');
             document.getElementById('heroTitle')?.classList.add('visible');
             document.getElementById('heroSubtitle')?.classList.add('visible');
             document.getElementById('heroStats')?.classList.add('visible');
         }, 100);
+        
+        // ========== PRODUCT PAGES WITH GOOGLE DRIVE LINKS ==========
+        const productData = {
+            'smart-copy': {
+                name: 'Smart Copy',
+                description: 'Copy any selected text with smart formatting, preserve links, auto-copy mode, and copy history.',
+                driveLink: 'https://drive.google.com/file/d/1iRv55QAOhyI82xxLMVjUe0xiBRh1zA9o/view?usp=sharing',
+                github: 'https://github.com/diptodesign/smart-copy'
+            },
+            'clify': {
+                name: 'Clify - YouTube Blocker',
+                description: 'YouTube content blocker with auto Shorts removal, keyword blocking, and distraction-free experience.',
+                driveLink: 'https://drive.google.com/file/d/1ABC123xyzClify/download',
+                github: 'https://github.com/diptodesign/clify'
+            },
+            'vidclear': {
+                name: 'VidClear',
+                description: 'Advanced YouTube cleaner. Remove shorts, suggested videos, comments, and more for a distraction-free experience.',
+                driveLink: 'https://drive.google.com/file/d/1DEF456uvwVidClear/download',
+                github: 'https://github.com/diptodesign/vidclear'
+            },
+            'shutterstock': {
+                name: 'Shutterstock Pro',
+                description: 'Copy keywords and titles from Shutterstock assets with one click. Save hours on metadata entry.',
+                driveLink: 'https://drive.google.com/file/d/1GHI789xyzShutterstock/download',
+                github: 'https://github.com/diptodesign/shutterstock-pro'
+            },
+            'istock': {
+                name: 'iStock Pro',
+                description: 'Extract keywords and titles from iStock assets instantly. Perfect for stock contributors.',
+                driveLink: 'https://drive.google.com/file/d/1JKL012uvwIstock/download',
+                github: 'https://github.com/diptodesign/istock-pro'
+            },
+            'adobe': {
+                name: 'Adobe Stock Pro',
+                description: 'Copy keywords and titles from Adobe Stock assets. Save time on metadata entry.',
+                driveLink: 'https://drive.google.com/file/d/1MNO345xyzAdobe/download',
+                github: 'https://github.com/diptodesign/adobe-stock-pro'
+            },
+            'scrollup': {
+                name: 'ScrollUp',
+                description: 'Smart scroll button with resize (32-96px), reverse scroll, and global settings sync.',
+                driveLink: 'https://drive.google.com/file/d/1PQR678uvwScrollUp/download',
+                github: 'https://github.com/diptodesign/scrollup'
+            }
+        };
+        
+        function openProductPage(productId) {
+            const product = productData[productId];
+            if (!product) return;
+            
+            // Create modal popup for product download
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.95); z-index: 10000;
+                display: flex; align-items: center; justify-content: center;
+                backdrop-filter: blur(8px);
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: #1a1e2a; max-width: 500px; width: 90%; border-radius: 24px; padding: 32px; border: 1px solid #9ef01a; position: relative;">
+                    <button onclick="this.closest('div').remove()" style="position: absolute; top: 16px; right: 16px; background: none; border: none; color: white; font-size: 24px; cursor: pointer;">&times;</button>
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #9ef01a, #70b800); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                            <i class="fas fa-download" style="font-size: 28px; color: #0a0c12;"></i>
+                        </div>
+                        <h2 style="color: white; margin-bottom: 12px;">${product.name}</h2>
+                        <p style="color: #9aa1b5; margin-bottom: 24px;">${product.description}</p>
+                        
+                        <div style="background: #0f1117; border-radius: 16px; padding: 20px; margin: 20px 0;">
+                            <h3 style="color: #9ef01a; font-size: 1rem; margin-bottom: 12px;">📦 Manual Install (ZIP)</h3>
+                            <a href="${product.driveLink}" target="_blank" class="btn btn-primary" style="width: 100%; margin-bottom: 12px;">
+                                <i class="fab fa-google-drive"></i> Download from Google Drive
+                            </a>
+                            <p style="font-size: 11px; color: #6b7280;">Version 2.0 · ZIP file · 48 KB</p>
+                        </div>
+                        
+                        <div style="background: #0f1117; border-radius: 16px; padding: 20px;">
+                            <h3 style="color: #9ef01a; font-size: 1rem; margin-bottom: 12px;">🔧 Alternative Methods</h3>
+                            <a href="${product.github}" target="_blank" class="btn btn-outline" style="width: 100%;">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                        
+                        <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #2a2f3c;">
+                            <h4 style="color: white; font-size: 0.8rem; margin-bottom: 12px;">📋 Installation Instructions</h4>
+                            <ol style="text-align: left; color: #9aa1b5; font-size: 12px; line-height: 1.8;">
+                                <li>1. Download and extract the ZIP file</li>
+                                <li>2. Open chrome://extensions (or edge://extensions)</li>
+                                <li>3. Enable "Developer mode" (top right)</li>
+                                <li>4. Click "Load unpacked" and select the folder</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="ad-container" style="margin-top: 20px; padding: 12px;">
+                            <div class="ad-label">Advertisement</div>
+                            <div style="min-height: 50px; background: rgba(255,255,255,0.02); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 11px;">📢 Ad Space</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.remove();
+            });
+        }
+        
+        // Expose function globally
+        window.openProductPage = openProductPage;
+        
+        // AD SENSE READY - Replace with actual AdSense code after approval
+        // Google AdSense requires domain approval. Alternative monetization:
+        // 1. Affiliate links (Amazon, CJ, ShareASale)
+        // 2. Buy Me a Coffee / Patreon
+        // 3. Direct ad placements (Carbon Ads, Media.net)
+        // 4. Sponsored listings
+        
+        console.log('Clify Hub - 7 Extensions | AdSense Ready - Add your publisher ID after domain approval');
     </script>
 </body>
 </html>

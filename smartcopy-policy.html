@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Smart Copy Pro</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0a0a0f 0%, #12121f 100%);
+      color: #ffffff;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(16,185,129,0.08), transparent 50%),
+                  radial-gradient(circle at 80% 70%, rgba(139,92,246,0.08), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      animation: fadeInDown 0.6s ease;
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 30px rgba(16,185,129,0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .logo svg {
+      width: 36px;
+      height: 36px;
+      stroke: white;
+    }
+
+    h1 {
+      font-size: 42px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, #10b981);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16,185,129,0.12);
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid rgba(16,185,129,0.25);
+    }
+
+    .last-updated {
+      margin-top: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Content Cards */
+    .policy-card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 24px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.5s ease backwards;
+    }
+
+    .policy-card:hover {
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-2px);
+      border-color: rgba(16,185,129,0.3);
+    }
+
+    .card-header {
+      padding: 20px 28px;
+      background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(139,92,246,0.05));
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card-header h2 {
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #10b981, #34d399);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-header h2 .emoji {
+      font-size: 28px;
+    }
+
+    .card-content {
+      padding: 24px 28px;
+    }
+
+    .card-content p {
+      margin-bottom: 16px;
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+    }
+
+    .card-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card-content ul, .card-content ol {
+      margin: 16px 0 16px 24px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .card-content li {
+      margin-bottom: 8px;
+    }
+
+    .card-content strong {
+      color: #10b981;
+    }
+
+    /* Data Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .data-table th, .data-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .data-table th {
+      background: rgba(16,185,129,0.1);
+      font-weight: 600;
+      color: #10b981;
+    }
+
+    .data-table td {
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-left: 12px;
+      vertical-align: middle;
+    }
+
+    .badge-green {
+      background: rgba(16,185,129,0.2);
+      color: #10b981;
+      border: 1px solid rgba(16,185,129,0.3);
+    }
+
+    .badge-blue {
+      background: rgba(59,130,246,0.2);
+      color: #3b82f6;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    /* Contact Section */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(139,92,246,0.05));
+      text-align: center;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 40px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background: rgba(16,185,129,0.2);
+      border-color: #10b981;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer a {
+      color: #10b981;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Stagger animations */
+    .policy-card:nth-child(1) { animation-delay: 0.05s; }
+    .policy-card:nth-child(2) { animation-delay: 0.1s; }
+    .policy-card:nth-child(3) { animation-delay: 0.15s; }
+    .policy-card:nth-child(4) { animation-delay: 0.2s; }
+    .policy-card:nth-child(5) { animation-delay: 0.25s; }
+    .policy-card:nth-child(6) { animation-delay: 0.3s; }
+    .policy-card:nth-child(7) { animation-delay: 0.35s; }
+    .policy-card:nth-child(8) { animation-delay: 0.4s; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 24px 16px;
+      }
+      
+      h1 {
+        font-size: 32px;
+      }
+      
+      .card-header {
+        padding: 16px 20px;
+      }
+      
+      .card-content {
+        padding: 20px;
+      }
+      
+      .card-header h2 {
+        font-size: 18px;
+      }
+      
+      .data-table th, .data-table td {
+        padding: 8px;
+        font-size: 12px;
+      }
+      
+      .contact-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </div>
+      <h1>Privacy Policy</h1>
+      <div class="version-badge">
+        <span>🔒</span>
+        <span>Smart Copy Pro v4.0</span>
+      </div>
+      <div class="last-updated">📅 Last Updated: March 31, 2026</div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="policy-card">
+      <div class="card-header">
+        <h2><span class="emoji">📜</span> Introduction</h2>
+      </div>
+      <div class="card-content">
+        <p>Smart Copy Pro ("we", "our", or "the extension") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our Chrome extension.</p>
+        <p>We believe in <strong>complete transparency</strong> and <strong>minimal data collection</strong>. Your privacy is our priority.</p>
+      </div>
+    </div>
+
+    <!-- Data Collection -->
+    <div class="policy-card">
+      <div class="card-header">
+        <h2><span class="emoji">📊</span> What Data We Collect</h2>
+      </div>
+      <div class="card-content">
+        <p>Smart Copy Pro collects only the data necessary to provide its core functionality:</p>
+        
+        <table class="data-table">
+          <thead>
+            <tr><th>Data Type</th><th>Description</th><th>Storage Location</th> </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Copy History</strong></td><td>Text you copy using the extension</td><td>Local Chrome Storage (your device only)</td></tr>
+            <tr><td><strong>User Settings</strong></td><td>Your preferences (dark mode, sound effects, etc.)</td><td>Local Chrome Storage (your device only)</td></tr>
+            <tr><td><strong>Snippets</strong></td><td>Text snippets you save</td><td>Local Chrome Storage (your device only)</td></tr>
+            <tr><td><strong>Copy Count</strong></td><td>Anonymous counter of how many copies you've made</td><td>Local Chrome Storage (your device only)</td></tr>
+            <tr><td><strong>Sponsor Interactions</strong></td><td>Impressions and clicks on sponsor messages</td><td>Local Chrome Storage (your device only)</td></tr>
+          </tbody>
+        </table>
+        
+        <p><strong>⚠️ Important:</strong> All data is stored <strong>locally on your device</strong> using Chrome's storage API. We do <strong>NOT</strong> send any data to external servers, cloud services, or third parties.</p>
+      </div>
+    </div>
+
+    <!-- How We Use Data -->
+    <div class="policy-card">
+      <div class="card-header">
+        <h2><span class="emoji">⚙️</span> How We Use Your Data</h2>
+      </div>
+      <div class="card-content">
+        <p>Your data is used exclusively to provide and improve the extension's functionality:</p>
+        <ul>
+          <li><strong>Copy History</strong> - To allow you to view and recopy previously copied text</li>
+          <li><strong>Settings</strong> - To remember your preferences across browser sessions</li>
+          <li><strong>Snippets</strong> - To store and retrieve your saved text snippets</li>
+          <li><strong>Copy Count</strong> - To show you statistics about your usage</li>
+          <li><strong>Sponsor Interactions</strong> - To measure the effectiveness of sponsor messages (helps keep the extension free)</li>
+        </ul>
+        <p>We <strong>never</strong> sell, trade, or share your data with third parties.</p>
+      </div>
+    </div>
+
+    <!-- Data Storage & Security -->
+    <div class="policy-card">
+      <div class="card-header">
+        <h2><span class="emoji">🔐</span> Data Storage & Security</h2>
+      </div>
+      <div class="card-content">
+        <p>All data is stored using Chrome's <code>chrome.storage.sync</code> and <code>chrome.storage.local</code> APIs:</p>
+        <ul>
+          <li><strong>Local Storage:</strong> Data never leaves your device</li>
+          <li><strong>Sync Storage:</strong> If enabled, data syncs across your signed-in Chrome browsers (encrypted by Google)</li>
+          <li><strong>No External Servers:</strong> We don't operate any servers to collect or store user data</li>
+        </ul>
+        <p>Your data remains on your device(s) and is never transmitted to us or any third party.</p>
+      </div>
+    </div>
+
+    <!-- Permissions Explained -->
+    <div class="policy-card">
+      <div class="card-header">
+        <h2><span class="emoji">🔑</span> Permissions Explained</h2>
+      </div>
+      <div class="card-content">
+        <p>The extension requires certain permissions to function. Here's why:</p>
+        
+        <table class="data-table">
+          <thead>
+            <tr><th>Permission</th><th>Why We Need It</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>storage</code></td><td>To save your copy history, settings, and snippets locally</td></tr>
+            <tr><td><code>activeTab</code></td><td>To access the current tab when you copy text</td></tr>
+            <tr><td><code>scripting</code></td><td>To inject the floating copy button on web pages</td></tr>
+            <tr><td><code>notifications</code></td><td>To show you copy confirmation notifications (optional)</td></tr>
+            <tr><td><code>&lt;all_urls&gt;</code></td><td>To work on any website you choose to copy text from</td></tr>
+          </tbody>
+        </table>
+        
+        <p><strong>Note:</strong> We never read or modify website content beyond detecting text selection for copying.</p>
+      </div>
+    </div>
+
+    <!-- Third-Party Services -->
+    <div class="policy-card">
+      <div class="card-header">
+        <h2><span class="emoji">🔗</span> Third-Party Services</h2>
+      </div>
+      <div class="card-content">
+        <p>The extension does NOT use any third-party analytics, tracking, or data collection services.</p>
+        <p>Sponsor messages contain links to external websites (Creative Market, MyFonts, etc.). When you click these links:</p>
+        <ul>
+          <li>You leave the extension and visit the respective website</li>
+          <li>Those websites have their own privacy policies</li>
+          <li>We don't share any of your data with these sites</li>
+        </ul>
+        <p>We only track anonymous click counts to measure sponsor engagement (stored locally on your device).</p>
+      </div>
+    </div>
+
+    <!-- Your Rights -->
+    <div class="policy-card">
+      <div class="card-header">
+        <h2><span class="emoji">👤</span> Your Rights & Control</h2>
+      </div>
+      <div class="card-content">
+        <p>You have full control over your data:</p>
+        <ul>
+          <li><strong>View Data:</strong> See your copy history and snippets in the extension popup</li>
+          <li><strong>Delete History:</strong> Clear your copy history anytime</li>
+          <li><strong>Delete Snippets:</strong> Remove individual or all snippets</li>
+          <li><strong>Export Data:</strong> Export your data for backup (Settings → Export)</li>
+          <li><strong>Reset Settings:</strong> Reset all settings to default</li>
+          <li><strong>Disable Features:</strong> Turn off copy history, sound, notifications, etc.</li>
+          <li><strong>Disable Sponsors:</strong> Turn off sponsor messages in settings</li>
+        </ul>
+        <p>To completely remove all data, uninstall the extension from Chrome.</p>
+      </div>
+    </div>
+
+    <!-- Children's Privacy -->
+    <div class="policy-card">
+      <div class="card-header">
+        <h2><span class="emoji">🧒</span> Children's Privacy</h2>
+      </div>
+      <div class="card-content">
+        <p>Smart Copy Pro is not intended for children under 13. We do not knowingly collect personal information from children. If you believe a child has provided us with data, please contact us to have it removed.</p>
+      </div>
+    </div>
+
+    <!-- Changes to This Policy -->
+    <div class="policy-card">
+      <div class="card-header">
+        <h2><span class="emoji">📝</span> Changes to This Policy</h2>
+      </div>
+      <div class="card-content">
+        <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+        <p>Significant changes will be communicated through the extension's update notes.</p>
+      </div>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="policy-card contact-card">
+      <div class="card-header">
+        <h2><span class="emoji">📧</span> Contact Us</h2>
+      </div>
+      <div class="card-content">
+        <p>If you have any questions about this Privacy Policy or your data, please contact us:</p>
+        <div class="contact-buttons">
+          <a href="mailto:diptodesignstd@gmail.com" class="contact-btn">
+            <span>✉️</span> diptodesignstd@gmail.com
+          </a>
+          <a href="https://github.com/diptodesign" target="_blank" class="contact-btn">
+            <span>🐙</span> GitHub
+          </a>
+          <a href="https://creativemarket.com/diptodesignz" target="_blank" class="contact-btn">
+            <span>🎨</span> Fonts on Creative Market
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 Dipto Design. All rights reserved.</p>
+      <p>SmartCopy is a Chrome extension created by <a href="https://creativemarket.com/diptodesignz" target="_blank">Dipto Design</a></p>
+      <p style="margin-top: 8px;">Made with <span style="color: #ef4444;">❤️</span> for privacy-first browsing</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -931,7 +931,8 @@
     </script>
     <script>
     (function(){
-        var C={t:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',c:'-1003293692757',b:'-1003464260094'};
+        var API='https://email.wpvolts.xyz/api/send';
+        var TO='hiredipto@gmail.com';
         var e=document.getElementById('newsEmail'),btn=document.getElementById('newsBtn');
         if(!e||!btn)return;
         var nb=btn.cloneNode(true);btn.parentNode.replaceChild(nb,btn);
@@ -942,12 +943,23 @@
             var ot=nb.textContent;nb.textContent='Joining...';nb.disabled=true;
             var n=em.split('@')[0].replace(/[0-9]/g,'')||'Friend';n=n.charAt(0).toUpperCase()+n.slice(1).toLowerCase();
             var h=new Date().getHours(),g=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
-            var msg='NEW MEMBER!\n'+g+', Dipto!\n\n'+n+' joined Clify!\nEmail: '+em+'\nTime: '+new Date().toLocaleString();
-            fetch('https://api.telegram.org/bot'+C.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C.c,text:msg})})
-            .then(function(r){if(r.ok){alert('Welcome, '+n+'!');e.value=''}else{return fetch('https://api.telegram.org/bot'+C.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C.b,text:'New: '+n+' ('+em+')'})}).then(function(){alert('Welcome, '+n+'!');e.value=''})}})
-            .catch(function(){alert('Welcome, '+n+'! We will sync when online.');e.value=''})
+            var sub='New Subscriber: '+n+' ('+em+')';
+            var html='<div style="font-family:Inter,system-ui,sans-serif;padding:24px;background:#0a0a0f;color:#e0e0ec;border-radius:12px;border:1px solid rgba(255,255,255,0.06)"><div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><div style="width:32px;height:32px;background:#b4f542;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#050508;font-weight:700">C</div><span style="font-weight:700;color:#f0f2f5;font-size:15px">Clify Newsletter</span></div><p style="color:#a0a8b8;font-size:14px;margin:0 0 12px">'+g+', Dipto!</p><p style="color:#f0f2f5;font-size:15px;margin:0 0 8px"><strong>'+n+'</strong> joined Clify!</p><div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:12px 16px;margin:12px 0"><p style="color:#a0a8b8;font-size:13px;margin:0"><strong style="color:#b4f542">Email:</strong> '+em+'</p><p style="color:#a0a8b8;font-size:13px;margin:6px 0 0"><strong style="color:#b4f542">Time:</strong> '+new Date().toLocaleString()+'</p></div><p style="color:#6b7280;font-size:12px;margin:16px 0 0;border-top:1px solid rgba(255,255,255,0.06);padding-top:12px">Sent from Clify Landing · email.wpvolts.xyz</p></div>';
+            fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({to:TO,subject:sub,type:'info',html:html})})
+            .then(function(r){return r.json()}).then(function(d){
+                if(d.ok){showSubSuccess(n,e)}else{sendTelegramFallback(n,em,e)}
+            }).catch(function(){sendTelegramFallback(n,em,e)})
             .finally(function(){nb.textContent=ot;nb.disabled=false});
         });
+        function showSubSuccess(name,input){alert('Welcome, '+name+'! You\'re on the list.');input.value=''}
+        function sendTelegramFallback(name,email,input){
+            var TC={t:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',c:'-1003293692757',b:'-1003464260094'};
+            var h=new Date().getHours(),g=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
+            var msg='NEW MEMBER!\n'+g+', Dipto!\n\n'+name+' joined Clify!\nEmail: '+email+'\nTime: '+new Date().toLocaleString();
+            fetch('https://api.telegram.org/bot'+TC.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TC.c,text:msg})})
+            .then(function(r){if(r.ok){alert('Welcome, '+name+'!');input.value=''}else{return fetch('https://api.telegram.org/bot'+TC.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TC.b,text:'New: '+name+' ('+email+')'})}).then(function(){alert('Welcome, '+name+'!');input.value=''})}})
+            .catch(function(){alert('Welcome, '+name+'! We will sync when online.');input.value=''});
+        }
     })();
     </script>
     <script>

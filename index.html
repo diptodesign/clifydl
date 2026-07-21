@@ -81,7 +81,6 @@
             overflow-x: hidden;
         }
 
-        /* ── BACKGROUND ── */
         .bg-grid {
             position: fixed;
             inset: 0;
@@ -93,91 +92,30 @@
             mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 70%);
             -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 70%);
         }
-        .bg-glow {
-            position: fixed;
-            z-index: -1;
-            pointer-events: none;
-        }
-        .bg-glow-1 {
-            width: 800px; height: 800px;
-            top: -400px; left: 50%;
-            transform: translateX(-50%);
-            background: radial-gradient(circle, rgba(180,245,66,0.06), transparent 70%);
-        }
-        .bg-glow-2 {
-            width: 600px; height: 600px;
-            bottom: -200px; right: -200px;
-            background: radial-gradient(circle, rgba(180,245,66,0.03), transparent 70%);
-        }
+        .bg-glow { position: fixed; z-index: -1; pointer-events: none; }
+        .bg-glow-1 { width: 800px; height: 800px; top: -400px; left: 50%; transform: translateX(-50%); background: radial-gradient(circle, rgba(180,245,66,0.06), transparent 70%); }
+        .bg-glow-2 { width: 600px; height: 600px; bottom: -200px; right: -200px; background: radial-gradient(circle, rgba(180,245,66,0.03), transparent 70%); }
 
-        /* ── GLOBAL ── */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
-
-        h1, h2, h3, h4, h5 {
-            font-family: var(--font-display);
-            color: var(--text-primary);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-        }
-
+        h1, h2, h3, h4, h5 { font-family: var(--font-display); color: var(--text-primary); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
         h1 { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: -0.04em; }
         h2 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.03em; }
         h3 { font-size: clamp(1.2rem, 3vw, 1.4rem); }
-
         a { color: inherit; text-decoration: none; }
-
         .container--narrow { max-width: 900px; }
 
-        /* ── BUTTONS ── */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 32px;
-            border-radius: 60px;
-            font-family: var(--font-body);
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s var(--ease);
-            min-height: 48px;
-            min-width: 48px;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 14px 32px; border-radius: 60px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+            border: none; cursor: pointer; transition: all 0.4s var(--ease); min-height: 48px; min-width: 48px;
+            text-decoration: none; position: relative; overflow: hidden;
         }
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg-deep);
-            box-shadow: var(--shadow-accent);
-        }
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(180,245,66,0.25);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid rgba(255,255,255,0.15);
-            color: var(--text-primary);
-        }
-        .btn-outline:hover {
-            border-color: var(--accent);
-            background: var(--accent-dim);
-            transform: translateY(-2px);
-        }
-        .btn-ghost {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-        }
-        .btn-ghost:hover {
-            background: var(--accent-dim);
-            border-color: var(--border-accent);
-        }
+        .btn-primary { background: var(--accent); color: var(--bg-deep); box-shadow: var(--shadow-accent); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(180,245,66,0.25); }
+        .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.15); color: var(--text-primary); }
+        .btn-outline:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
+        .btn-ghost { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text-primary); }
+        .btn-ghost:hover { background: var(--accent-dim); border-color: var(--border-accent); }
         .btn-ph { background: var(--ph-orange); color: #fff; }
         .btn-ph:hover { background: #ff7a6b; transform: translateY(-2px); }
         .btn-facebook { background: var(--fb-blue); color: #fff; }
@@ -187,442 +125,96 @@
         .btn-quetta { background: var(--quetta); color: #fff; }
         .btn-quetta:hover { background: #a07eff; transform: translateY(-2px); }
 
-        /* ── NAVBAR ── */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 16px 0;
-            transition: all 0.3s ease;
-        }
-        .nav.scrolled {
-            background: rgba(6, 6, 10, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-        .nav-logo {
-            width: 36px;
-            height: 36px;
-            background: var(--accent);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            color: var(--bg-deep);
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .nav-links a {
-            padding: 8px 16px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            border-radius: 8px;
-            transition: all 0.2s;
-            min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-        }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; transition: all 0.3s ease; }
+        .nav.scrolled { background: rgba(6, 6, 10, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .nav-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text-primary); }
+        .nav-logo { width: 36px; height: 36px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--bg-deep); }
+        .nav-links { display: flex; align-items: center; gap: 8px; }
+        .nav-links a { padding: 8px 16px; font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); border-radius: 8px; transition: all 0.2s; min-height: 44px; display: inline-flex; align-items: center; }
         .nav-links a:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
         .nav-links .btn { padding: 10px 24px; font-size: 0.85rem; }
         .nav-mobile { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; min-height: 44px; min-width: 44px; }
 
-        /* ── HERO ── */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 140px 24px 80px;
-            position: relative;
-        }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 24px 80px; position: relative; }
         .hero-inner { max-width: 860px; }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--accent-dim);
-            border: 1px solid var(--border-accent);
-            padding: 8px 20px;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 32px;
-            animation: fadeInUp 0.8s var(--ease) both;
-        }
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        .hero h1 {
-            margin-bottom: 24px;
-            animation: fadeInUp 0.8s var(--ease) 0.1s both;
-        }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-dim); border: 1px solid var(--border-accent); padding: 8px 20px; border-radius: 60px; font-size: 0.85rem; font-weight: 500; color: var(--accent); margin-bottom: 32px; animation: fadeInUp 0.8s var(--ease) both; }
+        .hero-badge .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+        .hero h1 { margin-bottom: 24px; animation: fadeInUp 0.8s var(--ease) 0.1s both; }
         .hero h1 .accent { color: var(--accent); }
-        .hero-sub {
-            font-size: clamp(1.05rem, 2.5vw, 1.25rem);
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
-            animation: fadeInUp 0.8s var(--ease) 0.2s both;
-        }
-        .hero-actions {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s var(--ease) 0.3s both;
-        }
-        .hero-note {
-            margin-top: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s var(--ease) 0.4s both;
-        }
-        .hero-note span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
+        .hero-sub { font-size: clamp(1.05rem, 2.5vw, 1.25rem); color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; line-height: 1.7; animation: fadeInUp 0.8s var(--ease) 0.2s both; }
+        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s var(--ease) 0.3s both; }
+        .hero-note { margin-top: 40px; display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; animation: fadeInUp 0.8s var(--ease) 0.4s both; }
+        .hero-note span { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); }
         .hero-note i { color: var(--accent); font-size: 0.9rem; }
 
-        /* ── PROOF BAR ── */
-        .proof-bar {
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            background: rgba(255,255,255,0.01);
-            padding: 48px 0;
-        }
-        .proof-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-            text-align: center;
-        }
+        .proof-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.01); padding: 48px 0; }
+        .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
         .proof-item { position: relative; }
-        .proof-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 1px;
-            height: 40px;
-            background: var(--border);
-        }
-        .proof-number {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 800;
-            color: var(--text-primary);
-            line-height: 1.1;
-        }
+        .proof-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: var(--border); }
+        .proof-number { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--text-primary); line-height: 1.1; }
         .proof-number .accent { color: var(--accent); }
-        .proof-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 6px;
-            font-weight: 500;
-        }
+        .proof-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; font-weight: 500; }
 
-        /* ── SECTION HEADERS ── */
         .section { padding: 100px 0; }
         .section-header { text-align: center; margin-bottom: 60px; }
-        .section-eyebrow {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
+        .section-eyebrow { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 16px; }
         .section-header h2 { margin-bottom: 16px; }
-        .section-desc {
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            color: var(--text-secondary);
-            max-width: 550px;
-            margin: 0 auto;
-        }
+        .section-desc { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-secondary); max-width: 550px; margin: 0 auto; }
 
-        /* ── FEATURES ── */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
-            background: var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-        }
-        .feature-cell {
-            background: var(--bg-surface);
-            padding: 36px 28px;
-            transition: all 0.4s var(--ease);
-            position: relative;
-        }
-        .feature-cell:hover {
-            background: var(--bg-card-hover);
-        }
-        .feature-cell:hover .feature-icon {
-            background: var(--accent-dim);
-            border-color: rgba(180,245,66,0.3);
-            transform: scale(1.05);
-        }
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-            transition: all 0.4s var(--ease);
-        }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+        .feature-cell { background: var(--bg-surface); padding: 36px 28px; transition: all 0.4s var(--ease); position: relative; }
+        .feature-cell:hover { background: var(--bg-card-hover); }
+        .feature-cell:hover .feature-icon { background: var(--accent-dim); border-color: rgba(180,245,66,0.3); transform: scale(1.05); }
+        .feature-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--accent); margin-bottom: 20px; transition: all 0.4s var(--ease); }
         .feature-cell h3 { margin-bottom: 8px; font-size: 1.1rem; }
         .feature-cell p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
 
-        /* ── SHOWCASE ── */
-        .showcase-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            padding: 80px 0;
-        }
+        .showcase-item { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 80px 0; }
         .showcase-item:not(:last-child) { border-bottom: 1px solid var(--border); }
         .showcase-item.reverse { direction: rtl; }
         .showcase-item.reverse > * { direction: ltr; }
         .showcase-content h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 16px; }
         .showcase-content p { margin-bottom: 24px; }
-        .showcase-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .showcase-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
-        }
+        .showcase-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .showcase-list li { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; }
         .showcase-list li i { color: var(--accent); font-size: 0.85rem; width: 20px; text-align: center; }
-        .showcase-visual {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            position: relative;
-        }
-        .showcase-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s var(--ease);
-        }
+        .showcase-visual { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; position: relative; }
+        .showcase-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
         .showcase-visual:hover img { transform: scale(1.03); }
-        .showcase-visual-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 12px;
-            background: linear-gradient(135deg, var(--bg-card), var(--bg-surface));
-            color: var(--text-muted);
-        }
+        .showcase-visual-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; background: linear-gradient(135deg, var(--bg-card), var(--bg-surface)); color: var(--text-muted); }
         .showcase-visual-placeholder i { font-size: 3rem; color: var(--accent); opacity: 0.3; }
 
-        /* ── SCREENSHOTS ── */
-        .screenshots-scroll {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            padding: 20px 0 40px;
-            scrollbar-width: none;
-        }
+        .screenshots-scroll { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 20px 0 40px; scrollbar-width: none; }
         .screenshots-scroll::-webkit-scrollbar { display: none; }
-        .screenshot-item {
-            flex: 0 0 360px;
-            scroll-snap-align: start;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            transition: all 0.4s var(--ease);
-        }
-        .screenshot-item:hover {
-            border-color: var(--border-accent);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        .screenshot-img {
-            aspect-ratio: 16/9;
-            background: var(--bg-surface);
-            overflow: hidden;
-        }
-        .screenshot-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s var(--ease);
-        }
+        .screenshot-item { flex: 0 0 360px; scroll-snap-align: start; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); transition: all 0.4s var(--ease); }
+        .screenshot-item:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .screenshot-img { aspect-ratio: 16/9; background: var(--bg-surface); overflow: hidden; }
+        .screenshot-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
         .screenshot-item:hover .screenshot-img img { transform: scale(1.05); }
         .screenshot-caption { padding: 20px; }
         .screenshot-caption h4 { font-size: 1rem; margin-bottom: 4px; }
         .screenshot-caption p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
 
-        /* ── VIDEO ── */
-        .video-showcase {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .video-card {
-            display: block;
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.4s var(--ease);
-            text-decoration: none;
-        }
-        .video-card:hover {
-            border-color: var(--border-accent);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        .video-thumb {
-            aspect-ratio: 16/9;
-            background: linear-gradient(135deg, var(--bg-card), var(--bg-surface));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 16px;
-        }
+        .video-showcase { max-width: 800px; margin: 0 auto; }
+        .video-card { display: block; position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); transition: all 0.4s var(--ease); text-decoration: none; }
+        .video-card:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .video-thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--bg-card), var(--bg-surface)); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; }
         .video-thumb i { font-size: 4rem; color: var(--accent); opacity: 0.4; }
         .video-thumb span { color: var(--text-muted); font-weight: 500; }
-        .video-play {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 72px;
-            height: 72px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--bg-deep);
-            font-size: 1.5rem;
-            transition: all 0.3s var(--ease);
-            box-shadow: 0 0 40px rgba(180,245,66,0.3);
-        }
+        .video-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 72px; height: 72px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bg-deep); font-size: 1.5rem; transition: all 0.3s var(--ease); box-shadow: 0 0 40px rgba(180,245,66,0.3); }
         .video-card:hover .video-play { transform: translate(-50%, -50%) scale(1.1); }
-        .video-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px 24px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        .video-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 24px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: center; justify-content: space-between; }
         .video-bar span { color: #fff; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
         .video-bar i { font-size: 1.3rem; }
 
-        /* ── COMPARISON ── */
-        .comparison-wrap {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-        }
-        .comparison-wrap table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
-        }
-        .comparison-wrap th {
-            text-align: left;
-            padding: 20px 28px;
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--border);
-            background: rgba(255,255,255,0.02);
-        }
+        .comparison-wrap { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+        .comparison-wrap table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        .comparison-wrap th { text-align: left; padding: 20px 28px; font-family: var(--font-display); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
         .comparison-wrap th:first-child { width: 40%; }
-        .comparison-wrap th:nth-child(2) {
-            color: var(--accent);
-            position: relative;
-        }
-        .comparison-wrap th:nth-child(2)::after {
-            content: 'Best';
-            position: absolute;
-            top: -1px;
-            right: 12px;
-            background: var(--accent);
-            color: var(--bg-deep);
-            font-size: 0.65rem;
-            padding: 2px 8px;
-            border-radius: 0 0 6px 6px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-        }
-        .comparison-wrap td {
-            padding: 16px 28px;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9rem;
-        }
+        .comparison-wrap th:nth-child(2) { color: var(--accent); position: relative; }
+        .comparison-wrap th:nth-child(2)::after { content: 'Best'; position: absolute; top: -1px; right: 12px; background: var(--accent); color: var(--bg-deep); font-size: 0.65rem; padding: 2px 8px; border-radius: 0 0 6px 6px; font-weight: 700; letter-spacing: 0.08em; }
+        .comparison-wrap td { padding: 16px 28px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
         .comparison-wrap tr:last-child td { border-bottom: none; }
         .comparison-wrap tr:hover td { background: rgba(255,255,255,0.02); }
         .comparison-wrap tr:hover td:first-child { color: var(--text-primary); }
@@ -631,317 +223,70 @@
         .cx { color: #f87171; }
         .cx i { margin-right: 6px; }
 
-        /* ── ANDROID ── */
-        .android-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2px;
-            background: var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-        }
-        .android-card {
-            background: var(--bg-surface);
-            padding: 40px 32px;
-            text-align: center;
-            transition: background 0.3s;
-        }
+        .android-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+        .android-card { background: var(--bg-surface); padding: 40px 32px; text-align: center; transition: background 0.3s; }
         .android-card:hover { background: var(--bg-card-hover); }
-        .android-card-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 20px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-        }
+        .android-card-icon { width: 64px; height: 64px; margin: 0 auto 20px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
         .android-card-icon.kiwi { background: rgba(140,200,75,0.12); color: var(--kiwi); }
         .android-card-icon.quetta { background: rgba(139,92,246,0.12); color: var(--quetta); }
         .android-card h3 { font-size: 1.6rem; margin-bottom: 8px; }
-        .android-card .badge {
-            display: inline-block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 4px 14px;
-            border-radius: 60px;
-            background: var(--accent-dim);
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-        .android-steps {
-            text-align: left;
-            margin: 24px 0;
-        }
-        .android-step {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 0;
-            font-size: 0.9rem;
-        }
-        .android-step-num {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--accent);
-            color: var(--bg-deep);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
+        .android-card .badge { display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 60px; background: var(--accent-dim); color: var(--accent); margin-bottom: 20px; }
+        .android-steps { text-align: left; margin: 24px 0; }
+        .android-step { display: flex; align-items: center; gap: 12px; padding: 10px 0; font-size: 0.9rem; }
+        .android-step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--bg-deep); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
 
-        /* ── TESTIMONIALS ── */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
-            background: var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-        }
-        .testimonial-card {
-            background: var(--bg-surface);
-            padding: 36px 28px;
-            transition: background 0.3s;
-        }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+        .testimonial-card { background: var(--bg-surface); padding: 36px 28px; transition: background 0.3s; }
         .testimonial-card:hover { background: var(--bg-card-hover); }
         .testimonial-stars { color: #fbbf24; font-size: 0.85rem; margin-bottom: 16px; letter-spacing: 2px; }
-        .testimonial-text {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
+        .testimonial-text { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
         .testimonial-author { display: flex; align-items: center; gap: 12px; }
-        .testimonial-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--accent-dim);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 0.9rem;
-        }
+        .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 0.9rem; }
         .testimonial-name { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
         .testimonial-role { font-size: 0.8rem; color: var(--text-muted); }
 
-        /* ── PRODUCT HUNT ── */
-        .ph-section {
-            background: linear-gradient(180deg, var(--bg-deep), rgba(255,97,84,0.03), var(--bg-deep));
-        }
-        .ph-card {
-            background: var(--bg-surface);
-            border: 1px solid rgba(255,97,84,0.15);
-            border-radius: var(--radius-xl);
-            padding: clamp(40px, 8vw, 72px) clamp(24px, 6vw, 56px);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .ph-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--ph-orange), #ff8a7a, var(--ph-orange));
-        }
-        .ph-card h2 {
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            margin: 24px 0 16px;
-            background: linear-gradient(135deg, #fff, #ff9a8a);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .ph-stats {
-            display: flex;
-            justify-content: center;
-            gap: clamp(24px, 6vw, 64px);
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        .ph-stat-num {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            font-weight: 800;
-            color: var(--ph-orange);
-            line-height: 1;
-        }
+        .ph-section { background: linear-gradient(180deg, var(--bg-deep), rgba(255,97,84,0.03), var(--bg-deep)); }
+        .ph-card { background: var(--bg-surface); border: 1px solid rgba(255,97,84,0.15); border-radius: var(--radius-xl); padding: clamp(40px, 8vw, 72px) clamp(24px, 6vw, 56px); text-align: center; position: relative; overflow: hidden; }
+        .ph-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--ph-orange), #ff8a7a, var(--ph-orange)); }
+        .ph-card h2 { font-size: clamp(2rem, 5vw, 2.8rem); margin: 24px 0 16px; background: linear-gradient(135deg, #fff, #ff9a8a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .ph-stats { display: flex; justify-content: center; gap: clamp(24px, 6vw, 64px); margin: 40px 0; flex-wrap: wrap; }
+        .ph-stat-num { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; color: var(--ph-orange); line-height: 1; }
         .ph-stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
         .ph-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-        /* ── INSTALL ── */
-        .install-steps {
-            max-width: 740px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-        .install-step {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-            padding: 32px 0;
-            border-bottom: 1px solid var(--border);
-        }
+        .install-steps { max-width: 740px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+        .install-step { display: flex; gap: 24px; align-items: flex-start; padding: 32px 0; border-bottom: 1px solid var(--border); }
         .install-step:last-child { border-bottom: none; }
-        .step-num {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: var(--accent-dim);
-            border: 1px solid var(--border-accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
+        .step-num { width: 48px; height: 48px; border-radius: 14px; background: var(--accent-dim); border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
         .step-body h3 { margin-bottom: 6px; font-size: 1.15rem; }
         .step-body p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
-        .step-code {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 6px 14px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
+        .step-code { display: inline-block; margin-top: 10px; padding: 6px 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 8px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.8rem; color: var(--text-secondary); }
 
-        /* ── ROADMAP ── */
-        .roadmap-timeline {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .roadmap-timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent), var(--border), transparent);
-        }
-        .roadmap-entry {
-            display: flex;
-            gap: 32px;
-            padding: 32px 0;
-            position: relative;
-        }
-        .roadmap-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid var(--bg-deep);
-            box-shadow: 0 0 0 2px var(--accent);
-            flex-shrink: 0;
-            margin-top: 6px;
-            position: relative;
-            left: 14px;
-            z-index: 1;
-        }
+        .roadmap-timeline { max-width: 700px; margin: 0 auto; position: relative; }
+        .roadmap-timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent), var(--border), transparent); }
+        .roadmap-entry { display: flex; gap: 32px; padding: 32px 0; position: relative; }
+        .roadmap-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg-deep); box-shadow: 0 0 0 2px var(--accent); flex-shrink: 0; margin-top: 6px; position: relative; left: 14px; z-index: 1; }
+        .roadmap-dot.done { background: var(--text-muted); box-shadow: 0 0 0 2px var(--text-muted); }
         .roadmap-content h3 { margin-bottom: 6px; }
         .roadmap-content p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
-        .roadmap-date {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 8px;
-        }
+        .roadmap-date { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+        .roadmap-done-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: rgba(34,197,94,0.12); color: #22c55e; margin-left: 8px; vertical-align: middle; }
 
-        /* ── CONTRIBUTE ── */
-        .contribute-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
-            background: var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-        }
-        .contribute-card {
-            background: var(--bg-surface);
-            padding: 40px 28px;
-            text-align: center;
-            transition: background 0.3s;
-        }
+        .contribute-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+        .contribute-card { background: var(--bg-surface); padding: 40px 28px; text-align: center; transition: background 0.3s; }
         .contribute-card:hover { background: var(--bg-card-hover); }
-        .contribute-icon {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
+        .contribute-icon { font-size: 2rem; color: var(--accent); margin-bottom: 16px; }
         .contribute-card h3 { margin-bottom: 8px; }
         .contribute-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
 
-        /* ── DOWNLOAD CTA ── */
-        .download-section {
-            background: linear-gradient(180deg, var(--bg-deep), var(--bg-surface) 50%, var(--bg-deep));
-        }
-        .download-cta {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .download-section { background: linear-gradient(180deg, var(--bg-deep), var(--bg-surface) 50%, var(--bg-deep)); }
+        .download-cta { text-align: center; max-width: 800px; margin: 0 auto; }
         .download-cta h2 { margin-bottom: 12px; }
-        .download-meta {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            margin: 20px 0 32px;
-            flex-wrap: wrap;
-        }
-        .download-meta span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 6px 16px;
-            border-radius: 60px;
-            background: var(--accent-dim);
-            color: var(--accent);
-            border: 1px solid var(--border-accent);
-        }
+        .download-meta { display: flex; gap: 12px; justify-content: center; margin: 20px 0 32px; flex-wrap: wrap; }
+        .download-meta span { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 500; padding: 6px 16px; border-radius: 60px; background: var(--accent-dim); color: var(--accent); border: 1px solid var(--border-accent); }
         .download-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .browser-strip {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-        }
-        .browser-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            transition: all 0.2s;
-        }
+        .browser-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .browser-tag { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); font-size: 0.8rem; color: var(--text-secondary); transition: all 0.2s; }
         .browser-tag:hover { border-color: var(--border-accent); color: var(--text-primary); }
         .browser-tag i { color: var(--accent); font-size: 0.85rem; }
         .browser-tag.kiwi { border-color: rgba(140,200,75,0.2); color: var(--kiwi); }
@@ -949,294 +294,66 @@
         .browser-tag.quetta { border-color: rgba(139,92,246,0.2); color: var(--quetta); }
         .browser-tag.quetta i { color: var(--quetta); }
 
-        /* ── FAQ ── */
-        .faq-list {
-            max-width: 700px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .faq-item {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            transition: border-color 0.3s;
-        }
+        .faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+        .faq-item { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; transition: border-color 0.3s; }
         .faq-item.active { border-color: var(--border-accent); }
-        .faq-q {
-            padding: 20px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            min-height: 48px;
-            transition: background 0.2s;
-        }
+        .faq-q { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: var(--text-primary); min-height: 48px; transition: background 0.2s; }
         .faq-q:hover { background: rgba(255,255,255,0.02); }
-        .faq-q i {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            transition: transform 0.3s var(--ease);
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
+        .faq-q i { color: var(--text-muted); font-size: 0.8rem; transition: transform 0.3s var(--ease); flex-shrink: 0; margin-left: 16px; }
         .faq-item.active .faq-q i { transform: rotate(180deg); color: var(--accent); }
-        .faq-a {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s var(--ease), padding 0.3s;
-        }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.3s; }
         .faq-item.active .faq-a { max-height: 300px; }
-        .faq-a p {
-            padding: 0 24px 20px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin: 0;
-        }
+        .faq-a p { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
 
-        /* ── NEWSLETTER ── */
-        .newsletter {
-            text-align: center;
-        }
+        .newsletter { text-align: center; }
         .newsletter h2 { margin-bottom: 12px; }
-        .newsletter-form {
-            display: flex;
-            gap: 10px;
-            max-width: 440px;
-            margin: 28px auto 0;
-        }
-        .newsletter-input {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: var(--bg-surface);
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            min-height: 48px;
-            transition: border-color 0.2s;
-        }
+        .newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 28px auto 0; }
+        .newsletter-input { flex: 1; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; min-height: 48px; transition: border-color 0.2s; }
         .newsletter-input::placeholder { color: var(--text-muted); }
         .newsletter-input:focus { outline: none; border-color: var(--accent); }
 
-        /* ── FOOTER ── */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding: 64px 0 40px;
-            margin-top: 40px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-        .footer-brand p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 12px 0 20px;
-            max-width: 260px;
-            line-height: 1.7;
-        }
-        .footer-socials {
-            display: flex;
-            gap: 10px;
-        }
-        .footer-social {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            transition: all 0.2s;
-        }
-        .footer-social:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: var(--accent-dim);
-        }
-        .footer-col h4 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
+        .footer { border-top: 1px solid var(--border); padding: 64px 0 40px; margin-top: 40px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .footer-brand p { font-size: 0.9rem; color: var(--text-muted); margin: 12px 0 20px; max-width: 260px; line-height: 1.7; }
+        .footer-socials { display: flex; gap: 10px; }
+        .footer-social { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.2s; }
+        .footer-social:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+        .footer-col h4 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 20px; }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 10px; }
-        .footer-col a {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            transition: color 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            min-height: 36px;
-        }
+        .footer-col a { font-size: 0.9rem; color: var(--text-secondary); transition: color 0.2s; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; }
         .footer-col a:hover { color: var(--accent); }
         .footer-col a i { font-size: 0.8rem; opacity: 0.5; }
-        .footer-bottom {
-            border-top: 1px solid var(--border);
-            padding-top: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        .footer-copy {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
+        .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        .footer-copy { font-size: 0.85rem; color: var(--text-muted); }
         .footer-copy .accent { color: var(--accent); }
-        .footer-legal {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-        .footer-legal a {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            transition: color 0.2s;
-        }
+        .footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
+        .footer-legal a { font-size: 0.8rem; color: var(--text-muted); transition: color 0.2s; }
         .footer-legal a:hover { color: var(--accent); }
 
-        /* ── STICKY CTA ── */
-        .sticky-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 99;
-            background: rgba(6, 6, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border);
-            padding: 12px 24px;
-            transform: translateY(0);
-            transition: transform 0.4s var(--ease);
-        }
+        .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; background: rgba(6, 6, 10, 0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--border); padding: 12px 24px; transform: translateY(0); transition: transform 0.4s var(--ease); }
         .sticky-bar.hidden { transform: translateY(100%); }
-        .sticky-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-        }
-        .sticky-text {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            white-space: nowrap;
-        }
+        .sticky-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .sticky-text { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); white-space: nowrap; }
         .sticky-actions { display: flex; gap: 10px; align-items: center; }
-        .sticky-close {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.9rem;
-        }
+        .sticky-close { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text-muted); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; }
         .sticky-close:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
 
-        /* ── LIVE NOTIFICATION ── */
-        .live-toast {
-            position: fixed;
-            bottom: 80px;
-            left: 20px;
-            z-index: 98;
-            background: rgba(12, 12, 18, 0.95);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border-accent);
-            border-left: 3px solid var(--accent);
-            border-radius: 12px;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            max-width: 300px;
-            box-shadow: var(--shadow-md);
-            transform: translateX(-120%);
-            transition: transform 0.5s var(--ease);
-        }
+        .live-toast { position: fixed; bottom: 80px; left: 20px; z-index: 98; background: rgba(12, 12, 18, 0.95); backdrop-filter: blur(16px); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; max-width: 300px; box-shadow: var(--shadow-md); transform: translateX(-120%); transition: transform 0.5s var(--ease); }
         .live-toast.show { transform: translateX(0); }
-        .live-toast-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--accent-dim);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 0.8rem;
-            flex-shrink: 0;
-        }
+        .live-toast-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 0.8rem; flex-shrink: 0; }
         .live-toast-text { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4; }
         .live-toast-text strong { color: var(--accent); font-weight: 600; }
 
-        /* ── BACK TO TOP ── */
-        .btt {
-            position: fixed;
-            bottom: 80px;
-            right: 24px;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 97;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s var(--ease);
-        }
+        .btt { position: fixed; bottom: 80px; right: 24px; width: 44px; height: 44px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 97; opacity: 0; visibility: hidden; transition: all 0.3s var(--ease); }
         .btt.show { opacity: 1; visibility: visible; }
         .btt:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
-        /* ── ANIMATIONS ── */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.7s var(--ease);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s var(--ease); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
             .features-grid { grid-template-columns: repeat(2, 1fr); }
             .showcase-item { grid-template-columns: 1fr; gap: 32px; }
@@ -1250,19 +367,7 @@
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(6, 6, 10, 0.97);
-                backdrop-filter: blur(20px);
-                border-bottom: 1px solid var(--border);
-                padding: 20px 24px;
-                gap: 8px;
-            }
+            .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(6, 6, 10, 0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 20px 24px; gap: 8px; }
             .nav-mobile { display: flex; }
             .features-grid { grid-template-columns: 1fr; }
             .hero { padding: 120px 24px 60px; min-height: auto; }
@@ -1298,7 +403,6 @@
     <div class="bg-glow bg-glow-1"></div>
     <div class="bg-glow bg-glow-2"></div>
 
-    <!-- NAVBAR -->
     <nav class="nav" id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-brand">
@@ -1319,12 +423,11 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-badge"><span class="dot"></span> v12.0.0 — Latest Release</div>
             <h1>YouTube,<br><span class="accent">Uncluttered.</span></h1>
-            <p class="hero-sub">Block ads. Remove Shorts. Skip sponsors. Silence distractions.<br>One extension. Zero tracking. Fully open source.</p>
+            <p class="hero-sub">Block ads natively. Remove Shorts. Skip sponsors.<br>Silence distractions. Zero tracking. Fully open source.</p>
             <div class="hero-actions">
                 <a href="#install" class="btn btn-primary"><i class="fas fa-bolt"></i> Install Clify</a>
                 <a href="https://github.com/diptodesign/Clify/releases" class="btn btn-outline" data-track-download><i class="fas fa-download"></i> Download</a>
@@ -1339,7 +442,6 @@
         </div>
     </section>
 
-    <!-- PROOF BAR -->
     <section class="proof-bar">
         <div class="container">
             <div class="proof-grid">
@@ -1363,7 +465,6 @@
         </div>
     </section>
 
-    <!-- FEATURES -->
     <section class="section" id="features">
         <div class="container">
             <div class="section-header reveal">
@@ -1375,37 +476,37 @@
                 <div class="feature-cell">
                     <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
                     <h3>Native Ad Blocker</h3>
-                    <p>Blocks video ads, banner ads, overlays, and promoted content natively. No external dependencies.</p>
+                    <p>Network-level rules + DOM removal + fetch/XHR interception. No external filter lists needed.</p>
                 </div>
                 <div class="feature-cell">
                     <div class="feature-icon"><i class="fab fa-youtube"></i></div>
                     <h3>Shorts Remover</h3>
-                    <p>Completely removes Shorts from homepage, subscriptions, search, sidebar, and across all pages.</p>
+                    <p>Completely removes Shorts from homepage, subscriptions, search, sidebar, and player.</p>
                 </div>
                 <div class="feature-cell">
                     <div class="feature-icon"><i class="fas fa-forward-fast"></i></div>
                     <h3>SponsorBlock</h3>
-                    <p>Auto-skips sponsor segments, intros, outros, and promotions. Colored progress bars. Always auto-skips.</p>
+                    <p>Auto-skips 9 segment types: sponsors, intros, outros, self-promo, interactions, hooks, filler, previews, non-music.</p>
                 </div>
                 <div class="feature-cell">
                     <div class="feature-icon"><i class="fas fa-microchip"></i></div>
-                    <h3>100% Local & Private</h3>
-                    <p>Zero tracking, no telemetry, no data collection. Your privacy is guaranteed by design.</p>
+                    <h3>Content Density Meter</h3>
+                    <p>Color-coded badge shows real content percentage per video. Channel-level scoring across uploads.</p>
                 </div>
                 <div class="feature-cell">
                     <div class="feature-icon"><i class="fas fa-filter"></i></div>
                     <h3>Smart Keyword Blocker</h3>
-                    <p>Hide videos by title keywords with regex support. Block unwanted content automatically.</p>
+                    <p>Hide videos by title keywords with regex and pipe syntax. 5000+ keyword capacity, multi-language.</p>
                 </div>
                 <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-eye-slash"></i></div>
-                    <h3>One-Click Hide</h3>
-                    <p>Hide button on every video. One click removes it permanently from your feed.</p>
+                    <div class="feature-icon"><i class="fas fa-ban"></i></div>
+                    <h3>Channel Blocking</h3>
+                    <p>Block entire channels by URL, @handle, or name. Full-screen overlay on blocked watch pages.</p>
                 </div>
                 <div class="feature-cell">
                     <div class="feature-icon"><i class="fas fa-volume-high"></i></div>
                     <h3>Volume Boost</h3>
-                    <p>Boost volume up to 2x. Perfect for quiet recordings and low-volume uploads.</p>
+                    <p>Boost audio up to 2x beyond YouTube's limit. Perfect for quiet recordings.</p>
                 </div>
                 <div class="feature-cell">
                     <div class="feature-icon"><i class="fas fa-clock"></i></div>
@@ -1418,14 +519,14 @@
                     <p>Remove comment sections entirely. Stay focused on the content you chose.</p>
                 </div>
                 <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-ban"></i></div>
-                    <h3>Channel Blocking</h3>
-                    <p>Block entire channels from appearing anywhere on YouTube. Persistent across reloads.</p>
+                    <div class="feature-icon"><i class="fas fa-language"></i></div>
+                    <h3>Language Blocking</h3>
+                    <p>Unicode script detection for 25+ languages. Block videos not in your preferred languages.</p>
                 </div>
                 <div class="feature-cell">
                     <div class="feature-icon"><i class="fas fa-chart-simple"></i></div>
                     <h3>Focus Dashboard</h3>
-                    <p>Glassmorphism dashboard with real-time stats: ads blocked, Shorts removed, time saved.</p>
+                    <p>Glassmorphism dashboard with real-time stats: ads blocked, Shorts removed, SponsorBlock skips.</p>
                 </div>
                 <div class="feature-cell">
                     <div class="feature-icon"><i class="fas fa-globe"></i></div>
@@ -1436,7 +537,6 @@
         </div>
     </section>
 
-    <!-- HOW IT WORKS -->
     <section class="section" id="how-it-works" style="border-top:1px solid var(--border)">
         <div class="container container--narrow">
             <div class="section-header reveal">
@@ -1446,13 +546,13 @@
             </div>
             <div class="showcase-item reveal">
                 <div class="showcase-content">
-                    <h2>Blocks Ads at the Source</h2>
-                    <p>Clify monitors YouTube's DOM in real time with MutationObserver. Ads are detected and removed before they ever appear on screen.</p>
+                    <h2>Three-Layer Ad Blocking</h2>
+                    <p>Clify blocks ads at three levels simultaneously: network requests via declarativeNetRequest, DOM elements via MutationObserver, and fetch/XHR interception for tracking scripts.</p>
                     <ul class="showcase-list">
-                        <li><i class="fas fa-check"></i> Pre-roll and mid-roll video ads</li>
-                        <li><i class="fas fa-check"></i> Banner and overlay ads</li>
-                        <li><i class="fas fa-check"></i> Promoted content and shopping</li>
-                        <li><i class="fas fa-check"></i> Zero external filter lists needed</li>
+                        <li><i class="fas fa-check"></i> 90+ ad domains blocked at network level</li>
+                        <li><i class="fas fa-check"></i> 120+ YouTube ad selectors for DOM removal</li>
+                        <li><i class="fas fa-check"></i> 80+ tracking domains intercepted</li>
+                        <li><i class="fas fa-check"></i> Mid-roll ads detected and auto-skipped</li>
                     </ul>
                 </div>
                 <div class="showcase-visual">
@@ -1464,13 +564,13 @@
             </div>
             <div class="showcase-item reverse reveal">
                 <div class="showcase-content">
-                    <h2>SponsorBlock Auto-Skip</h2>
-                    <p>Powered by the community database, Clify automatically fetches segment data and skips sponsor segments, intros, outros, and more.</p>
+                    <h2>SponsorBlock with 9 Categories</h2>
+                    <p>Powered by the community database, Clify auto-skips sponsors, intros, outros, self-promo, interactions, hooks, filler, previews, and non-music sections.</p>
                     <ul class="showcase-list">
-                        <li><i class="fas fa-check"></i> 7 selectable skip categories</li>
-                        <li><i class="fas fa-check"></i> Colored progress bar segments</li>
-                        <li><i class="fas fa-check"></i> Merch/shelf auto-removal</li>
-                        <li><i class="fas fa-check"></i> Always auto-skip enabled</li>
+                        <li><i class="fas fa-check"></i> Colored progress bar with hover tooltips</li>
+                        <li><i class="fas fa-check"></i> Adjacent segments merged automatically</li>
+                        <li><i class="fas fa-check"></i> 3-URL fallback chain for reliability</li>
+                        <li><i class="fas fa-check"></i> Content density badge shows real content %</li>
                     </ul>
                 </div>
                 <div class="showcase-visual">
@@ -1483,7 +583,6 @@
         </div>
     </section>
 
-    <!-- SCREENSHOTS -->
     <section class="section" id="screenshots" style="border-top:1px solid var(--border)">
         <div class="container">
             <div class="section-header reveal">
@@ -1519,7 +618,6 @@
         </div>
     </section>
 
-    <!-- VIDEO -->
     <section class="section" style="border-top:1px solid var(--border)">
         <div class="container">
             <div class="section-header reveal">
@@ -1542,7 +640,6 @@
         </div>
     </section>
 
-    <!-- COMPARISON -->
     <section class="section" style="border-top:1px solid var(--border)">
         <div class="container">
             <div class="section-header reveal">
@@ -1553,23 +650,22 @@
                 <table>
                     <thead><tr><th>Feature</th><th>Clify</th><th>Other Blockers</th></tr></thead>
                     <tbody>
-                        <tr><td>Native Ad Blocker</td><td class="ck"><i class="fas fa-check"></i> Built-in</td><td class="cx"><i class="fas fa-xmark"></i> Extra extension</td></tr>
-                        <tr><td>SponsorBlock</td><td class="ck"><i class="fas fa-check"></i> Auto-skip</td><td class="cx"><i class="fas fa-xmark"></i> Manual or none</td></tr>
-                        <tr><td>Open Source</td><td class="ck"><i class="fas fa-check"></i> 100%</td><td class="cx"><i class="fas fa-xmark"></i> Often closed</td></tr>
-                        <tr><td>No Data Collection</td><td class="ck"><i class="fas fa-check"></i> Guaranteed</td><td class="cx"><i class="fas fa-xmark"></i> Unknown</td></tr>
-                        <tr><td>Shorts Removal</td><td class="ck"><i class="fas fa-check"></i> Complete</td><td class="ck"><i class="fas fa-check"></i> Partial</td></tr>
+                        <tr><td>Native Ad Blocker</td><td class="ck"><i class="fas fa-check"></i> 3-layer system</td><td class="cx"><i class="fas fa-xmark"></i> Extra extension</td></tr>
+                        <tr><td>SponsorBlock</td><td class="ck"><i class="fas fa-check"></i> 9 categories, auto-skip</td><td class="cx"><i class="fas fa-xmark"></i> Manual or none</td></tr>
+                        <tr><td>Content Density</td><td class="ck"><i class="fas fa-check"></i> Per-video + channel</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
+                        <tr><td>Open Source</td><td class="ck"><i class="fas fa-check"></i> 100% MIT</td><td class="cx"><i class="fas fa-xmark"></i> Often closed</td></tr>
+                        <tr><td>No Data Collection</td><td class="ck"><i class="fas fa-check"></i> Local-only</td><td class="cx"><i class="fas fa-xmark"></i> Unknown</td></tr>
+                        <tr><td>Shorts Removal</td><td class="ck"><i class="fas fa-check"></i> Complete (20+ selectors)</td><td class="ck"><i class="fas fa-check"></i> Partial</td></tr>
                         <tr><td>Volume Boost</td><td class="ck"><i class="fas fa-check"></i> Up to 2x</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
-                        <tr><td>Scheduled Blocking</td><td class="ck"><i class="fas fa-check"></i> Time-based</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
-                        <tr><td>Channel Blocking</td><td class="ck"><i class="fas fa-check"></i> Full</td><td class="ck"><i class="fas fa-check"></i> Basic</td></tr>
-                        <tr><td>Browser Support</td><td class="ck"><i class="fas fa-check"></i> 40+</td><td class="ck"><i class="fas fa-check"></i> 3–5</td></tr>
-                        <tr><td>Android Support</td><td class="ck"><i class="fas fa-check"></i> Kiwi & Quetta</td><td class="cx"><i class="fas fa-xmark"></i> Limited</td></tr>
+                        <tr><td>Channel Blocking</td><td class="ck"><i class="fas fa-check"></i> URL/handle/name + overlay</td><td class="ck"><i class="fas fa-check"></i> Basic</td></tr>
+                        <tr><td>Language Blocking</td><td class="ck"><i class="fas fa-check"></i> 25+ scripts</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
+                        <tr><td>Browser Support</td><td class="ck"><i class="fas fa-check"></i> 40+</td><td class="ck"><i class="fas fa-check"></i> 3-5</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <!-- ANDROID -->
     <section class="section" id="android" style="border-top:1px solid var(--border)">
         <div class="container">
             <div class="section-header reveal">
@@ -1606,7 +702,6 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
     <section class="section" id="testimonials" style="border-top:1px solid var(--border)">
         <div class="container">
             <div class="section-header reveal">
@@ -1616,7 +711,7 @@
             <div class="testimonials-grid reveal">
                 <div class="testimonial-card">
                     <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="testimonial-text">"Clify blocked every ad and removed all Shorts. The SponsorBlock auto-skip is a game changer. My YouTube is finally distraction-free."</div>
+                    <div class="testimonial-text">"Three-layer ad blocking that actually works. The SponsorBlock auto-skip and content density badge are features I didn't know I needed."</div>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
                         <div><div class="testimonial-name">Alex Chen</div><div class="testimonial-role">Software Developer</div></div>
@@ -1624,7 +719,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="testimonial-text">"The native ad blocker alone is worth it. No more 30-second unskippable ads. Combined with keyword blocking, YouTube is usable again."</div>
+                    <div class="testimonial-text">"Open source, no data collection, and it blocks everything. The language blocking feature finally lets me filter non-English content properly."</div>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
                         <div><div class="testimonial-name">Priya Sharma</div><div class="testimonial-role">Digital Minimalist</div></div>
@@ -1632,7 +727,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="testimonial-text">"Open source, private, and actually works. The volume boost and scheduled blocking are features I never knew I needed."</div>
+                    <div class="testimonial-text">"Works on Kiwi Browser on my Android. Volume boost and scheduled blocking are features I use daily. The dashboard is beautiful."</div>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
                         <div><div class="testimonial-name">Marcus Johnson</div><div class="testimonial-role">Privacy Advocate</div></div>
@@ -1642,7 +737,6 @@
         </div>
     </section>
 
-    <!-- PRODUCT HUNT -->
     <section class="ph-section section" id="producthunt">
         <div class="container">
             <div class="ph-card reveal">
@@ -1664,7 +758,6 @@
         </div>
     </section>
 
-    <!-- INSTALL -->
     <section class="section" id="install" style="border-top:1px solid var(--border)">
         <div class="container container--narrow">
             <div class="section-header reveal">
@@ -1707,7 +800,6 @@
         </div>
     </section>
 
-    <!-- DOWNLOAD -->
     <section class="download-section section" id="download">
         <div class="container">
             <div class="download-cta reveal">
@@ -1740,7 +832,6 @@
         </div>
     </section>
 
-    <!-- ROADMAP -->
     <section class="section" style="border-top:1px solid var(--border)">
         <div class="container container--narrow">
             <div class="section-header reveal">
@@ -1749,42 +840,41 @@
             </div>
             <div class="roadmap-timeline reveal">
                 <div class="roadmap-entry">
-                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-dot done"></div>
                     <div class="roadmap-content">
-                        <div class="roadmap-date">Q1 2026</div>
-                        <h3>Firefox Support</h3>
-                        <p>Native Firefox extension with full feature parity. Beta testing begins January.</p>
+                        <div class="roadmap-date">v8.0.0 <span class="roadmap-done-tag">Shipped</span></div>
+                        <h3>Native Ad Blocker + Channel Manager</h3>
+                        <p>Built-in multi-layer ad blocking and channel management with full-screen overlays.</p>
                     </div>
                 </div>
                 <div class="roadmap-entry">
-                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-dot done"></div>
                     <div class="roadmap-content">
-                        <div class="roadmap-date">Q2 2026</div>
-                        <h3>Enhanced Blocking</h3>
-                        <p>Channel-based blocking, advanced regex patterns, and custom CSS injection.</p>
+                        <div class="roadmap-date">v12.0.0 <span class="roadmap-done-tag">Shipped</span></div>
+                        <h3>SponsorBlock + Content Density + Dashboard Redesign</h3>
+                        <p>9-category SponsorBlock, content density meter, glassmorphism dashboard, and 32-language support.</p>
                     </div>
                 </div>
                 <div class="roadmap-entry">
                     <div class="roadmap-dot"></div>
                     <div class="roadmap-content">
                         <div class="roadmap-date">Q3 2026</div>
-                        <h3>Cloud Sync (Optional)</h3>
-                        <p>End-to-end encrypted sync for your settings across browsers (opt-in only).</p>
+                        <h3>Firefox Support</h3>
+                        <p>Native Firefox extension with full feature parity. Beta testing begins July.</p>
                     </div>
                 </div>
                 <div class="roadmap-entry">
                     <div class="roadmap-dot"></div>
                     <div class="roadmap-content">
                         <div class="roadmap-date">Q4 2026</div>
-                        <h3>Community Presets</h3>
-                        <p>Share and download keyword blocklists curated by the community.</p>
+                        <h3>Cloud Sync (Optional)</h3>
+                        <p>End-to-end encrypted sync for your settings across browsers (opt-in only).</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTRIBUTE -->
     <section class="section" style="border-top:1px solid var(--border)">
         <div class="container">
             <div class="section-header reveal">
@@ -1812,7 +902,6 @@
         </div>
     </section>
 
-    <!-- FAQ -->
     <section class="section" id="faq" style="border-top:1px solid var(--border)">
         <div class="container container--narrow">
             <div class="section-header reveal">
@@ -1822,23 +911,27 @@
             <div class="faq-list reveal">
                 <div class="faq-item">
                     <div class="faq-q"><span>Is Clify really 100% open source?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Yes. All code is on GitHub. No obfuscation, no tracking. You can audit every line. The only external request is to the SponsorBlock API for segment data.</p></div>
+                    <div class="faq-a"><p>Yes. All code is on GitHub under MIT license. No obfuscation, no tracking. You can audit every line. The only external request is to the SponsorBlock API for segment data.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q"><span>How does the native ad blocker work?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Clify uses MutationObserver to detect and remove ad elements in real time as they appear in the DOM. No external filter lists needed.</p></div>
+                    <div class="faq-a"><p>Three layers: (1) declarativeNetRequest rules blocking ~90 ad domains at network level, (2) DOM removal via MutationObserver targeting 120+ YouTube ad selectors, (3) fetch/XHR interception overriding 80+ tracking domains. No external filter lists needed.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q"><span>What is SponsorBlock?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>A community-powered database of video segments. Clify auto-skips sponsor promotions, intros, outros, and more. You can choose which categories to skip.</p></div>
+                    <div class="faq-a"><p>A community-powered database of video segments. Clify auto-skips 9 categories: sponsors, intros, outros, self-promo, interactions, hooks, filler, previews, and non-music. Colored progress bars show segments on the timeline.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q"><span>What is the Content Density Meter?</span><i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-a"><p>A color-coded badge (cyan to red) that shows the real content percentage of each video after removing sponsors, intros, outros, and filler. It also aggregates scores per channel across multiple videos.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q"><span>Will Clify slow down YouTube?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Minimal impact. Efficient DOM observation and on-demand SponsorBlock API calls. Everything runs locally in your browser.</p></div>
+                    <div class="faq-a"><p>Minimal impact. Efficient DOM observation, cached SponsorBlock data, and non-blocking API calls. Everything runs locally in your browser with no external telemetry.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q"><span>Why isn't it on the Chrome Web Store?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Due to YouTube's policies on content blockers. Manual install ensures full transparency and zero data collection.</p></div>
+                    <div class="faq-a"><p>Due to YouTube's policies on content blockers. Manual install ensures full transparency and zero data collection. You can audit the source code before installing.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q"><span>How do I update?</span><i class="fas fa-chevron-down"></i></div>
@@ -1846,7 +939,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-q"><span>Can I block specific channels?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Yes. Use the keyword filter with channel names or the dedicated Channel Blocking feature to block entire channels.</p></div>
+                    <div class="faq-a"><p>Yes. Block by URL, @handle, or channel name. When you visit a blocked channel or watch page, a full-screen overlay appears with options to unblock or go back.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q"><span>Does it work on mobile?</span><i class="fas fa-chevron-down"></i></div>
@@ -1856,7 +949,6 @@
         </div>
     </section>
 
-    <!-- NEWSLETTER -->
     <section class="section newsletter" style="border-top:1px solid var(--border)">
         <div class="container container--narrow">
             <div class="reveal">
@@ -1870,7 +962,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -1926,7 +1017,6 @@
         </div>
     </footer>
 
-    <!-- STICKY BAR -->
     <div id="stickyBar" class="sticky-bar hidden">
         <div class="sticky-inner">
             <span class="sticky-text">YouTube, Uncluttered — Join 200,000+ users</span>
@@ -1937,24 +1027,19 @@
         </div>
     </div>
 
-    <!-- LIVE TOAST -->
     <div id="liveToast" class="live-toast">
         <div class="live-toast-avatar"><i class="fas fa-user-plus"></i></div>
         <div class="live-toast-text"><strong id="liveUserName">Sarah from US</strong> <span id="liveAction">just installed Clify</span></div>
     </div>
 
-    <!-- BACK TO TOP -->
     <button class="btt" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- CORE SCRIPTS -->
     <script>
     (function(){
-        // Mobile menu
         var mobileBtn=document.getElementById('mobileMenuBtn');
         var navLinks=document.getElementById('navLinks');
         if(mobileBtn) mobileBtn.addEventListener('click',function(){ navLinks.classList.toggle('open') });
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
             anchor.addEventListener('click',function(e){
                 e.preventDefault();
@@ -1965,15 +1050,12 @@
             });
         });
 
-        // FAQ accordion
         document.querySelectorAll('.faq-q').forEach(function(q){
             q.addEventListener('click',function(){ this.parentElement.classList.toggle('active'); });
         });
 
-        // Year
         document.getElementById('currentYear').textContent=new Date().getFullYear();
 
-        // Scroll reveal
         var reveals=document.querySelectorAll('.reveal');
         var revealObs=new IntersectionObserver(function(entries){
             entries.forEach(function(entry){
@@ -1982,18 +1064,15 @@
         },{threshold:0.1, rootMargin:'0px 0px -40px 0px'});
         reveals.forEach(function(el){ revealObs.observe(el); });
 
-        // Nav scroll effect
         var nav=document.getElementById('navbar');
         window.addEventListener('scroll',function(){
             nav.classList.toggle('scrolled',window.scrollY>60);
         });
 
-        // Back to top
         var btt=document.getElementById('backToTop');
         window.addEventListener('scroll',function(){ btt.classList.toggle('show',window.scrollY>600); });
         btt.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
 
-        // Sticky CTA
         var stickyBar=document.getElementById('stickyBar');
         var heroEl=document.querySelector('.hero');
         if(stickyBar&&heroEl){
@@ -2002,7 +1081,6 @@
             });
         }
 
-        // Live notification
         var names=['Alex from UK','Priya from India','Carlos from Spain','Yuki from Japan','Fatima from Egypt','Chen from China','Maria from Brazil','Ahmed from UAE','Olga from Russia','John from US','Sophie from France','Lars from Germany','Aisha from Pakistan','Diego from Mexico','Emma from Canada'];
         var actions=['just installed Clify','blocked 47 Shorts','joined the community','started their focus journey','removed 32 distractions','saved 2 hours today','just got focused','escaped the rabbit hole','reclaimed their attention'];
         function showToast(){
@@ -2018,7 +1096,6 @@
     })();
     </script>
 
-    <!-- NEWSLETTER + TELEGRAM -->
     <script>
     (function(){
         var CONFIG={telegramBotToken:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',telegramChatId:'-1003293692757',backupChannelId:'-1003464260094'};
@@ -2051,7 +1128,6 @@
     })();
     </script>
 
-    <!-- DOWNLOAD TRACKING -->
     <script>
     (function(){
         var TC={botToken:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',chatId:'-1003293692757',backupChatId:'-1003464260094',storageKey:'clify_download_count'};
@@ -2075,8 +1151,7 @@
             var t=now.toLocaleDateString()+' '+now.toLocaleTimeString();
             var msg='DOWNLOAD TRACKED\n━━━━━━━━━━━━━━━━━━\nSource: '+source+'\nTotal Downloads: '+count+'\nPlatform: '+plat+'\nReferrer: '+ref+'\nTime: '+t+'\nUser-Agent: '+ua.substring(0,80);
             fetch('https://api.telegram.org/bot'+TC.botToken+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TC.chatId,text:msg})}).catch(function(){
-                fetch('https://api.telegram.org/bot'+TC.botToken+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TC.backupChatId,text:msg})}).catch(function(){});
-            });
+                fetch('https://api.telegram.org/bot'+TC.botToken+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TC.backupChatId,text:msg})}).catch(function(){}});
         }
         document.addEventListener('click',function(e){
             var btn=e.target.closest('[data-track-download]');

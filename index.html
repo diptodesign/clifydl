@@ -17,8 +17,6 @@
     <meta name="twitter:title" content="Clify — YouTube, Uncluttered">
     <meta name="twitter:description" content="Free YouTube blocker with ad blocking, Shorts removal, and SponsorBlock. Manual install, 100% private.">
 
-    <meta name="producthunt" content="https://www.producthunt.com/products/clify-formerly-zap">
-
     <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co.com/HTvvpsZ2/icon16.png">
     <link rel="apple-touch-icon" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
@@ -37,664 +35,718 @@
 
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
             --accent: #b4f542;
-            --accent-dim: rgba(180, 245, 66, 0.12);
-            --accent-glow: rgba(180, 245, 66, 0.25);
+            --accent-dim: rgba(180,245,66,0.1);
             --accent-hover: #c8ff6b;
             --ph-orange: #ff6154;
-            --fb-blue: #1877f2;
             --kiwi: #8cc84b;
             --quetta: #8b5cf6;
-            --bg-deep: #06060a;
-            --bg-surface: #0c0c12;
-            --bg-card: #111118;
-            --bg-card-hover: #16161f;
-            --bg-elevated: #1a1a24;
-            --border: rgba(255, 255, 255, 0.06);
-            --border-accent: rgba(180, 245, 66, 0.15);
-            --text-primary: #f0f2f5;
-            --text-secondary: #a0a8b8;
-            --text-muted: #6b7280;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
-            --shadow-md: 0 8px 30px rgba(0,0,0,0.4);
-            --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
-            --shadow-accent: 0 8px 30px rgba(180,245,66,0.15);
-            --radius-sm: 10px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
-            --font-display: 'Space Grotesk', -apple-system, sans-serif;
-            --font-body: 'Inter', -apple-system, sans-serif;
+            --bg: #050508;
+            --bg-1: #0a0a0f;
+            --bg-2: #101018;
+            --bg-3: #16161f;
+            --border: rgba(255,255,255,0.06);
+            --border-a: rgba(180,245,66,0.12);
+            --t1: #f0f2f5;
+            --t2: #a0a8b8;
+            --t3: #6b7280;
+            --font-d: 'Space Grotesk', -apple-system, sans-serif;
+            --font-b: 'Inter', -apple-system, sans-serif;
+            --ease: cubic-bezier(0.16,1,0.3,1);
         }
-
         html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-
-        body {
-            background: var(--bg-deep);
-            color: var(--text-secondary);
-            font-family: var(--font-body);
-            font-size: 16px;
-            line-height: 1.65;
-            overflow-x: hidden;
-        }
-
-        .bg-grid {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 70%);
-        }
-        .bg-glow { position: fixed; z-index: -1; pointer-events: none; }
-        .bg-glow-1 { width: 800px; height: 800px; top: -400px; left: 50%; transform: translateX(-50%); background: radial-gradient(circle, rgba(180,245,66,0.06), transparent 70%); }
-        .bg-glow-2 { width: 600px; height: 600px; bottom: -200px; right: -200px; background: radial-gradient(circle, rgba(180,245,66,0.03), transparent 70%); }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
-        h1, h2, h3, h4, h5 { font-family: var(--font-display); color: var(--text-primary); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
-        h1 { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: -0.04em; }
-        h2 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.03em; }
-        h3 { font-size: clamp(1.2rem, 3vw, 1.4rem); }
+        body { background: var(--bg); color: var(--t2); font-family: var(--font-b); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
         a { color: inherit; text-decoration: none; }
-        .container--narrow { max-width: 900px; }
+        h1,h2,h3 { font-family: var(--font-d); color: var(--t1); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; }
 
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 14px 32px; border-radius: 60px; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
-            border: none; cursor: pointer; transition: all 0.4s var(--ease); min-height: 48px; min-width: 48px;
-            text-decoration: none; position: relative; overflow: hidden;
-        }
-        .btn-primary { background: var(--accent); color: var(--bg-deep); box-shadow: var(--shadow-accent); }
-        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(180,245,66,0.25); }
-        .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.15); color: var(--text-primary); }
-        .btn-outline:hover { border-color: var(--accent); background: var(--accent-dim); transform: translateY(-2px); }
-        .btn-ghost { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text-primary); }
-        .btn-ghost:hover { background: var(--accent-dim); border-color: var(--border-accent); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── NAV ── */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; transition: all 0.3s; }
+        .nav.scrolled { background: rgba(5,5,8,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .nav-in { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-d); font-size: 1.3rem; font-weight: 700; color: var(--t1); }
+        .nav-logo { width: 32px; height: 32px; background: var(--accent); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--bg); }
+        .nav-links { display: flex; align-items: center; gap: 6px; }
+        .nav-links a { padding: 8px 14px; font-size: 0.85rem; font-weight: 500; color: var(--t2); border-radius: 8px; transition: all 0.2s; }
+        .nav-links a:hover { color: var(--t1); background: rgba(255,255,255,0.04); }
+        .nav-mob { display: none; background: none; border: none; color: var(--t1); font-size: 1.3rem; cursor: pointer; min-height: 44px; min-width: 44px; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 28px; border-radius: 60px; font-family: var(--font-b); font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.35s var(--ease); text-decoration: none; min-height: 44px; }
+        .btn-a { background: var(--accent); color: var(--bg); box-shadow: 0 4px 20px rgba(180,245,66,0.2); }
+        .btn-a:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(180,245,66,0.3); }
+        .btn-o { background: transparent; border: 1.5px solid rgba(255,255,255,0.12); color: var(--t1); }
+        .btn-o:hover { border-color: var(--accent); background: var(--accent-dim); }
+        .btn-g { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--t1); }
+        .btn-g:hover { background: var(--accent-dim); border-color: var(--border-a); }
         .btn-ph { background: var(--ph-orange); color: #fff; }
         .btn-ph:hover { background: #ff7a6b; transform: translateY(-2px); }
-        .btn-facebook { background: var(--fb-blue); color: #fff; }
-        .btn-facebook:hover { background: #1e8aff; transform: translateY(-2px); }
         .btn-kiwi { background: var(--kiwi); color: #0a0e14; }
-        .btn-kiwi:hover { background: #9fd96b; transform: translateY(-2px); }
         .btn-quetta { background: var(--quetta); color: #fff; }
-        .btn-quetta:hover { background: #a07eff; transform: translateY(-2px); }
+        .btn-quetta:hover { background: #a07eff; }
 
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; transition: all 0.3s ease; }
-        .nav.scrolled { background: rgba(6, 6, 10, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .nav-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text-primary); }
-        .nav-logo { width: 36px; height: 36px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--bg-deep); }
-        .nav-links { display: flex; align-items: center; gap: 8px; }
-        .nav-links a { padding: 8px 16px; font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); border-radius: 8px; transition: all 0.2s; min-height: 44px; display: inline-flex; align-items: center; }
-        .nav-links a:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
-        .nav-links .btn { padding: 10px 24px; font-size: 0.85rem; }
-        .nav-mobile { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; min-height: 44px; min-width: 44px; }
+        /* ── HERO ── */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(180,245,66,0.05), transparent 60%); pointer-events: none; }
+        .hero-in { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-left { position: relative; z-index: 1; }
+        .hero-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-dim); border: 1px solid var(--border-a); padding: 6px 16px; border-radius: 60px; font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 28px; }
+        .hero-chip .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+        .hero h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 20px; line-height: 1.05; }
+        .hero h1 .g { color: var(--accent); }
+        .hero-sub { font-size: 1.1rem; color: var(--t2); max-width: 480px; line-height: 1.7; margin-bottom: 32px; }
+        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+        .hero-proof { display: flex; gap: 24px; flex-wrap: wrap; }
+        .hero-proof span { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--t3); }
+        .hero-proof i { color: var(--accent); font-size: 0.75rem; }
 
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 24px 80px; position: relative; }
-        .hero-inner { max-width: 860px; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-dim); border: 1px solid var(--border-accent); padding: 8px 20px; border-radius: 60px; font-size: 0.85rem; font-weight: 500; color: var(--accent); margin-bottom: 32px; animation: fadeInUp 0.8s var(--ease) both; }
-        .hero-badge .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
-        .hero h1 { margin-bottom: 24px; animation: fadeInUp 0.8s var(--ease) 0.1s both; }
-        .hero h1 .accent { color: var(--accent); }
-        .hero-sub { font-size: clamp(1.05rem, 2.5vw, 1.25rem); color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; line-height: 1.7; animation: fadeInUp 0.8s var(--ease) 0.2s both; }
-        .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s var(--ease) 0.3s both; }
-        .hero-note { margin-top: 40px; display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; animation: fadeInUp 0.8s var(--ease) 0.4s both; }
-        .hero-note span { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); }
-        .hero-note i { color: var(--accent); font-size: 0.9rem; }
+        .hero-right { position: relative; }
+        .hv-panel { position: relative; background: var(--bg-1); border: 1px solid var(--border); border-radius: 16px; padding: 24px; overflow: hidden; }
+        .hv-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(180,245,66,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(180,245,66,0.03) 1px, transparent 1px); background-size: 30px 30px; pointer-events: none; }
+        .hv-scan { position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.35; animation: scanDown 4s ease-in-out infinite; pointer-events: none; }
+        @keyframes scanDown { 0% { top: -2px; } 100% { top: 100%; } }
+        .hv-corner { position: absolute; width: 40px; height: 40px; pointer-events: none; }
+        .hv-corner::before, .hv-corner::after { content: ''; position: absolute; background: var(--accent); opacity: 0.15; }
+        .hv-corner.tl { top: 8px; left: 8px; } .hv-corner.tl::before { width: 20px; height: 1px; } .hv-corner.tl::after { width: 1px; height: 20px; }
+        .hv-corner.tr { top: 8px; right: 8px; } .hv-corner.tr::before { right: 0; width: 20px; height: 1px; } .hv-corner.tr::after { right: 0; width: 1px; height: 20px; }
+        .hv-corner.bl { bottom: 8px; left: 8px; } .hv-corner.bl::before { bottom: 0; width: 20px; height: 1px; } .hv-corner.bl::after { bottom: 0; width: 1px; height: 20px; }
+        .hv-corner.br { bottom: 8px; right: 8px; } .hv-corner.br::before { bottom: 0; right: 0; width: 20px; height: 1px; } .hv-corner.br::after { bottom: 0; right: 0; width: 1px; height: 20px; }
+        .hv-dot { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--accent); opacity: 0.12; animation: dotFloat 6s ease-in-out infinite; pointer-events: none; }
+        .hv-dot:nth-child(1) { top: 18%; left: 12%; animation-delay: 0s; }
+        .hv-dot:nth-child(2) { top: 55%; left: 85%; animation-delay: 2s; }
+        .hv-dot:nth-child(3) { top: 78%; left: 25%; animation-delay: 4s; }
+        .hv-dot:nth-child(4) { top: 35%; left: 70%; animation-delay: 1s; }
+        @keyframes dotFloat { 0%,100% { transform: translateY(0) scale(1); opacity: 0.12; } 50% { transform: translateY(-8px) scale(1.4); opacity: 0.25; } }
+        .hv-head { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
+        .hv-shield { width: 32px; height: 32px; border-radius: 8px; background: var(--accent-dim); border: 1px solid var(--border-a); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 0.85rem; flex-shrink: 0; }
+        .hv-title { font-family: var(--font-d); font-size: 0.82rem; font-weight: 600; color: var(--t1); }
+        .hv-live { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; margin-left: auto; flex-shrink: 0; animation: livePulse 2s infinite; }
+        @keyframes livePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); } 50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); } }
+        .hv-feats { display: flex; flex-direction: column; gap: 3px; position: relative; z-index: 1; }
+        .hv-feat { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 10px; border: 1px solid transparent; transition: all 0.3s; cursor: default; }
+        .hv-feat:hover { background: rgba(255,255,255,0.02); border-color: var(--border); }
+        .hv-f-ic { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; transition: transform 0.3s; }
+        .hv-feat:hover .hv-f-ic { transform: scale(1.12); }
+        .hv-f-ic.green { background: rgba(34,197,94,0.1); color: #22c55e; }
+        .hv-f-ic.blue { background: rgba(59,130,246,0.1); color: #3b82f6; }
+        .hv-f-ic.purple { background: rgba(168,85,247,0.1); color: #a855f7; }
+        .hv-f-ic.cyan { background: rgba(6,182,212,0.1); color: #06b6d4; }
+        .hv-f-ic.orange { background: rgba(249,115,22,0.1); color: #f97316; }
+        .hv-f-info { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+        .hv-f-name { font-size: 0.82rem; font-weight: 600; color: var(--t1); }
+        .hv-f-desc { font-size: 0.7rem; color: var(--t3); }
+        .hv-f-st { font-size: 0.68rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; white-space: nowrap; }
+        .hv-f-st.on { background: rgba(34,197,94,0.1); color: #22c55e; animation: stBlink 3s infinite; }
+        .hv-f-st.badge { background: rgba(180,245,66,0.1); color: var(--accent); }
+        @keyframes stBlink { 0%,90%,100% { opacity: 1; } 95% { opacity: 0.5; } }
+        .hv-foot { display: flex; gap: 16px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); position: relative; z-index: 1; }
+        .hv-st { font-size: 0.68rem; color: var(--t3); display: flex; align-items: center; gap: 5px; }
+        .hv-st i { color: var(--accent); font-size: 0.6rem; }
 
-        .proof-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.01); padding: 48px 0; }
-        .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
-        .proof-item { position: relative; }
-        .proof-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40px; background: var(--border); }
-        .proof-number { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--text-primary); line-height: 1.1; }
-        .proof-number .accent { color: var(--accent); }
-        .proof-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; font-weight: 500; }
+        /* ── PROOF ── */
+        .proof { padding: 60px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.01); }
+        .proof-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; text-align: center; }
+        .proof-num { font-family: var(--font-d); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; color: var(--t1); }
+        .proof-num .a { color: var(--accent); }
+        .proof-lbl { font-size: 0.8rem; color: var(--t3); margin-top: 4px; font-weight: 500; }
 
-        .section { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-eyebrow { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 16px; }
-        .section-header h2 { margin-bottom: 16px; }
-        .section-desc { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-secondary); max-width: 550px; margin: 0 auto; }
+        /* ── FEATURES ── */
+        .features { padding: 100px 0; }
+        .sec-h { text-align: center; margin-bottom: 56px; }
+        .sec-eye { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 14px; }
+        .sec-h h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 12px; }
+        .sec-desc { font-size: 1rem; color: var(--t2); max-width: 500px; margin: 0 auto; }
+        .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: 16px; overflow: hidden; }
+        .feat { background: var(--bg-1); padding: 32px 24px; transition: background 0.3s; }
+        .feat:hover { background: var(--bg-2); }
+        .feat-ic { width: 42px; height: 42px; border-radius: 11px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; color: var(--accent); margin-bottom: 16px; transition: all 0.3s; }
+        .feat:hover .feat-ic { background: var(--accent-dim); border-color: var(--border-a); }
+        .feat h3 { font-size: 1rem; margin-bottom: 6px; }
+        .feat p { font-size: 0.85rem; color: var(--t3); margin: 0; line-height: 1.5; }
 
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-        .feature-cell { background: var(--bg-surface); padding: 36px 28px; transition: all 0.4s var(--ease); position: relative; }
-        .feature-cell:hover { background: var(--bg-card-hover); }
-        .feature-cell:hover .feature-icon { background: var(--accent-dim); border-color: rgba(180,245,66,0.3); transform: scale(1.05); }
-        .feature-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--accent); margin-bottom: 20px; transition: all 0.4s var(--ease); }
-        .feature-cell h3 { margin-bottom: 8px; font-size: 1.1rem; }
-        .feature-cell p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+        /* ── HOW ── */
+        .how { padding: 100px 0; border-top: 1px solid var(--border); }
+        .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
+        .how-step { text-align: center; position: relative; }
+        .how-step:not(:last-child)::after { content: ''; position: absolute; top: 32px; right: -16px; width: 32px; height: 2px; background: var(--border); }
+        .how-num { width: 64px; height: 64px; border-radius: 16px; background: var(--accent-dim); border: 1px solid var(--border-a); display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 0 auto 20px; }
+        .how-step h3 { font-size: 1.1rem; margin-bottom: 8px; }
+        .how-step p { font-size: 0.9rem; color: var(--t3); margin: 0; max-width: 250px; margin: 0 auto; }
 
-        .showcase-item { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 80px 0; }
-        .showcase-item:not(:last-child) { border-bottom: 1px solid var(--border); }
-        .showcase-item.reverse { direction: rtl; }
-        .showcase-item.reverse > * { direction: ltr; }
-        .showcase-content h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 16px; }
-        .showcase-content p { margin-bottom: 24px; }
-        .showcase-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-        .showcase-list li { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; }
-        .showcase-list li i { color: var(--accent); font-size: 0.85rem; width: 20px; text-align: center; }
-        .showcase-visual { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; position: relative; }
-        .showcase-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
-        .showcase-visual:hover img { transform: scale(1.03); }
-        .showcase-visual-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; background: linear-gradient(135deg, var(--bg-card), var(--bg-surface)); color: var(--text-muted); }
-        .showcase-visual-placeholder i { font-size: 3rem; color: var(--accent); opacity: 0.3; }
+        /* ── TRANSPARENCY ── */
+        .trust { padding: 100px 0; border-top: 1px solid var(--border); }
+        .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: 16px; overflow: hidden; }
+        .trust-card { background: var(--bg-1); padding: 36px 24px; text-align: center; }
+        .trust-ic { font-size: 1.6rem; color: var(--accent); margin-bottom: 14px; }
+        .trust-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+        .trust-card p { font-size: 0.85rem; color: var(--t3); margin: 0; }
 
-        .screenshots-scroll { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 20px 0 40px; scrollbar-width: none; }
-        .screenshots-scroll::-webkit-scrollbar { display: none; }
-        .screenshot-item { flex: 0 0 360px; scroll-snap-align: start; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); transition: all 0.4s var(--ease); }
-        .screenshot-item:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .screenshot-img { aspect-ratio: 16/9; background: var(--bg-surface); overflow: hidden; }
-        .screenshot-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
-        .screenshot-item:hover .screenshot-img img { transform: scale(1.05); }
-        .screenshot-caption { padding: 20px; }
-        .screenshot-caption h4 { font-size: 1rem; margin-bottom: 4px; }
-        .screenshot-caption p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
-
-        .video-showcase { max-width: 800px; margin: 0 auto; }
-        .video-card { display: block; position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); transition: all 0.4s var(--ease); text-decoration: none; }
-        .video-card:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .video-thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--bg-card), var(--bg-surface)); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; }
-        .video-thumb i { font-size: 4rem; color: var(--accent); opacity: 0.4; }
-        .video-thumb span { color: var(--text-muted); font-weight: 500; }
-        .video-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 72px; height: 72px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bg-deep); font-size: 1.5rem; transition: all 0.3s var(--ease); box-shadow: 0 0 40px rgba(180,245,66,0.3); }
-        .video-card:hover .video-play { transform: translate(-50%, -50%) scale(1.1); }
-        .video-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 24px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: center; justify-content: space-between; }
-        .video-bar span { color: #fff; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
-        .video-bar i { font-size: 1.3rem; }
-
-        .comparison-wrap { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-        .comparison-wrap table { width: 100%; border-collapse: collapse; min-width: 600px; }
-        .comparison-wrap th { text-align: left; padding: 20px 28px; font-family: var(--font-display); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
-        .comparison-wrap th:first-child { width: 40%; }
-        .comparison-wrap th:nth-child(2) { color: var(--accent); position: relative; }
-        .comparison-wrap th:nth-child(2)::after { content: 'Best'; position: absolute; top: -1px; right: 12px; background: var(--accent); color: var(--bg-deep); font-size: 0.65rem; padding: 2px 8px; border-radius: 0 0 6px 6px; font-weight: 700; letter-spacing: 0.08em; }
-        .comparison-wrap td { padding: 16px 28px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-        .comparison-wrap tr:last-child td { border-bottom: none; }
-        .comparison-wrap tr:hover td { background: rgba(255,255,255,0.02); }
-        .comparison-wrap tr:hover td:first-child { color: var(--text-primary); }
+        /* ── COMPARISON ── */
+        .compare { padding: 100px 0; border-top: 1px solid var(--border); }
+        .cmp-wrap { background: var(--bg-1); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+        .cmp-wrap table { width: 100%; border-collapse: collapse; }
+        .cmp-wrap th { text-align: left; padding: 16px 24px; font-family: var(--font-d); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--t3); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+        .cmp-wrap th:nth-child(2) { color: var(--accent); }
+        .cmp-wrap td { padding: 14px 24px; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+        .cmp-wrap tr:last-child td { border-bottom: none; }
+        .cmp-wrap tr:hover td { background: rgba(255,255,255,0.02); }
         .ck { color: var(--accent); font-weight: 600; }
         .ck i { margin-right: 6px; }
         .cx { color: #f87171; }
         .cx i { margin-right: 6px; }
 
-        .android-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-        .android-card { background: var(--bg-surface); padding: 40px 32px; text-align: center; transition: background 0.3s; }
-        .android-card:hover { background: var(--bg-card-hover); }
-        .android-card-icon { width: 64px; height: 64px; margin: 0 auto 20px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
-        .android-card-icon.kiwi { background: rgba(140,200,75,0.12); color: var(--kiwi); }
-        .android-card-icon.quetta { background: rgba(139,92,246,0.12); color: var(--quetta); }
-        .android-card h3 { font-size: 1.6rem; margin-bottom: 8px; }
-        .android-card .badge { display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 4px 14px; border-radius: 60px; background: var(--accent-dim); color: var(--accent); margin-bottom: 20px; }
-        .android-steps { text-align: left; margin: 24px 0; }
-        .android-step { display: flex; align-items: center; gap: 12px; padding: 10px 0; font-size: 0.9rem; }
-        .android-step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--bg-deep); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+        /* ── ANDROID ── */
+        .android { padding: 100px 0; border-top: 1px solid var(--border); }
+        .and-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); border-radius: 16px; overflow: hidden; }
+        .and-card { background: var(--bg-1); padding: 36px 28px; text-align: center; }
+        .and-ic { width: 56px; height: 56px; margin: 0 auto 16px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+        .and-ic.k { background: rgba(140,200,75,0.12); color: var(--kiwi); }
+        .and-ic.q { background: rgba(139,92,246,0.12); color: var(--quetta); }
+        .and-card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+        .and-badge { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 3px 12px; border-radius: 20px; background: var(--accent-dim); color: var(--accent); margin-bottom: 16px; }
+        .and-steps { text-align: left; margin: 20px 0; }
+        .and-step { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 0.85rem; color: var(--t2); }
+        .and-num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
 
-        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-        .testimonial-card { background: var(--bg-surface); padding: 36px 28px; transition: background 0.3s; }
-        .testimonial-card:hover { background: var(--bg-card-hover); }
-        .testimonial-stars { color: #fbbf24; font-size: 0.85rem; margin-bottom: 16px; letter-spacing: 2px; }
-        .testimonial-text { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
-        .testimonial-author { display: flex; align-items: center; gap: 12px; }
-        .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 0.9rem; }
-        .testimonial-name { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
-        .testimonial-role { font-size: 0.8rem; color: var(--text-muted); }
+        /* ── INSTALL ── */
+        .install { padding: 100px 0; border-top: 1px solid var(--border); }
+        .inst-steps { max-width: 680px; margin: 0 auto; }
+        .inst { display: flex; gap: 20px; align-items: flex-start; padding: 28px 0; border-bottom: 1px solid var(--border); }
+        .inst:last-child { border-bottom: none; }
+        .inst-n { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-dim); border: 1px solid var(--border-a); display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+        .inst-body h3 { font-size: 1.05rem; margin-bottom: 4px; }
+        .inst-body p { font-size: 0.85rem; color: var(--t3); margin: 0; }
+        .inst-code { display: inline-block; margin-top: 8px; padding: 5px 12px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 6px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.75rem; color: var(--t2); }
 
-        .ph-section { background: linear-gradient(180deg, var(--bg-deep), rgba(255,97,84,0.03), var(--bg-deep)); }
-        .ph-card { background: var(--bg-surface); border: 1px solid rgba(255,97,84,0.15); border-radius: var(--radius-xl); padding: clamp(40px, 8vw, 72px) clamp(24px, 6vw, 56px); text-align: center; position: relative; overflow: hidden; }
-        .ph-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--ph-orange), #ff8a7a, var(--ph-orange)); }
-        .ph-card h2 { font-size: clamp(2rem, 5vw, 2.8rem); margin: 24px 0 16px; background: linear-gradient(135deg, #fff, #ff9a8a); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .ph-stats { display: flex; justify-content: center; gap: clamp(24px, 6vw, 64px); margin: 40px 0; flex-wrap: wrap; }
-        .ph-stat-num { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; color: var(--ph-orange); line-height: 1; }
-        .ph-stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
-        .ph-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-        .install-steps { max-width: 740px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
-        .install-step { display: flex; gap: 24px; align-items: flex-start; padding: 32px 0; border-bottom: 1px solid var(--border); }
-        .install-step:last-child { border-bottom: none; }
-        .step-num { width: 48px; height: 48px; border-radius: 14px; background: var(--accent-dim); border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
-        .step-body h3 { margin-bottom: 6px; font-size: 1.15rem; }
-        .step-body p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
-        .step-code { display: inline-block; margin-top: 10px; padding: 6px 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 8px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.8rem; color: var(--text-secondary); }
-
-        .roadmap-timeline { max-width: 700px; margin: 0 auto; position: relative; }
-        .roadmap-timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent), var(--border), transparent); }
-        .roadmap-entry { display: flex; gap: 32px; padding: 32px 0; position: relative; }
-        .roadmap-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg-deep); box-shadow: 0 0 0 2px var(--accent); flex-shrink: 0; margin-top: 6px; position: relative; left: 14px; z-index: 1; }
-        .roadmap-dot.done { background: var(--text-muted); box-shadow: 0 0 0 2px var(--text-muted); }
-        .roadmap-content h3 { margin-bottom: 6px; }
-        .roadmap-content p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
-        .roadmap-date { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-        .roadmap-done-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: rgba(34,197,94,0.12); color: #22c55e; margin-left: 8px; vertical-align: middle; }
-
-        .contribute-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-        .contribute-card { background: var(--bg-surface); padding: 40px 28px; text-align: center; transition: background 0.3s; }
-        .contribute-card:hover { background: var(--bg-card-hover); }
-        .contribute-icon { font-size: 2rem; color: var(--accent); margin-bottom: 16px; }
-        .contribute-card h3 { margin-bottom: 8px; }
-        .contribute-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
-
-        .download-section { background: linear-gradient(180deg, var(--bg-deep), var(--bg-surface) 50%, var(--bg-deep)); }
-        .download-cta { text-align: center; max-width: 800px; margin: 0 auto; }
-        .download-cta h2 { margin-bottom: 12px; }
-        .download-meta { display: flex; gap: 12px; justify-content: center; margin: 20px 0 32px; flex-wrap: wrap; }
-        .download-meta span { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 500; padding: 6px 16px; border-radius: 60px; background: var(--accent-dim); color: var(--accent); border: 1px solid var(--border-accent); }
-        .download-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .browser-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-        .browser-tag { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); font-size: 0.8rem; color: var(--text-secondary); transition: all 0.2s; }
-        .browser-tag:hover { border-color: var(--border-accent); color: var(--text-primary); }
-        .browser-tag i { color: var(--accent); font-size: 0.85rem; }
-        .browser-tag.kiwi { border-color: rgba(140,200,75,0.2); color: var(--kiwi); }
-        .browser-tag.kiwi i { color: var(--kiwi); }
-        .browser-tag.quetta { border-color: rgba(139,92,246,0.2); color: var(--quetta); }
-        .browser-tag.quetta i { color: var(--quetta); }
-
-        .faq-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
-        .faq-item { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; transition: border-color 0.3s; }
-        .faq-item.active { border-color: var(--border-accent); }
-        .faq-q { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: var(--text-primary); min-height: 48px; transition: background 0.2s; }
+        /* ── FAQ ── */
+        .faq { padding: 100px 0; border-top: 1px solid var(--border); }
+        .faq-list { max-width: 660px; margin: 0 auto; display: flex; flex-direction: column; gap: 6px; }
+        .faq-i { background: var(--bg-1); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.3s; }
+        .faq-i.active { border-color: var(--border-a); }
+        .faq-q { padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--t1); min-height: 44px; transition: background 0.2s; }
         .faq-q:hover { background: rgba(255,255,255,0.02); }
-        .faq-q i { color: var(--text-muted); font-size: 0.8rem; transition: transform 0.3s var(--ease); flex-shrink: 0; margin-left: 16px; }
-        .faq-item.active .faq-q i { transform: rotate(180deg); color: var(--accent); }
-        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.3s; }
-        .faq-item.active .faq-a { max-height: 300px; }
-        .faq-a p { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+        .faq-q i { color: var(--t3); font-size: 0.75rem; transition: transform 0.3s var(--ease); flex-shrink: 0; margin-left: 12px; }
+        .faq-i.active .faq-q i { transform: rotate(180deg); color: var(--accent); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
+        .faq-i.active .faq-a { max-height: 300px; }
+        .faq-a p { padding: 0 20px 18px; font-size: 0.85rem; color: var(--t2); line-height: 1.7; margin: 0; }
 
-        .newsletter { text-align: center; }
-        .newsletter h2 { margin-bottom: 12px; }
-        .newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 28px auto 0; }
-        .newsletter-input { flex: 1; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; min-height: 48px; transition: border-color 0.2s; }
-        .newsletter-input::placeholder { color: var(--text-muted); }
-        .newsletter-input:focus { outline: none; border-color: var(--accent); }
+        /* ── NEWSLETTER ── */
+        .news { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .news h2 { margin-bottom: 8px; }
+        .news-form { display: flex; gap: 8px; max-width: 400px; margin: 20px auto 0; }
+        .news-input { flex: 1; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-1); color: var(--t1); font-family: var(--font-b); font-size: 0.9rem; min-height: 44px; transition: border-color 0.2s; }
+        .news-input::placeholder { color: var(--t3); }
+        .news-input:focus { outline: none; border-color: var(--accent); }
 
-        .footer { border-top: 1px solid var(--border); padding: 64px 0 40px; margin-top: 40px; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-        .footer-brand p { font-size: 0.9rem; color: var(--text-muted); margin: 12px 0 20px; max-width: 260px; line-height: 1.7; }
-        .footer-socials { display: flex; gap: 10px; }
-        .footer-social { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.2s; }
-        .footer-social:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
-        .footer-col h4 { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 20px; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 10px; }
-        .footer-col a { font-size: 0.9rem; color: var(--text-secondary); transition: color 0.2s; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; }
-        .footer-col a:hover { color: var(--accent); }
-        .footer-col a i { font-size: 0.8rem; opacity: 0.5; }
-        .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .footer-copy { font-size: 0.85rem; color: var(--text-muted); }
-        .footer-copy .accent { color: var(--accent); }
-        .footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
-        .footer-legal a { font-size: 0.8rem; color: var(--text-muted); transition: color 0.2s; }
-        .footer-legal a:hover { color: var(--accent); }
+        /* ── FOOTER ── */
+        .footer { border-top: 1px solid var(--border); padding: 48px 0 32px; margin-top: 20px; }
+        .ft-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .ft-brand p { font-size: 0.85rem; color: var(--t3); margin: 10px 0 16px; max-width: 240px; line-height: 1.6; }
+        .ft-socials { display: flex; gap: 8px; }
+        .ft-social { width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--t2); transition: all 0.2s; font-size: 0.85rem; }
+        .ft-social:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+        .ft-col h4 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--t3); margin-bottom: 16px; }
+        .ft-col ul { list-style: none; }
+        .ft-col li { margin-bottom: 8px; }
+        .ft-col a { font-size: 0.85rem; color: var(--t2); transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; }
+        .ft-col a:hover { color: var(--accent); }
+        .ft-col a i { font-size: 0.75rem; opacity: 0.5; }
+        .ft-bot { border-top: 1px solid var(--border); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .ft-copy { font-size: 0.8rem; color: var(--t3); }
+        .ft-copy .a { color: var(--accent); }
+        .ft-links { display: flex; gap: 20px; }
+        .ft-links a { font-size: 0.75rem; color: var(--t3); transition: color 0.2s; }
+        .ft-links a:hover { color: var(--accent); }
 
-        .sticky-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; background: rgba(6, 6, 10, 0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--border); padding: 12px 24px; transform: translateY(0); transition: transform 0.4s var(--ease); }
-        .sticky-bar.hidden { transform: translateY(100%); }
-        .sticky-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-        .sticky-text { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); white-space: nowrap; }
-        .sticky-actions { display: flex; gap: 10px; align-items: center; }
-        .sticky-close { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text-muted); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; }
-        .sticky-close:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
+        /* ── STICKY ── */
+        .sticky { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; background: rgba(5,5,8,0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--border); padding: 10px 24px; transform: translateY(0); transition: transform 0.4s var(--ease); }
+        .sticky.hide { transform: translateY(100%); }
+        .sticky-in { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .sticky-t { font-size: 0.85rem; font-weight: 600; color: var(--t1); white-space: nowrap; }
+        .sticky-a { display: flex; gap: 8px; align-items: center; }
+        .sticky-x { width: 32px; height: 32px; border-radius: 7px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--t3); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 0.8rem; }
+        .sticky-x:hover { background: rgba(255,255,255,0.08); color: var(--t1); }
 
-        .live-toast { position: fixed; bottom: 80px; left: 20px; z-index: 98; background: rgba(12, 12, 18, 0.95); backdrop-filter: blur(16px); border: 1px solid var(--border-accent); border-left: 3px solid var(--accent); border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; max-width: 300px; box-shadow: var(--shadow-md); transform: translateX(-120%); transition: transform 0.5s var(--ease); }
-        .live-toast.show { transform: translateX(0); }
-        .live-toast-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 0.8rem; flex-shrink: 0; }
-        .live-toast-text { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.4; }
-        .live-toast-text strong { color: var(--accent); font-weight: 600; }
+        /* ── TOAST ── */
+        .toast { position: fixed; bottom: 72px; left: 20px; z-index: 98; background: rgba(10,10,15,0.95); backdrop-filter: blur(16px); border: 1px solid var(--border-a); border-left: 3px solid var(--accent); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; max-width: 280px; box-shadow: 0 8px 30px rgba(0,0,0,0.4); transform: translateX(-120%); transition: transform 0.5s var(--ease); }
+        .toast.show { transform: translateX(0); }
+        .toast-av { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 0.7rem; flex-shrink: 0; }
+        .toast-t { font-size: 0.78rem; color: var(--t2); line-height: 1.3; }
+        .toast-t strong { color: var(--accent); }
 
-        .btt { position: fixed; bottom: 80px; right: 24px; width: 44px; height: 44px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 97; opacity: 0; visibility: hidden; transition: all 0.3s var(--ease); }
+        .btt { position: fixed; bottom: 72px; right: 20px; width: 40px; height: 40px; border-radius: 10px; background: var(--bg-2); border: 1px solid var(--border); color: var(--t2); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 97; opacity: 0; visibility: hidden; transition: all 0.3s var(--ease); font-size: 0.85rem; }
         .btt.show { opacity: 1; visibility: visible; }
         .btt:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s var(--ease); }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+        /* ── WHATSNEW ── */
+        .whatsnew { padding: 80px 0; border-top: 1px solid var(--border); background: linear-gradient(180deg, rgba(180,245,66,0.02), transparent); }
+        .wn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+        .wn-card { background: var(--bg-1); border: 1px solid var(--border); border-radius: 14px; padding: 28px 22px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+        .wn-card:hover { border-color: var(--border-a); transform: translateY(-2px); }
+        .wn-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+        .wn-card:nth-child(1)::before { background: linear-gradient(90deg, #06b6d4, transparent); }
+        .wn-card:nth-child(2)::before { background: linear-gradient(90deg, #a855f7, transparent); }
+        .wn-card:nth-child(3)::before { background: linear-gradient(90deg, #22c55e, transparent); }
+        .wn-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 20px; margin-bottom: 14px; }
+        .wn-tag.new { background: rgba(6,182,212,0.12); color: #06b6d4; }
+        .wn-tag.improved { background: rgba(168,85,247,0.12); color: #a855f7; }
+        .wn-tag.fixed { background: rgba(34,197,94,0.12); color: #22c55e; }
+        .wn-card h3 { font-size: 1rem; margin-bottom: 6px; }
+        .wn-card p { font-size: 0.82rem; color: var(--t3); line-height: 1.5; margin: 0; }
+        .wn-card .wn-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; margin-bottom: 14px; }
+
+        /* ── TECH ── */
+        .tech { padding: 100px 0; border-top: 1px solid var(--border); }
+        .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+        .tech-card { background: var(--bg-1); border: 1px solid var(--border); border-radius: 14px; padding: 28px 22px; text-align: center; transition: border-color 0.3s; }
+        .tech-card:hover { border-color: var(--border-a); }
+        .tech-ic { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 16px; }
+        .tech-ic.t-green { background: rgba(34,197,94,0.1); color: #22c55e; }
+        .tech-ic.t-purple { background: rgba(168,85,247,0.1); color: #a855f7; }
+        .tech-ic.t-cyan { background: rgba(6,182,212,0.1); color: #06b6d4; }
+        .tech-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+        .tech-layers { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; text-align: left; }
+        .tech-layer { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; font-size: 0.8rem; }
+        .tl-num { width: 22px; height: 22px; border-radius: 6px; background: var(--accent-dim); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+        .tl-text { color: var(--t2); }
+        .tl-text strong { color: var(--t1); font-weight: 600; }
+        .tech-stat { margin-top: 16px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .ts-item { text-align: center; }
+        .ts-num { font-family: var(--font-d); font-size: 1.4rem; font-weight: 800; color: var(--accent); }
+        .ts-lbl { font-size: 0.7rem; color: var(--t3); margin-top: 2px; }
+        .sp-pipeline { display: flex; align-items: center; gap: 6px; margin-top: 14px; flex-wrap: wrap; justify-content: center; }
+        .sp-step { padding: 6px 12px; border-radius: 8px; font-size: 0.72rem; font-weight: 600; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--t2); }
+        .sp-arrow { color: var(--t3); font-size: 0.7rem; }
+        .sp-step.primary { border-color: var(--border-a); color: var(--accent); }
+        .sp-step.fallback { border-color: rgba(168,85,247,0.2); color: #a855f7; }
+
+        /* ── USECASES ── */
+        .usecases { padding: 100px 0; border-top: 1px solid var(--border); }
+        .uc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+        .uc-card { background: var(--bg-1); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; display: flex; gap: 18px; align-items: flex-start; transition: border-color 0.3s, transform 0.3s; }
+        .uc-card:hover { border-color: var(--border-a); transform: translateY(-2px); }
+        .uc-ic { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        .uc-ic.uc-blue { background: rgba(59,130,246,0.1); color: #3b82f6; }
+        .uc-ic.uc-green { background: rgba(34,197,94,0.1); color: #22c55e; }
+        .uc-ic.uc-purple { background: rgba(168,85,247,0.1); color: #a855f7; }
+        .uc-ic.uc-orange { background: rgba(249,115,22,0.1); color: #f97316; }
+        .uc-body h3 { font-size: 1rem; margin-bottom: 4px; }
+        .uc-body p { font-size: 0.82rem; color: var(--t3); line-height: 1.5; margin: 0; }
+        .uc-tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+        .uc-tag { font-size: 0.68rem; font-weight: 600; padding: 3px 9px; border-radius: 6px; background: var(--accent-dim); color: var(--accent); }
+
+        /* ── CHANGELOG ── */
+        .changelog { padding: 100px 0; border-top: 1px solid var(--border); }
+        .cl-timeline { max-width: 700px; margin: 40px auto 0; position: relative; }
+        .cl-timeline::before { content: ''; position: absolute; left: 18px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+        .cl-item { display: flex; gap: 24px; padding-bottom: 32px; position: relative; }
+        .cl-item:last-child { padding-bottom: 0; }
+        .cl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); position: relative; z-index: 1; margin-top: 6px; flex-shrink: 0; margin-left: 14px; }
+        .cl-item:nth-child(2) .cl-dot { background: #a855f7; }
+        .cl-item:nth-child(3) .cl-dot { background: #3b82f6; }
+        .cl-item:nth-child(4) .cl-dot { background: #06b6d4; }
+        .cl-body { flex: 1; }
+        .cl-ver { font-family: var(--font-d); font-weight: 700; font-size: 0.95rem; color: var(--t1); }
+        .cl-date { font-size: 0.72rem; color: var(--t3); margin-left: 10px; }
+        .cl-tag { display: inline-block; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
+        .cl-tag.shipped { background: rgba(34,197,94,0.12); color: #22c55e; }
+        .cl-features { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .cl-feat { font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: var(--t2); }
+
+        @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(24px); transition: all 0.6s var(--ease); }
+        .reveal.vis { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 900px) {
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .showcase-item { grid-template-columns: 1fr; gap: 32px; }
-            .showcase-item.reverse { direction: ltr; }
-            .proof-grid { grid-template-columns: repeat(2, 1fr); }
-            .proof-item:nth-child(2)::after { display: none; }
-            .testimonials-grid { grid-template-columns: 1fr; }
-            .android-cards { grid-template-columns: 1fr; }
-            .contribute-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-in { grid-template-columns: 1fr; gap: 40px; }
+            .hero-right { display: none; }
+            .feat-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-steps { grid-template-columns: 1fr; gap: 24px; }
+            .how-step:not(:last-child)::after { display: none; }
+            .trust-grid { grid-template-columns: 1fr; }
+            .and-grid { grid-template-columns: 1fr; }
+            .ft-grid { grid-template-columns: 1fr 1fr; }
+            .wn-grid { grid-template-columns: 1fr; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .uc-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(6, 6, 10, 0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 20px 24px; gap: 8px; }
-            .nav-mobile { display: flex; }
-            .features-grid { grid-template-columns: 1fr; }
-            .hero { padding: 120px 24px 60px; min-height: auto; }
-            .proof-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-            .proof-item::after { display: none !important; }
-            .sticky-text { display: none; }
-            .sticky-bar { padding: 10px 16px; }
-            .screenshot-item { flex: 0 0 85vw; }
-            .footer-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-            .footer-socials { justify-content: center; }
-            .footer-brand p { margin-left: auto; margin-right: auto; }
-            .footer-bottom { justify-content: center; text-align: center; flex-direction: column; }
-            .newsletter-form { flex-direction: column; }
-            .ph-actions { flex-direction: column; align-items: center; }
+            .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: rgba(5,5,8,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 6px; }
+            .nav-mob { display: flex; }
+            .feat-grid { grid-template-columns: 1fr; }
+            .proof-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .sticky-t { display: none; }
+            .ft-grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+            .ft-socials { justify-content: center; }
+            .ft-bot { justify-content: center; text-align: center; flex-direction: column; }
+            .news-form { flex-direction: column; }
         }
         @media (max-width: 480px) {
-            .section { padding: 64px 0; }
+            .hero { padding: 100px 16px 60px; }
             .container { padding: 0 16px; }
-            .hero-actions { flex-direction: column; }
-            .hero-actions .btn { width: 100%; }
-            .download-actions { flex-direction: column; }
-            .download-actions .btn { width: 100%; }
-            .install-step { flex-direction: column; gap: 12px; }
-            .proof-grid { grid-template-columns: 1fr 1fr; }
+            .hero-btns { flex-direction: column; }
+            .hero-btns .btn { width: 100%; }
+            .proof-grid { grid-template-columns: repeat(2, 1fr); }
         }
-
-        * { -webkit-overflow-scrolling: touch; }
-        input, select, textarea { font-size: 16px !important; }
     </style>
 </head>
 <body>
-    <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-
-    <nav class="nav" id="navbar">
-        <div class="nav-inner">
-            <a href="#" class="nav-brand">
-                <div class="nav-logo"><i class="fas fa-bolt"></i></div>
-                Clify
-            </a>
-            <button class="nav-mobile" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
-            <div class="nav-links" id="navLinks">
+    <nav class="nav" id="nav">
+        <div class="nav-in">
+            <a href="#" class="nav-brand"><div class="nav-logo"><i class="fas fa-bolt"></i></div>Clify</a>
+            <button class="nav-mob" id="mobBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            <div class="nav-links" id="navL">
                 <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
+                <a href="#how">How It Works</a>
                 <a href="#install">Install</a>
                 <a href="#faq">FAQ</a>
                 <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>
-                <a href="https://diptodesign.github.io/clifydl/extensions.html">Extensions</a>
                 <a href="https://diptodesign.github.io/clifydl/donate">Donate</a>
-                <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="btn btn-ph"><i class="fab fa-product-hunt"></i> PH</a>
+                <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="btn btn-ph" style="padding:8px 18px;font-size:0.8rem"><i class="fab fa-product-hunt"></i> PH</a>
             </div>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-badge"><span class="dot"></span> v12.0.0 — Latest Release</div>
-            <h1>YouTube,<br><span class="accent">Uncluttered.</span></h1>
-            <p class="hero-sub">Block ads natively. Remove Shorts. Skip sponsors.<br>Silence distractions. Zero tracking. Fully open source.</p>
-            <div class="hero-actions">
-                <a href="#install" class="btn btn-primary"><i class="fas fa-bolt"></i> Install Clify</a>
-                <a href="https://github.com/diptodesign/Clify/releases" class="btn btn-outline" data-track-download><i class="fas fa-download"></i> Download</a>
-                <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-ghost"><i class="fab fa-github"></i> Source Code</a>
+        <div class="hero-in">
+            <div class="hero-left">
+                <div class="hero-chip"><span class="dot"></span> v12.0.0 — Latest</div>
+                <h1>YouTube,<br><span class="g">Uncluttered.</span></h1>
+                <p class="hero-sub">Block ads natively. Remove Shorts. Skip sponsors. Silence distractions. One extension. Zero tracking. Fully open source.</p>
+                <div class="hero-btns">
+                    <a href="#install" class="btn btn-a"><i class="fas fa-bolt"></i> Install Clify</a>
+                    <a href="https://github.com/diptodesign/Clify/releases" class="btn btn-o" data-track-download><i class="fas fa-download"></i> Download</a>
+                    <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-g"><i class="fab fa-github"></i> Source</a>
+                </div>
+                <div class="hero-proof">
+                    <span><i class="fas fa-shield-halved"></i> 100% private</span>
+                    <span><i class="fas fa-code-branch"></i> Open source</span>
+                    <span><i class="fas fa-globe"></i> 40+ browsers</span>
+                    <span><i class="fas fa-mobile"></i> Android</span>
+                </div>
             </div>
-            <div class="hero-note">
-                <span><i class="fas fa-shield-halved"></i> 100% private</span>
-                <span><i class="fas fa-code-branch"></i> Open source</span>
-                <span><i class="fas fa-globe"></i> 40+ browsers</span>
-                <span><i class="fas fa-mobile"></i> Android supported</span>
+            <div class="hero-right">
+                <div class="hv-panel">
+                    <div class="hv-grid-bg"></div>
+                    <div class="hv-scan"></div>
+                    <div class="hv-dot"></div><div class="hv-dot"></div><div class="hv-dot"></div><div class="hv-dot"></div>
+                    <div class="hv-corner tl"></div><div class="hv-corner tr"></div><div class="hv-corner bl"></div><div class="hv-corner br"></div>
+                    <div class="hv-head">
+                        <div class="hv-shield"><i class="fas fa-shield-halved"></i></div>
+                        <div class="hv-title">Clify Active</div>
+                        <div class="hv-live"></div>
+                    </div>
+                    <div class="hv-feats">
+                        <div class="hv-feat">
+                            <div class="hv-f-ic green"><i class="fas fa-shield-halved"></i></div>
+                            <div class="hv-f-info"><span class="hv-f-name">Native Ad Blocker</span><span class="hv-f-desc">3-layer system</span></div>
+                            <div class="hv-f-st on">Active</div>
+                        </div>
+                        <div class="hv-feat">
+                            <div class="hv-f-ic blue"><i class="fab fa-youtube"></i></div>
+                            <div class="hv-f-info"><span class="hv-f-name">Shorts Remover</span><span class="hv-f-desc">20+ selectors</span></div>
+                            <div class="hv-f-st on">Active</div>
+                        </div>
+                        <div class="hv-feat">
+                            <div class="hv-f-ic purple"><i class="fas fa-forward-fast"></i></div>
+                            <div class="hv-f-info"><span class="hv-f-name">SponsorBlock</span><span class="hv-f-desc">9 categories</span></div>
+                            <div class="hv-f-st on">Active</div>
+                        </div>
+                        <div class="hv-feat">
+                            <div class="hv-f-ic cyan"><i class="fas fa-microchip"></i></div>
+                            <div class="hv-f-info"><span class="hv-f-name">Content Density</span><span class="hv-f-desc">Real content %</span></div>
+                            <div class="hv-f-st badge">Badge</div>
+                        </div>
+                        <div class="hv-feat">
+                            <div class="hv-f-ic orange"><i class="fas fa-filter"></i></div>
+                            <div class="hv-f-info"><span class="hv-f-name">Keyword Blocker</span><span class="hv-f-desc">5000+ capacity</span></div>
+                            <div class="hv-f-st on">Active</div>
+                        </div>
+                    </div>
+                    <div class="hv-foot">
+                        <span class="hv-st"><i class="fas fa-ban"></i> 90 domains</span>
+                        <span class="hv-st"><i class="fas fa-crosshairs"></i> 120+ rules</span>
+                        <span class="hv-st"><i class="fas fa-bolt"></i> 0ms overhead</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="proof-bar">
+    <section class="whatsnew">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">What's New</div>
+                <h2>v12.0.0 — Content Density, Language Block Rewrite, PiP</h2>
+                <p class="sec-desc">Three major features, dozens of improvements.</p>
+            </div>
+            <div class="wn-grid reveal">
+                <div class="wn-card">
+                    <div class="wn-icon"><i class="fas fa-microchip"></i></div>
+                    <div class="wn-tag new">New</div>
+                    <h3>Content Density Meter</h3>
+                    <p>Color-coded badge shows real content percentage per video. Channel-level scoring with rolling 20-video window. Cyan 90%+ to Red 35%-.</p>
+                </div>
+                <div class="wn-card">
+                    <div class="wn-icon"><i class="fas fa-language"></i></div>
+                    <div class="wn-tag improved">Rewritten</div>
+                    <h3>Language Blocking 2.0</h3>
+                    <p>Non-Latin script detection, title-only filtering, persistent config across sessions. 22 Unicode scripts. No more browser freezes.</p>
+                </div>
+                <div class="wn-card">
+                    <div class="wn-icon"><i class="fas fa-display"></i></div>
+                    <div class="wn-tag new">New</div>
+                    <h3>Picture-in-Picture Button</h3>
+                    <p>Native PiP button injected into YouTube player controls. Uses Tabler icons, survives SPA navigation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="proof">
         <div class="container">
             <div class="proof-grid">
-                <div class="proof-item reveal">
-                    <div class="proof-number"><span class="accent" id="liveDownloadCount">0</span></div>
-                    <div class="proof-label">Downloads</div>
-                </div>
-                <div class="proof-item reveal">
-                    <div class="proof-number">347</div>
-                    <div class="proof-label">GitHub Stars</div>
-                </div>
-                <div class="proof-item reveal">
-                    <div class="proof-number">32</div>
-                    <div class="proof-label">Languages</div>
-                </div>
-                <div class="proof-item reveal">
-                    <div class="proof-number">40<span style="font-size:0.6em">+</span></div>
-                    <div class="proof-label">Browsers Supported</div>
-                </div>
+                <div class="reveal"><div class="proof-num"><span class="a" id="dlCount">0</span></div><div class="proof-lbl">Downloads</div></div>
+                <div class="reveal"><div class="proof-num">347</div><div class="proof-lbl">GitHub Stars</div></div>
+                <div class="reveal"><div class="proof-num">120<span style="font-size:0.6em">+</span></div><div class="proof-lbl">Ad Selectors</div></div>
+                <div class="reveal"><div class="proof-num">90</div><div class="proof-lbl">Domains Blocked</div></div>
+                <div class="reveal"><div class="proof-num">32</div><div class="proof-lbl">Languages</div></div>
+                <div class="reveal"><div class="proof-num">40<span style="font-size:0.6em">+</span></div><div class="proof-lbl">Browsers</div></div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="features">
+    <section class="features" id="features">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">What it does</div>
-                <h2>Everything You Need. Nothing You Don't.</h2>
-                <p class="section-desc">30+ focus tools built into a single extension. Native ad blocker, SponsorBlock, and complete YouTube customization.</p>
+            <div class="sec-h reveal">
+                <div class="sec-eye">Features</div>
+                <h2>Everything You Need</h2>
+                <p class="sec-desc">30+ focus tools. Native ad blocker. SponsorBlock. Complete YouTube customization.</p>
             </div>
-            <div class="features-grid reveal">
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
-                    <h3>Native Ad Blocker</h3>
-                    <p>Network-level rules + DOM removal + fetch/XHR interception. No external filter lists needed.</p>
+            <div class="feat-grid reveal">
+                <div class="feat"><div class="feat-ic"><i class="fas fa-shield-halved"></i></div><h3>Native Ad Blocker</h3><p>Network rules, DOM removal, fetch/XHR interception. No external lists.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fab fa-youtube"></i></div><h3>Shorts Remover</h3><p>Removes Shorts from homepage, subscriptions, search, sidebar, player.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-forward-fast"></i></div><h3>SponsorBlock</h3><p>9 categories: sponsors, intros, outros, self-promo, hooks, filler, more.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-microchip"></i></div><h3>Content Density</h3><p>Color-coded badge shows real content %. Channel-level scoring.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-filter"></i></div><h3>Keyword Blocker</h3><p>Regex, pipe syntax, 5000+ keywords. Multi-language support.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-ban"></i></div><h3>Channel Blocking</h3><p>Block by URL, @handle, or name. Full-screen overlay on watch pages.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-volume-high"></i></div><h3>Volume Boost</h3><p>Up to 2x beyond YouTube's limit. Perfect for quiet recordings.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-clock"></i></div><h3>Scheduled Blocking</h3><p>Set active hours. Auto-enables during focus time.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-comment-slash"></i></div><h3>Hide Comments</h3><p>Remove comment sections entirely. Stay focused.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-language"></i></div><h3>Language Blocking</h3><p>25+ scripts. Block videos not in your preferred languages.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-chart-simple"></i></div><h3>Focus Dashboard</h3><p>Glassmorphism stats: ads blocked, Shorts removed, skips.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-globe"></i></div><h3>32 Languages</h3><p>English, Chinese, Hindi, Bengali, Spanish, Arabic, 26+ more.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech" id="tech">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">Under the Hood</div>
+                <h2>How It Actually Works</h2>
+                <p class="sec-desc">No magic. Just three layers working together.</p>
+            </div>
+            <div class="tech-grid reveal">
+                <div class="tech-card">
+                    <div class="tech-ic t-green"><i class="fas fa-shield-halved"></i></div>
+                    <h3>3-Layer Ad Blocker</h3>
+                    <p style="font-size:0.82rem;color:var(--t3);margin:0">Three independent systems catching what others miss.</p>
+                    <div class="tech-layers">
+                        <div class="tech-layer"><span class="tl-num">1</span><span class="tl-text"><strong>declarativeNetRequest</strong> — blocks ~90 ad domains</span></div>
+                        <div class="tech-layer"><span class="tl-num">2</span><span class="tl-text"><strong>DOM removal</strong> — 120+ CSS selectors every 800ms</span></div>
+                        <div class="tech-layer"><span class="tl-num">3</span><span class="tl-text"><strong>fetch/XHR interception</strong> — overrides API calls</span></div>
+                    </div>
                 </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fab fa-youtube"></i></div>
-                    <h3>Shorts Remover</h3>
-                    <p>Completely removes Shorts from homepage, subscriptions, search, sidebar, and player.</p>
+                <div class="tech-card">
+                    <div class="tech-ic t-purple"><i class="fas fa-forward-fast"></i></div>
+                    <h3>SponsorBlock Pipeline</h3>
+                    <p style="font-size:0.82rem;color:var(--t3);margin:0">Community segments with 3-URL fallback.</p>
+                    <div class="sp-pipeline">
+                        <span class="sp-step primary">Primary API</span>
+                        <span class="sp-arrow"><i class="fas fa-arrow-right"></i></span>
+                        <span class="sp-step fallback">Fallback</span>
+                        <span class="sp-arrow"><i class="fas fa-arrow-right"></i></span>
+                        <span class="sp-step">No Filter</span>
+                    </div>
+                    <div class="tech-stat">
+                        <div class="ts-item"><div class="ts-num">9</div><div class="ts-lbl">Categories</div></div>
+                        <div class="ts-item"><div class="ts-num">5s</div><div class="ts-lbl">Timeout</div></div>
+                        <div class="ts-item"><div class="ts-num">32</div><div class="ts-lbl">Languages</div></div>
+                    </div>
                 </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-forward-fast"></i></div>
-                    <h3>SponsorBlock</h3>
-                    <p>Auto-skips 9 segment types: sponsors, intros, outros, self-promo, interactions, hooks, filler, previews, non-music.</p>
-                </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-microchip"></i></div>
-                    <h3>Content Density Meter</h3>
-                    <p>Color-coded badge shows real content percentage per video. Channel-level scoring across uploads.</p>
-                </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-filter"></i></div>
-                    <h3>Smart Keyword Blocker</h3>
-                    <p>Hide videos by title keywords with regex and pipe syntax. 5000+ keyword capacity, multi-language.</p>
-                </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-ban"></i></div>
-                    <h3>Channel Blocking</h3>
-                    <p>Block entire channels by URL, @handle, or name. Full-screen overlay on blocked watch pages.</p>
-                </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-volume-high"></i></div>
-                    <h3>Volume Boost</h3>
-                    <p>Boost audio up to 2x beyond YouTube's limit. Perfect for quiet recordings.</p>
-                </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                    <h3>Scheduled Blocking</h3>
-                    <p>Set active hours for content blocking. Auto-enables during focus time.</p>
-                </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-comment-slash"></i></div>
-                    <h3>Hide Comments</h3>
-                    <p>Remove comment sections entirely. Stay focused on the content you chose.</p>
-                </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-language"></i></div>
-                    <h3>Language Blocking</h3>
-                    <p>Unicode script detection for 25+ languages. Block videos not in your preferred languages.</p>
-                </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-chart-simple"></i></div>
-                    <h3>Focus Dashboard</h3>
-                    <p>Glassmorphism dashboard with real-time stats: ads blocked, Shorts removed, SponsorBlock skips.</p>
-                </div>
-                <div class="feature-cell">
-                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
-                    <h3>32 Languages</h3>
-                    <p>English, Chinese, Hindi, Bengali, Spanish, Arabic, and 26 more. RTL support included.</p>
+                <div class="tech-card">
+                    <div class="tech-ic t-cyan"><i class="fas fa-microchip"></i></div>
+                    <h3>Content Density</h3>
+                    <p style="font-size:0.82rem;color:var(--t3);margin:0">Real content percentage per video and channel.</p>
+                    <div class="tech-layers">
+                        <div class="tech-layer"><span class="tl-num"><i class="fas fa-circle" style="font-size:0.5rem"></i></span><span class="tl-text"><strong>Cyan 90%+</strong> — pure content</span></div>
+                        <div class="tech-layer"><span class="tl-num"><i class="fas fa-circle" style="font-size:0.5rem;color:#a855f7"></i></span><span class="tl-text"><strong>Purple 55%+</strong> — mostly content</span></div>
+                        <div class="tech-layer"><span class="tl-num"><i class="fas fa-circle" style="font-size:0.5rem;color:#f97316"></i></span><span class="tl-text"><strong>Orange 35%+</strong> — mixed</span></div>
+                        <div class="tech-layer"><span class="tl-num"><i class="fas fa-circle" style="font-size:0.5rem;color:#dc2626"></i></span><span class="tl-text"><strong>Red &lt;35%</strong> — heavy filler</span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="how-it-works" style="border-top:1px solid var(--border)">
-        <div class="container container--narrow">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">How it works</div>
+    <section class="how" id="how">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">How it works</div>
                 <h2>Install. Open YouTube. Done.</h2>
-                <p class="section-desc">No accounts, no configuration. Clify works from the moment you load it.</p>
+                <p class="sec-desc">No accounts, no configuration. Works from the moment you load it.</p>
             </div>
-            <div class="showcase-item reveal">
-                <div class="showcase-content">
-                    <h2>Three-Layer Ad Blocking</h2>
-                    <p>Clify blocks ads at three levels simultaneously: network requests via declarativeNetRequest, DOM elements via MutationObserver, and fetch/XHR interception for tracking scripts.</p>
-                    <ul class="showcase-list">
-                        <li><i class="fas fa-check"></i> 90+ ad domains blocked at network level</li>
-                        <li><i class="fas fa-check"></i> 120+ YouTube ad selectors for DOM removal</li>
-                        <li><i class="fas fa-check"></i> 80+ tracking domains intercepted</li>
-                        <li><i class="fas fa-check"></i> Mid-roll ads detected and auto-skipped</li>
-                    </ul>
+            <div class="how-steps reveal">
+                <div class="how-step">
+                    <div class="how-num">1</div>
+                    <h3>Download</h3>
+                    <p>Get the latest release from GitHub. Extract the ZIP.</p>
                 </div>
-                <div class="showcase-visual">
-                    <div class="showcase-visual-placeholder">
-                        <i class="fas fa-shield-halved"></i>
-                        <span>Ad Blocker in Action</span>
-                    </div>
+                <div class="how-step">
+                    <div class="how-num">2</div>
+                    <h3>Load</h3>
+                    <p>Open chrome://extensions. Enable Developer Mode. Click Load Unpacked.</p>
                 </div>
-            </div>
-            <div class="showcase-item reverse reveal">
-                <div class="showcase-content">
-                    <h2>SponsorBlock with 9 Categories</h2>
-                    <p>Powered by the community database, Clify auto-skips sponsors, intros, outros, self-promo, interactions, hooks, filler, previews, and non-music sections.</p>
-                    <ul class="showcase-list">
-                        <li><i class="fas fa-check"></i> Colored progress bar with hover tooltips</li>
-                        <li><i class="fas fa-check"></i> Adjacent segments merged automatically</li>
-                        <li><i class="fas fa-check"></i> 3-URL fallback chain for reliability</li>
-                        <li><i class="fas fa-check"></i> Content density badge shows real content %</li>
-                    </ul>
-                </div>
-                <div class="showcase-visual">
-                    <div class="showcase-visual-placeholder">
-                        <i class="fas fa-forward-fast"></i>
-                        <span>SponsorBlock Preview</span>
-                    </div>
+                <div class="how-step">
+                    <div class="how-num">3</div>
+                    <h3>Browse</h3>
+                    <p>Open YouTube. Clify blocks everything automatically.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="screenshots" style="border-top:1px solid var(--border)">
+    <section class="trust">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Screenshots</div>
-                <h2>See It in Action</h2>
+            <div class="sec-h reveal">
+                <div class="sec-eye">Trust</div>
+                <h2>Built on Transparency</h2>
+                <p class="sec-desc">Every line of code is public. Your data never leaves your browser.</p>
             </div>
-            <div class="screenshots-scroll reveal">
-                <div class="screenshot-item">
-                    <div class="screenshot-img"><img src="https://i.ibb.co.com/27NP1pFt/Mission-Control.png" alt="Mission Control Dashboard" loading="lazy"></div>
-                    <div class="screenshot-caption"><h4>Mission Control</h4><p>Track focus stats and blocked distractions</p></div>
+            <div class="trust-grid reveal">
+                <div class="trust-card">
+                    <div class="trust-ic"><i class="fab fa-github"></i></div>
+                    <h3>100% Open Source</h3>
+                    <p>MIT license. Audit every line on GitHub before installing.</p>
                 </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-img"><img src="https://i.ibb.co.com/HLqf9qJt/Language.png" alt="Language Settings" loading="lazy"></div>
-                    <div class="screenshot-caption"><h4>32 Languages</h4><p>Fully localized for global users</p></div>
+                <div class="trust-card">
+                    <div class="trust-ic"><i class="fas fa-lock"></i></div>
+                    <h3>Zero Data Collection</h3>
+                    <p>No telemetry, no analytics, no tracking. Everything local.</p>
                 </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-img"><img src="https://i.ibb.co.com/ymnyCcXg/Shorts-Gone.png" alt="Shorts Removed" loading="lazy"></div>
-                    <div class="screenshot-caption"><h4>Shorts Removed</h4><p>Clean YouTube without Shorts</p></div>
-                </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-img"><img src="https://i.ibb.co.com/VWT409PF/Shorts-Gone-2.png" alt="Clean Homepage" loading="lazy"></div>
-                    <div class="screenshot-caption"><h4>Clean Homepage</h4><p>No more infinite Shorts scroll</p></div>
-                </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-img"><img src="https://i.ibb.co.com/vvHJNsw9/Screenshot-2026-03-12-141221.png" alt="Keyword Blocker" loading="lazy"></div>
-                    <div class="screenshot-caption"><h4>Keyword Blocker</h4><p>Hide videos by title keywords</p></div>
-                </div>
-                <div class="screenshot-item">
-                    <div class="screenshot-img"><img src="https://i.ibb.co.com/vxkWqWVB/Screenshot-2026-03-12-141338.png" alt="Focus Dashboard" loading="lazy"></div>
-                    <div class="screenshot-caption"><h4>Focus Dashboard</h4><p>Analytics of your focus time</p></div>
+                <div class="trust-card">
+                    <div class="trust-ic"><i class="fas fa-server"></i></div>
+                    <h3>No External Dependencies</h3>
+                    <p>Only external request: SponsorBlock API for segment data. That's it.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" style="border-top:1px solid var(--border)">
+    <section class="compare">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Watch</div>
-                <h2>30-Second Demo</h2>
-            </div>
-            <div class="video-showcase reveal">
-                <a href="https://www.facebook.com/reel/4298529337129742" target="_blank" class="video-card">
-                    <div class="video-thumb">
-                        <i class="fas fa-film"></i>
-                        <span>Clify Demo</span>
-                    </div>
-                    <div class="video-play"><i class="fas fa-play" style="margin-left:3px"></i></div>
-                    <div class="video-bar">
-                        <span><i class="fab fa-facebook" style="color:var(--fb-blue)"></i> Watch on Facebook</span>
-                        <span>30s</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="border-top:1px solid var(--border)">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Comparison</div>
+            <div class="sec-h reveal">
+                <div class="sec-eye">Comparison</div>
                 <h2>Why Clify Wins</h2>
             </div>
-            <div class="comparison-wrap reveal">
+            <div class="cmp-wrap reveal">
                 <table>
-                    <thead><tr><th>Feature</th><th>Clify</th><th>Other Blockers</th></tr></thead>
+                    <thead><tr><th>Feature</th><th>Clify</th><th>Others</th></tr></thead>
                     <tbody>
-                        <tr><td>Native Ad Blocker</td><td class="ck"><i class="fas fa-check"></i> 3-layer system</td><td class="cx"><i class="fas fa-xmark"></i> Extra extension</td></tr>
-                        <tr><td>SponsorBlock</td><td class="ck"><i class="fas fa-check"></i> 9 categories, auto-skip</td><td class="cx"><i class="fas fa-xmark"></i> Manual or none</td></tr>
+                        <tr><td>Native Ad Blocker</td><td class="ck"><i class="fas fa-check"></i> 3-layer</td><td class="cx"><i class="fas fa-xmark"></i> Extra ext</td></tr>
+                        <tr><td>SponsorBlock</td><td class="ck"><i class="fas fa-check"></i> 9 categories</td><td class="cx"><i class="fas fa-xmark"></i> Manual</td></tr>
                         <tr><td>Content Density</td><td class="ck"><i class="fas fa-check"></i> Per-video + channel</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
-                        <tr><td>Open Source</td><td class="ck"><i class="fas fa-check"></i> 100% MIT</td><td class="cx"><i class="fas fa-xmark"></i> Often closed</td></tr>
-                        <tr><td>No Data Collection</td><td class="ck"><i class="fas fa-check"></i> Local-only</td><td class="cx"><i class="fas fa-xmark"></i> Unknown</td></tr>
-                        <tr><td>Shorts Removal</td><td class="ck"><i class="fas fa-check"></i> Complete (20+ selectors)</td><td class="ck"><i class="fas fa-check"></i> Partial</td></tr>
-                        <tr><td>Volume Boost</td><td class="ck"><i class="fas fa-check"></i> Up to 2x</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
-                        <tr><td>Channel Blocking</td><td class="ck"><i class="fas fa-check"></i> URL/handle/name + overlay</td><td class="ck"><i class="fas fa-check"></i> Basic</td></tr>
+                        <tr><td>Open Source</td><td class="ck"><i class="fas fa-check"></i> MIT</td><td class="cx"><i class="fas fa-xmark"></i> Closed</td></tr>
+                        <tr><td>No Tracking</td><td class="ck"><i class="fas fa-check"></i> Guaranteed</td><td class="cx"><i class="fas fa-xmark"></i> Unknown</td></tr>
+                        <tr><td>Shorts Removal</td><td class="ck"><i class="fas fa-check"></i> Complete</td><td class="ck"><i class="fas fa-check"></i> Partial</td></tr>
+                        <tr><td>Volume Boost</td><td class="ck"><i class="fas fa-check"></i> 2x</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
                         <tr><td>Language Blocking</td><td class="ck"><i class="fas fa-check"></i> 25+ scripts</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
                         <tr><td>Browser Support</td><td class="ck"><i class="fas fa-check"></i> 40+</td><td class="ck"><i class="fas fa-check"></i> 3-5</td></tr>
+                        <tr><td>Android</td><td class="ck"><i class="fas fa-check"></i> Kiwi & Quetta</td><td class="cx"><i class="fas fa-xmark"></i> Limited</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <section class="section" id="android" style="border-top:1px solid var(--border)">
+    <section class="usecases">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Mobile</div>
-                <h2>Works on Android Too</h2>
-                <p class="section-desc">Take Clify with you via Kiwi Browser or Quetta Browser.</p>
+            <div class="sec-h reveal">
+                <div class="sec-eye">Use Cases</div>
+                <h2>Made for Focus</h2>
+                <p class="sec-desc">Whether you're studying, working, or just trying to stay sane.</p>
             </div>
-            <div class="android-cards reveal">
-                <div class="android-card">
-                    <div class="android-card-icon kiwi"><i class="fab fa-chrome"></i></div>
+            <div class="uc-grid reveal">
+                <div class="uc-card">
+                    <div class="uc-ic uc-blue"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="uc-body">
+                        <h3>Students</h3>
+                        <p>Block Shorts, skip sponsors, filter by language. Watch lectures without distractions. Content density shows which videos are actually educational.</p>
+                        <div class="uc-tags"><span class="uc-tag">Shorts Block</span><span class="uc-tag">Content Density</span><span class="uc-tag">Language Filter</span></div>
+                    </div>
+                </div>
+                <div class="uc-card">
+                    <div class="uc-ic uc-green"><i class="fas fa-briefcase"></i></div>
+                    <div class="uc-body">
+                        <h3>Professionals</h3>
+                        <p>Scheduled blocking during work hours. Volume boost for quiet recordings. Channel blocking to remove noise from subscriptions.</p>
+                        <div class="uc-tags"><span class="uc-tag">Scheduled</span><span class="uc-tag">Volume Boost</span><span class="uc-tag">Channel Block</span></div>
+                    </div>
+                </div>
+                <div class="uc-card">
+                    <div class="uc-ic uc-purple"><i class="fas fa-shield-halved"></i></div>
+                    <div class="uc-body">
+                        <h3>Privacy Advocates</h3>
+                        <p>Zero data collection. No telemetry. Open source MIT license. Only external call is SponsorBlock for segment data. Everything else stays local.</p>
+                        <div class="uc-tags"><span class="uc-tag">Open Source</span><span class="uc-tag">No Tracking</span><span class="uc-tag">MIT License</span></div>
+                    </div>
+                </div>
+                <div class="uc-card">
+                    <div class="uc-ic uc-orange"><i class="fas fa-mobile"></i></div>
+                    <div class="uc-body">
+                        <h3>Android Users</h3>
+                        <p>Full support on Kiwi and Quetta browsers. Same features as desktop. Load unpacked and you're set in under 2 minutes.</p>
+                        <div class="uc-tags"><span class="uc-tag">Kiwi</span><span class="uc-tag">Quetta</span><span class="uc-tag">Same Features</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="android" id="android">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">Mobile</div>
+                <h2>Works on Android</h2>
+                <p class="sec-desc">Take Clify with you via Kiwi or Quetta Browser.</p>
+            </div>
+            <div class="and-grid reveal">
+                <div class="and-card">
+                    <div class="and-ic k"><i class="fab fa-chrome"></i></div>
                     <h3>Kiwi Browser</h3>
-                    <div class="badge">Fully Supported</div>
-                    <div class="android-steps">
-                        <div class="android-step"><span class="android-step-num">1</span> Install from Play Store</div>
-                        <div class="android-step"><span class="android-step-num">2</span> Download Clify .zip</div>
-                        <div class="android-step"><span class="android-step-num">3</span> Go to <code style="color:var(--accent)">kiwi://extensions</code></div>
-                        <div class="android-step"><span class="android-step-num">4</span> Enable Developer Mode → Load unpacked</div>
+                    <div class="and-badge">Fully Supported</div>
+                    <div class="and-steps">
+                        <div class="and-step"><span class="and-num">1</span> Install from Play Store</div>
+                        <div class="and-step"><span class="and-num">2</span> Download Clify .zip</div>
+                        <div class="and-step"><span class="and-num">3</span> Go to <code style="color:var(--accent)">kiwi://extensions</code></div>
+                        <div class="and-step"><span class="and-num">4</span> Enable Dev Mode → Load unpacked</div>
                     </div>
                     <a href="https://play.google.com/store/apps/details?id=com.kiwibrowser.browser" target="_blank" class="btn btn-kiwi"><i class="fab fa-google-play"></i> Get Kiwi</a>
                 </div>
-                <div class="android-card">
-                    <div class="android-card-icon quetta"><i class="fas fa-globe"></i></div>
+                <div class="and-card">
+                    <div class="and-ic q"><i class="fas fa-globe"></i></div>
                     <h3>Quetta Browser</h3>
-                    <div class="badge">Fully Supported</div>
-                    <div class="android-steps">
-                        <div class="android-step"><span class="android-step-num">1</span> Install from Play Store</div>
-                        <div class="android-step"><span class="android-step-num">2</span> Download Clify .zip</div>
-                        <div class="android-step"><span class="android-step-num">3</span> Go to <code style="color:var(--accent)">quetta://extensions</code></div>
-                        <div class="android-step"><span class="android-step-num">4</span> Load unpacked extension</div>
+                    <div class="and-badge">Fully Supported</div>
+                    <div class="and-steps">
+                        <div class="and-step"><span class="and-num">1</span> Install from Play Store</div>
+                        <div class="and-step"><span class="and-num">2</span> Download Clify .zip</div>
+                        <div class="and-step"><span class="and-num">3</span> Go to <code style="color:var(--accent)">quetta://extensions</code></div>
+                        <div class="and-step"><span class="and-num">4</span> Load unpacked extension</div>
                     </div>
                     <a href="https://play.google.com/store/apps/details?id=com.quetta.browser" target="_blank" class="btn btn-quetta"><i class="fab fa-google-play"></i> Get Quetta</a>
                 </div>
@@ -702,261 +754,107 @@
         </div>
     </section>
 
-    <section class="section" id="testimonials" style="border-top:1px solid var(--border)">
+    <section class="install" id="install">
         <div class="container">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Testimonials</div>
-                <h2>Loved by Focus Seekers</h2>
+            <div class="sec-h reveal">
+                <div class="sec-eye">Installation</div>
+                <h2>2 Minutes to Install</h2>
+                <p class="sec-desc">Safe, transparent, open source. Unpacked extension.</p>
             </div>
-            <div class="testimonials-grid reveal">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="testimonial-text">"Three-layer ad blocking that actually works. The SponsorBlock auto-skip and content density badge are features I didn't know I needed."</div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                        <div><div class="testimonial-name">Alex Chen</div><div class="testimonial-role">Software Developer</div></div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="testimonial-text">"Open source, no data collection, and it blocks everything. The language blocking feature finally lets me filter non-English content properly."</div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                        <div><div class="testimonial-name">Priya Sharma</div><div class="testimonial-role">Digital Minimalist</div></div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="testimonial-text">"Works on Kiwi Browser on my Android. Volume boost and scheduled blocking are features I use daily. The dashboard is beautiful."</div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
-                        <div><div class="testimonial-name">Marcus Johnson</div><div class="testimonial-role">Privacy Advocate</div></div>
-                    </div>
-                </div>
+            <div class="inst-steps reveal">
+                <div class="inst"><div class="inst-n">1</div><div class="inst-body"><h3>Download & Extract</h3><p>Get the latest release. Extract to a permanent folder.</p><div class="inst-code">Clify-v12.0.0.zip</div></div></div>
+                <div class="inst"><div class="inst-n">2</div><div class="inst-body"><h3>Open Extensions</h3><p>Go to your browser's extension page.</p><div class="inst-code">chrome://extensions</div></div></div>
+                <div class="inst"><div class="inst-n">3</div><div class="inst-body"><h3>Developer Mode</h3><p>Toggle Developer mode ON at top-right.</p></div></div>
+                <div class="inst"><div class="inst-n">4</div><div class="inst-body"><h3>Load Unpacked</h3><p>Click Load unpacked. Select the folder. Done.</p></div></div>
             </div>
         </div>
     </section>
 
-    <section class="ph-section section" id="producthunt">
+    <section class="faq" id="faq">
         <div class="container">
-            <div class="ph-card reveal">
-                <div class="ph-logo" style="height:clamp(32px,6vw,44px)">
-                    <img src="https://ph-static.imgix.net/product-hunt-logo-horizontal-white.png?auto=compress&codec=mozjpeg&cs=strip&auto=format&fit=max&frame=1" alt="Product Hunt" style="height:100%">
-                </div>
-                <h2>Live on Product Hunt</h2>
-                <p style="font-size:1.05rem;color:var(--text-secondary);max-width:550px;margin:0 auto">Join the conversation. Support Clify. Help us reach more people who need distraction-free YouTube.</p>
-                <div class="ph-stats">
-                    <div><div class="ph-stat-num">#2</div><div class="ph-stat-label">Product of the Day</div></div>
-                    <div><div class="ph-stat-num">350+</div><div class="ph-stat-label">Upvotes</div></div>
-                    <div><div class="ph-stat-num">45+</div><div class="ph-stat-label">Comments</div></div>
-                </div>
-                <div class="ph-actions">
-                    <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="btn btn-ph" style="padding:16px 40px;font-size:1.05rem"><i class="fab fa-product-hunt"></i> View on Product Hunt</a>
-                    <a href="https://www.producthunt.com/posts/clify-formerly-zap?comment=true" target="_blank" class="btn btn-outline" style="padding:16px 40px;font-size:1.05rem;border-color:rgba(255,97,84,0.4);color:#ff9a8a"><i class="fas fa-comment"></i> Leave a Comment</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="install" style="border-top:1px solid var(--border)">
-        <div class="container container--narrow">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Installation</div>
-                <h2>Up and Running in 2 Minutes</h2>
-                <p class="section-desc">Safe, transparent, and open source. Install as an unpacked extension.</p>
-            </div>
-            <div class="install-steps reveal">
-                <div class="install-step">
-                    <div class="step-num">1</div>
-                    <div class="step-body">
-                        <h3>Download & Extract</h3>
-                        <p>Download the latest release and extract the ZIP to a folder you'll keep.</p>
-                        <div class="step-code"><i class="fas fa-file-zipper"></i> Clify-v12.0.0.zip</div>
-                    </div>
-                </div>
-                <div class="install-step">
-                    <div class="step-num">2</div>
-                    <div class="step-body">
-                        <h3>Open Extensions Page</h3>
-                        <p>Navigate to your browser's extension management page.</p>
-                        <div class="step-code">chrome://extensions</div>
-                    </div>
-                </div>
-                <div class="install-step">
-                    <div class="step-num">3</div>
-                    <div class="step-body">
-                        <h3>Enable Developer Mode</h3>
-                        <p>Toggle "Developer mode" at the top-right corner to ON.</p>
-                    </div>
-                </div>
-                <div class="install-step">
-                    <div class="step-num">4</div>
-                    <div class="step-body">
-                        <h3>Load Unpacked</h3>
-                        <p>Click "Load unpacked" and select the extracted folder. You're done.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="download-section section" id="download">
-        <div class="container">
-            <div class="download-cta reveal">
-                <h2>Get Clify Today</h2>
-                <p style="font-size:1.05rem;color:var(--text-secondary)">Version 12.0.0 — Free forever — No data collection</p>
-                <div class="download-meta">
-                    <span><i class="fas fa-download"></i> <span id="downloadCountDisplay">0</span> downloads</span>
-                    <span><i class="fas fa-clock"></i> Updated today</span>
-                </div>
-                <div class="download-actions">
-                    <a href="https://github.com/diptodesign/Clify/releases" class="btn btn-primary" style="padding:16px 40px;font-size:1.05rem" data-track-download><i class="fas fa-download"></i> Install Clify Free</a>
-                    <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-outline" style="padding:16px 40px;font-size:1.05rem"><i class="fab fa-github"></i> Star on GitHub</a>
-                </div>
-                <div class="browser-strip">
-                    <span class="browser-tag"><i class="fab fa-chrome"></i> Chrome</span>
-                    <span class="browser-tag"><i class="fab fa-edge"></i> Edge</span>
-                    <span class="browser-tag"><i class="fab fa-brave"></i> Brave</span>
-                    <span class="browser-tag"><i class="fab fa-opera"></i> Opera</span>
-                    <span class="browser-tag"><i class="fab fa-opera"></i> Opera GX</span>
-                    <span class="browser-tag"><i class="fab fa-chrome"></i> Chromium</span>
-                    <span class="browser-tag"><i class="fab fa-firefox"></i> Vivaldi</span>
-                    <span class="browser-tag"><i class="fab fa-yandex"></i> Yandex</span>
-                    <span class="browser-tag"><i class="fas fa-compass"></i> Arc</span>
-                    <span class="browser-tag"><i class="fas fa-globe"></i> Samsung</span>
-                    <span class="browser-tag kiwi"><i class="fas fa-leaf"></i> Kiwi (Android)</span>
-                    <span class="browser-tag quetta"><i class="fas fa-shield-halved"></i> Quetta (Android)</span>
-                </div>
-                <p style="font-size:0.8rem;color:var(--text-muted);margin-top:16px">Firefox support coming 2026 Q3 — All Chromium-based browsers supported</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="border-top:1px solid var(--border)">
-        <div class="container container--narrow">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Roadmap</div>
-                <h2>What's Coming</h2>
-            </div>
-            <div class="roadmap-timeline reveal">
-                <div class="roadmap-entry">
-                    <div class="roadmap-dot done"></div>
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">v8.0.0 <span class="roadmap-done-tag">Shipped</span></div>
-                        <h3>Native Ad Blocker + Channel Manager</h3>
-                        <p>Built-in multi-layer ad blocking and channel management with full-screen overlays.</p>
-                    </div>
-                </div>
-                <div class="roadmap-entry">
-                    <div class="roadmap-dot done"></div>
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">v12.0.0 <span class="roadmap-done-tag">Shipped</span></div>
-                        <h3>SponsorBlock + Content Density + Dashboard Redesign</h3>
-                        <p>9-category SponsorBlock, content density meter, glassmorphism dashboard, and 32-language support.</p>
-                    </div>
-                </div>
-                <div class="roadmap-entry">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">Q3 2026</div>
-                        <h3>Firefox Support</h3>
-                        <p>Native Firefox extension with full feature parity. Beta testing begins July.</p>
-                    </div>
-                </div>
-                <div class="roadmap-entry">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">Q4 2026</div>
-                        <h3>Cloud Sync (Optional)</h3>
-                        <p>End-to-end encrypted sync for your settings across browsers (opt-in only).</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="border-top:1px solid var(--border)">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Community</div>
-                <h2>Contribute to Clify</h2>
-                <p class="section-desc">Open source means everyone can help make it better.</p>
-            </div>
-            <div class="contribute-grid reveal">
-                <div class="contribute-card">
-                    <div class="contribute-icon"><i class="fas fa-code"></i></div>
-                    <h3>Code</h3>
-                    <p>Submit pull requests on GitHub. Fix bugs, add features, improve performance.</p>
-                </div>
-                <div class="contribute-card">
-                    <div class="contribute-icon"><i class="fas fa-language"></i></div>
-                    <h3>Translate</h3>
-                    <p>Help localize Clify into more languages. Already at 32 and counting.</p>
-                </div>
-                <div class="contribute-card">
-                    <div class="contribute-icon"><i class="fas fa-bug"></i></div>
-                    <h3>Report Bugs</h3>
-                    <p>Found an issue? Open an issue on GitHub. Your feedback makes Clify better.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="faq" style="border-top:1px solid var(--border)">
-        <div class="container container--narrow">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">FAQ</div>
+            <div class="sec-h reveal">
+                <div class="sec-eye">FAQ</div>
                 <h2>Common Questions</h2>
             </div>
             <div class="faq-list reveal">
-                <div class="faq-item">
-                    <div class="faq-q"><span>Is Clify really 100% open source?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Yes. All code is on GitHub under MIT license. No obfuscation, no tracking. You can audit every line. The only external request is to the SponsorBlock API for segment data.</p></div>
+                <div class="faq-i"><div class="faq-q"><span>Is Clify really 100% open source?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Yes. MIT license. All code on GitHub. No obfuscation. You can audit every line before installing.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>How does the ad blocker work?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Three layers: (1) declarativeNetRequest blocking ~90 ad domains, (2) DOM removal targeting 120+ selectors, (3) fetch/XHR interception for 80+ tracking domains.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>What is SponsorBlock?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Community-powered segment database. Clify auto-skips 9 categories: sponsors, intros, outros, self-promo, interactions, hooks, filler, previews, non-music.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>What is Content Density?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Color-coded badge (cyan→red) showing real content percentage after removing sponsors, intros, filler. Aggregates per channel across videos.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>Will it slow down YouTube?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Minimal. Efficient DOM observation, cached SponsorBlock data, non-blocking API calls. Everything local.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>Why not on Chrome Web Store?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>YouTube's policies on content blockers. Manual install ensures full transparency and zero data collection.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>How do I update?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Download latest ZIP, extract, go to chrome://extensions, click Reload on Clify. Settings preserved.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>Can I block channels?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Yes. Block by URL, @handle, or name. Full-screen overlay on blocked watch pages with unblock option.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>Does it work on mobile?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Yes, on <strong>Kiwi Browser</strong> and <strong>Quetta Browser</strong> for Android. Load at <code style="color:var(--accent)">kiwi://extensions</code> or <code style="color:var(--quetta)">quetta://extensions</code>.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="changelog" id="changelog">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">Changelog</div>
+                <h2>Built in Public</h2>
+                <p class="sec-desc">Every version, every feature, documented.</p>
+            </div>
+            <div class="cl-timeline reveal">
+                <div class="cl-item">
+                    <div class="cl-dot"></div>
+                    <div class="cl-body">
+                        <span class="cl-ver">v12.0.0</span><span class="cl-tag shipped">Shipped</span><span class="cl-date">2025</span>
+                        <div class="cl-features">
+                            <span class="cl-feat"><i class="fas fa-microchip" style="margin-right:4px;font-size:0.65rem"></i> Content Density Meter</span>
+                            <span class="cl-feat"><i class="fas fa-language" style="margin-right:4px;font-size:0.65rem"></i> Language Block Rewrite</span>
+                            <span class="cl-feat"><i class="fas fa-display" style="margin-right:4px;font-size:0.65rem"></i> PiP Button</span>
+                            <span class="cl-feat"><i class="fas fa-palette" style="margin-right:4px;font-size:0.65rem"></i> Refined Dark Theme</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q"><span>How does the native ad blocker work?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Three layers: (1) declarativeNetRequest rules blocking ~90 ad domains at network level, (2) DOM removal via MutationObserver targeting 120+ YouTube ad selectors, (3) fetch/XHR interception overriding 80+ tracking domains. No external filter lists needed.</p></div>
+                <div class="cl-item">
+                    <div class="cl-dot"></div>
+                    <div class="cl-body">
+                        <span class="cl-ver">v10.0.0</span><span class="cl-tag shipped">Shipped</span><span class="cl-date">2025</span>
+                        <div class="cl-features">
+                            <span class="cl-feat"><i class="fas fa-forward-fast" style="margin-right:4px;font-size:0.65rem"></i> SponsorBlock Integration</span>
+                            <span class="cl-feat"><i class="fas fa-language" style="margin-right:4px;font-size:0.65rem"></i> Language Blocking</span>
+                            <span class="cl-feat"><i class="fas fa-bell" style="margin-right:4px;font-size:0.65rem"></i> Notification System</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q"><span>What is SponsorBlock?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>A community-powered database of video segments. Clify auto-skips 9 categories: sponsors, intros, outros, self-promo, interactions, hooks, filler, previews, and non-music. Colored progress bars show segments on the timeline.</p></div>
+                <div class="cl-item">
+                    <div class="cl-dot"></div>
+                    <div class="cl-body">
+                        <span class="cl-ver">v9.0.0</span><span class="cl-tag shipped">Shipped</span><span class="cl-date">2025</span>
+                        <div class="cl-features">
+                            <span class="cl-feat"><i class="fas fa-chart-simple" style="margin-right:4px;font-size:0.65rem"></i> Glassmorphism Dashboard</span>
+                            <span class="cl-feat"><i class="fas fa-ban" style="margin-right:4px;font-size:0.65rem"></i> Channel Blocking</span>
+                            <span class="cl-feat"><i class="fas fa-banknote" style="margin-right:4px;font-size:0.65rem"></i> Monetization Badge</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q"><span>What is the Content Density Meter?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>A color-coded badge (cyan to red) that shows the real content percentage of each video after removing sponsors, intros, outros, and filler. It also aggregates scores per channel across multiple videos.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q"><span>Will Clify slow down YouTube?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Minimal impact. Efficient DOM observation, cached SponsorBlock data, and non-blocking API calls. Everything runs locally in your browser with no external telemetry.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q"><span>Why isn't it on the Chrome Web Store?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Due to YouTube's policies on content blockers. Manual install ensures full transparency and zero data collection. You can audit the source code before installing.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q"><span>How do I update?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Download the latest ZIP, extract it, go to chrome://extensions and click "Reload" on the Clify card. Your settings are preserved.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q"><span>Can I block specific channels?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Yes. Block by URL, @handle, or channel name. When you visit a blocked channel or watch page, a full-screen overlay appears with options to unblock or go back.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q"><span>Does it work on mobile?</span><i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-a"><p>Yes, on <strong>Kiwi Browser</strong> and <strong>Quetta Browser</strong> for Android. Install the browser, download Clify, load it at <code style="color:var(--accent)">kiwi://extensions</code> or <code style="color:var(--quetta)">quetta://extensions</code>.</p></div>
+                <div class="cl-item">
+                    <div class="cl-dot"></div>
+                    <div class="cl-body">
+                        <span class="cl-ver">v8.0.0</span><span class="cl-tag shipped">Shipped</span><span class="cl-date">2025</span>
+                        <div class="cl-features">
+                            <span class="cl-feat"><i class="fas fa-shield-halved" style="margin-right:4px;font-size:0.65rem"></i> Native Ad Blocker</span>
+                            <span class="cl-feat"><i class="fas fa-volume-high" style="margin-right:4px;font-size:0.65rem"></i> Volume Boost</span>
+                            <span class="cl-feat"><i class="fas fa-clock" style="margin-right:4px;font-size:0.65rem"></i> Scheduled Blocking</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section newsletter" style="border-top:1px solid var(--border)">
-        <div class="container container--narrow">
+    <section class="news">
+        <div class="container">
             <div class="reveal">
                 <h2>Stay Updated</h2>
-                <p style="color:var(--text-secondary);margin-top:12px">New releases, features, and privacy tips. No spam.</p>
-                <div class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Your email" id="newsletterEmail">
-                    <button class="btn btn-primary" id="newsletterSubmit">Subscribe</button>
+                <p style="color:var(--t2);margin-top:8px;font-size:0.9rem">New releases, features, privacy tips. No spam.</p>
+                <div class="news-form">
+                    <input type="email" class="news-input" placeholder="Your email" id="newsEmail">
+                    <button class="btn btn-a" id="newsBtn">Subscribe</button>
                 </div>
             </div>
         </div>
@@ -964,205 +862,102 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="nav-brand">
-                        <div class="nav-logo"><i class="fas fa-bolt"></i></div>
-                        Clify
-                    </a>
-                    <p>Open source YouTube blocker. Native ad blocker, SponsorBlock, and 30+ focus tools. Manual install, zero tracking.</p>
-                    <div class="footer-socials">
-                        <a href="https://github.com/diptodesign/clify" target="_blank" class="footer-social"><i class="fab fa-github"></i></a>
-                        <a href="https://t.me/Clifybydd" target="_blank" class="footer-social"><i class="fab fa-telegram"></i></a>
-                        <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="footer-social"><i class="fab fa-product-hunt"></i></a>
-                        <a href="mailto:diptodesignstd@gmail.com" class="footer-social"><i class="fas fa-envelope"></i></a>
+            <div class="ft-grid">
+                <div class="ft-brand">
+                    <a href="#" class="nav-brand"><div class="nav-logo"><i class="fas fa-bolt"></i></div>Clify</a>
+                    <p>Open source YouTube blocker. Native ad blocker, SponsorBlock, 30+ focus tools. Zero tracking.</p>
+                    <div class="ft-socials">
+                        <a href="https://github.com/diptodesign/clify" target="_blank" class="ft-social"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/Clifybydd" target="_blank" class="ft-social"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="ft-social"><i class="fab fa-product-hunt"></i></a>
+                        <a href="mailto:diptodesignstd@gmail.com" class="ft-social"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
-                        <li><a href="#install"><i class="fas fa-chevron-right"></i> Install</a></li>
-                        <li><a href="#download"><i class="fas fa-chevron-right"></i> Download</a></li>
-                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="https://github.com/diptodesign/clify" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-                        <li><a href="https://t.me/Clifybydd" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
-                        <li><a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank"><i class="fab fa-product-hunt"></i> Product Hunt</a></li>
-                        <li><a href="mailto:diptodesignstd@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-scale-balanced"></i> MIT License</a></li>
-                        <li><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank"><i class="fas fa-lock"></i> Privacy Policy</a></li>
-                        <li><a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank"><i class="fas fa-history"></i> Changelog</a></li>
-                    </ul>
-                </div>
+                <div class="ft-col"><h4>Product</h4><ul><li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li><li><a href="#install"><i class="fas fa-chevron-right"></i> Install</a></li><li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li></ul></div>
+                <div class="ft-col"><h4>Resources</h4><ul><li><a href="https://github.com/diptodesign/clify" target="_blank"><i class="fab fa-github"></i> GitHub</a></li><li><a href="https://t.me/Clifybydd" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li><li><a href="mailto:diptodesignstd@gmail.com"><i class="fas fa-envelope"></i> Email</a></li></ul></div>
+                <div class="ft-col"><h4>Legal</h4><ul><li><a href="#"><i class="fas fa-scale-balanced"></i> MIT License</a></li><li><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank"><i class="fas fa-lock"></i> Privacy</a></li><li><a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank"><i class="fas fa-history"></i> Changelog</a></li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-copy"><span class="accent">&copy;</span> <span id="currentYear"></span> Clify by Dipto Design Studio — v12.0.0</div>
-                <div class="footer-legal">
+            <div class="ft-bot">
+                <div class="ft-copy"><span class="a">&copy;</span> <span id="yr"></span> Clify by Dipto Design Studio — v12.0.0</div>
+                <div class="ft-links">
                     <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>
                     <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank">Product Hunt</a>
-                    <a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank">Changelog</a>
                     <a href="mailto:diptodesignstd@gmail.com">Contact</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div id="stickyBar" class="sticky-bar hidden">
-        <div class="sticky-inner">
-            <span class="sticky-text">YouTube, Uncluttered — Join 200,000+ users</span>
-            <div class="sticky-actions">
-                <a href="#install" class="btn btn-primary" style="padding:10px 24px;font-size:0.85rem" onclick="document.getElementById('stickyBar').classList.add('hidden')" data-track-download><i class="fas fa-bolt"></i> Install</a>
-                <button class="sticky-close" onclick="document.getElementById('stickyBar').classList.add('hidden')" aria-label="Close"><i class="fas fa-times"></i></button>
+    <div id="stickyBar" class="sticky hide">
+        <div class="sticky-in">
+            <span class="sticky-t">YouTube, Uncluttered</span>
+            <div class="sticky-a">
+                <a href="#install" class="btn btn-a" style="padding:8px 20px;font-size:0.8rem" onclick="document.getElementById('stickyBar').classList.add('hide')" data-track-download><i class="fas fa-bolt"></i> Install</a>
+                <button class="sticky-x" onclick="document.getElementById('stickyBar').classList.add('hide')" aria-label="Close"><i class="fas fa-times"></i></button>
             </div>
         </div>
     </div>
 
-    <div id="liveToast" class="live-toast">
-        <div class="live-toast-avatar"><i class="fas fa-user-plus"></i></div>
-        <div class="live-toast-text"><strong id="liveUserName">Sarah from US</strong> <span id="liveAction">just installed Clify</span></div>
+    <div id="liveToast" class="toast">
+        <div class="toast-av"><i class="fas fa-user-plus"></i></div>
+        <div class="toast-t"><strong id="toastName">Sarah from US</strong> <span id="toastAct">just installed Clify</span></div>
     </div>
 
-    <button class="btt" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <button class="btt" id="btt" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
     (function(){
-        var mobileBtn=document.getElementById('mobileMenuBtn');
-        var navLinks=document.getElementById('navLinks');
-        if(mobileBtn) mobileBtn.addEventListener('click',function(){ navLinks.classList.toggle('open') });
-
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
-            anchor.addEventListener('click',function(e){
-                e.preventDefault();
-                var id=this.getAttribute('href');
-                if(id==='#') return;
-                var target=document.querySelector(id);
-                if(target){ window.scrollTo({top:target.offsetTop-70,behavior:'smooth'}); if(navLinks) navLinks.classList.remove('open'); }
-            });
-        });
-
-        document.querySelectorAll('.faq-q').forEach(function(q){
-            q.addEventListener('click',function(){ this.parentElement.classList.toggle('active'); });
-        });
-
-        document.getElementById('currentYear').textContent=new Date().getFullYear();
-
-        var reveals=document.querySelectorAll('.reveal');
-        var revealObs=new IntersectionObserver(function(entries){
-            entries.forEach(function(entry){
-                if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-            });
-        },{threshold:0.1, rootMargin:'0px 0px -40px 0px'});
-        reveals.forEach(function(el){ revealObs.observe(el); });
-
-        var nav=document.getElementById('navbar');
-        window.addEventListener('scroll',function(){
-            nav.classList.toggle('scrolled',window.scrollY>60);
-        });
-
-        var btt=document.getElementById('backToTop');
-        window.addEventListener('scroll',function(){ btt.classList.toggle('show',window.scrollY>600); });
-        btt.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
-
-        var stickyBar=document.getElementById('stickyBar');
-        var heroEl=document.querySelector('.hero');
-        if(stickyBar&&heroEl){
-            window.addEventListener('scroll',function(){
-                stickyBar.classList.toggle('hidden',window.scrollY<heroEl.offsetHeight-200);
-            });
-        }
-
-        var names=['Alex from UK','Priya from India','Carlos from Spain','Yuki from Japan','Fatima from Egypt','Chen from China','Maria from Brazil','Ahmed from UAE','Olga from Russia','John from US','Sophie from France','Lars from Germany','Aisha from Pakistan','Diego from Mexico','Emma from Canada'];
-        var actions=['just installed Clify','blocked 47 Shorts','joined the community','started their focus journey','removed 32 distractions','saved 2 hours today','just got focused','escaped the rabbit hole','reclaimed their attention'];
-        function showToast(){
-            var t=document.getElementById('liveToast');
-            if(!t) return;
-            document.getElementById('liveUserName').textContent=names[Math.floor(Math.random()*names.length)];
-            document.getElementById('liveAction').textContent=actions[Math.floor(Math.random()*actions.length)];
-            t.classList.add('show');
-            setTimeout(function(){ t.classList.remove('show'); },5000);
-        }
-        setTimeout(showToast,4000);
-        setInterval(showToast,30000+Math.random()*30000);
+        document.getElementById('mobBtn').addEventListener('click',function(){document.getElementById('navL').classList.toggle('open')});
+        document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){window.scrollTo({top:t.offsetTop-60,behavior:'smooth'});document.getElementById('navL').classList.remove('open')}})});
+        document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){this.parentElement.classList.toggle('active')})});
+        document.getElementById('yr').textContent=new Date().getFullYear();
+        var r=document.querySelectorAll('.reveal');
+        new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('vis')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'}).observe.bind(new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('vis')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'}));
+        document.querySelectorAll('.reveal').forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('vis')})},{threshold:0.1}).observe(el)});
+        document.querySelectorAll('.feat').forEach(function(f,i){f.style.transitionDelay=(i*0.05)+'s'});
+        document.querySelectorAll('.wn-card').forEach(function(c,i){c.style.transitionDelay=(i*0.1)+'s'});
+        document.querySelectorAll('.tech-card').forEach(function(c,i){c.style.transitionDelay=(i*0.1)+'s'});
+        document.querySelectorAll('.uc-card').forEach(function(c,i){c.style.transitionDelay=(i*0.1)+'s'});
+        document.querySelectorAll('.cl-item').forEach(function(c,i){c.style.transitionDelay=(i*0.15)+'s'});
+        document.querySelectorAll('.hv-feat').forEach(function(f,i){f.style.opacity='0';f.style.transform='translateX(12px)';setTimeout(function(){f.style.transition='all 0.4s '+(i*0.08)+'s var(--ease)';f.style.opacity='1';f.style.transform='translateX(0)'},100)});
+        var nav=document.getElementById('nav');window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>50)});
+        var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.classList.toggle('show',window.scrollY>500)});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+        var s=document.getElementById('stickyBar'),h=document.querySelector('.hero');if(s&&h)window.addEventListener('scroll',function(){s.classList.toggle('hide',window.scrollY<h.offsetHeight-200)});
+        var nm=['Alex from UK','Priya from India','Carlos from Spain','Yuki from Japan','Fatima from Egypt','Chen from China','Maria from Brazil','Ahmed from UAE','Olga from Russia','John from US'];
+        var ac=['just installed Clify','blocked 47 Shorts','removed 32 distractions','saved 2 hours today','just got focused','reclaimed their attention'];
+        function ts(){var t=document.getElementById('liveToast');if(!t)return;document.getElementById('toastName').textContent=nm[Math.floor(Math.random()*nm.length)];document.getElementById('toastAct').textContent=ac[Math.floor(Math.random()*ac.length)];t.classList.add('show');setTimeout(function(){t.classList.remove('show')},5000)}
+        setTimeout(ts,4000);setInterval(ts,30000+Math.random()*30000);
     })();
     </script>
-
     <script>
     (function(){
-        var CONFIG={telegramBotToken:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',telegramChatId:'-1003293692757',backupChannelId:'-1003464260094'};
-        function setup(){
-            var emailInput=document.getElementById('newsletterEmail');
-            var subscribeBtn=document.getElementById('newsletterSubmit');
-            if(!emailInput||!subscribeBtn) return;
-            var newBtn=subscribeBtn.cloneNode(true);
-            subscribeBtn.parentNode.replaceChild(newBtn,subscribeBtn);
-            newBtn.addEventListener('click',function(e){
-                e.preventDefault();
-                var email=emailInput.value.trim();
-                if(!email){alert('Please enter your email to join the Clify community!');return}
-                if(!email.includes('@')||!email.includes('.')){alert('Please enter a valid email address.');return}
-                var originalText=newBtn.textContent;
-                newBtn.textContent='Welcoming you...';
-                newBtn.disabled=true;
-                var firstName=email.split('@')[0].replace(/[0-9]/g,'')||'Friend';
-                var name=firstName.charAt(0).toUpperCase()+firstName.slice(1).toLowerCase();
-                var h=new Date().getHours();
-                var greet=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
-                var msg='NEW COMMUNITY MEMBER!\n'+greet+', Dipto!\n\n'+name+' just joined the Clify community!\n\nEmail: '+email+'\nTime: '+new Date().toLocaleString();
-                fetch('https://api.telegram.org/bot'+CONFIG.telegramBotToken+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CONFIG.telegramChatId,text:msg})})
-                .then(function(r){if(r.ok){alert('Welcome to Clify, '+name+'!');emailInput.value=''}else{return fetch('https://api.telegram.org/bot'+CONFIG.telegramBotToken+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CONFIG.backupChannelId,text:'New: '+name+' ('+email+')'})}).then(function(){alert('Welcome to Clify, '+name+'!');emailInput.value=''})}})
-                .catch(function(){alert('Welcome to Clify, '+name+'! We will sync when online.');var p=JSON.parse(localStorage.getItem('pending_members')||'[]');p.push({email:email,name:name});localStorage.setItem('pending_members',JSON.stringify(p));emailInput.value=''})
-                .finally(function(){newBtn.textContent=originalText;newBtn.disabled=false});
-            });
-        }
-        if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',setup)}else{setup()}
+        var C={t:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',c:'-1003293692757',b:'-1003464260094'};
+        var e=document.getElementById('newsEmail'),btn=document.getElementById('newsBtn');
+        if(!e||!btn)return;
+        var nb=btn.cloneNode(true);btn.parentNode.replaceChild(nb,btn);
+        nb.addEventListener('click',function(ev){
+            ev.preventDefault();var em=e.value.trim();
+            if(!em){alert('Enter your email to join!');return}
+            if(!em.includes('@')||!em.includes('.')){alert('Valid email required.');return}
+            var ot=nb.textContent;nb.textContent='Joining...';nb.disabled=true;
+            var n=em.split('@')[0].replace(/[0-9]/g,'')||'Friend';n=n.charAt(0).toUpperCase()+n.slice(1).toLowerCase();
+            var h=new Date().getHours(),g=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
+            var msg='NEW MEMBER!\n'+g+', Dipto!\n\n'+n+' joined Clify!\nEmail: '+em+'\nTime: '+new Date().toLocaleString();
+            fetch('https://api.telegram.org/bot'+C.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C.c,text:msg})})
+            .then(function(r){if(r.ok){alert('Welcome, '+n+'!');e.value=''}else{return fetch('https://api.telegram.org/bot'+C.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C.b,text:'New: '+n+' ('+em+')'})}).then(function(){alert('Welcome, '+n+'!');e.value=''})}})
+            .catch(function(){alert('Welcome, '+n+'! We will sync when online.');e.value=''})
+            .finally(function(){nb.textContent=ot;nb.disabled=false});
+        });
     })();
     </script>
-
     <script>
     (function(){
-        var TC={botToken:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',chatId:'-1003293692757',backupChatId:'-1003464260094',storageKey:'clify_download_count'};
-        var count=parseInt(localStorage.getItem(TC.storageKey)||'0');
-        function updateDisplay(){
-            var e1=document.getElementById('liveDownloadCount');
-            var e2=document.getElementById('downloadCountDisplay');
-            var f=count>=1000?(count/1000).toFixed(1)+'k':String(count);
-            if(e1)e1.textContent=f;
-            if(e2)e2.textContent=f;
-        }
-        updateDisplay();
-        function trackDownload(source){
-            count++;
-            localStorage.setItem(TC.storageKey,String(count));
-            updateDisplay();
-            var ua=navigator.userAgent;
-            var plat=/Android|iPhone|iPad/i.test(ua)?'Mobile':'Desktop';
-            var ref=document.referrer||'Direct';
-            var now=new Date();
-            var t=now.toLocaleDateString()+' '+now.toLocaleTimeString();
-            var msg='DOWNLOAD TRACKED\n━━━━━━━━━━━━━━━━━━\nSource: '+source+'\nTotal Downloads: '+count+'\nPlatform: '+plat+'\nReferrer: '+ref+'\nTime: '+t+'\nUser-Agent: '+ua.substring(0,80);
-            fetch('https://api.telegram.org/bot'+TC.botToken+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TC.chatId,text:msg})}).catch(function(){
-                fetch('https://api.telegram.org/bot'+TC.botToken+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TC.backupChatId,text:msg})}).catch(function(){}});
-        }
-        document.addEventListener('click',function(e){
-            var btn=e.target.closest('[data-track-download]');
-            if(!btn) return;
-            var href=btn.getAttribute('href')||'';
-            var src='unknown';
-            if(href.includes('github.com'))src='GitHub Releases';
-            else if(href.includes('#install'))src='Install Guide';
-            else src=href;
-            trackDownload(src);
-        });
+        var T={t:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',c:'-1003293692757',b:'-1003464260094',k:'clify_download_count'};
+        var c=parseInt(localStorage.getItem(T.k)||'0');
+        function u(){var e=document.getElementById('dlCount');var f=c>=1000?(c/1000).toFixed(1)+'k':String(c);if(e)e.textContent=f}
+        u();
+        function track(s){c++;localStorage.setItem(T.k,String(c));u();var ua=navigator.userAgent;var p=/Android|iPhone|iPad/i.test(ua)?'Mobile':'Desktop';var ref=document.referrer||'Direct';var t=new Date().toLocaleDateString()+' '+new Date().toLocaleTimeString();var msg='DOWNLOAD\nSource: '+s+'\nTotal: '+c+'\nPlatform: '+p+'\nReferrer: '+ref+'\nTime: '+t+'\nUA: '+ua.substring(0,80);fetch('https://api.telegram.org/bot'+T.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:T.c,text:msg})}).catch(function(){fetch('https://api.telegram.org/bot'+T.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:T.b,text:msg})}).catch(function(){})})}
+        document.addEventListener('click',function(e){var b=e.target.closest('[data-track-download]');if(!b)return;var h=b.getAttribute('href')||'';var s=h.includes('github.com')?'GitHub Releases':h.includes('#install')?'Install Guide':h;track(s)});
     })();
     </script>
 </body>

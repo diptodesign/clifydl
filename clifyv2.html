@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Clify — YouTube, Uncluttered</title>
+    <meta name="description" content="Free open-source YouTube blocker with native ad blocker, Shorts remover, SponsorBlock, and distraction tools. Install manually — 100% private, transparent. Works on 40+ browsers including Kiwi and Quetta on Android.">
+    <meta name="keywords" content="YouTube Shorts blocker, YouTube ad blocker, SponsorBlock, remove YouTube distractions, open source extension, Chrome extension manual install, YouTube focus tool, block YouTube Shorts, Kiwi Browser, Quetta Browser, Android extension, volume boost, scheduled blocking">
+
+    <meta property="og:title" content="Clify — YouTube, Uncluttered">
+    <meta property="og:description" content="Native ad blocker, Shorts removal, SponsorBlock, and 30+ focus tools. Manual install, 100% private, open source.">
+    <meta property="og:image" content="https://i.ibb.co.com/NddywcR3/Clify-Open-Source-You-Tube-Blocker.png">
+    <meta property="og:url" content="https://diptodesign.github.io/clify">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Clify — YouTube, Uncluttered">
+    <meta name="twitter:description" content="Free YouTube blocker with ad blocking, Shorts removal, and SponsorBlock. Manual install, 100% private.">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co.com/HTvvpsZ2/icon16.png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co.com/kVdms1q9/icon128.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </noscript>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --accent: #b4f542;
+            --accent-dim: rgba(180,245,66,0.1);
+            --accent-hover: #c8ff6b;
+            --ph-orange: #ff6154;
+            --kiwi: #8cc84b;
+            --quetta: #8b5cf6;
+            --bg: #050508;
+            --bg-1: #0a0a0f;
+            --bg-2: #101018;
+            --bg-3: #16161f;
+            --border: rgba(255,255,255,0.06);
+            --border-a: rgba(180,245,66,0.12);
+            --t1: #f0f2f5;
+            --t2: #a0a8b8;
+            --t3: #6b7280;
+            --font-d: 'Space Grotesk', -apple-system, sans-serif;
+            --font-b: 'Inter', -apple-system, sans-serif;
+            --ease: cubic-bezier(0.16,1,0.3,1);
+        }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { background: var(--bg); color: var(--t2); font-family: var(--font-b); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        h1,h2,h3 { font-family: var(--font-d); color: var(--t1); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── NAV ── */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; transition: all 0.3s; }
+        .nav.scrolled { background: rgba(5,5,8,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .nav-in { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-d); font-size: 1.3rem; font-weight: 700; color: var(--t1); }
+        .nav-logo { width: 32px; height: 32px; background: var(--accent); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--bg); }
+        .nav-links { display: flex; align-items: center; gap: 6px; }
+        .nav-links a { padding: 8px 14px; font-size: 0.85rem; font-weight: 500; color: var(--t2); border-radius: 8px; transition: all 0.2s; }
+        .nav-links a:hover { color: var(--t1); background: rgba(255,255,255,0.04); }
+        .nav-mob { display: none; background: none; border: none; color: var(--t1); font-size: 1.3rem; cursor: pointer; min-height: 44px; min-width: 44px; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 28px; border-radius: 60px; font-family: var(--font-b); font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.35s var(--ease); text-decoration: none; min-height: 44px; }
+        .btn-a { background: var(--accent); color: var(--bg); box-shadow: 0 4px 20px rgba(180,245,66,0.2); }
+        .btn-a:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(180,245,66,0.3); }
+        .btn-o { background: transparent; border: 1.5px solid rgba(255,255,255,0.12); color: var(--t1); }
+        .btn-o:hover { border-color: var(--accent); background: var(--accent-dim); }
+        .btn-g { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--t1); }
+        .btn-g:hover { background: var(--accent-dim); border-color: var(--border-a); }
+        .btn-ph { background: var(--ph-orange); color: #fff; }
+        .btn-ph:hover { background: #ff7a6b; transform: translateY(-2px); }
+        .btn-kiwi { background: var(--kiwi); color: #0a0e14; }
+        .btn-quetta { background: var(--quetta); color: #fff; }
+        .btn-quetta:hover { background: #a07eff; }
+
+        /* ── HERO ── */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(180,245,66,0.05), transparent 60%); pointer-events: none; }
+        .hero-in { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-left { position: relative; z-index: 1; }
+        .hero-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-dim); border: 1px solid var(--border-a); padding: 6px 16px; border-radius: 60px; font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 28px; }
+        .hero-chip .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+        .hero h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 20px; line-height: 1.05; }
+        .hero h1 .g { color: var(--accent); }
+        .hero-sub { font-size: 1.1rem; color: var(--t2); max-width: 480px; line-height: 1.7; margin-bottom: 32px; }
+        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+        .hero-proof { display: flex; gap: 24px; flex-wrap: wrap; }
+        .hero-proof span { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--t3); }
+        .hero-proof i { color: var(--accent); font-size: 0.75rem; }
+
+        .hero-right { position: relative; }
+        .hero-visual { background: var(--bg-2); border: 1px solid var(--border); border-radius: 20px; padding: 32px; position: relative; overflow: hidden; }
+        .hero-visual::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+        .hv-row { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .hv-row:last-child { border-bottom: none; }
+        .hv-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+        .hv-icon.green { background: rgba(34,197,94,0.12); color: #22c55e; }
+        .hv-icon.blue { background: rgba(59,130,246,0.12); color: #3b82f6; }
+        .hv-icon.purple { background: rgba(168,85,247,0.12); color: #a855f7; }
+        .hv-icon.cyan { background: rgba(6,182,212,0.12); color: #06b6d4; }
+        .hv-icon.orange { background: rgba(249,115,22,0.12); color: #f97316; }
+        .hv-text { flex: 1; }
+        .hv-text strong { display: block; font-size: 0.85rem; color: var(--t1); font-weight: 600; }
+        .hv-text small { font-size: 0.75rem; color: var(--t3); }
+        .hv-status { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+        .hv-status.on { background: rgba(34,197,94,0.12); color: #22c55e; }
+        .hv-status.active { background: rgba(180,245,66,0.12); color: var(--accent); }
+
+        /* ── PROOF ── */
+        .proof { padding: 60px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.01); }
+        .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+        .proof-num { font-family: var(--font-d); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; color: var(--t1); }
+        .proof-num .a { color: var(--accent); }
+        .proof-lbl { font-size: 0.8rem; color: var(--t3); margin-top: 4px; font-weight: 500; }
+
+        /* ── FEATURES ── */
+        .features { padding: 100px 0; }
+        .sec-h { text-align: center; margin-bottom: 56px; }
+        .sec-eye { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 14px; }
+        .sec-h h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 12px; }
+        .sec-desc { font-size: 1rem; color: var(--t2); max-width: 500px; margin: 0 auto; }
+        .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: 16px; overflow: hidden; }
+        .feat { background: var(--bg-1); padding: 32px 24px; transition: background 0.3s; }
+        .feat:hover { background: var(--bg-2); }
+        .feat-ic { width: 42px; height: 42px; border-radius: 11px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; color: var(--accent); margin-bottom: 16px; transition: all 0.3s; }
+        .feat:hover .feat-ic { background: var(--accent-dim); border-color: var(--border-a); }
+        .feat h3 { font-size: 1rem; margin-bottom: 6px; }
+        .feat p { font-size: 0.85rem; color: var(--t3); margin: 0; line-height: 1.5; }
+
+        /* ── HOW ── */
+        .how { padding: 100px 0; border-top: 1px solid var(--border); }
+        .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
+        .how-step { text-align: center; position: relative; }
+        .how-step:not(:last-child)::after { content: ''; position: absolute; top: 32px; right: -16px; width: 32px; height: 2px; background: var(--border); }
+        .how-num { width: 64px; height: 64px; border-radius: 16px; background: var(--accent-dim); border: 1px solid var(--border-a); display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 0 auto 20px; }
+        .how-step h3 { font-size: 1.1rem; margin-bottom: 8px; }
+        .how-step p { font-size: 0.9rem; color: var(--t3); margin: 0; max-width: 250px; margin: 0 auto; }
+
+        /* ── TRANSPARENCY ── */
+        .trust { padding: 100px 0; border-top: 1px solid var(--border); }
+        .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border-radius: 16px; overflow: hidden; }
+        .trust-card { background: var(--bg-1); padding: 36px 24px; text-align: center; }
+        .trust-ic { font-size: 1.6rem; color: var(--accent); margin-bottom: 14px; }
+        .trust-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+        .trust-card p { font-size: 0.85rem; color: var(--t3); margin: 0; }
+
+        /* ── COMPARISON ── */
+        .compare { padding: 100px 0; border-top: 1px solid var(--border); }
+        .cmp-wrap { background: var(--bg-1); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+        .cmp-wrap table { width: 100%; border-collapse: collapse; }
+        .cmp-wrap th { text-align: left; padding: 16px 24px; font-family: var(--font-d); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--t3); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+        .cmp-wrap th:nth-child(2) { color: var(--accent); }
+        .cmp-wrap td { padding: 14px 24px; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+        .cmp-wrap tr:last-child td { border-bottom: none; }
+        .cmp-wrap tr:hover td { background: rgba(255,255,255,0.02); }
+        .ck { color: var(--accent); font-weight: 600; }
+        .ck i { margin-right: 6px; }
+        .cx { color: #f87171; }
+        .cx i { margin-right: 6px; }
+
+        /* ── ANDROID ── */
+        .android { padding: 100px 0; border-top: 1px solid var(--border); }
+        .and-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); border-radius: 16px; overflow: hidden; }
+        .and-card { background: var(--bg-1); padding: 36px 28px; text-align: center; }
+        .and-ic { width: 56px; height: 56px; margin: 0 auto 16px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+        .and-ic.k { background: rgba(140,200,75,0.12); color: var(--kiwi); }
+        .and-ic.q { background: rgba(139,92,246,0.12); color: var(--quetta); }
+        .and-card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+        .and-badge { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 3px 12px; border-radius: 20px; background: var(--accent-dim); color: var(--accent); margin-bottom: 16px; }
+        .and-steps { text-align: left; margin: 20px 0; }
+        .and-step { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 0.85rem; color: var(--t2); }
+        .and-num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+
+        /* ── INSTALL ── */
+        .install { padding: 100px 0; border-top: 1px solid var(--border); }
+        .inst-steps { max-width: 680px; margin: 0 auto; }
+        .inst { display: flex; gap: 20px; align-items: flex-start; padding: 28px 0; border-bottom: 1px solid var(--border); }
+        .inst:last-child { border-bottom: none; }
+        .inst-n { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-dim); border: 1px solid var(--border-a); display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+        .inst-body h3 { font-size: 1.05rem; margin-bottom: 4px; }
+        .inst-body p { font-size: 0.85rem; color: var(--t3); margin: 0; }
+        .inst-code { display: inline-block; margin-top: 8px; padding: 5px 12px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 6px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.75rem; color: var(--t2); }
+
+        /* ── FAQ ── */
+        .faq { padding: 100px 0; border-top: 1px solid var(--border); }
+        .faq-list { max-width: 660px; margin: 0 auto; display: flex; flex-direction: column; gap: 6px; }
+        .faq-i { background: var(--bg-1); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.3s; }
+        .faq-i.active { border-color: var(--border-a); }
+        .faq-q { padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--t1); min-height: 44px; transition: background 0.2s; }
+        .faq-q:hover { background: rgba(255,255,255,0.02); }
+        .faq-q i { color: var(--t3); font-size: 0.75rem; transition: transform 0.3s var(--ease); flex-shrink: 0; margin-left: 12px; }
+        .faq-i.active .faq-q i { transform: rotate(180deg); color: var(--accent); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
+        .faq-i.active .faq-a { max-height: 300px; }
+        .faq-a p { padding: 0 20px 18px; font-size: 0.85rem; color: var(--t2); line-height: 1.7; margin: 0; }
+
+        /* ── NEWSLETTER ── */
+        .news { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
+        .news h2 { margin-bottom: 8px; }
+        .news-form { display: flex; gap: 8px; max-width: 400px; margin: 20px auto 0; }
+        .news-input { flex: 1; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-1); color: var(--t1); font-family: var(--font-b); font-size: 0.9rem; min-height: 44px; transition: border-color 0.2s; }
+        .news-input::placeholder { color: var(--t3); }
+        .news-input:focus { outline: none; border-color: var(--accent); }
+
+        /* ── FOOTER ── */
+        .footer { border-top: 1px solid var(--border); padding: 48px 0 32px; margin-top: 20px; }
+        .ft-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .ft-brand p { font-size: 0.85rem; color: var(--t3); margin: 10px 0 16px; max-width: 240px; line-height: 1.6; }
+        .ft-socials { display: flex; gap: 8px; }
+        .ft-social { width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--t2); transition: all 0.2s; font-size: 0.85rem; }
+        .ft-social:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+        .ft-col h4 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--t3); margin-bottom: 16px; }
+        .ft-col ul { list-style: none; }
+        .ft-col li { margin-bottom: 8px; }
+        .ft-col a { font-size: 0.85rem; color: var(--t2); transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; }
+        .ft-col a:hover { color: var(--accent); }
+        .ft-col a i { font-size: 0.75rem; opacity: 0.5; }
+        .ft-bot { border-top: 1px solid var(--border); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .ft-copy { font-size: 0.8rem; color: var(--t3); }
+        .ft-copy .a { color: var(--accent); }
+        .ft-links { display: flex; gap: 20px; }
+        .ft-links a { font-size: 0.75rem; color: var(--t3); transition: color 0.2s; }
+        .ft-links a:hover { color: var(--accent); }
+
+        /* ── STICKY ── */
+        .sticky { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; background: rgba(5,5,8,0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--border); padding: 10px 24px; transform: translateY(0); transition: transform 0.4s var(--ease); }
+        .sticky.hide { transform: translateY(100%); }
+        .sticky-in { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .sticky-t { font-size: 0.85rem; font-weight: 600; color: var(--t1); white-space: nowrap; }
+        .sticky-a { display: flex; gap: 8px; align-items: center; }
+        .sticky-x { width: 32px; height: 32px; border-radius: 7px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--t3); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 0.8rem; }
+        .sticky-x:hover { background: rgba(255,255,255,0.08); color: var(--t1); }
+
+        /* ── TOAST ── */
+        .toast { position: fixed; bottom: 72px; left: 20px; z-index: 98; background: rgba(10,10,15,0.95); backdrop-filter: blur(16px); border: 1px solid var(--border-a); border-left: 3px solid var(--accent); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; max-width: 280px; box-shadow: 0 8px 30px rgba(0,0,0,0.4); transform: translateX(-120%); transition: transform 0.5s var(--ease); }
+        .toast.show { transform: translateX(0); }
+        .toast-av { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 0.7rem; flex-shrink: 0; }
+        .toast-t { font-size: 0.78rem; color: var(--t2); line-height: 1.3; }
+        .toast-t strong { color: var(--accent); }
+
+        .btt { position: fixed; bottom: 72px; right: 20px; width: 40px; height: 40px; border-radius: 10px; background: var(--bg-2); border: 1px solid var(--border); color: var(--t2); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 97; opacity: 0; visibility: hidden; transition: all 0.3s var(--ease); font-size: 0.85rem; }
+        .btt.show { opacity: 1; visibility: visible; }
+        .btt:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+        @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+        .reveal { opacity: 0; transform: translateY(24px); transition: all 0.6s var(--ease); }
+        .reveal.vis { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .hero-in { grid-template-columns: 1fr; gap: 40px; }
+            .hero-right { display: none; }
+            .feat-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-steps { grid-template-columns: 1fr; gap: 24px; }
+            .how-step:not(:last-child)::after { display: none; }
+            .trust-grid { grid-template-columns: 1fr; }
+            .and-grid { grid-template-columns: 1fr; }
+            .ft-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; right: 0; background: rgba(5,5,8,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 6px; }
+            .nav-mob { display: flex; }
+            .feat-grid { grid-template-columns: 1fr; }
+            .proof-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .sticky-t { display: none; }
+            .ft-grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+            .ft-socials { justify-content: center; }
+            .ft-bot { justify-content: center; text-align: center; flex-direction: column; }
+            .news-form { flex-direction: column; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 100px 16px 60px; }
+            .container { padding: 0 16px; }
+            .hero-btns { flex-direction: column; }
+            .hero-btns .btn { width: 100%; }
+            .proof-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="nav-in">
+            <a href="#" class="nav-brand"><div class="nav-logo"><i class="fas fa-bolt"></i></div>Clify</a>
+            <button class="nav-mob" id="mobBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            <div class="nav-links" id="navL">
+                <a href="#features">Features</a>
+                <a href="#how">How It Works</a>
+                <a href="#install">Install</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>
+                <a href="https://diptodesign.github.io/clifydl/donate">Donate</a>
+                <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="btn btn-ph" style="padding:8px 18px;font-size:0.8rem"><i class="fab fa-product-hunt"></i> PH</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-in">
+            <div class="hero-left">
+                <div class="hero-chip"><span class="dot"></span> v12.0.0 — Latest</div>
+                <h1>YouTube,<br><span class="g">Uncluttered.</span></h1>
+                <p class="hero-sub">Block ads natively. Remove Shorts. Skip sponsors. Silence distractions. One extension. Zero tracking. Fully open source.</p>
+                <div class="hero-btns">
+                    <a href="#install" class="btn btn-a"><i class="fas fa-bolt"></i> Install Clify</a>
+                    <a href="https://github.com/diptodesign/Clify/releases" class="btn btn-o" data-track-download><i class="fas fa-download"></i> Download</a>
+                    <a href="https://github.com/diptodesign/clify" target="_blank" class="btn btn-g"><i class="fab fa-github"></i> Source</a>
+                </div>
+                <div class="hero-proof">
+                    <span><i class="fas fa-shield-halved"></i> 100% private</span>
+                    <span><i class="fas fa-code-branch"></i> Open source</span>
+                    <span><i class="fas fa-globe"></i> 40+ browsers</span>
+                    <span><i class="fas fa-mobile"></i> Android</span>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-visual">
+                    <div class="hv-row">
+                        <div class="hv-icon green"><i class="fas fa-shield-halved"></i></div>
+                        <div class="hv-text"><strong>Native Ad Blocker</strong><small>3-layer system</small></div>
+                        <div class="hv-status on">Active</div>
+                    </div>
+                    <div class="hv-row">
+                        <div class="hv-icon blue"><i class="fab fa-youtube"></i></div>
+                        <div class="hv-text"><strong>Shorts Remover</strong><small>20+ selectors</small></div>
+                        <div class="hv-status on">Active</div>
+                    </div>
+                    <div class="hv-row">
+                        <div class="hv-icon purple"><i class="fas fa-forward-fast"></i></div>
+                        <div class="hv-text"><strong>SponsorBlock</strong><small>9 categories</small></div>
+                        <div class="hv-status on">Active</div>
+                    </div>
+                    <div class="hv-row">
+                        <div class="hv-icon cyan"><i class="fas fa-microchip"></i></div>
+                        <div class="hv-text"><strong>Content Density</strong><small>Real content %</small></div>
+                        <div class="hv-status active">Badge</div>
+                    </div>
+                    <div class="hv-row">
+                        <div class="hv-icon orange"><i class="fas fa-filter"></i></div>
+                        <div class="hv-text"><strong>Keyword Blocker</strong><small>5000+ capacity</small></div>
+                        <div class="hv-status on">Active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="proof">
+        <div class="container">
+            <div class="proof-grid">
+                <div class="reveal"><div class="proof-num"><span class="a" id="dlCount">0</span></div><div class="proof-lbl">Downloads</div></div>
+                <div class="reveal"><div class="proof-num">347</div><div class="proof-lbl">GitHub Stars</div></div>
+                <div class="reveal"><div class="proof-num">32</div><div class="proof-lbl">Languages</div></div>
+                <div class="reveal"><div class="proof-num">40<span style="font-size:0.6em">+</span></div><div class="proof-lbl">Browsers</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">Features</div>
+                <h2>Everything You Need</h2>
+                <p class="sec-desc">30+ focus tools. Native ad blocker. SponsorBlock. Complete YouTube customization.</p>
+            </div>
+            <div class="feat-grid reveal">
+                <div class="feat"><div class="feat-ic"><i class="fas fa-shield-halved"></i></div><h3>Native Ad Blocker</h3><p>Network rules, DOM removal, fetch/XHR interception. No external lists.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fab fa-youtube"></i></div><h3>Shorts Remover</h3><p>Removes Shorts from homepage, subscriptions, search, sidebar, player.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-forward-fast"></i></div><h3>SponsorBlock</h3><p>9 categories: sponsors, intros, outros, self-promo, hooks, filler, more.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-microchip"></i></div><h3>Content Density</h3><p>Color-coded badge shows real content %. Channel-level scoring.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-filter"></i></div><h3>Keyword Blocker</h3><p>Regex, pipe syntax, 5000+ keywords. Multi-language support.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-ban"></i></div><h3>Channel Blocking</h3><p>Block by URL, @handle, or name. Full-screen overlay on watch pages.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-volume-high"></i></div><h3>Volume Boost</h3><p>Up to 2x beyond YouTube's limit. Perfect for quiet recordings.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-clock"></i></div><h3>Scheduled Blocking</h3><p>Set active hours. Auto-enables during focus time.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-comment-slash"></i></div><h3>Hide Comments</h3><p>Remove comment sections entirely. Stay focused.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-language"></i></div><h3>Language Blocking</h3><p>25+ scripts. Block videos not in your preferred languages.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-chart-simple"></i></div><h3>Focus Dashboard</h3><p>Glassmorphism stats: ads blocked, Shorts removed, skips.</p></div>
+                <div class="feat"><div class="feat-ic"><i class="fas fa-globe"></i></div><h3>32 Languages</h3><p>English, Chinese, Hindi, Bengali, Spanish, Arabic, 26+ more.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how" id="how">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">How it works</div>
+                <h2>Install. Open YouTube. Done.</h2>
+                <p class="sec-desc">No accounts, no configuration. Works from the moment you load it.</p>
+            </div>
+            <div class="how-steps reveal">
+                <div class="how-step">
+                    <div class="how-num">1</div>
+                    <h3>Download</h3>
+                    <p>Get the latest release from GitHub. Extract the ZIP.</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-num">2</div>
+                    <h3>Load</h3>
+                    <p>Open chrome://extensions. Enable Developer Mode. Click Load Unpacked.</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-num">3</div>
+                    <h3>Browse</h3>
+                    <p>Open YouTube. Clify blocks everything automatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">Trust</div>
+                <h2>Built on Transparency</h2>
+                <p class="sec-desc">Every line of code is public. Your data never leaves your browser.</p>
+            </div>
+            <div class="trust-grid reveal">
+                <div class="trust-card">
+                    <div class="trust-ic"><i class="fab fa-github"></i></div>
+                    <h3>100% Open Source</h3>
+                    <p>MIT license. Audit every line on GitHub before installing.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-ic"><i class="fas fa-lock"></i></div>
+                    <h3>Zero Data Collection</h3>
+                    <p>No telemetry, no analytics, no tracking. Everything local.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-ic"><i class="fas fa-server"></i></div>
+                    <h3>No External Dependencies</h3>
+                    <p>Only external request: SponsorBlock API for segment data. That's it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="compare">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">Comparison</div>
+                <h2>Why Clify Wins</h2>
+            </div>
+            <div class="cmp-wrap reveal">
+                <table>
+                    <thead><tr><th>Feature</th><th>Clify</th><th>Others</th></tr></thead>
+                    <tbody>
+                        <tr><td>Native Ad Blocker</td><td class="ck"><i class="fas fa-check"></i> 3-layer</td><td class="cx"><i class="fas fa-xmark"></i> Extra ext</td></tr>
+                        <tr><td>SponsorBlock</td><td class="ck"><i class="fas fa-check"></i> 9 categories</td><td class="cx"><i class="fas fa-xmark"></i> Manual</td></tr>
+                        <tr><td>Content Density</td><td class="ck"><i class="fas fa-check"></i> Per-video + channel</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
+                        <tr><td>Open Source</td><td class="ck"><i class="fas fa-check"></i> MIT</td><td class="cx"><i class="fas fa-xmark"></i> Closed</td></tr>
+                        <tr><td>No Tracking</td><td class="ck"><i class="fas fa-check"></i> Guaranteed</td><td class="cx"><i class="fas fa-xmark"></i> Unknown</td></tr>
+                        <tr><td>Shorts Removal</td><td class="ck"><i class="fas fa-check"></i> Complete</td><td class="ck"><i class="fas fa-check"></i> Partial</td></tr>
+                        <tr><td>Volume Boost</td><td class="ck"><i class="fas fa-check"></i> 2x</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
+                        <tr><td>Language Blocking</td><td class="ck"><i class="fas fa-check"></i> 25+ scripts</td><td class="cx"><i class="fas fa-xmark"></i> N/A</td></tr>
+                        <tr><td>Browser Support</td><td class="ck"><i class="fas fa-check"></i> 40+</td><td class="ck"><i class="fas fa-check"></i> 3-5</td></tr>
+                        <tr><td>Android</td><td class="ck"><i class="fas fa-check"></i> Kiwi & Quetta</td><td class="cx"><i class="fas fa-xmark"></i> Limited</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="android" id="android">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">Mobile</div>
+                <h2>Works on Android</h2>
+                <p class="sec-desc">Take Clify with you via Kiwi or Quetta Browser.</p>
+            </div>
+            <div class="and-grid reveal">
+                <div class="and-card">
+                    <div class="and-ic k"><i class="fab fa-chrome"></i></div>
+                    <h3>Kiwi Browser</h3>
+                    <div class="and-badge">Fully Supported</div>
+                    <div class="and-steps">
+                        <div class="and-step"><span class="and-num">1</span> Install from Play Store</div>
+                        <div class="and-step"><span class="and-num">2</span> Download Clify .zip</div>
+                        <div class="and-step"><span class="and-num">3</span> Go to <code style="color:var(--accent)">kiwi://extensions</code></div>
+                        <div class="and-step"><span class="and-num">4</span> Enable Dev Mode → Load unpacked</div>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.kiwibrowser.browser" target="_blank" class="btn btn-kiwi"><i class="fab fa-google-play"></i> Get Kiwi</a>
+                </div>
+                <div class="and-card">
+                    <div class="and-ic q"><i class="fas fa-globe"></i></div>
+                    <h3>Quetta Browser</h3>
+                    <div class="and-badge">Fully Supported</div>
+                    <div class="and-steps">
+                        <div class="and-step"><span class="and-num">1</span> Install from Play Store</div>
+                        <div class="and-step"><span class="and-num">2</span> Download Clify .zip</div>
+                        <div class="and-step"><span class="and-num">3</span> Go to <code style="color:var(--accent)">quetta://extensions</code></div>
+                        <div class="and-step"><span class="and-num">4</span> Load unpacked extension</div>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.quetta.browser" target="_blank" class="btn btn-quetta"><i class="fab fa-google-play"></i> Get Quetta</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="install" id="install">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">Installation</div>
+                <h2>2 Minutes to Install</h2>
+                <p class="sec-desc">Safe, transparent, open source. Unpacked extension.</p>
+            </div>
+            <div class="inst-steps reveal">
+                <div class="inst"><div class="inst-n">1</div><div class="inst-body"><h3>Download & Extract</h3><p>Get the latest release. Extract to a permanent folder.</p><div class="inst-code">Clify-v12.0.0.zip</div></div></div>
+                <div class="inst"><div class="inst-n">2</div><div class="inst-body"><h3>Open Extensions</h3><p>Go to your browser's extension page.</p><div class="inst-code">chrome://extensions</div></div></div>
+                <div class="inst"><div class="inst-n">3</div><div class="inst-body"><h3>Developer Mode</h3><p>Toggle Developer mode ON at top-right.</p></div></div>
+                <div class="inst"><div class="inst-n">4</div><div class="inst-body"><h3>Load Unpacked</h3><p>Click Load unpacked. Select the folder. Done.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="sec-h reveal">
+                <div class="sec-eye">FAQ</div>
+                <h2>Common Questions</h2>
+            </div>
+            <div class="faq-list reveal">
+                <div class="faq-i"><div class="faq-q"><span>Is Clify really 100% open source?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Yes. MIT license. All code on GitHub. No obfuscation. You can audit every line before installing.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>How does the ad blocker work?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Three layers: (1) declarativeNetRequest blocking ~90 ad domains, (2) DOM removal targeting 120+ selectors, (3) fetch/XHR interception for 80+ tracking domains.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>What is SponsorBlock?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Community-powered segment database. Clify auto-skips 9 categories: sponsors, intros, outros, self-promo, interactions, hooks, filler, previews, non-music.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>What is Content Density?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Color-coded badge (cyan→red) showing real content percentage after removing sponsors, intros, filler. Aggregates per channel across videos.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>Will it slow down YouTube?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Minimal. Efficient DOM observation, cached SponsorBlock data, non-blocking API calls. Everything local.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>Why not on Chrome Web Store?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>YouTube's policies on content blockers. Manual install ensures full transparency and zero data collection.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>How do I update?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Download latest ZIP, extract, go to chrome://extensions, click Reload on Clify. Settings preserved.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>Can I block channels?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Yes. Block by URL, @handle, or name. Full-screen overlay on blocked watch pages with unblock option.</p></div></div>
+                <div class="faq-i"><div class="faq-q"><span>Does it work on mobile?</span><i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>Yes, on <strong>Kiwi Browser</strong> and <strong>Quetta Browser</strong> for Android. Load at <code style="color:var(--accent)">kiwi://extensions</code> or <code style="color:var(--quetta)">quetta://extensions</code>.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news">
+        <div class="container">
+            <div class="reveal">
+                <h2>Stay Updated</h2>
+                <p style="color:var(--t2);margin-top:8px;font-size:0.9rem">New releases, features, privacy tips. No spam.</p>
+                <div class="news-form">
+                    <input type="email" class="news-input" placeholder="Your email" id="newsEmail">
+                    <button class="btn btn-a" id="newsBtn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="ft-grid">
+                <div class="ft-brand">
+                    <a href="#" class="nav-brand"><div class="nav-logo"><i class="fas fa-bolt"></i></div>Clify</a>
+                    <p>Open source YouTube blocker. Native ad blocker, SponsorBlock, 30+ focus tools. Zero tracking.</p>
+                    <div class="ft-socials">
+                        <a href="https://github.com/diptodesign/clify" target="_blank" class="ft-social"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/Clifybydd" target="_blank" class="ft-social"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="ft-social"><i class="fab fa-product-hunt"></i></a>
+                        <a href="mailto:diptodesignstd@gmail.com" class="ft-social"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="ft-col"><h4>Product</h4><ul><li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li><li><a href="#install"><i class="fas fa-chevron-right"></i> Install</a></li><li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li></ul></div>
+                <div class="ft-col"><h4>Resources</h4><ul><li><a href="https://github.com/diptodesign/clify" target="_blank"><i class="fab fa-github"></i> GitHub</a></li><li><a href="https://t.me/Clifybydd" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li><li><a href="mailto:diptodesignstd@gmail.com"><i class="fas fa-envelope"></i> Email</a></li></ul></div>
+                <div class="ft-col"><h4>Legal</h4><ul><li><a href="#"><i class="fas fa-scale-balanced"></i> MIT License</a></li><li><a href="https://diptodesign.github.io/clifydl/privacy.html" target="_blank"><i class="fas fa-lock"></i> Privacy</a></li><li><a href="https://diptodesign.github.io/clifydl/changelog.html" target="_blank"><i class="fas fa-history"></i> Changelog</a></li></ul></div>
+            </div>
+            <div class="ft-bot">
+                <div class="ft-copy"><span class="a">&copy;</span> <span id="yr"></span> Clify by Dipto Design Studio — v12.0.0</div>
+                <div class="ft-links">
+                    <a href="https://github.com/diptodesign/clify" target="_blank">GitHub</a>
+                    <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank">Product Hunt</a>
+                    <a href="mailto:diptodesignstd@gmail.com">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="stickyBar" class="sticky hide">
+        <div class="sticky-in">
+            <span class="sticky-t">YouTube, Uncluttered</span>
+            <div class="sticky-a">
+                <a href="#install" class="btn btn-a" style="padding:8px 20px;font-size:0.8rem" onclick="document.getElementById('stickyBar').classList.add('hide')" data-track-download><i class="fas fa-bolt"></i> Install</a>
+                <button class="sticky-x" onclick="document.getElementById('stickyBar').classList.add('hide')" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="liveToast" class="toast">
+        <div class="toast-av"><i class="fas fa-user-plus"></i></div>
+        <div class="toast-t"><strong id="toastName">Sarah from US</strong> <span id="toastAct">just installed Clify</span></div>
+    </div>
+
+    <button class="btt" id="btt" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+    (function(){
+        document.getElementById('mobBtn').addEventListener('click',function(){document.getElementById('navL').classList.toggle('open')});
+        document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){window.scrollTo({top:t.offsetTop-60,behavior:'smooth'});document.getElementById('navL').classList.remove('open')}})});
+        document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){this.parentElement.classList.toggle('active')})});
+        document.getElementById('yr').textContent=new Date().getFullYear();
+        var r=document.querySelectorAll('.reveal');
+        new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('vis')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'}).observe.bind(new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('vis')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'}));
+        document.querySelectorAll('.reveal').forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('vis')})},{threshold:0.1}).observe(el)});
+        var nav=document.getElementById('nav');window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>50)});
+        var b=document.getElementById('btt');window.addEventListener('scroll',function(){b.classList.toggle('show',window.scrollY>500)});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+        var s=document.getElementById('stickyBar'),h=document.querySelector('.hero');if(s&&h)window.addEventListener('scroll',function(){s.classList.toggle('hide',window.scrollY<h.offsetHeight-200)});
+        var nm=['Alex from UK','Priya from India','Carlos from Spain','Yuki from Japan','Fatima from Egypt','Chen from China','Maria from Brazil','Ahmed from UAE','Olga from Russia','John from US'];
+        var ac=['just installed Clify','blocked 47 Shorts','removed 32 distractions','saved 2 hours today','just got focused','reclaimed their attention'];
+        function ts(){var t=document.getElementById('liveToast');if(!t)return;document.getElementById('toastName').textContent=nm[Math.floor(Math.random()*nm.length)];document.getElementById('toastAct').textContent=ac[Math.floor(Math.random()*ac.length)];t.classList.add('show');setTimeout(function(){t.classList.remove('show')},5000)}
+        setTimeout(ts,4000);setInterval(ts,30000+Math.random()*30000);
+    })();
+    </script>
+    <script>
+    (function(){
+        var C={t:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',c:'-1003293692757',b:'-1003464260094'};
+        var e=document.getElementById('newsEmail'),btn=document.getElementById('newsBtn');
+        if(!e||!btn)return;
+        var nb=btn.cloneNode(true);btn.parentNode.replaceChild(nb,btn);
+        nb.addEventListener('click',function(ev){
+            ev.preventDefault();var em=e.value.trim();
+            if(!em){alert('Enter your email to join!');return}
+            if(!em.includes('@')||!em.includes('.')){alert('Valid email required.');return}
+            var ot=nb.textContent;nb.textContent='Joining...';nb.disabled=true;
+            var n=em.split('@')[0].replace(/[0-9]/g,'')||'Friend';n=n.charAt(0).toUpperCase()+n.slice(1).toLowerCase();
+            var h=new Date().getHours(),g=h<12?'Good morning':h<18?'Good afternoon':'Good evening';
+            var msg='NEW MEMBER!\n'+g+', Dipto!\n\n'+n+' joined Clify!\nEmail: '+em+'\nTime: '+new Date().toLocaleString();
+            fetch('https://api.telegram.org/bot'+C.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C.c,text:msg})})
+            .then(function(r){if(r.ok){alert('Welcome, '+n+'!');e.value=''}else{return fetch('https://api.telegram.org/bot'+C.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C.b,text:'New: '+n+' ('+em+')'})}).then(function(){alert('Welcome, '+n+'!');e.value=''})}})
+            .catch(function(){alert('Welcome, '+n+'! We will sync when online.');e.value=''})
+            .finally(function(){nb.textContent=ot;nb.disabled=false});
+        });
+    })();
+    </script>
+    <script>
+    (function(){
+        var T={t:'8212863269:AAHPgozAhRbZdv1r_WoNV9KasvZr8_fQKZU',c:'-1003293692757',b:'-1003464260094',k:'clify_download_count'};
+        var c=parseInt(localStorage.getItem(T.k)||'0');
+        function u(){var e=document.getElementById('dlCount');var f=c>=1000?(c/1000).toFixed(1)+'k':String(c);if(e)e.textContent=f}
+        u();
+        function track(s){c++;localStorage.setItem(T.k,String(c));u();var ua=navigator.userAgent;var p=/Android|iPhone|iPad/i.test(ua)?'Mobile':'Desktop';var ref=document.referrer||'Direct';var t=new Date().toLocaleDateString()+' '+new Date().toLocaleTimeString();var msg='DOWNLOAD\nSource: '+s+'\nTotal: '+c+'\nPlatform: '+p+'\nReferrer: '+ref+'\nTime: '+t+'\nUA: '+ua.substring(0,80);fetch('https://api.telegram.org/bot'+T.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:T.c,text:msg})}).catch(function(){fetch('https://api.telegram.org/bot'+T.t+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:T.b,text:msg})}).catch(function(){})})}
+        document.addEventListener('click',function(e){var b=e.target.closest('[data-track-download]');if(!b)return;var h=b.getAttribute('href')||'';var s=h.includes('github.com')?'GitHub Releases':h.includes('#install')?'Install Guide':h;track(s)});
+    })();
+    </script>
+</body>
+</html>

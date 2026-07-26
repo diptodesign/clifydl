@@ -1383,16 +1383,16 @@
       btn.textContent = 'Subscribing...';
 
       try {
-        const res = await fetch('https://email.wpvolts.xyz/api/subscribe', {
+        const res = await fetch('https://email.wpvolts.xyz/api/subscribers/add', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email })
+          body: JSON.stringify({ email, product: 'clify' })
         });
-        if (res.ok) {
+        const data = await res.json().catch(() => ({}));
+        if (data.ok) {
           showToast('Successfully subscribed! Check your inbox.', 'success');
           input.value = '';
         } else {
-          const data = await res.json().catch(() => ({}));
           showToast(data.message || 'Something went wrong. Please try again.', 'error');
         }
       } catch (err) {

@@ -78,26 +78,73 @@
       gap: 10px;
       font-weight: 700;
       font-size: 1.15rem;
+      flex-shrink: 0;
     }
 
-    .nav-brand img { width: 32px; height: 32px; border-radius: 8px; }
+    .nav-brand img { width: 40px; height: 40px; border-radius: 10px; }
 
-    .nav-links {
+    .nav-center {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
     }
 
-    .nav-links a {
+    .nav-center a {
       padding: 8px 16px;
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
       color: var(--text-muted);
       transition: var(--transition);
     }
 
-    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-center a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .ph-badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .ph-badge:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-light);
+      transform: translateY(-1px);
+    }
+
+    .ph-badge svg { flex-shrink: 0; }
+
+    .nav-github {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .nav-github:hover { color: var(--text); background: rgba(255,255,255,0.05); }
 
     .btn-primary {
       display: inline-flex;
@@ -152,17 +199,53 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(80px);
-      opacity: 0.4;
-      animation: orbFloat 8s ease-in-out infinite alternate;
+      opacity: 0.35;
     }
 
-    .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -150px; left: -100px; animation-delay: 0s; }
-    .orb-2 { width: 400px; height: 400px; background: #6366f1; top: -100px; right: -100px; animation-delay: -3s; }
-    .orb-3 { width: 300px; height: 300px; background: var(--accent-light); bottom: -50px; left: 30%; animation-delay: -5s; }
+    .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -150px; left: -100px; animation: orbDrift1 12s ease-in-out infinite alternate; }
+    .orb-2 { width: 400px; height: 400px; background: #6366f1; top: -100px; right: -100px; animation: orbDrift2 15s ease-in-out infinite alternate; }
+    .orb-3 { width: 300px; height: 300px; background: var(--accent-light); bottom: -50px; left: 30%; animation: orbDrift3 10s ease-in-out infinite alternate; }
+    .orb-4 { width: 250px; height: 250px; background: #8b5cf6; top: 20%; right: 15%; opacity: 0.2; animation: orbDrift1 18s ease-in-out infinite alternate-reverse; }
+    .orb-5 { width: 200px; height: 200px; background: #22d3ee; bottom: 10%; left: 10%; opacity: 0.15; animation: orbDrift2 14s ease-in-out infinite alternate; }
 
-    @keyframes orbFloat {
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      animation: particleFloat linear infinite;
+    }
+
+    @keyframes orbDrift1 {
       0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, -30px) scale(1.1); }
+      50% { transform: translate(40px, -30px) scale(1.08); }
+      100% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    @keyframes orbDrift2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-35px, 25px) scale(1.05); }
+      100% { transform: translate(25px, -40px) scale(1.1); }
+    }
+
+    @keyframes orbDrift3 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(20px, 35px) scale(1.12); }
+      100% { transform: translate(-30px, -15px) scale(0.92); }
+    }
+
+    @keyframes particleFloat {
+      0% { opacity: 0; transform: translateY(0) scale(0); }
+      10% { opacity: 0.6; transform: scale(1); }
+      90% { opacity: 0.3; }
+      100% { opacity: 0; transform: translateY(-200px) scale(0.5); }
     }
 
     .hero-content { position: relative; z-index: 1; }
@@ -373,6 +456,368 @@
       font-weight: 600;
       font-family: var(--mono);
       margin-top: 16px;
+    }
+
+    /* ─── BEFORE / AFTER COMPARE ─── */
+    .compare-wrapper {
+      display: flex;
+      align-items: stretch;
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .compare-screen {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .compare-screen:hover { border-color: var(--border-light); }
+
+    .compare-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .compare-label-before { background: rgba(239, 68, 68, 0.08); color: #f87171; border-bottom: 1px solid rgba(239, 68, 68, 0.1); }
+    .compare-label-after { background: rgba(34, 197, 94, 0.08); color: #4ade80; border-bottom: 1px solid rgba(34, 197, 94, 0.1); }
+
+    .compare-captions {
+      display: flex;
+      gap: 6px;
+      padding: 12px 16px;
+      flex-wrap: wrap;
+    }
+
+    .caption-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .caption-tag.red { background: rgba(239, 68, 68, 0.1); color: #f87171; }
+    .caption-tag.green { background: rgba(34, 197, 94, 0.1); color: #4ade80; }
+
+    .compare-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      padding: 40px 0;
+    }
+
+    .compare-divider-line {
+      width: 1px;
+      flex: 1;
+      background: var(--border);
+    }
+
+    .compare-divider-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Mock YouTube elements */
+    .mock-yt {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      min-height: 320px;
+      background: #0f0f0f;
+      font-family: Arial, sans-serif;
+    }
+
+    .mock-sidebar {
+      background: #212121;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mock-sb-item {
+      height: 16px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .mock-sb-item.short {
+      background: rgba(255,0,0,0.15);
+      height: 28px;
+      border-radius: 6px;
+    }
+
+    .mock-sidebar-clean .mock-sb-item { background: rgba(255,255,255,0.06); height: 12px; }
+    .mock-sidebar-clean .mock-sb-item:nth-child(2) { width: 75%; }
+    .mock-sidebar-clean .mock-sb-item:nth-child(3) { width: 60%; }
+
+    .mock-main {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mock-video {
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mock-video-clean {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+    }
+
+    .mock-play-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .mock-ad-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,200,0,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .mock-ad-badge {
+      background: #fbbf24;
+      color: #000;
+      font-size: 8px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .mock-ad-text {
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+    }
+
+    .mock-ad-skip {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      font-size: 9px;
+      padding: 4px 10px;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .mock-title-bar { padding: 4px 0; }
+    .mock-title { height: 10px; width: 70%; border-radius: 3px; background: rgba(255,255,255,0.25); margin-bottom: 4px; }
+    .mock-meta { height: 7px; width: 40%; border-radius: 3px; background: rgba(255,255,255,0.1); }
+
+    .mock-shelf {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    .mock-shelf-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #ff0000;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .mock-shelf-row { display: flex; gap: 6px; }
+
+    .mock-short-thumb {
+      flex: 1;
+      aspect-ratio: 9/16;
+      border-radius: 8px;
+      background: rgba(255,0,0,0.12);
+      border: 1px solid rgba(255,0,0,0.15);
+    }
+
+    .mock-ad-banner {
+      height: 24px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, rgba(251,191,36,0.12), rgba(251,191,36,0.06));
+      border: 1px dashed rgba(251,191,36,0.2);
+    }
+
+    .mock-rec {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mock-rec-item {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .mock-rec-thumb {
+      width: 48px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      flex-shrink: 0;
+    }
+
+    .mock-rec-text { flex: 1; }
+    .mock-rec-t { height: 8px; width: 80%; border-radius: 3px; background: rgba(255,255,255,0.18); margin-bottom: 4px; }
+    .mock-rec-m { height: 6px; width: 50%; border-radius: 3px; background: rgba(255,255,255,0.08); }
+
+    /* ─── BROWSER COMPATIBILITY ─── */
+    .browser-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 12px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .browser-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .browser-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .browser-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .browser-icon svg { width: 22px; height: 22px; }
+
+    .browser-card span {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .browser-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      font-style: italic;
+    }
+
+    /* ─── BUILT WITH ─── */
+    .built-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .built-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .built-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    .built-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .built-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .built-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .built-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 768px) {
+      .built-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .built-card { padding: 14px 16px; gap: 12px; }
     }
 
     /* ─── HOW IT WORKS ─── */
@@ -743,7 +1188,7 @@
       gap: 10px;
     }
 
-    .footer-brand img { width: 28px; height: 28px; border-radius: 6px; }
+    .footer-brand img { width: 36px; height: 36px; border-radius: 8px; }
     .footer-brand span { font-weight: 600; font-size: 1rem; }
 
     .footer-links {
@@ -896,7 +1341,7 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links {
+      .nav-center, .nav-right {
         display: none;
         position: absolute;
         top: 64px;
@@ -907,10 +1352,14 @@
         border-bottom: 1px solid var(--border);
         flex-direction: column;
         padding: 16px;
+        gap: 4px;
       }
 
-      .nav-links.open { display: flex; }
+      .nav-right { top: auto; border-bottom: none; border-top: 1px solid var(--border); }
+
+      .nav-center.open, .nav-right.open { display: flex; }
       .nav-toggle { display: block; }
+      .nav-center a, .nav-right a { width: 100%; justify-content: center; text-align: center; }
 
       .hero { padding: 120px 0 60px; }
       .proof-grid { grid-template-columns: repeat(2, 1fr); }
@@ -943,22 +1392,28 @@
         <img src="https://i.ibb.co.com/ynVThcLq/logo.png" alt="Clify">
         <span>Clify</span>
       </a>
-      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-      <div class="nav-links">
+      <div class="nav-center">
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#faq">FAQ</a>
-        <a href="https://github.com/diptodesign/Clify" target="_blank">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </div>
+      <div class="nav-right">
+        <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="ph-badge" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#FF6154"/><path d="M10.6 8.5v7h1.6c2.2 0 3.5-1.3 3.5-3.5S14.4 8.5 12.2 8.5h-1.6zm1.6 5.4h-.2c-1.1 0-1.9-.7-1.9-1.9s.8-1.9 1.9-1.9h.2v3.8z" fill="#fff"/></svg>
+          Product Hunt
+        </a>
+        <a href="https://github.com/diptodesign/Clify" target="_blank" class="nav-github" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
         </a>
         <a href="https://github.com/diptodesign/Clify/releases" target="_blank" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Install
         </a>
       </div>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-center').classList.toggle('open'); document.querySelector('.nav-right').classList.toggle('open')" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </nav>
 
@@ -968,6 +1423,9 @@
       <div class="orb orb-1"></div>
       <div class="orb orb-2"></div>
       <div class="orb orb-3"></div>
+      <div class="orb orb-4"></div>
+      <div class="orb orb-5"></div>
+      <div class="hero-particles" id="hero-particles"></div>
     </div>
     <div class="container hero-content">
       <div class="hero-badge">
@@ -1098,6 +1556,143 @@
           <span class="bento-tag">Custom schedules</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="section" style="background: linear-gradient(180deg, #0a0a0f 0%, #0d0d18 50%, #0a0a0f 100%);">
+    <div class="container">
+      <div class="section-header reveal" style="text-align: center;">
+        <div class="section-label" style="justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+          The Difference
+        </div>
+        <h2 class="section-title">See what Clify removes</h2>
+        <p class="section-desc" style="margin: 0 auto;">Same YouTube. Completely different experience.</p>
+      </div>
+
+      <div class="compare-wrapper reveal">
+        <div class="compare-screen compare-before">
+          <div class="compare-label compare-label-before">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Without Clify
+          </div>
+          <div class="mock-yt">
+            <div class="mock-sidebar">
+              <div class="mock-sb-item"></div><div class="mock-sb-item"></div><div class="mock-sb-item"></div>
+              <div class="mock-sb-item short"></div><div class="mock-sb-item short"></div>
+              <div class="mock-sb-item"></div><div class="mock-sb-item"></div>
+            </div>
+            <div class="mock-main">
+              <div class="mock-video">
+                <div class="mock-ad-overlay">
+                  <span class="mock-ad-badge">Ad</span>
+                  <span class="mock-ad-text">Advertisement</span>
+                  <span class="mock-ad-skip">Skip in 5s</span>
+                </div>
+              </div>
+              <div class="mock-title-bar">
+                <div class="mock-title"></div>
+                <div class="mock-meta"></div>
+              </div>
+              <div class="mock-shelf mock-shelf-short">
+                <div class="mock-shelf-label">Shorts</div>
+                <div class="mock-shelf-row">
+                  <div class="mock-short-thumb"></div>
+                  <div class="mock-short-thumb"></div>
+                  <div class="mock-short-thumb"></div>
+                  <div class="mock-short-thumb"></div>
+                </div>
+              </div>
+              <div class="mock-ad-banner"></div>
+              <div class="mock-rec">
+                <div class="mock-rec-item"><div class="mock-rec-thumb"></div><div class="mock-rec-text"><div class="mock-rec-t"></div><div class="mock-rec-m"></div></div></div>
+                <div class="mock-rec-item"><div class="mock-rec-thumb"></div><div class="mock-rec-text"><div class="mock-rec-t"></div><div class="mock-rec-m"></div></div></div>
+                <div class="mock-rec-item"><div class="mock-rec-thumb"></div><div class="mock-rec-text"><div class="mock-rec-t"></div><div class="mock-rec-m"></div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="compare-captions">
+            <span class="caption-tag red">Ads everywhere</span>
+            <span class="caption-tag red">Shorts shelf</span>
+            <span class="caption-tag red">Distracting sidebar</span>
+          </div>
+        </div>
+
+        <div class="compare-divider">
+          <div class="compare-divider-line"></div>
+          <div class="compare-divider-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+          <div class="compare-divider-line"></div>
+        </div>
+
+        <div class="compare-screen compare-after">
+          <div class="compare-label compare-label-after">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            With Clify
+          </div>
+          <div class="mock-yt mock-clean">
+            <div class="mock-sidebar mock-sidebar-clean">
+              <div class="mock-sb-item"></div><div class="mock-sb-item"></div><div class="mock-sb-item"></div>
+            </div>
+            <div class="mock-main">
+              <div class="mock-video mock-video-clean">
+                <div class="mock-play-btn">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </div>
+              <div class="mock-title-bar">
+                <div class="mock-title"></div>
+                <div class="mock-meta"></div>
+              </div>
+              <div class="mock-rec">
+                <div class="mock-rec-item"><div class="mock-rec-thumb"></div><div class="mock-rec-text"><div class="mock-rec-t"></div><div class="mock-rec-m"></div></div></div>
+                <div class="mock-rec-item"><div class="mock-rec-thumb"></div><div class="mock-rec-text"><div class="mock-rec-t"></div><div class="mock-rec-m"></div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="compare-captions">
+            <span class="caption-tag green">Zero ads</span>
+            <span class="caption-tag green">No Shorts</span>
+            <span class="caption-tag green">Clean feed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BROWSER COMPATIBILITY -->
+  <section class="section" id="browsers">
+    <div class="container">
+      <div class="section-header reveal" style="text-align: center;">
+        <div class="section-label" style="justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          Compatibility
+        </div>
+        <h2 class="section-title">Works on 40+ browsers</h2>
+        <p class="section-desc" style="margin: 0 auto;">Desktop, Android, and everything in between. If it's Chromium-based, Clify works.</p>
+      </div>
+
+      <div class="browser-grid reveal">
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #4285f4, #34a853);"><svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10" fill="none" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="4"/></svg></div><span>Chrome</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #0078d4, #00a4ef);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 12h8v8"/></svg></div><span>Edge</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #fb542b, #ff7043);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z"/></svg></div><span>Brave</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #ff1b2d, #ff4d5a);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></div><span>Opera</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #1a1a2e, #3d3d5c);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div><span>Vivaldi</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg></div><span>Arc</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #1a73e8, #4285f4);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div><span>Kiwi</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #00c853, #69f0ae);"><svg viewBox="0 0 24 24" fill="white"><path d="M21 3H3v18h18V3zM12 17l-4-4h3V8h2v5h3l-4 4z"/></svg></div><span>Quetta</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #ff7137, #ff9800);"><svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10" fill="none" stroke="white" stroke-width="1.5"/><path d="M8 12a4 4 0 018 0" fill="none" stroke="white" stroke-width="1.5"/></svg></div><span>Firefox</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #ff6d00, #ffab40);"><svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10" fill="none" stroke="white" stroke-width="1.5"/><path d="M12 6v6l4 2"/></svg></div><span>Yandex</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #1428a0, #4a6cf7);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></div><span>Samsung</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #5c2d91, #8b5cf6);"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><span>Ungoogled</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #2196f3, #64b5f6);"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><span>Thorium</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #00897b, #4db6ac);"><svg viewBox="0 0 24 24" fill="white"><path d="M21 3H3v18h18V3zM9 17V7h8l-4 5z"/></svg></div><span>Brave mobile</span></div>
+        <div class="browser-card"><div class="browser-icon" style="background: linear-gradient(135deg, #e91e63, #f48fb1);"><svg viewBox="0 0 24 24" fill="white"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg></div><span>Firefox Android</span></div>
+      </div>
+
+      <p class="browser-note reveal">And all other Chromium-based browsers including Edge, Opera GX, Waterfox, GNU IceCat, and more.</p>
     </div>
   </section>
 
@@ -1305,6 +1900,77 @@
     </div>
   </section>
 
+  <!-- BUILT WITH -->
+  <section class="section" style="background: linear-gradient(180deg, #0a0a0f 0%, #0d0d18 50%, #0a0a0f 100%);">
+    <div class="container">
+      <div class="section-header reveal" style="text-align: center;">
+        <div class="section-label" style="justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Built With
+        </div>
+        <h2 class="section-title">Open source, open dependencies</h2>
+        <p class="section-desc" style="margin: 0 auto;">Clify stands on the shoulders of these incredible open-source projects.</p>
+      </div>
+
+      <div class="built-grid reveal">
+        <a href="https://github.com/nicehash/SponsorBlock" target="_blank" class="built-card" rel="noopener">
+          <div class="built-icon" style="background: rgba(239, 68, 68, 0.1); color: #f87171;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <div class="built-info">
+            <span class="built-name">SponsorBlock API</span>
+            <span class="built-desc">Crowdsourced sponsor segment data</span>
+          </div>
+        </a>
+        <a href="https://tabler.io/icons" target="_blank" class="built-card" rel="noopener">
+          <div class="built-icon" style="background: rgba(99, 102, 241, 0.1); color: #818cf8;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <div class="built-info">
+            <span class="built-name">Tabler Icons</span>
+            <span class="built-desc">3,800+ MIT-licensed icons</span>
+          </div>
+        </a>
+        <a href="https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/" target="_blank" class="built-card" rel="noopener">
+          <div class="built-icon" style="background: rgba(34, 197, 94, 0.1); color: #4ade80;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="built-info">
+            <span class="built-name">Chrome DNR API</span>
+            <span class="built-desc">Manifest V3 network filtering</span>
+          </div>
+        </a>
+        <a href="https://web.dev/audio/" target="_blank" class="built-card" rel="noopener">
+          <div class="built-icon" style="background: rgba(168, 85, 247, 0.1); color: #c084fc;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </div>
+          <div class="built-info">
+            <span class="built-name">Web Audio API</span>
+            <span class="built-desc">Real-time audio equalization</span>
+          </div>
+        </a>
+        <a href="https://github.com/nicehash/SponsorBlock" target="_blank" class="built-card" rel="noopener">
+          <div class="built-icon" style="background: rgba(34, 211, 238, 0.1); color: #67e8f9;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div class="built-info">
+            <span class="built-name">Community Data</span>
+            <span class="built-desc">4,800+ ad filter rules from open lists</span>
+          </div>
+        </a>
+        <a href="https://fonts.google.com/specimen/Inter" target="_blank" class="built-card" rel="noopener">
+          <div class="built-icon" style="background: rgba(251, 191, 36, 0.1); color: #fbbf24;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          </div>
+          <div class="built-info">
+            <span class="built-name">Inter + JetBrains Mono</span>
+            <span class="built-desc">Open-source typefaces by Google</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- NEWSLETTER -->
   <section class="section newsletter-section" id="newsletter">
     <div class="container">
@@ -1429,6 +2095,24 @@
         backToTop.classList.remove('visible');
       }
     }, { passive: true });
+
+    // ─── Hero Particles ───
+    (function() {
+      const container = document.getElementById('hero-particles');
+      if (!container) return;
+      const count = 30;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = (60 + Math.random() * 40) + '%';
+        p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+        p.style.animationDuration = (4 + Math.random() * 6) + 's';
+        p.style.animationDelay = (Math.random() * 8) + 's';
+        p.style.opacity = 0;
+        container.appendChild(p);
+      }
+    })();
 
     // ─── Intersection Observer for Reveal Animations ───
     const revealObserver = new IntersectionObserver((entries) => {

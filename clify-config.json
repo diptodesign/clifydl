@@ -3,6 +3,13 @@
   "updated_at": "2026-07-28",
   "config_url": "https://raw.githubusercontent.com/diptodesign/clifydl/refs/heads/main/clify-config.json",
 
+  "ad_slots": {
+  "dashboard_banner": {
+    "active": true,
+    "html": "<a rel=\"sponsored\" href=\"https://hostinger.sjv.io/c/3210801/1393524/12282\" target=\"_blank\"><img src=\"//a.impactradius-go.com/display-ad/12282-1393524\" border=\"0\" alt=\"Hostinger - Web Hosting\" width=\"970\" height=\"250\" style=\"width:100%;height:auto;\"></a><img height=\"0\" width=\"0\" src=\"https://imp.pxf.io/i/3210801/1393524/12282\" style=\"position:absolute;visibility:hidden;\" border=\"0\">"
+  }
+},
+
   "sponsors": [
     {
       "id": "hostinger",

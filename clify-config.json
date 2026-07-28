@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "updated_at": "2026-07-28",
+  "config_url": "https://raw.githubusercontent.com/DiptoDas2/clify-config/main/clify-config.json",
+
+  "sponsors": [
+    {
+      "id": "hostinger",
+      "name": "Hostinger",
+      "tagline": "Fast & Affordable Web Hosting",
+      "description": "Get premium web hosting at the best price. Free domain, SSL, and weekly backups included.",
+      "link": "https://www.hostinger.com/?ref=clify",
+      "coupon": "CLIFY20",
+      "discount": "20% OFF",
+      "icon": "ti ti-server",
+      "color": "#673ab7",
+      "active": true,
+      "featured": true
+    }
+  ],
+
+  "affiliate_links": [
+    {
+      "id": "hostinger-hosting",
+      "name": "Hostinger Hosting",
+      "url": "https://www.hostinger.com/?ref=clify",
+      "category": "hosting",
+      "icon": "ti ti-server",
+      "active": true
+    },
+    {
+      "id": "hostinger-vps",
+      "name": "Hostinger VPS",
+      "url": "https://www.hostinger.com/vps-hosting?ref=clify",
+      "category": "hosting",
+      "icon": "ti ti-cloud",
+      "active": true
+    }
+  ],
+
+  "announcement": {
+    "text": "Use code CLIFY20 for 20% off on Hostinger",
+    "link": "https://www.hostinger.com/?ref=clify",
+    "type": "promo",
+    "active": true
+  }
+}

@@ -20,26 +20,6 @@
     }
   ],
 
-  "affiliate_links": [
-    {
-      "id": "hostinger-hosting",
-      "name": "Hostinger Hosting",
-      "url": "https://hostinger.sjv.io/5bq4d2",
-      "slug": "https://diptodesign.xyz/hostinger",
-      "category": "hosting",
-      "icon": "ti ti-server",
-      "active": true
-    },
-    {
-      "id": "hostinger-vps",
-      "name": "Hostinger VPS",
-      "url": "https://hostinger.sjv.io/5bq4d2",
-      "category": "hosting",
-      "icon": "ti ti-cloud",
-      "active": true
-    }
-  ],
-
   "announcement": {
     "text": "Use code CLIFY20 for 20% off on Hostinger",
     "link": "https://hostinger.sjv.io/5bq4d2",

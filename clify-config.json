@@ -3,23 +3,17 @@
   "updated_at": "2026-07-28",
   "config_url": "https://raw.githubusercontent.com/diptodesign/clifydl/refs/heads/main/clify-config.json",
 
-  "ad_slots": {
-  "dashboard_banner": {
-    "active": true,
-    "html": "<a rel=\"sponsored\" href=\"https://hostinger.sjv.io/c/3210801/1393524/12282\" target=\"_blank\"><img src=\"//a.impactradius-go.com/display-ad/12282-1393524\" border=\"0\" alt=\"Hostinger - Web Hosting\" width=\"970\" height=\"250\" style=\"width:100%;height:auto;\"></a><img height=\"0\" width=\"0\" src=\"https://imp.pxf.io/i/3210801/1393524/12282\" style=\"position:absolute;visibility:hidden;\" border=\"0\">"
-  }
-},
-
   "sponsors": [
     {
       "id": "hostinger",
       "name": "Hostinger",
       "tagline": "Fast & Affordable Web Hosting",
       "description": "Get premium web hosting at the best price. Free domain, SSL, and weekly backups included.",
-      "link": "https://www.hostinger.com/?ref=clify",
+      "link": "https://hostinger.sjv.io/5bq4d2",
+      "slug": "https://diptodesign.xyz/hostinger",
       "coupon": "CLIFY20",
       "discount": "20% OFF",
-      "icon": "ti ti-server",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/8/82/Hostinger_logo.png",
       "color": "#673ab7",
       "active": true,
       "featured": true
@@ -30,7 +24,8 @@
     {
       "id": "hostinger-hosting",
       "name": "Hostinger Hosting",
-      "url": "https://www.hostinger.com/?ref=clify",
+      "url": "https://hostinger.sjv.io/5bq4d2",
+      "slug": "https://diptodesign.xyz/hostinger",
       "category": "hosting",
       "icon": "ti ti-server",
       "active": true
@@ -38,7 +33,7 @@
     {
       "id": "hostinger-vps",
       "name": "Hostinger VPS",
-      "url": "https://www.hostinger.com/vps-hosting?ref=clify",
+      "url": "https://hostinger.sjv.io/5bq4d2",
       "category": "hosting",
       "icon": "ti ti-cloud",
       "active": true
@@ -47,7 +42,7 @@
 
   "announcement": {
     "text": "Use code CLIFY20 for 20% off on Hostinger",
-    "link": "https://www.hostinger.com/?ref=clify",
+    "link": "https://hostinger.sjv.io/5bq4d2",
     "type": "promo",
     "active": true
   }

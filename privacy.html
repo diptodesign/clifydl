@@ -375,11 +375,11 @@
                     </div>
                     <div class="info-item">
                         <strong>Extension Version:</strong>
-                        <span>7.0.0</span>
+                        <span>17.0.0</span>
                     </div>
                     <div class="info-item">
                         <strong>Contact:</strong>
-                        <span>diptodesignstd@gmail.com</span>
+                        <span>DiptoDesignStd@gmail.com</span>
                     </div>
                 </div>
                 
@@ -441,21 +441,20 @@
                 <h2>5. Third-Party Services</h2>
                 <p>Clify does not use any third-party services, analytics tools, or tracking frameworks.</p>
                 
-                <h3>No Integration With:</h3>
+                <p>The only external connections are:</p>
                 <ul>
-                    <li>Google Analytics or any analytics services</li>
-                    <li>Advertising networks</li>
-                    <li>Social media trackers</li>
-                    <li>Data collection services</li>
+                    <li><strong>SponsorBlock API</strong> (optional, off by default) — Fetches community-sponsored segment data</li>
+                    <li><strong>Telegram notification delivery</strong> (optional, opt-in) — Sends support tickets if configured</li>
                 </ul>
+                <p>Both features are fully user-controlled and disabled until explicitly enabled.</p>
 
-                <h2>6. Manual Installation Safety</h2>
-                <p>Since Clify is manually installed (not from Chrome Web Store), users have complete control:</p>
+                <h2>6. Distribution Safety</h2>
+                <p>Clify is distributed through official channels (GitHub, Firefox Add-ons, Chrome Web Store), giving you full control:</p>
                 <ul>
-                    <li>You download the source code directly from GitHub</li>
-                    <li>You can review all files before installation</li>
-                    <li>You control when updates are installed</li>
-                    <li>No automatic updates that could introduce unwanted changes</li>
+                    <li>Source code is publicly available on GitHub for review</li>
+                    <li>Transparent release notes for every version</li>
+                    <li>All data processing stays local — no servers involved</li>
+                    <li>No automatic changes that affect your privacy</li>
                 </ul>
 
                 <h2>7. Your Control Over Data</h2>
@@ -486,7 +485,7 @@
                 <p>If you have any questions or concerns about this privacy policy, please contact:</p>
                 
                 <div style="background: var(--bg-surface); padding: 20px; border-radius: var(--radius-lg); margin: 20px 0;">
-                    <p><strong>Email:</strong> diptodesignstd@gmail.com</p>
+                    <p><strong>Email:</strong> DiptoDesignStd@gmail.com</p>
                     <p><strong>GitHub:</strong> <a href="https://github.com/diptodesign/clify/issues" style="color: var(--primary);">Open an Issue</a></p>
                     <p><strong>Telegram:</strong> <a href="https://t.me/Clifybydd" style="color: var(--primary);">@Clifybydd</a></p>
                 </div>
@@ -496,7 +495,6 @@
                 <ul>
                     <li>It's protected by your browser's built-in security</li>
                     <li>It's not accessible to websites or other extensions</li>
-                    <li>It's encrypted if your browser supports encryption</li>
                     <li>It's deleted when you clear browser data or uninstall</li>
                 </ul>
 
@@ -542,22 +540,15 @@
     </footer>
 
     <script>
-        // Set current date
         document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
-        
-        // Set copyright year
         document.getElementById('copyrightYear').textContent = new Date().getFullYear();
-        
-        // Mobile menu toggle
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
             document.getElementById('navLinks').classList.toggle('active');
         });
-
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('active');
@@ -565,5 +556,4 @@
         });
     </script>
 </body>
-
 </html>

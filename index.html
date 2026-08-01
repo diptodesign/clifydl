@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clify — YouTube, Uncluttered</title>
-  <link rel="icon" href="https://i.ibb.co.com/ynVThcLq/logo.png" type="image/png">
+    <title>Clify — YouTube, Uncluttered</title>
+    <meta name="description" content="Free, open-source YouTube blocker with 5-layer ad blocking (1,800+ filter rules + remote uBO/AG lists), Shorts removal, SponsorBlock, audio equalizer, age-gate bypass, and 35+ focus tools. Manual install, 100% private.">
+    <meta name="keywords" content="YouTube Shorts blocker, YouTube ad blocker, SponsorBlock, audio equalizer, age-gate bypass, remove YouTube distractions, open source extension, Chrome extension manual install, Kiwi Browser, Quetta Browser, Android extension">
+    <meta property="og:title" content="Clify — YouTube, Uncluttered">
+    <meta property="og:description" content="5-layer ad blocker, Shorts removal, SponsorBlock, audio equalizer, age-gate bypass. 35+ focus tools. Manual install, 100% private, open source.">
+    <meta property="og:image" content="https://i.ibb.co.com/ynVThcLq/logo.png">
+    <meta property="og:url" content="https://diptodesign.github.io/clify">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Clify — YouTube, Uncluttered">
+    <meta name="twitter:description" content="Free YouTube blocker with 5-layer ad blocking, audio equalizer, SponsorBlock, and 35+ focus tools. Manual install, 100% private.">
+    <meta name="twitter:image" content="https://i.ibb.co.com/ynVThcLq/logo.png">
+    <link rel="icon" href="https://i.ibb.co.com/ynVThcLq/logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -1168,6 +1179,81 @@
       z-index: 1;
     }
 
+    /* ─── CONTACT FORM ─── */
+    .contact-section { padding: 80px 0; }
+    .contact-box {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-box .section-label { justify-content: center; margin-bottom: 8px; }
+    .contact-box .section-title { margin-top: 8px; font-size: 1.6rem; }
+    .contact-box .section-desc { margin: 8px auto 0; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+    .contact-row { display: flex; gap: 16px; }
+    .contact-row > * { flex: 1; }
+    .contact-field { display: flex; flex-direction: column; gap: 6px; }
+    .contact-field label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .contact-field input,
+    .contact-field select,
+    .contact-field textarea {
+      padding: 12px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition);
+      resize: vertical;
+    }
+    .contact-field input:focus,
+    .contact-field select:focus,
+    .contact-field textarea:focus { border-color: var(--accent); }
+    .contact-field input::placeholder,
+    .contact-field textarea::placeholder { color: var(--text-dim); }
+    .contact-field textarea { min-height: 100px; }
+    .contact-field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .contact-field select option { background: var(--bg-card); color: var(--text); }
+    .contact-submit {
+      padding: 14px 32px;
+      background: var(--accent);
+      color: #0a0a0f;
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+    .contact-submit:hover { background: #b5f04a; transform: translateY(-1px); }
+    .contact-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .contact-note {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
     /* ─── FOOTER ─── */
     .footer {
       padding: 60px 0 40px;
@@ -1430,7 +1516,7 @@
     <div class="container hero-content">
       <div class="hero-badge">
         <span class="dot"></span>
-        v16.0.0 — Now Available
+        v17.0.0 — Now Available for Chrome &amp; Firefox
       </div>
       <h1>YouTube, Uncluttered</h1>
       <p class="hero-sub">Free, open-source YouTube blocker with 5-layer ad blocking, Shorts removal, SponsorBlock, audio equalizer, age-gate bypass, and 35+ focus tools. Manual install, 100% private.</p>
@@ -1489,8 +1575,8 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
           </div>
           <h3>5-Layer Ad Blocker</h3>
-          <p>uBlock Origin-level protection with 300+ filter rules, scriptlet injection, procedural cosmetic filtering, and anti-adblock bypass. Blocks mid-roll, pre-roll, display, and overlay ads.</p>
-          <span class="bento-tag">300+ filter rules</span>
+          <p>uBlock Origin-level protection with 1,800+ built-in and remote filter rules, scriptlet injection, procedural cosmetic filtering, and anti-adblock bypass. Blocks mid-roll, pre-roll, display, and overlay ads.</p>
+          <span class="bento-tag">1,800+ filter rules</span>
         </div>
         <!-- Shorts Remover -->
         <div class="bento-card reveal">
@@ -1711,12 +1797,12 @@
         <div class="step-card reveal">
           <div class="step-number">1</div>
           <h3>Download</h3>
-          <p>Download the extension ZIP file from our GitHub repository. It's completely free and open source.</p>
+          <p>Download <strong>clify-v17.0.0-chrome.zip</strong> for Chrome/Chromium or <strong>clify-firefox-v17.0.0.xpi</strong> for Firefox from our GitHub repository. It's completely free and open source.</p>
         </div>
         <div class="step-card reveal">
           <div class="step-number">2</div>
           <h3>Extract &amp; Load</h3>
-          <p>Extract and load in Chrome (developer mode) or use on Android with Kiwi/Quetta Browser.</p>
+          <p>Extract and load in Chrome (developer mode), load temporarily in Firefox, or use on Android with Kiwi/Quetta Browser.</p>
         </div>
         <div class="step-card reveal">
           <div class="step-number">3</div>
@@ -1955,7 +2041,7 @@
           </div>
           <div class="built-info">
             <span class="built-name">Community Data</span>
-            <span class="built-desc">4,800+ ad filter rules from open lists</span>
+            <span class="built-desc">1,800+ ad filter rules from open lists</span>
           </div>
         </a>
         <a href="https://fonts.google.com/specimen/Inter" target="_blank" class="built-card" rel="noopener">
@@ -1990,6 +2076,48 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-box reveal">
+        <div class="section-label" style="justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Contact & Support
+        </div>
+        <h2 class="section-title">Get in touch</h2>
+        <p class="section-desc">Bug reports, feature requests, or just want to say hello?</p>
+        <form class="contact-form" id="contact-form" onsubmit="handleContact(event)">
+          <div class="contact-row">
+            <div class="contact-field">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" placeholder="Your name" required>
+            </div>
+            <div class="contact-field">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="contact-field">
+            <label for="contact-subject">Subject</label>
+            <select id="contact-subject" required>
+              <option value="" disabled selected>Select a topic</option>
+              <option value="bug">Bug Report</option>
+              <option value="feature">Feature Request</option>
+              <option value="question">Question</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="contact-field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" placeholder="Tell us what's on your mind..." required></textarea>
+          </div>
+          <button type="submit" class="contact-submit">Send Message</button>
+          <p class="contact-note">Submissions are stored securely. We typically respond within 48 hours.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
@@ -2011,7 +2139,7 @@
   <!-- STICKY INSTALL BAR -->
   <div class="sticky-bar" id="sticky-bar">
     <div class="container sticky-bar-inner">
-      <span class="sticky-bar-text"><strong>Clify v16.0.0</strong> &mdash; Free, open-source YouTube blocker</span>
+      <span class="sticky-bar-text"><strong>Clify v17.0.0</strong> &mdash; Chrome &amp; Firefox &middot; Free, open-source YouTube blocker</span>
       <a href="https://github.com/diptodesign/Clify/releases" target="_blank" class="btn-primary" style="padding: 10px 22px; font-size: 0.85rem;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Install Now
@@ -2066,6 +2194,47 @@
       } finally {
         btn.disabled = false;
         btn.textContent = 'Subscribe';
+      }
+    }
+
+    // ─── Contact Form ───
+    async function handleContact(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.querySelector('#contact-name').value.trim();
+      const email = form.querySelector('#contact-email').value.trim();
+      const subject = form.querySelector('#contact-subject').value;
+      const message = form.querySelector('#contact-message').value.trim();
+      const btn = form.querySelector('.contact-submit');
+      if (!name || !email || !subject || !message) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        const payload = JSON.stringify({
+          email,
+          name: `[Clify Contact] ${name} | ${subject}`,
+          product: 'clify-contact',
+          message
+        });
+        const res = await fetch('https://email.wpvolts.xyz/api/subscribers/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payload
+        });
+        const data = await res.json().catch(() => ({}));
+        if (data.ok) {
+          showToast('Message sent! We\'ll get back to you soon.', 'success');
+          form.reset();
+        } else {
+          showToast(data.message || 'Something went wrong. Please try again.', 'error');
+        }
+      } catch (err) {
+        showToast('Network error. Please try again later.', 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
       }
     }
 

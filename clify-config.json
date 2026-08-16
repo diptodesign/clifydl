@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-07-28",
+  "updated_at": "2026-08-16",
   "config_url": "https://raw.githubusercontent.com/diptodesign/clifydl/refs/heads/main/clify-config.json",
 
   "sponsors": [
@@ -20,17 +20,24 @@
     }
   ],
 
-  {
-  "text": "Check out the latest offer",
-  "image": "https://i.ibb.co.com/G4DGLpR9/See-Now.png",
-  "link": "https://www.myfonts.com/collections/creative9-foundry",
-  "type": "image",
-  "active": true
-}
-  "announcement": {
-    "text": "Use code CLIFY20 for 20% off on Hostinger",
-    "link": "https://hostinger.sjv.io/5bq4d2",
-    "type": "promo",
-    "active": true
-  }
+  "announcements": [
+    {
+      "text": "Check out the latest offer",
+      "image": "https://i.ibb.co.com/G4DGLpR9/See-Now.png",
+      "link": "https://www.myfonts.com/collections/creative9-foundry",
+      "type": "image",
+      "active": true
+    },
+    {
+      "text": "Use code CLIFY20 for 20% off on Hostinger",
+      "link": "https://hostinger.sjv.io/5bq4d2",
+      "type": "promo",
+      "active": true
+    },
+    {
+      "text": "New: block distractions on 6 more sites",
+      "type": "feature",
+      "active": true
+    }
+  ]
 }

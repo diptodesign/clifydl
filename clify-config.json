@@ -34,6 +34,23 @@
       "type": "promo",
       "active": true
     },
+     {
+    "text": "Cyber Monday Sale: 40% off Clify Pro",
+    "type": "sale",
+    "link": "https://clifyapp.xyz/pricing",
+    "active": true
+  },
+  {
+    "text": "Tip: enable aggressive mode to skip ads faster",
+    "type": "tip",
+    "active": true
+  },
+  {
+    "text": "Update: we added 3 new blocking platforms",
+    "type": "update",
+    "active": true
+  },
+  
     {
       "text": "New: block distractions on 6 more sites",
       "type": "feature",

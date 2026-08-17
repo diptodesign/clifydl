@@ -911,57 +911,49 @@
 
     /* ─── FOOTER ─── */
     .footer {
-      padding: 60px 0 40px;
+      padding: 64px 0 0;
       border-top: 1px solid var(--border);
       background: var(--card);
     }
 
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      text-align: center;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
     }
+
+    .footer-brand-col { display: flex; flex-direction: column; gap: 14px; }
 
     .footer-brand {
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: 800;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
     }
 
     .footer-brand img { width: 34px; height: 34px; border-radius: 9px; }
 
     .footer-tagline {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      max-width: 380px;
+      line-height: 1.65;
+      max-width: 280px;
     }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px 28px;
-    }
-
-    .footer-links a { font-size: 0.88rem; color: var(--text-muted); transition: var(--transition); }
-
-    .footer-links a:hover { color: var(--accent-600); }
 
     .footer-social {
       display: flex;
-      gap: 12px;
+      gap: 10px;
+      margin-top: 4px;
     }
 
     .social-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       border: 1px solid var(--border-strong);
-      background: var(--card);
+      background: var(--bg);
       color: var(--text-muted);
       display: flex;
       align-items: center;
@@ -969,13 +961,64 @@
       transition: var(--transition);
     }
 
-    .social-btn:hover { border-color: var(--accent); color: var(--accent-600); transform: translateY(-2px); }
+    .social-btn:hover { border-color: var(--accent); color: var(--accent-600); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(16,185,129,.1); }
+
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin: 0 0 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-col a:hover { color: var(--accent-600); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
     .footer-copy {
       font-size: 0.8rem;
       color: var(--text-dim);
-      margin-top: 8px;
     }
+
+    .footer-copy a { color: var(--text-muted); }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-bottom-links a:hover { color: var(--accent-600); }
 
     /* ─── STICKY BAR ─── */
     .sticky-bar {
@@ -1088,12 +1131,17 @@
       .cta-actions .btn { width: 100%; justify-content: center; }
       .cta-visual { margin-top: 8px; }
       .sticky-bar-text { font-size: 0.82rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-brand-col { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
     }
 
     @media (max-width: 480px) {
       .hero-actions { flex-direction: column; width: 100%; }
       .hero-actions a, .hero-actions button { width: 100%; justify-content: center; }
       .hero-stats { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 12px 20px; }
     }
   </style>
 </head>
@@ -1614,33 +1662,62 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <img src="https://i.ibb.co.com/ynVThcLq/logo.png" alt="Clify">
-          <span>Clify</span>
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <img src="https://i.ibb.co.com/ynVThcLq/logo.png" alt="Clify">
+            <span>Clify</span>
+          </div>
+          <p class="footer-tagline">Free, open-source YouTube blocker. Block ads, remove Shorts, skip sponsors, and stay focused.</p>
+          <div class="footer-social">
+            <a href="https://github.com/diptodesign/Clify" target="_blank" class="social-btn" aria-label="GitHub" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="social-btn" aria-label="Product Hunt" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#FF6154"/><path d="M10.6 8.5v7h1.6c2.2 0 3.5-1.3 3.5-3.5S14.4 8.5 12.2 8.5h-1.6zm1.6 5.4h-.2c-1.1 0-1.9-.7-1.9-1.9s.8-1.9 1.9-1.9h.2v3.8z" fill="#fff"/></svg>
+            </a>
+            <a href="https://blog.clifyapp.xyz" target="_blank" class="social-btn" aria-label="Blog" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            </a>
+          </div>
         </div>
-        <p class="footer-tagline">Your trusted companion for a calmer, more focused YouTube.</p>
-        <div class="footer-links">
-          <a href="#download">Download</a>
-          <a href="https://github.com/diptodesign/Clify" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://blog.clifyapp.xyz" target="_blank" rel="noopener">Blog</a>
-          <a href="https://clifyapp.xyz/about" target="_blank" rel="noopener">About</a>
-          <a href="https://clifyapp.xyz/changelog" target="_blank" rel="noopener">Changelog</a>
-          <a href="https://clifyapp.xyz/license" target="_blank" rel="noopener">License</a>
-          <a href="https://clifyapp.xyz/terms" target="_blank" rel="noopener">Terms</a>
-          <a href="https://clifyapp.xyz/privacy" target="_blank" rel="noopener">Privacy</a>
-          <a href="https://clifyapp.xyz/contribute" target="_blank" rel="noopener">Contribute</a>
-          <a href="https://clifyapp.xyz/donate" target="_blank" rel="noopener">Donate</a>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#download">Download</a></li>
+            <li><a href="https://clifyapp.xyz/changelog">Changelog</a></li>
+            <li><a href="https://clifyapp.xyz/about">About</a></li>
+          </ul>
         </div>
-        <div class="footer-social">
-          <a href="https://github.com/diptodesign/Clify" target="_blank" class="social-btn" aria-label="GitHub" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          </a>
-          <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="social-btn" aria-label="Product Hunt" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#FF6154"/><path d="M10.6 8.5v7h1.6c2.2 0 3.5-1.3 3.5-3.5S14.4 8.5 12.2 8.5h-1.6zm1.6 5.4h-.2c-1.1 0-1.9-.7-1.9-1.9s.8-1.9 1.9-1.9h.2v3.8z" fill="#fff"/></svg>
-          </a>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="https://github.com/diptodesign/Clify" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://blog.clifyapp.xyz" target="_blank" rel="noopener">Blog</a></li>
+            <li><a href="https://clifyapp.xyz/contribute" target="_blank" rel="noopener">Contribute</a></li>
+            <li><a href="https://clifyapp.xyz/donate" target="_blank" rel="noopener">Donate</a></li>
+          </ul>
         </div>
-        <p class="footer-copy">&copy; 2026 Dipto Design Studio. Open source under MIT License.</p>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="https://clifyapp.xyz/terms">Terms</a></li>
+            <li><a href="https://clifyapp.xyz/privacy">Privacy</a></li>
+            <li><a href="https://clifyapp.xyz/license">License (MIT)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Dipto Design Studio. Open source under <a href="https://clifyapp.xyz/license">MIT License</a>.</p>
+        <div class="footer-bottom-links">
+          <a href="https://github.com/diptodesign/Clify/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy Policy</a>
+          <a href="mailto:support@clifyapp.xyz">Contact</a>
+        </div>
       </div>
     </div>
   </footer>

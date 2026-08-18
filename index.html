@@ -21,7 +21,6 @@
   <meta name="theme-color" content="#FAFBFA">
   <link rel="icon" href="https://i.ibb.co.com/ynVThcLq/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="https://i.ibb.co.com/ynVThcLq/logo.png">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5123188644150792" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1090,30 +1089,13 @@
     }
 
     /* â”€â”€â”€ RESPONSIVE â”€â”€â”€ */
-
-    /* Tablet landscape / small desktop */
-    @media (max-width: 1080px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .hero { padding: 140px 0 64px; }
-      .hero-mock { max-width: 580px; margin: 0 auto; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero { padding: 140px 0 72px; }
+      .hero-mock { max-width: 620px; margin: 0 auto; }
       .steps-grid { gap: 16px; }
-      .cta-card { gap: 36px; padding: 48px 40px; }
-      .footer-grid { gap: 36px; }
     }
 
-    /* Tablet portrait */
-    @media (max-width: 860px) {
-      .hero { padding: 120px 0 56px; }
-      .hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
-      .hero-stats { max-width: 100%; }
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
-      .cta-card { padding: 40px 32px; }
-      .trusted-item { padding: 6px 14px 6px 8px; }
-      .trusted-name { font-size: 0.84rem; }
-    }
-
-    /* Mobile â€” nav collapses, single-column everything */
     @media (max-width: 768px) {
       .nav-center, .nav-right {
         display: none;
@@ -1123,177 +1105,43 @@
         right: 0;
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid var(--border);
         flex-direction: column;
         padding: 16px 20px;
         gap: 6px;
         align-items: stretch;
-        box-shadow: 0 12px 30px rgba(15,23,42,0.08);
       }
+
       .nav-right { border-top: 1px solid var(--border); }
       .nav-center.open, .nav-right.open { display: flex; }
       .nav-toggle { display: block; }
-      .nav-center a { text-align: center; padding: 12px 16px; }
+      .nav-center a { text-align: center; }
       .nav-right .btn { justify-content: center; width: 100%; }
 
-      .hero { padding: 110px 0 48px; }
-      .hero h1 { font-size: clamp(1.8rem, 6vw, 2.6rem); line-height: 1.1; }
-      .hero-sub { font-size: 0.95rem; }
-      .hero-desc { font-size: 0.92rem; }
-      .hero-actions { gap: 10px; }
-      .hero-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .stat-card { padding: 14px 16px; gap: 10px; }
-      .stat-icon { width: 38px; height: 38px; border-radius: 10px; }
-      .stat-value { font-size: 1.15rem; }
-      .stat-label { font-size: 0.75rem; }
-
-      .mock-badge { font-size: 0.7rem; padding: 6px 12px; top: -10px; right: 4px; }
-      .browser-bar { padding: 10px 12px; }
+      .hero { padding: 120px 0 56px; }
+      .hero-stats { max-width: 100%; }
+      .features-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
       .b-sidebar { display: none; }
-      .b-main { padding: 10px; }
-      .b-video { border-radius: 12px; }
-      .b-play { width: 40px; height: 40px; }
-      .b-title-bars { gap: 4px; }
-      .b-bar { height: 7px; }
-      .b-chip { font-size: 0.65rem; padding: 3px 10px; margin-top: 8px; }
-      .b-rail { gap: 8px; margin-top: 10px; }
-      .b-rec-thumb { width: 60px; height: 38px; }
-
-      .trusted { padding: 28px 0; }
-      .trusted-label { font-size: 0.68rem; margin-bottom: 14px; }
-      .trusted-row { gap: 8px 12px; }
-      .trusted-item { padding: 6px 12px 6px 6px; gap: 6px; }
-      .trusted-icon { width: 22px; height: 22px; border-radius: 6px; }
-      .trusted-icon svg { width: 16px; height: 16px; }
-      .trusted-name { font-size: 0.78rem; }
-
-      .section { padding: 64px 0; }
-      .section-title { font-size: clamp(1.5rem, 4vw, 2rem); }
-      .section-desc { font-size: 0.95rem; }
-
-      .features-grid { grid-template-columns: 1fr; gap: 12px; }
-      .feature-card { padding: 22px 20px; }
-      .feature-icon { width: 42px; height: 42px; border-radius: 12px; margin-bottom: 14px; }
-      .feature-card h3 { font-size: 0.98rem; }
-      .feature-card p { font-size: 0.85rem; }
-
-      .steps-grid { grid-template-columns: 1fr; gap: 12px; }
-      .step-card { padding: 28px 24px; text-align: left; }
-      .step-number { width: 44px; height: 44px; font-size: 1.1rem; margin: 0 0 16px; }
-
-      .faq-question { font-size: 0.95rem; padding: 16px 20px; }
-      .faq-answer p { font-size: 0.88rem; padding: 0 20px 18px; }
-
-      .cta-card { grid-template-columns: 1fr; padding: 32px 20px; border-radius: 20px; text-align: center; gap: 24px; }
+      .section { padding: 72px 0; }
+      .cta-card { grid-template-columns: 1fr; padding: 40px 24px; border-radius: 24px; text-align: center; }
       .cta-card .section-title,
       .cta-card .section-desc { text-align: center; margin-left: auto; margin-right: auto; }
-      .cta-actions { justify-content: center; flex-direction: column; gap: 10px; }
-      .cta-actions .btn { width: 100%; justify-content: center; padding: 12px 24px; }
-      .cta-visual { margin-top: 4px; }
-      .phone { width: 200px; height: 390px; border-width: 8px; border-radius: 32px; }
-      .phone-notch { width: 90px; height: 20px; }
-      .phone-logo { width: 44px; height: 44px; }
-      .phone-title { font-size: 0.92rem; }
-      .phone-text { font-size: 0.75rem; }
-
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .cta-actions { justify-content: center; flex-direction: column; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+      .cta-visual { margin-top: 8px; }
+      .sticky-bar-text { font-size: 0.82rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
       .footer-brand-col { grid-column: 1 / -1; }
       .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
-
-      .sticky-bar { padding: 10px 0; }
-      .sticky-bar-inner { flex-direction: column; gap: 8px; text-align: center; }
-      .sticky-bar-text { font-size: 0.78rem; }
-      .sticky-bar .btn { padding: 8px 18px; font-size: 0.8rem; }
-
-      .back-to-top { bottom: 72px; right: 16px; width: 38px; height: 38px; border-radius: 10px; }
     }
 
-    /* Small phones */
     @media (max-width: 480px) {
-      .container { padding: 0 16px; }
-      .hero { padding: 100px 0 40px; }
-      .hero h1 { font-size: 1.7rem; }
       .hero-actions { flex-direction: column; width: 100%; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero-actions a, .hero-actions button { width: 100%; justify-content: center; }
       .hero-stats { grid-template-columns: 1fr; }
-      .stat-card { padding: 12px 14px; }
-
-      .features-grid { gap: 10px; }
-      .feature-card { padding: 18px 16px; }
-
-      .steps-grid { gap: 10px; }
-      .step-card { padding: 22px 18px; }
-
-      .cta-card { padding: 28px 16px; }
-
-      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-      .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 10px 16px; }
-      .footer-bottom-links a { font-size: 0.75rem; }
-
-      .cc-banner { padding: 14px 16px; gap: 10px; }
-      .cc-banner p { font-size: 0.82rem; }
-      .cc-btns { flex-direction: column; width: 100%; }
-      .cc-btn { width: 100%; justify-content: center; }
-    }
-
-    /* Extra small */
-    @media (max-width: 360px) {
-      .hero h1 { font-size: 1.5rem; }
-      .hero-sub { font-size: 0.88rem; }
-      .section-title { font-size: 1.3rem; }
-      .nav-brand { font-size: 0.95rem; }
-      .nav-brand img { width: 32px; height: 32px; }
-    }
-
-    /* â”€â”€â”€ COOKIE CONSENT â”€â”€â”€ */
-    .cc-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 2000;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      color: #e2e8f0;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      transform: translateY(0);
-      transition: transform 0.4s ease;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
-    }
-    .cc-banner.hidden { transform: translateY(100%); pointer-events: none; }
-    .cc-banner p { font-size: 0.88rem; line-height: 1.6; margin: 0; max-width: 700px; }
-    .cc-banner a { color: #6ee7b7; text-decoration: underline; text-underline-offset: 2px; }
-    .cc-banner a:hover { color: #a7f3d0; }
-    .cc-btns { display: flex; gap: 10px; flex-shrink: 0; }
-    .cc-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: none;
-      cursor: pointer;
-      font-family: var(--font);
-      font-weight: 600;
-      font-size: 0.82rem;
-      border-radius: 8px;
-      padding: 10px 18px;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .cc-accept { background: #10b981; color: #fff; }
-    .cc-accept:hover { background: #059669; }
-    .cc-settings { background: rgba(255,255,255,0.1); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.2); }
-    .cc-settings:hover { background: rgba(255,255,255,0.15); }
-    .cc-manage { background: none; color: #94a3b8; border: 1px solid rgba(255,255,255,0.15); }
-    .cc-manage:hover { color: #e2e8f0; border-color: rgba(255,255,255,0.3); }
-    @media (max-width: 640px) {
-      .cc-banner { flex-direction: column; text-align: center; padding: 16px; gap: 12px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 12px 20px; }
     }
   </style>
 </head>
@@ -1313,7 +1161,7 @@
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#faq">FAQ</a>
-        <a href="https://blog.clifyapp.xyz" target="_blank" rel="noopener">Blog</a>
+        <a href="https://clifyapp.xyz/blog" target="_blank" rel="noopener">Blog</a>
       </div>
       <div class="nav-right" id="nav-right">
         <a href="https://github.com/diptodesign/Clify" target="_blank" class="btn btn-ghost" rel="noopener">
@@ -1828,7 +1676,7 @@
             <a href="https://www.producthunt.com/products/clify-formerly-zap" target="_blank" class="social-btn" aria-label="Product Hunt" rel="noopener">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#FF6154"/><path d="M10.6 8.5v7h1.6c2.2 0 3.5-1.3 3.5-3.5S14.4 8.5 12.2 8.5h-1.6zm1.6 5.4h-.2c-1.1 0-1.9-.7-1.9-1.9s.8-1.9 1.9-1.9h.2v3.8z" fill="#fff"/></svg>
             </a>
-            <a href="https://blog.clifyapp.xyz" target="_blank" class="social-btn" aria-label="Blog" rel="noopener">
+            <a href="https://clifyapp.xyz/blog" target="_blank" class="social-btn" aria-label="Blog" rel="noopener">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
             </a>
           </div>
@@ -1849,12 +1697,11 @@
           <h4>Resources</h4>
           <ul>
             <li><a href="https://github.com/diptodesign/Clify" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="https://blog.clifyapp.xyz" target="_blank" rel="noopener">Blog</a></li>
+            <li><a href="https://clifyapp.xyz/blog" target="_blank" rel="noopener">Blog</a></li>
             <li><a href="https://clifyapp.xyz/compare">Compare</a></li>
             <li><a href="https://clifyapp.xyz/sponsors">Sponsors</a></li>
             <li><a href="https://clifyapp.xyz/contribute" target="_blank" rel="noopener">Contribute</a></li>
             <li><a href="https://clifyapp.xyz/donate" target="_blank" rel="noopener">Donate</a></li>
-            <li><a href="https://clifyapp.xyz/contact">Contact</a></li>
           </ul>
         </div>
 
@@ -1872,8 +1719,6 @@
         <p class="footer-copy">&copy; 2026 Dipto Design Studio. Open source under <a href="https://clifyapp.xyz/license">MIT License</a>.</p>
         <div class="footer-bottom-links">
           <a href="https://clifyapp.xyz/privacy">Privacy Policy</a>
-          <a href="https://clifyapp.xyz/ad-choices">Ad Choices</a>
-          <a href="https://clifyapp.xyz/do-not-sell">Do Not Sell My Personal Information</a>
           <a href="https://clifyapp.xyz/contact">Contact</a>
         </div>
       </div>
@@ -1896,52 +1741,11 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <!-- COOKIE CONSENT BANNER -->
-  <div class="cc-banner" id="cc-banner" role="dialog" aria-label="Cookie consent">
-    <p>We use cookies and similar technologies, including those set by Google AdSense, to serve and personalize ads. By clicking "Accept All" you consent to the use of cookies. Read our <a href="https://clifyapp.xyz/privacy">Privacy Policy</a> for details.</p>
-    <div class="cc-btns">
-      <button class="cc-btn cc-accept" onclick="ccAcceptAll()">Accept All</button>
-      <a href="https://clifyapp.xyz/privacy" class="cc-btn cc-settings">Settings</a>
-      <button class="cc-btn cc-manage" onclick="ccDismiss()">Decline</button>
-    </div>
-  </div>
-
-  <!-- ADSENSE PLACEHOLDER -->
-  <div style="max-width:728px;margin:0 auto;padding:0 24px 40px;text-align:center;">
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:728px;height:90px"
-         data-ad-client="ca-pub-5123188644150792"
-         data-ad-slot="XXXXXXXXXX"></ins>
-  </div>
-
-  <script>
-    function ccAcceptAll() {
-      document.getElementById('cc-banner').classList.add('hidden');
-      localStorage.setItem('cc_consent', 'all');
-    }
-    function ccDismiss() {
-      document.getElementById('cc-banner').classList.add('hidden');
-      localStorage.setItem('cc_consent', 'none');
-    }
-    (function() {
-      var consent = localStorage.getItem('cc_consent');
-      if (consent) document.getElementById('cc-banner').classList.add('hidden');
-    })();
-  </script>
-
   <script>
     function toggleMenu() {
       document.getElementById('nav-center').classList.toggle('open');
       document.getElementById('nav-right').classList.toggle('open');
     }
-
-    document.addEventListener('click', function(e) {
-      var nav = document.querySelector('.nav');
-      if (nav && !nav.contains(e.target)) {
-        document.getElementById('nav-center').classList.remove('open');
-        document.getElementById('nav-right').classList.remove('open');
-      }
-    });
 
     function toggleFaq(btn) {
       const item = btn.closest('.faq-item');

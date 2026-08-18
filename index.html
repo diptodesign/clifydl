@@ -1145,49 +1145,6 @@
       .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 12px 20px; }
     }
 
-    /* SCREENSHOTS */
-    .screenshots-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 40px;
-    }
-    .screenshot-card {
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--card);
-      transition: var(--transition);
-    }
-    .screenshot-card:hover {
-      border-color: var(--border-strong);
-      box-shadow: 0 8px 30px -8px rgba(15,23,42,0.10);
-      transform: translateY(-2px);
-    }
-    .screenshot-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .screenshot-card .caption {
-      padding: 12px 16px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text);
-      border-top: 1px solid var(--border);
-    }
-    .screenshot-card.wide {
-      grid-column: span 2;
-    }
-    .screenshot-card.tall img {
-      height: 100%;
-      object-fit: cover;
-    }
-    @media (max-width: 640px) {
-      .screenshots-grid { grid-template-columns: 1fr; }
-      .screenshot-card.wide { grid-column: span 1; }
-    }
-
     /* â”€â”€â”€ COOKIE CONSENT â”€â”€â”€ */
     .cc-banner {
       position: fixed;
@@ -1597,50 +1554,6 @@
           <h3>Monetization Badge</h3>
           <p>Detects channel monetization status with 7 detection methods and shows a pill badge on thumbnails.</p>
           <span class="feature-tag">7 detection methods</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCREENSHOTS -->
-  <section class="section" id="screenshots" style="background: var(--bg);">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="section-label">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Screenshots
-        </div>
-        <h2 class="section-title">See Clify in action</h2>
-        <p class="section-subtitle">A clean, powerful dashboard built for focus</p>
-      </div>
-      <div class="screenshots-grid reveal">
-        <div class="screenshot-card wide">
-          <img src="https://files.catbox.moe/xwfg17.png" alt="Clify Dashboard" loading="lazy">
-          <div class="caption">Dashboard &mdash; overview &amp; quick controls</div>
-        </div>
-        <div class="screenshot-card">
-          <img src="https://files.catbox.moe/4n63bw.png" alt="Clify Protection" loading="lazy">
-          <div class="caption">Protection &mdash; ad blocker &amp; shields</div>
-        </div>
-        <div class="screenshot-card">
-          <img src="https://files.catbox.moe/lds6uy.png" alt="Clify Ad Blocker" loading="lazy">
-          <div class="caption">Ad Blocker &mdash; 1,800+ filter rules</div>
-        </div>
-        <div class="screenshot-card wide">
-          <img src="https://files.catbox.moe/fqyhta.png" alt="Clify Blocked Channels" loading="lazy">
-          <div class="caption">Blocked Channels &mdash; block &amp; allow lists</div>
-        </div>
-        <div class="screenshot-card">
-          <img src="https://files.catbox.moe/gasfph.png" alt="Clify Keywords" loading="lazy">
-          <div class="caption">Keywords &mdash; exact-match blocking</div>
-        </div>
-        <div class="screenshot-card">
-          <img src="https://files.catbox.moe/5zeqbi.png" alt="Clify Cloud Sync" loading="lazy">
-          <div class="caption">Cloud Sync &mdash; encrypted backups</div>
-        </div>
-        <div class="screenshot-card wide">
-          <img src="https://files.catbox.moe/e6lu0a.png" alt="Clify Stats" loading="lazy">
-          <div class="caption">Stats &mdash; blocking analytics</div>
         </div>
       </div>
     </div>

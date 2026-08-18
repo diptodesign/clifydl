@@ -1768,7 +1768,9 @@
         const max = document.documentElement.scrollHeight - window.innerHeight;
         progress.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%';
         const show = scrolled > 600;
-        sticky.classList.toggle('visible', show);
+        const footer = document.querySelector('.footer');
+        const nearFooter = footer && (footer.getBoundingClientRect().top < window.innerHeight + 60);
+        sticky.classList.toggle('visible', show && !nearFooter);
         backToTop.classList.toggle('visible', show);
       }, { passive: true });
 

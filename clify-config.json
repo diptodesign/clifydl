@@ -1,8 +1,14 @@
 {
   "version": 1,
-  "updated_at": "2026-08-16",
-  "config_url": "https://raw.githubusercontent.com/diptodesign/clifydl/refs/heads/main/clify-config.json",
-
+  "updated_at": "2026-08-20",
+  "product_promo": {
+    "active": true,
+    "badge": "NEW",
+    "text": "Soke Sans Serif Typeface",
+    "thumbnail": "https://i.ibb.co.com/ynVThcLq/logo.png",
+    "cta": "Browse Fonts",
+    "link": "https://creativemarket.com/diptodesignz"
+  },
   "sponsors": [
     {
       "id": "hostinger",
@@ -19,7 +25,6 @@
       "featured": true
     }
   ],
-
   "announcements": [
     {
       "text": "Check out the latest offer",
@@ -34,23 +39,22 @@
       "type": "promo",
       "active": true
     },
-     {
-    "text": "Cyber Monday Sale: 40% off Clify Pro",
-    "type": "sale",
-    "link": "https://clifyapp.xyz/pricing",
-    "active": true
-  },
-  {
-    "text": "Tip: enable aggressive mode to skip ads faster",
-    "type": "tip",
-    "active": true
-  },
-  {
-    "text": "Update: we added 3 new blocking platforms",
-    "type": "update",
-    "active": true
-  },
-  
+    {
+      "text": "Cyber Monday Sale: 40% off Clify Pro",
+      "type": "sale",
+      "link": "https://clifyapp.xyz/pricing",
+      "active": true
+    },
+    {
+      "text": "Tip: enable aggressive mode to skip ads faster",
+      "type": "tip",
+      "active": true
+    },
+    {
+      "text": "Update: we added 3 new blocking platforms",
+      "type": "update",
+      "active": true
+    },
     {
       "text": "New: block distractions on 6 more sites",
       "type": "feature",

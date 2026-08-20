@@ -1,7 +1,7 @@
 {
   "version": 1,
-    "config_url": "https://raw.githubusercontent.com/diptodesign/clifydl/refs/heads/main/clify-config.json",
   "updated_at": "2026-08-20",
+  "config_url": "https://raw.githubusercontent.com/diptodesign/clifydl/refs/heads/main/clify-config.json",
   "product_promo": {
     "active": true,
     "badge": "NEW",
@@ -59,6 +59,53 @@
     {
       "text": "New: block distractions on 6 more sites",
       "type": "feature",
+      "active": true
+    },
+    {
+      "text": "Gift: free font pack with every Clify Pro purchase",
+      "type": "gift",
+      "link": "https://clifyapp.xyz/pricing",
+      "active": true
+    },
+    {
+      "text": "Event: Design Meetup — 25 Aug, Dhaka",
+      "type": "event",
+      "link": "https://creativemarket.com/diptodesignz",
+      "active": true
+    },
+    {
+      "text": "Deal: 30% off Soke Sans + Monet bundle",
+      "type": "deal",
+      "link": "https://creativemarket.com/diptodesignz",
+      "active": true
+    },
+    {
+      "text": "Offer: free sample page from every typeface",
+      "type": "offer",
+      "link": "https://creativemarket.com/diptodesignz",
+      "active": true
+    },
+    {
+      "text": "Discount: CLIFY10 — 10% off all Dipto Design fonts",
+      "type": "discount",
+      "link": "https://creativemarket.com/diptodesignz",
+      "active": true
+    },
+    {
+      "text": "Tip: use Ctrl+K to search any setting instantly",
+      "type": "tip",
+      "active": true
+    },
+    {
+      "text": "New: Soke Sans — 24 weights, 500+ glyphs",
+      "type": "new",
+      "link": "https://creativemarket.com/diptodesignz",
+      "active": true
+    },
+    {
+      "text": "Update: Clify v18.0 — BD brand detection added",
+      "type": "update",
+      "link": "https://clifyapp.xyz/download",
       "active": true
     }
   ]
